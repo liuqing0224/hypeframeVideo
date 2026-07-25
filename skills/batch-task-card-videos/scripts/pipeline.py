@@ -164,7 +164,7 @@ def init_project(production: Path) -> None:
         [
             "npx",
             "--yes",
-            "hyperframes@0.7.70",
+            "hyperframes@0.7.71",
             "init",
             str(production),
             "--non-interactive",
@@ -218,6 +218,18 @@ def set_ready_states(production: Path) -> dict:
         if condition and stages[stage]["status"] in {"pending", "blocked"}:
             stages[stage] = {"status": "ready", "evidence": [], "updatedAt": now_iso()}
 
+    if (
+        queue_complete(production)
+        and stages["visual_generation"]["status"] in {"pending", "ready", "running"}
+    ):
+        stages["visual_generation"] = {
+            "status": "complete",
+            "evidence": [
+                "tmp/imagegen/prompt-queue.jsonl",
+                "asset-manifest.json",
+            ],
+            "updatedAt": now_iso(),
+        }
     ready("visual_generation", stages["plan"]["status"] == "complete" and not queue_complete(production))
     ready("audio", stages["plan"]["status"] == "complete")
     ready("layer_processing", stages["visual_generation"]["status"] == "complete")
@@ -433,7 +445,7 @@ def start_previews(
         command = [
             "npx",
             "--yes",
-            "hyperframes@0.7.70",
+            "hyperframes@0.7.71",
             "preview",
             "--background",
             "--no-open",
@@ -444,7 +456,7 @@ def start_previews(
             command = [
                 "npx",
                 "--yes",
-                "hyperframes@0.7.70",
+                "hyperframes@0.7.71",
                 "preview",
                 "--stop",
             ]
@@ -515,7 +527,7 @@ def render_one(
                     [
                         "npx",
                         "--yes",
-                        "hyperframes@0.7.70",
+                        "hyperframes@0.7.71",
                         "render",
                         "--quality",
                         "high",

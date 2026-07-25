@@ -12,8 +12,12 @@
       ]
     },
     "visual_generation": {
-      "status": "pending",
-      "evidence": []
+      "status": "complete",
+      "evidence": [
+        "tmp/imagegen/prompt-queue.jsonl",
+        "asset-manifest.json"
+      ],
+      "updatedAt": "2026-07-25T08:39:43.495710+00:00"
     },
     "audio": {
       "status": "complete",
@@ -62,21 +66,27 @@
       ]
     },
     "preview": {
-      "status": "running",
+      "status": "complete",
       "evidence": [
-        "http://localhost:3202/#project/glowing-solar-system"
+        "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T03:16:59.804265+00:00"
+      "updatedAt": "2026-07-25T08:27:44.900066+00:00"
     },
     "render": {
-      "status": "blocked",
-      "evidence": [],
-      "error": "final Studio preview approval is required",
-      "updatedAt": "2026-07-25T03:02:12.090786+00:00"
+      "status": "complete",
+      "evidence": [
+        "renders/glowing-solar-system.mp4"
+      ],
+      "updatedAt": "2026-07-25T08:31:20.018767+00:00"
     },
     "qa": {
-      "status": "pending",
-      "evidence": []
+      "status": "complete",
+      "evidence": [
+        "qa/render-verification.json",
+        "qa/render-contact-sheet.png",
+        "qa/render-shot-contact-sheet.png",
+        "qa/render-transition-contact-sheet.png"
+      ]
     }
   }
 }

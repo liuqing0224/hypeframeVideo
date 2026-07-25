@@ -1,21 +1,25 @@
 {
   "stage": "render-manual-review",
   "pass": true,
-  "reviewedAt": "2026-07-24T18:11:31Z",
+  "reviewedAt": "2026-07-25T08:44:21Z",
   "video": "renders/guangzhou-tower-cloud-team.mp4",
+  "videoSha256": "e5920f57d03df7489dc47ac79d08ba28b4f3907ed6b24ac60ec00dbababd5f3f",
   "evidence": [
     "qa/render-contact-sheet.png",
+    "qa/render-shot-contact-sheet.png",
     "qa/render-transition-contact-sheet.png",
     "qa/render-verification.json"
   ],
   "checks": {
     "nonblankFrames": true,
+    "nineShotCoverage": true,
+    "framingVariety": true,
     "subjectsUncropped": true,
     "primaryDominant": true,
     "directionAndOcclusionCoherent": true,
     "captionSafeAreaClear": true,
     "noVisibleGreenFringe": true,
     "transitionsRecoverCleanly": true,
-    "sfxAlignedWithin250ms": true
+    "sfxAnticipationLeadWithin300ms": true
   }
 }

@@ -1,21 +1,25 @@
 {
   "stage": "render-manual-review",
   "pass": true,
-  "reviewedAt": "2026-07-24T18:11:31Z",
+  "reviewedAt": "2026-07-25T08:44:21Z",
   "video": "renders/star-seed-forest.mp4",
+  "videoSha256": "5205fb117aa70a3ba8560f309ffcbbbe5169bc4879cd9058551ca21119bf16e8",
   "evidence": [
     "qa/render-contact-sheet.png",
+    "qa/render-shot-contact-sheet.png",
     "qa/render-transition-contact-sheet.png",
     "qa/render-verification.json"
   ],
   "checks": {
     "nonblankFrames": true,
+    "nineShotCoverage": true,
+    "framingVariety": true,
     "subjectsUncropped": true,
     "primaryDominant": true,
     "directionAndOcclusionCoherent": true,
     "captionSafeAreaClear": true,
     "noVisibleGreenFringe": true,
     "transitionsRecoverCleanly": true,
-    "sfxAlignedWithin250ms": true
+    "sfxAnticipationLeadWithin300ms": true
   }
 }

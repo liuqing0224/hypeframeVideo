@@ -1,21 +1,25 @@
 {
   "stage": "render-manual-review",
   "pass": true,
-  "reviewedAt": "2026-07-24T18:11:31Z",
+  "reviewedAt": "2026-07-25T08:44:21Z",
   "video": "renders/glowing-solar-system.mp4",
+  "videoSha256": "7e9b6dc1c9c9df04f36c174eedbe93f377a30a676b8ba4f41b1894e828ba72f8",
   "evidence": [
     "qa/render-contact-sheet.png",
+    "qa/render-shot-contact-sheet.png",
     "qa/render-transition-contact-sheet.png",
     "qa/render-verification.json"
   ],
   "checks": {
     "nonblankFrames": true,
+    "nineShotCoverage": true,
+    "framingVariety": true,
     "subjectsUncropped": true,
     "primaryDominant": true,
     "directionAndOcclusionCoherent": true,
     "captionSafeAreaClear": true,
     "noVisibleGreenFringe": true,
     "transitionsRecoverCleanly": true,
-    "sfxAlignedWithin250ms": true
+    "sfxAnticipationLeadWithin300ms": true
   }
 }

@@ -12,8 +12,12 @@
       ]
     },
     "visual_generation": {
-      "status": "pending",
-      "evidence": []
+      "status": "complete",
+      "evidence": [
+        "tmp/imagegen/prompt-queue.jsonl",
+        "asset-manifest.json"
+      ],
+      "updatedAt": "2026-07-25T08:39:43.496854+00:00"
     },
     "audio": {
       "status": "complete",
@@ -62,21 +66,27 @@
       ]
     },
     "preview": {
-      "status": "running",
+      "status": "complete",
       "evidence": [
-        "http://localhost:3203/#project/navigator-time-letter"
+        "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T03:17:03.582900+00:00"
+      "updatedAt": "2026-07-25T08:27:44.900355+00:00"
     },
     "render": {
-      "status": "blocked",
-      "evidence": [],
-      "error": "final Studio preview approval is required",
-      "updatedAt": "2026-07-25T03:02:12.091355+00:00"
+      "status": "complete",
+      "evidence": [
+        "renders/navigator-time-letter.mp4"
+      ],
+      "updatedAt": "2026-07-25T08:34:54.652731+00:00"
     },
     "qa": {
-      "status": "pending",
-      "evidence": []
+      "status": "complete",
+      "evidence": [
+        "qa/render-verification.json",
+        "qa/render-contact-sheet.png",
+        "qa/render-shot-contact-sheet.png",
+        "qa/render-transition-contact-sheet.png"
+      ]
     }
   }
 }

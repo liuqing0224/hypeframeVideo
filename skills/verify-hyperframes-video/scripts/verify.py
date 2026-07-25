@@ -342,7 +342,7 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
     if run_hyperframes:
         command_reports.append(
             run_command(
-                ["npx", "--yes", "hyperframes@0.7.70", "lint", "--verbose", "."],
+                ["npx", "--yes", "hyperframes@0.7.71", "lint", "--verbose", "."],
                 production,
                 production / "qa/hyperframes-lint.log",
             )
@@ -352,7 +352,7 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
                 [
                     "npx",
                     "--yes",
-                    "hyperframes@0.7.70",
+                    "hyperframes@0.7.71",
                     "check",
                     "--strict",
                     "--snapshots",
@@ -388,7 +388,7 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
                 [
                     "npx",
                     "--yes",
-                    "hyperframes@0.7.70",
+                    "hyperframes@0.7.71",
                     "snapshot",
                     "--at",
                     ",".join(f"{value:.3f}" for value in midpoints),
@@ -405,7 +405,7 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
             run_command(
                 [
                     "env",
-                    "HYPERFRAMES_SKILL_PKG_VERSION=0.7.70",
+                    "HYPERFRAMES_SKILL_PKG_VERSION=0.7.71",
                     "HYPERFRAMES_SKILL_BOOTSTRAP_DEPS=1",
                     "node",
                     str(ANIMATION_MAP),
@@ -634,16 +634,17 @@ def authored_audio_sync_findings(production: Path, manifest: dict) -> list[dict]
             subject for subject in motion["subjects"] if subject["role"] == "primary"
         )
         primary_start = scene["startSeconds"] + primary["entranceStart"]
+        anticipation_lead = primary_start - actual
         findings.append(
             {
                 "id": f"{scene['id']}-entry-sfx-sync",
                 "pass": math.isclose(actual, expected, abs_tol=0.001)
-                and abs(actual - primary_start) <= 0.25,
+                and 0 <= anticipation_lead <= 0.30,
                 "detail": {
                     "sfxStart": actual,
                     "expected": expected,
                     "primaryEntrance": primary_start,
-                    "deltaSeconds": abs(actual - primary_start),
+                    "anticipationLeadSeconds": anticipation_lead,
                 },
             }
         )

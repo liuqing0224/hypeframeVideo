@@ -45,9 +45,9 @@ def scaffold(production: Path) -> None:
         "private": True,
         "type": "module",
         "scripts": {
-            "dev": "npx --yes hyperframes@0.7.70 preview",
-            "check": "npx --yes hyperframes@0.7.70 check",
-            "render": "npx --yes hyperframes@0.7.70 render",
+            "dev": "npx --yes hyperframes@0.7.71 preview",
+            "check": "npx --yes hyperframes@0.7.71 check",
+            "render": "npx --yes hyperframes@0.7.71 render",
         },
     }
     (production / "package.json").write_text(

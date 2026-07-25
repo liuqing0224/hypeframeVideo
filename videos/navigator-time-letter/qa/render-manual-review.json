@@ -1,21 +1,25 @@
 {
   "stage": "render-manual-review",
   "pass": true,
-  "reviewedAt": "2026-07-24T18:11:31Z",
+  "reviewedAt": "2026-07-25T08:44:21Z",
   "video": "renders/navigator-time-letter.mp4",
+  "videoSha256": "df4e5f1a2b856cba680e7970450e234957c2327095a7a9ba114621cd31c4d6be",
   "evidence": [
     "qa/render-contact-sheet.png",
+    "qa/render-shot-contact-sheet.png",
     "qa/render-transition-contact-sheet.png",
     "qa/render-verification.json"
   ],
   "checks": {
     "nonblankFrames": true,
+    "nineShotCoverage": true,
+    "framingVariety": true,
     "subjectsUncropped": true,
     "primaryDominant": true,
     "directionAndOcclusionCoherent": true,
     "captionSafeAreaClear": true,
     "noVisibleGreenFringe": true,
     "transitionsRecoverCleanly": true,
-    "sfxAlignedWithin250ms": true
+    "sfxAnticipationLeadWithin300ms": true
   }
 }

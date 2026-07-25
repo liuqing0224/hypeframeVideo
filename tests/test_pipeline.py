@@ -336,6 +336,34 @@ def test_concurrent_production_writes_are_isolated(scripts, tmp_path):
     assert ids == card_ids
 
 
+def test_ready_state_recovers_completed_visual_queue(scripts, tmp_path):
+    production = tmp_path / "videos/recovered"
+    scripts["plan"].compile_card(
+        BATCH_PATH,
+        "guangzhou-tower-cloud-team",
+        production,
+    )
+    plan = json.loads((production / "story-plan.json").read_text(encoding="utf-8"))
+    queue = scripts["queue"].queue_items(production, plan)
+    for item in queue:
+        item["status"] = "generated"
+    queue_path = production / "tmp/imagegen/prompt-queue.jsonl"
+    queue_path.parent.mkdir(parents=True)
+    queue_path.write_text(
+        "".join(json.dumps(item, ensure_ascii=False) + "\n" for item in queue),
+        encoding="utf-8",
+    )
+
+    status = scripts["pipeline"].set_ready_states(production)
+
+    assert status["stages"]["visual_generation"]["status"] == "complete"
+    assert status["stages"]["visual_generation"]["evidence"] == [
+        "tmp/imagegen/prompt-queue.jsonl",
+        "asset-manifest.json",
+    ]
+    assert status["stages"]["layer_processing"]["status"] == "ready"
+
+
 def test_batch_contact_sheet(scripts, tmp_path):
     batch = {"cards": [{"id": "one"}, {"id": "two"}]}
     for card in batch["cards"]:
