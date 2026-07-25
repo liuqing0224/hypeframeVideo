@@ -1,0 +1,312 @@
+{
+  "provider": "edge",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "voices": [
+    {
+      "sceneId": "01-start",
+      "text": "小雨和三位同学来到广州塔观景台，准备完成寻找城市地标的研学任务。",
+      "rawDuration": 7.536,
+      "durationSeconds": 9.0,
+      "path": "assets/audio/segments/01-start.wav",
+      "words": [
+        {
+          "text": "小雨",
+          "start": 0.552083,
+          "duration": 0.481791
+        },
+        {
+          "text": "和",
+          "start": 1.059916,
+          "duration": 0.130208
+        },
+        {
+          "text": "三",
+          "start": 1.203125,
+          "duration": 0.208333
+        },
+        {
+          "text": "位",
+          "start": 1.411458,
+          "duration": 0.14325
+        },
+        {
+          "text": "同学",
+          "start": 1.567708,
+          "duration": 0.585958
+        },
+        {
+          "text": "来到",
+          "start": 2.257833,
+          "duration": 0.338541
+        },
+        {
+          "text": "广州",
+          "start": 2.622416,
+          "duration": 0.390625
+        },
+        {
+          "text": "塔观",
+          "start": 3.026041,
+          "duration": 0.416666
+        },
+        {
+          "text": "景",
+          "start": 3.442708,
+          "duration": 0.182291
+        },
+        {
+          "text": "台",
+          "start": 3.625,
+          "duration": 0.364583
+        },
+        {
+          "text": "准备",
+          "start": 4.315125,
+          "duration": 0.3125
+        },
+        {
+          "text": "完成",
+          "start": 4.640625,
+          "duration": 0.494791
+        },
+        {
+          "text": "寻找",
+          "start": 5.161458,
+          "duration": 0.416666
+        },
+        {
+          "text": "城市",
+          "start": 5.604166,
+          "duration": 0.403666
+        },
+        {
+          "text": "地标",
+          "start": 6.020833,
+          "duration": 0.364583
+        },
+        {
+          "text": "的",
+          "start": 6.385416,
+          "duration": 0.104166
+        },
+        {
+          "text": "研学",
+          "start": 6.515625,
+          "duration": 0.403666
+        },
+        {
+          "text": "任务",
+          "start": 6.932291,
+          "duration": 0.442708
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "text": "云雾遮住城市，大家根据地图、方向和灯光提示一起推理，寻找珠江和城市中轴线。",
+      "rawDuration": 9.0,
+      "durationSeconds": 10.5,
+      "path": "assets/audio/segments/02-middle.wav",
+      "words": [
+        {
+          "text": "云雾",
+          "start": 9.552083,
+          "duration": 0.403666
+        },
+        {
+          "text": "遮住",
+          "start": 9.981791,
+          "duration": 0.2995
+        },
+        {
+          "text": "城市",
+          "start": 10.294291,
+          "duration": 0.572916
+        },
+        {
+          "text": "大家",
+          "start": 11.192708,
+          "duration": 0.351583
+        },
+        {
+          "text": "根据",
+          "start": 11.557291,
+          "duration": 0.351583
+        },
+        {
+          "text": "地图",
+          "start": 11.934916,
+          "duration": 0.559916
+        },
+        {
+          "text": "方向",
+          "start": 12.703125,
+          "duration": 0.46875
+        },
+        {
+          "text": "和",
+          "start": 13.197916,
+          "duration": 0.15625
+        },
+        {
+          "text": "灯光",
+          "start": 13.367208,
+          "duration": 0.377625
+        },
+        {
+          "text": "提示",
+          "start": 13.757833,
+          "duration": 0.546875
+        },
+        {
+          "text": "一起",
+          "start": 14.395833,
+          "duration": 0.364583
+        },
+        {
+          "text": "推理",
+          "start": 14.773458,
+          "duration": 0.507833
+        },
+        {
+          "text": "寻找",
+          "start": 15.59375,
+          "duration": 0.46875
+        },
+        {
+          "text": "珠",
+          "start": 16.088541,
+          "duration": 0.182291
+        },
+        {
+          "text": "江和城",
+          "start": 16.283875,
+          "duration": 0.638
+        },
+        {
+          "text": "市",
+          "start": 16.921875,
+          "duration": 0.195333
+        },
+        {
+          "text": "中轴线",
+          "start": 17.130208,
+          "duration": 0.716166
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "text": "云雾散开，小队成功找出地标，并在温暖夕阳下拍下全队的云端合影。",
+      "rawDuration": 7.344,
+      "durationSeconds": 9.0,
+      "path": "assets/audio/segments/03-end.wav",
+      "words": [
+        {
+          "text": "云雾",
+          "start": 20.052083,
+          "duration": 0.325541
+        },
+        {
+          "text": "散开",
+          "start": 20.390625,
+          "duration": 0.585958
+        },
+        {
+          "text": "小队",
+          "start": 21.315125,
+          "duration": 0.403666
+        },
+        {
+          "text": "成功",
+          "start": 21.744791,
+          "duration": 0.377625
+        },
+        {
+          "text": "找出",
+          "start": 22.135416,
+          "duration": 0.338541
+        },
+        {
+          "text": "地标",
+          "start": 22.487,
+          "duration": 0.481791
+        },
+        {
+          "text": "并",
+          "start": 23.255208,
+          "duration": 0.169291
+        },
+        {
+          "text": "在",
+          "start": 23.4245,
+          "duration": 0.169291
+        },
+        {
+          "text": "温暖",
+          "start": 23.619791,
+          "duration": 0.364583
+        },
+        {
+          "text": "夕阳",
+          "start": 23.997416,
+          "duration": 0.403625
+        },
+        {
+          "text": "下",
+          "start": 24.401041,
+          "duration": 0.286458
+        },
+        {
+          "text": "拍",
+          "start": 24.791666,
+          "duration": 0.208333
+        },
+        {
+          "text": "下",
+          "start": 25.0,
+          "duration": 0.195333
+        },
+        {
+          "text": "全队",
+          "start": 25.208333,
+          "duration": 0.442708
+        },
+        {
+          "text": "的",
+          "start": 25.651041,
+          "duration": 0.091166
+        },
+        {
+          "text": "云端",
+          "start": 25.76825,
+          "duration": 0.351583
+        },
+        {
+          "text": "合影",
+          "start": 26.132833,
+          "duration": 0.546875
+        }
+      ]
+    }
+  ],
+  "bgm": {
+    "path": "assets/audio/music.wav",
+    "duration": 28.5
+  },
+  "sfx": [
+    {
+      "id": "impact",
+      "path": "assets/audio/sfx-impact.wav"
+    },
+    {
+      "id": "whoosh",
+      "path": "assets/audio/sfx-whoosh.wav"
+    },
+    {
+      "id": "chime",
+      "path": "assets/audio/sfx-chime.wav"
+    }
+  ],
+  "total_duration_s": 28.5
+}

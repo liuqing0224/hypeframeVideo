@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "compositionId": "02-middle",
+  "durationSeconds": 10.5,
+  "layerOrder": [
+    "backdrop",
+    "rear",
+    "architecture",
+    "tertiary",
+    "secondary",
+    "primary",
+    "foreground"
+  ],
+  "phases": {
+    "entrance": [
+      0,
+      1.89
+    ],
+    "action": [
+      1.89,
+      7.56
+    ],
+    "hold": [
+      7.56,
+      9.45
+    ],
+    "transition": [
+      9.45,
+      10.5
+    ]
+  },
+  "subjects": [
+    {
+      "id": "primary",
+      "role": "primary",
+      "entranceStart": 0.2625,
+      "bounds": {
+        "x": 615,
+        "y": 190,
+        "width": 690,
+        "height": 715
+      }
+    },
+    {
+      "id": "secondary",
+      "role": "secondary",
+      "entranceStart": 0.7875,
+      "bounds": {
+        "x": 95,
+        "y": 300,
+        "width": 450,
+        "height": 590
+      }
+    },
+    {
+      "id": "tertiary",
+      "role": "tertiary",
+      "entranceStart": 1.26,
+      "bounds": {
+        "x": 1485,
+        "y": 385,
+        "width": 330,
+        "height": 485
+      }
+    }
+  ],
+  "motionRules": [
+    "coordinate-target-zoom",
+    "motion-blur-streak",
+    "reactive-displacement"
+  ],
+  "transitionIn": "whip-pan",
+  "direction": "right",
+  "sourceDirection": "right",
+  "sourceDirections": {
+    "primary": "right",
+    "secondary": "right",
+    "tertiary": "right"
+  },
+  "assertions": {
+    "primaryAppearsFirst": true,
+    "subjectsStayInFrame": true,
+    "plannedHoldWindow": true,
+    "noUnboundedAnimation": true
+  }
+}

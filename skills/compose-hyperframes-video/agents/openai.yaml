@@ -1,0 +1,4 @@
+interface:
+  display_name: "Compose HyperFrames Video"
+  short_description: "Build deterministic layered HyperFrames compositions"
+  default_prompt: "Use -hyperframes-video to assemble this production as a modular seek-safe HyperFrames video."

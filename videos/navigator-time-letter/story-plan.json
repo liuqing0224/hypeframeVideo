@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "id": "navigator-time-letter",
+    "title": "大航海家的时光信",
+    "storyType": "历史穿越",
+    "location": "明代古港",
+    "author": {
+      "name": "子墨",
+      "class": "七年级三班"
+    },
+    "directorIntent": "像一封跨越六百年的勇气来信。",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "style": {
+    "key": "history",
+    "visual": [
+      "中国风",
+      "冒险电影",
+      "古籍像素拼贴"
+    ],
+    "paletteWords": [
+      "宣纸米白",
+      "朱砂红",
+      "海洋蓝",
+      "温暖夕阳"
+    ],
+    "musicMood": [
+      "冒险",
+      "激动",
+      "温暖"
+    ],
+    "tokens": {
+      "canvas": "#e8d6ae",
+      "ink": "#211b18",
+      "accent": "#a9362b",
+      "accent2": "#2c6c80",
+      "shadow": "#3c2a20"
+    },
+    "fontDisplay": "Songti SC",
+    "fontBody": "PingFang SC"
+  },
+  "audio": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz"
+  },
+  "scenes": [
+    {
+      "id": "01-start",
+      "index": 1,
+      "beat": "start",
+      "title": "航海图开门",
+      "narration": "子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。",
+      "transitionIn": "cut",
+      "motionRules": [
+        "multi-phase-camera",
+        "waterfall-entry",
+        "sine-wave-loop"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "航海图开门",
+        "primary": "穿现代深蓝校服的中国少年子墨，被发光航海图吸入墨色时光门",
+        "secondary": "明代航海家郑和，穿红色官袍与黑色大帽，在港口回身看向少年",
+        "tertiary": "一名明代水手抱着绳索惊讶地望向时光门",
+        "rear": "明代港口远处的宝船桅杆与水墨海湾",
+        "architecture": "木质码头、港口门楼与巨大的展开航海图",
+        "foreground": "卷起的航海图纸边、墨滴和发光经纬线",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/01-start-backdrop-v1.png",
+        "environmentSource": "assets/source/01-start-environment-v1.png",
+        "charactersSource": "assets/source/01-start-characters-v1.png",
+        "backdrop": "assets/processed/01-start/backdrop.png",
+        "rear": "assets/processed/01-start/rear.png",
+        "architecture": "assets/processed/01-start/architecture.png",
+        "foreground": "assets/processed/01-start/foreground.png",
+        "primary": "assets/processed/01-start/primary.png",
+        "secondary": "assets/processed/01-start/secondary.png",
+        "tertiary": "assets/processed/01-start/tertiary.png"
+      },
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "left",
+        "tertiary": "left"
+      }
+    },
+    {
+      "id": "02-middle",
+      "index": 2,
+      "beat": "middle",
+      "title": "重建航线",
+      "narration": "海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。",
+      "transitionIn": "whip-pan",
+      "motionRules": [
+        "coordinate-target-zoom",
+        "motion-blur-streak",
+        "reactive-displacement"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "重建航线",
+        "primary": "子墨跪在木桌前用手指连接星位与季风方向",
+        "secondary": "郑和俯身查看航海图并指向右侧远洋",
+        "tertiary": "明代水手在强风中扶住翻卷的航线标记",
+        "rear": "暮色海面上的宝船舰队与北斗星",
+        "architecture": "船头导航台、罗盘、木桌与悬挂风向旗",
+        "foreground": "被风吹起的纸片、粗麻绳和浪花",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/02-middle-backdrop-v1.png",
+        "environmentSource": "assets/source/02-middle-environment-v1.png",
+        "charactersSource": "assets/source/02-middle-characters-v1.png",
+        "backdrop": "assets/processed/02-middle/backdrop.png",
+        "rear": "assets/processed/02-middle/rear.png",
+        "architecture": "assets/processed/02-middle/architecture.png",
+        "foreground": "assets/processed/02-middle/foreground.png",
+        "primary": "assets/processed/02-middle/primary.png",
+        "secondary": "assets/processed/02-middle/secondary.png",
+        "tertiary": "assets/processed/02-middle/tertiary.png"
+      }
+    },
+    {
+      "id": "03-end",
+      "index": 3,
+      "beat": "end",
+      "title": "写给未来",
+      "narration": "郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。",
+      "transitionIn": "horizontal-blinds",
+      "motionRules": [
+        "center-outward-expansion",
+        "ambient-glow-bloom",
+        "particle-burst"
+      ],
+      "direction": "left",
+      "sourceDirection": "left",
+      "shot": {
+        "title": "写给未来",
+        "primary": "郑和郑重把封有红色印章的书信递向子墨",
+        "secondary": "子墨双手接过书信，神情坚定而感动",
+        "tertiary": "明代水手在远处扬起出航旗帜",
+        "rear": "夕阳下起航的宝船与延伸向远方的海路",
+        "architecture": "宝船船头、红色船舷与高大的明代帆",
+        "foreground": "贴近镜头的信纸边缘、印章纹样与金色海浪",
+        "direction": "left"
+      },
+      "assets": {
+        "backdropSource": "assets/source/03-end-backdrop-v1.png",
+        "environmentSource": "assets/source/03-end-environment-v1.png",
+        "charactersSource": "assets/source/03-end-characters-v2.png",
+        "backdrop": "assets/processed/03-end/backdrop.png",
+        "rear": "assets/processed/03-end/rear.png",
+        "architecture": "assets/processed/03-end/architecture.png",
+        "foreground": "assets/processed/03-end/foreground.png",
+        "primary": "assets/processed/03-end/primary.png",
+        "secondary": "assets/processed/03-end/secondary.png",
+        "tertiary": "assets/processed/03-end/tertiary.png"
+      },
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "left",
+        "tertiary": "left"
+      }
+    }
+  ]
+}

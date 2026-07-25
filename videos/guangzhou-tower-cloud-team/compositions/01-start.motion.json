@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "compositionId": "01-start",
+  "durationSeconds": 9.0,
+  "layerOrder": [
+    "backdrop",
+    "rear",
+    "architecture",
+    "tertiary",
+    "secondary",
+    "primary",
+    "foreground"
+  ],
+  "phases": {
+    "entrance": [
+      0,
+      1.62
+    ],
+    "action": [
+      1.62,
+      6.48
+    ],
+    "hold": [
+      6.48,
+      8.1
+    ],
+    "transition": [
+      8.1,
+      9.0
+    ]
+  },
+  "subjects": [
+    {
+      "id": "primary",
+      "role": "primary",
+      "entranceStart": 0.225,
+      "bounds": {
+        "x": 615,
+        "y": 190,
+        "width": 690,
+        "height": 715
+      }
+    },
+    {
+      "id": "secondary",
+      "role": "secondary",
+      "entranceStart": 0.675,
+      "bounds": {
+        "x": 95,
+        "y": 300,
+        "width": 450,
+        "height": 590
+      }
+    },
+    {
+      "id": "tertiary",
+      "role": "tertiary",
+      "entranceStart": 1.08,
+      "bounds": {
+        "x": 1485,
+        "y": 385,
+        "width": 330,
+        "height": 485
+      }
+    }
+  ],
+  "motionRules": [
+    "multi-phase-camera",
+    "waterfall-entry",
+    "sine-wave-loop"
+  ],
+  "transitionIn": "cut",
+  "direction": "right",
+  "sourceDirection": "right",
+  "sourceDirections": {
+    "primary": "right",
+    "secondary": "right",
+    "tertiary": "right"
+  },
+  "assertions": {
+    "primaryAppearsFirst": true,
+    "subjectsStayInFrame": true,
+    "plannedHoldWindow": true,
+    "noUnboundedAnimation": true
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "provider": "edge",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "voices": [
+    {
+      "sceneId": "01-start",
+      "text": "子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。",
+      "rawDuration": 8.376,
+      "durationSeconds": 10.0,
+      "path": "assets/audio/segments/01-start.wav",
+      "words": [
+        {
+          "text": "子墨",
+          "start": 0.552083,
+          "duration": 0.507833
+        },
+        {
+          "text": "在",
+          "start": 1.085958,
+          "duration": 0.221375
+        },
+        {
+          "text": "博物馆",
+          "start": 1.320333,
+          "duration": 0.533833
+        },
+        {
+          "text": "触碰",
+          "start": 1.854166,
+          "duration": 0.377625
+        },
+        {
+          "text": "航海",
+          "start": 2.244791,
+          "duration": 0.416666
+        },
+        {
+          "text": "图",
+          "start": 2.661458,
+          "duration": 0.364583
+        },
+        {
+          "text": "穿过",
+          "start": 3.338541,
+          "duration": 0.351583
+        },
+        {
+          "text": "发光",
+          "start": 3.716166,
+          "duration": 0.351583
+        },
+        {
+          "text": "墨迹",
+          "start": 4.08075,
+          "duration": 0.546875
+        },
+        {
+          "text": "来到",
+          "start": 4.731791,
+          "duration": 0.3125
+        },
+        {
+          "text": "六百",
+          "start": 5.070333,
+          "duration": 0.351541
+        },
+        {
+          "text": "年",
+          "start": 5.421875,
+          "duration": 0.182291
+        },
+        {
+          "text": "前",
+          "start": 5.617208,
+          "duration": 0.195291
+        },
+        {
+          "text": "的",
+          "start": 5.8125,
+          "duration": 0.091166
+        },
+        {
+          "text": "明代",
+          "start": 5.929708,
+          "duration": 0.338541
+        },
+        {
+          "text": "港口",
+          "start": 6.28125,
+          "duration": 0.546875
+        },
+        {
+          "text": "并",
+          "start": 7.0495,
+          "duration": 0.195333
+        },
+        {
+          "text": "见到",
+          "start": 7.257833,
+          "duration": 0.325541
+        },
+        {
+          "text": "郑和",
+          "start": 7.596375,
+          "duration": 0.612
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "text": "海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。",
+      "rawDuration": 8.592,
+      "durationSeconds": 10.0,
+      "path": "assets/audio/segments/02-middle.wav",
+      "words": [
+        {
+          "text": "海风",
+          "start": 10.552083,
+          "duration": 0.46875
+        },
+        {
+          "text": "吹散",
+          "start": 11.033875,
+          "duration": 0.403666
+        },
+        {
+          "text": "航线",
+          "start": 11.463541,
+          "duration": 0.390625
+        },
+        {
+          "text": "标记",
+          "start": 11.867208,
+          "duration": 0.507833
+        },
+        {
+          "text": "子墨",
+          "start": 12.739583,
+          "duration": 0.46875
+        },
+        {
+          "text": "用",
+          "start": 13.221375,
+          "duration": 0.221375
+        },
+        {
+          "text": "现代",
+          "start": 13.46875,
+          "duration": 0.377625
+        },
+        {
+          "text": "地理",
+          "start": 13.859375,
+          "duration": 0.273458
+        },
+        {
+          "text": "知识",
+          "start": 14.145833,
+          "duration": 0.520833
+        },
+        {
+          "text": "帮助",
+          "start": 14.770833,
+          "duration": 0.2995
+        },
+        {
+          "text": "船队",
+          "start": 15.083333,
+          "duration": 0.533875
+        },
+        {
+          "text": "重新",
+          "start": 15.64325,
+          "duration": 0.442708
+        },
+        {
+          "text": "确认",
+          "start": 16.098958,
+          "duration": 0.351583
+        },
+        {
+          "text": "星位",
+          "start": 16.476583,
+          "duration": 0.507833
+        },
+        {
+          "text": "季风",
+          "start": 17.21875,
+          "duration": 0.481791
+        },
+        {
+          "text": "和",
+          "start": 17.726583,
+          "duration": 0.117208
+        },
+        {
+          "text": "航向",
+          "start": 17.856791,
+          "duration": 0.572916
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "text": "郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。",
+      "rawDuration": 7.344,
+      "durationSeconds": 9.0,
+      "path": "assets/audio/segments/03-end.wav",
+      "words": [
+        {
+          "text": "郑和",
+          "start": 20.552083,
+          "duration": 0.625
+        },
+        {
+          "text": "把",
+          "start": 21.28125,
+          "duration": 0.15625
+        },
+        {
+          "text": "写给",
+          "start": 21.450541,
+          "duration": 0.364583
+        },
+        {
+          "text": "未来",
+          "start": 21.841166,
+          "duration": 0.2995
+        },
+        {
+          "text": "少年",
+          "start": 22.153666,
+          "duration": 0.377583
+        },
+        {
+          "text": "的",
+          "start": 22.53125,
+          "duration": 0.117208
+        },
+        {
+          "text": "信",
+          "start": 22.648458,
+          "duration": 0.338541
+        },
+        {
+          "text": "交给",
+          "start": 23.091166,
+          "duration": 0.364583
+        },
+        {
+          "text": "子墨",
+          "start": 23.46875,
+          "duration": 0.533875
+        },
+        {
+          "text": "鼓励",
+          "start": 24.367208,
+          "duration": 0.299458
+        },
+        {
+          "text": "他",
+          "start": 24.666666,
+          "duration": 0.195333
+        },
+        {
+          "text": "永远",
+          "start": 24.888041,
+          "duration": 0.416666
+        },
+        {
+          "text": "保持",
+          "start": 25.317708,
+          "duration": 0.377625
+        },
+        {
+          "text": "探索",
+          "start": 25.721375,
+          "duration": 0.390625
+        },
+        {
+          "text": "世界",
+          "start": 26.125,
+          "duration": 0.377625
+        },
+        {
+          "text": "的",
+          "start": 26.502625,
+          "duration": 0.078125
+        },
+        {
+          "text": "勇气",
+          "start": 26.59375,
+          "duration": 0.598958
+        }
+      ]
+    }
+  ],
+  "bgm": {
+    "path": "assets/audio/music.wav",
+    "duration": 29.0
+  },
+  "sfx": [
+    {
+      "id": "impact",
+      "path": "assets/audio/sfx-impact.wav"
+    },
+    {
+      "id": "whoosh",
+      "path": "assets/audio/sfx-whoosh.wav"
+    },
+    {
+      "id": "chime",
+      "path": "assets/audio/sfx-chime.wav"
+    }
+  ],
+  "total_duration_s": 29.0
+}

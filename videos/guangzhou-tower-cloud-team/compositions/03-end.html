@@ -1,0 +1,163 @@
+<template id="03-end-template">
+  <div
+    id="scene-03-end"
+    data-composition-id="03-end"
+    data-width="1920"
+    data-height="1080"
+    data-duration="9"
+  >
+
+      <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
+        <img src="assets/processed/03-end/backdrop.png" alt="" />
+      </div>
+      <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
+        <img src="assets/processed/03-end/rear.png" alt="" />
+      </div>
+      <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
+        <img src="assets/processed/03-end/architecture.png" alt="" />
+      </div>
+      <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
+        <div class="sprite-mirror" style="transform: scaleX(-1);">
+          <img src="assets/processed/03-end/tertiary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
+        <div class="sprite-mirror" style="transform: scaleX(-1);">
+          <img src="assets/processed/03-end/secondary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
+        <div class="sprite-mirror" style="transform: scaleX(-1);">
+          <img src="assets/processed/03-end/primary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
+        <img src="assets/processed/03-end/foreground.png" alt="" />
+      </div>
+    <div class="glow"></div><div class="pixel-accent particle p-0" style="left:410px;top:240px;width:12px;height:12px"></div><div class="pixel-accent particle p-1" style="left:520px;top:170px;width:20px;height:20px"></div><div class="pixel-accent particle p-2" style="left:690px;top:270px;width:28px;height:28px"></div><div class="pixel-accent particle p-3" style="left:930px;top:130px;width:12px;height:12px"></div><div class="pixel-accent particle p-4" style="left:1110px;top:230px;width:20px;height:20px"></div><div class="pixel-accent particle p-5" style="left:1335px;top:165px;width:28px;height:28px"></div><div class="pixel-accent particle p-6" style="left:1480px;top:310px;width:12px;height:12px"></div><div class="pixel-accent particle p-7" style="left:360px;top:520px;width:20px;height:20px"></div><div class="pixel-accent particle p-8" style="left:1530px;top:570px;width:28px;height:28px"></div><div class="pixel-accent particle p-9" style="left:1280px;top:720px;width:12px;height:12px"></div><div class="pixel-accent particle p-10" style="left:620px;top:755px;width:20px;height:20px"></div><div class="pixel-accent particle p-11" style="left:1010px;top:690px;width:28px;height:28px"></div>
+
+    <style>
+      #scene-03-end {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #e9f5f5;
+        color: #17324d;
+        image-rendering: pixelated;
+      }
+      #scene-03-end .layer {
+        position: absolute;
+        overflow: hidden;
+        transform-origin: 50% 70%;
+      }
+      #scene-03-end .layer img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        image-rendering: pixelated;
+      }
+      #scene-03-end .backdrop {
+        inset: 0;
+        z-index: 0;
+      }
+      #scene-03-end .backdrop img {
+        object-fit: cover;
+      }
+      #scene-03-end .rear {
+        left: 0;
+        top: 25px;
+        width: 1920px;
+        height: 770px;
+        z-index: 1;
+        opacity: 0.86;
+      }
+      #scene-03-end .architecture {
+        left: 155px;
+        top: 105px;
+        width: 1610px;
+        height: 800px;
+        z-index: 2;
+      }
+      #scene-03-end .subject img {
+        filter:
+          drop-shadow(4px 0 #17324d)
+          drop-shadow(-4px 0 #17324d)
+          drop-shadow(0 4px #17324d)
+          drop-shadow(0 16px 8px rgba(0, 0, 0, 0.34));
+      }
+      #scene-03-end .sprite-mirror {
+        width: 100%;
+        height: 100%;
+      }
+      #scene-03-end .tertiary {
+        right: 105px;
+        top: 385px;
+        width: 330px;
+        height: 485px;
+        z-index: 3;
+      }
+      #scene-03-end .secondary {
+        left: 95px;
+        top: 300px;
+        width: 450px;
+        height: 590px;
+        z-index: 4;
+      }
+      #scene-03-end .primary {
+        left: 615px;
+        top: 190px;
+        width: 690px;
+        height: 715px;
+        z-index: 5;
+      }
+      #scene-03-end .foreground {
+        left: 0;
+        bottom: 0;
+        width: 1920px;
+        height: 500px;
+        z-index: 6;
+      }
+      #scene-03-end .pixel-accent {
+        position: absolute;
+        z-index: 7;
+        opacity: 0;
+        background: #f7b32b;
+      }
+      #scene-03-end .glow {
+        position: absolute;
+        left: 790px;
+        top: 310px;
+        width: 340px;
+        height: 340px;
+        z-index: 4;
+        opacity: 0;
+        border: 28px solid #f7b32b;
+        box-shadow: 0 0 80px #f7b32b;
+      }
+    </style>
+    <script>
+      (function () {
+        const root = document.querySelector("#scene-03-end");
+        const q = (selector) => root.querySelector(selector);
+        const qAll = (selector) => root.querySelectorAll(selector);
+        const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.045, duration: 6.48, ease: "none"}, 0);
+      tl.fromTo(q(".architecture img"), {opacity: 0, scale: 0.9}, {opacity: 1, scale: 1, duration: 1.62, ease: "back.out(1.25)"}, 0);
+      tl.fromTo(q(".primary img"), {opacity: 0, y: 62, scale: 0.82}, {opacity: 1, y: 0, scale: 1, duration: 1.458, ease: "back.out(1.55)"}, 0.18);
+      tl.fromTo(q(".secondary img"), {opacity: 0, x: 190, scale: 0.9}, {opacity: 1, x: 0, scale: 1, duration: 1.166, ease: "power3.out"}, 0.675);
+      tl.fromTo(q(".tertiary img"), {opacity: 0, x: -160, scale: 0.92}, {opacity: 1, x: 0, scale: 1, duration: 0.94, ease: "power3.out"}, 1.08);
+      tl.fromTo(q(".foreground img"), {opacity: 0, y: 45}, {opacity: 1, y: 0, duration: 1.62, ease: "power2.out"}, 0);
+      tl.fromTo(q(".glow"), {opacity: 0, scale: 0.45}, {opacity: 0.62, scale: 1.25, duration: 3.013, ease: "sine.out"}, 0.891);
+      tl.fromTo(qAll(".particle"), {opacity: 0, x: 0, y: 30, scale: 0.4}, {opacity: 0.9, x: 0, y: -42, scale: 1.15, duration: 4.86, stagger: 0.06, ease: "power2.out"}, 1.134);
+      tl.to(q(".primary img"), {y: -8, duration: 2.43, ease: "sine.inOut"}, 1.62);
+      tl.to(q(".primary img"), {y: 0, duration: 2.43, ease: "sine.inOut"}, 4.05);
+      tl.to(root, {opacity: 0.99, duration: 0.9, ease: "power1.in"}, 8.1);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["03-end"] = tl;
+      })();
+    </script>
+  </div>
+</template>

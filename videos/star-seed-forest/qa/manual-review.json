@@ -1,0 +1,27 @@
+{
+  "stage": "studio-readiness-manual-review",
+  "pass": true,
+  "reviewedAt": "2026-07-24T17:51:43Z",
+  "contactSheets": [
+    "qa/contact-sheets/layers.png",
+    "qa/scene-midpoints/contact-sheet.jpg"
+  ],
+  "checks": {
+    "primaryDominantAndVisible": true,
+    "headsHandsFeetAndPropsVisible": true,
+    "foregroundOnlyOccludesLowerEdge": true,
+    "captionSafeAreaClear": true,
+    "layerDirectionsApplied": true,
+    "noVisibleGreenFringe": true
+  },
+  "animationMap": {
+    "path": "qa/animation-map/animation-map.json",
+    "deadZones": "2 planned hold windows",
+    "offscreenTweens": "none",
+    "abnormalFreeze": false
+  },
+  "notes": [
+    "Scene 03 primary layer is mirrored independently for the left-facing finale.",
+    "Forest foliage remains a lower-edge depth layer and no longer hides the protagonist."
+  ]
+}

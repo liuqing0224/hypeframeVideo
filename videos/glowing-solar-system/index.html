@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>会发光的太阳系</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      @font-face {
+        font-family: "PixelChinese";
+        src: local("PingFang SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #071b2e;
+      }
+      body {
+        font-family: "PixelChinese", sans-serif;
+      }
+      #main {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #071b2e;
+      }
+      .scene-slot {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      .caption {
+        position: absolute;
+        left: 170px;
+        bottom: 58px;
+        width: 1580px;
+        min-height: 108px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 54px;
+        color: #f5f7ff;
+        background: #071b2e;
+        border: 5px solid #28d7d0;
+        box-shadow: 12px 12px 0 #020b16;
+      }
+      .caption p {
+        margin: 0;
+        max-width: 1460px;
+        font-size: 42px;
+        line-height: 1.35;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0;
+      }
+      .transition {
+        position: absolute;
+        inset: 0;
+        z-index: 800;
+        overflow: hidden;
+      }
+      .transition-fx {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        opacity: 0;
+        background: #28d7d0;
+      }
+      .transition span {
+        position: absolute;
+        display: block;
+        background: #ffc857;
+      }
+      .transition-whip-pan span {
+        top: 0;
+        width: 34%;
+        height: 100%;
+      }
+      .transition-whip-pan span:nth-child(1) { left: 0; background: #28d7d0; }
+      .transition-whip-pan span:nth-child(2) { left: 33%; background: #f5f7ff; }
+      .transition-whip-pan span:nth-child(3) { left: 66%; background: #ffc857; }
+      .transition-horizontal-blinds { background: transparent; }
+      .transition-horizontal-blinds span { left: 0; width: 100%; height: 92px; }
+      .transition-chromatic-split { background: #28d7d0; mix-blend-mode: screen; }
+      .transition-chromatic-split span { inset: 0; width: 100%; height: 100%; }
+      .transition-chromatic-split span:nth-child(1) { left: -24px; background: #ff334f; }
+      .transition-chromatic-split span:nth-child(2) { left: 24px; background: #22d9ff; }
+      .transition-chromatic-split span:nth-child(3) { background: #f5f7ff; opacity: .42; }
+      .transition-grid-dissolve { background: transparent; }
+      .transition-grid-dissolve span { width: 242px; height: 218px; }
+      .transition-blur-through, .transition-light-leak {
+        background: #ffc857;
+        box-shadow: inset 0 0 180px #f5f7ff;
+      }
+      .transition-blur-through span, .transition-light-leak span {
+        width: 42%;
+        height: 100%;
+        top: 0;
+        opacity: .36;
+      }
+      .transition-blur-through span:nth-child(2), .transition-light-leak span:nth-child(2) { left: 30%; }
+      .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="main" data-composition-id="main" data-start="0"
+         data-duration="29.5" data-width="1920" data-height="1080" data-fps="30">
+
+      <div id="slot-01-start" class="clip scene-slot"
+           data-composition-id="01-start"
+           data-composition-src="compositions/01-start.html"
+           data-start="0"
+           data-duration="10"
+           data-track-index="10"></div>
+      <div id="slot-02-middle" class="clip scene-slot"
+           data-composition-id="02-middle"
+           data-composition-src="compositions/02-middle.html"
+           data-start="10"
+           data-duration="9.5"
+           data-track-index="10"></div>
+      <div id="slot-03-end" class="clip scene-slot"
+           data-composition-id="03-end"
+           data-composition-src="compositions/03-end.html"
+           data-start="19.5"
+           data-duration="10"
+           data-track-index="10"></div>
+
+      <div id="transition-1-chromatic-split" class="clip transition"
+           data-start="9.62" data-duration="0.76" data-track-index="800">
+        <div id="transition-1-chromatic-split-fx" class="transition-fx transition-chromatic-split">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div id="transition-2-grid-dissolve" class="clip transition"
+           data-start="19.1" data-duration="0.8" data-track-index="800">
+        <div id="transition-2-grid-dissolve-fx" class="transition-fx transition-grid-dissolve">
+          <span style="left:0px;top:0px"></span><span style="left:240px;top:0px"></span><span style="left:480px;top:0px"></span><span style="left:720px;top:0px"></span><span style="left:960px;top:0px"></span><span style="left:1200px;top:0px"></span><span style="left:1440px;top:0px"></span><span style="left:1680px;top:0px"></span><span style="left:0px;top:216px"></span><span style="left:240px;top:216px"></span><span style="left:480px;top:216px"></span><span style="left:720px;top:216px"></span><span style="left:960px;top:216px"></span><span style="left:1200px;top:216px"></span><span style="left:1440px;top:216px"></span><span style="left:1680px;top:216px"></span><span style="left:0px;top:432px"></span><span style="left:240px;top:432px"></span><span style="left:480px;top:432px"></span><span style="left:720px;top:432px"></span><span style="left:960px;top:432px"></span><span style="left:1200px;top:432px"></span><span style="left:1440px;top:432px"></span><span style="left:1680px;top:432px"></span><span style="left:0px;top:648px"></span><span style="left:240px;top:648px"></span><span style="left:480px;top:648px"></span><span style="left:720px;top:648px"></span><span style="left:960px;top:648px"></span><span style="left:1200px;top:648px"></span><span style="left:1440px;top:648px"></span><span style="left:1680px;top:648px"></span><span style="left:0px;top:864px"></span><span style="left:240px;top:864px"></span><span style="left:480px;top:864px"></span><span style="left:720px;top:864px"></span><span style="left:960px;top:864px"></span><span style="left:1200px;top:864px"></span><span style="left:1440px;top:864px"></span><span style="left:1680px;top:864px"></span>
+        </div>
+      </div>
+
+      <div id="caption-1" class="clip caption"
+           data-start="0.45" data-duration="9.2" data-track-index="900">
+        <p>小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。</p>
+      </div>
+      <div id="caption-2" class="clip caption"
+           data-start="10.45" data-duration="8.7" data-track-index="900">
+        <p>三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。</p>
+      </div>
+      <div id="caption-3" class="clip caption"
+           data-start="19.95" data-duration="9.2" data-track-index="900">
+        <p>太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。</p>
+      </div>
+
+      <audio id="narration" class="clip" src="assets/audio/narration.wav"
+             data-start="0" data-duration="29.5" data-track-index="950" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/audio/music.wav"
+             data-start="0" data-duration="29.5" data-track-index="951" data-volume="0.2"></audio>
+      <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
+             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
+      <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
+             data-start="10.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+      <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
+             data-start="19.58" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#transition-1-chromatic-split-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.38,ease:"steps(4)"}, 9.62);
+        tl.to("#transition-1-chromatic-split-fx", {opacity:0,duration:0.38,ease:"steps(4)"}, 10);
+        tl.set("#transition-1-chromatic-split-fx", {opacity:0}, 10.38);
+        tl.fromTo("#transition-2-grid-dissolve-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.4,ease:"steps(4)"}, 19.1);
+        tl.to("#transition-2-grid-dissolve-fx", {opacity:0,duration:0.4,ease:"steps(4)"}, 19.5);
+        tl.set("#transition-2-grid-dissolve-fx", {opacity:0}, 19.9);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

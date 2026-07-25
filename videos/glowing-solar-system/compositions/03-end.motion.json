@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "compositionId": "03-end",
+  "durationSeconds": 10.0,
+  "layerOrder": [
+    "backdrop",
+    "rear",
+    "architecture",
+    "tertiary",
+    "secondary",
+    "primary",
+    "foreground"
+  ],
+  "phases": {
+    "entrance": [
+      0,
+      1.8
+    ],
+    "action": [
+      1.8,
+      7.2
+    ],
+    "hold": [
+      7.2,
+      9.0
+    ],
+    "transition": [
+      9.0,
+      10.0
+    ]
+  },
+  "subjects": [
+    {
+      "id": "primary",
+      "role": "primary",
+      "entranceStart": 0.25,
+      "bounds": {
+        "x": 615,
+        "y": 190,
+        "width": 690,
+        "height": 715
+      }
+    },
+    {
+      "id": "secondary",
+      "role": "secondary",
+      "entranceStart": 0.75,
+      "bounds": {
+        "x": 95,
+        "y": 300,
+        "width": 450,
+        "height": 590
+      }
+    },
+    {
+      "id": "tertiary",
+      "role": "tertiary",
+      "entranceStart": 1.2,
+      "bounds": {
+        "x": 1485,
+        "y": 385,
+        "width": 330,
+        "height": 485
+      }
+    }
+  ],
+  "motionRules": [
+    "center-outward-expansion",
+    "ambient-glow-bloom",
+    "particle-burst"
+  ],
+  "transitionIn": "grid-dissolve",
+  "direction": "left",
+  "sourceDirection": "left",
+  "sourceDirections": {
+    "primary": "right",
+    "secondary": "right",
+    "tertiary": "left"
+  },
+  "assertions": {
+    "primaryAppearsFirst": true,
+    "subjectsStayInFrame": true,
+    "plannedHoldWindow": true,
+    "noUnboundedAnimation": true
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "stage": "render-manual-review",
+  "pass": true,
+  "reviewedAt": "2026-07-24T18:11:31Z",
+  "video": "renders/navigator-time-letter.mp4",
+  "evidence": [
+    "qa/render-contact-sheet.png",
+    "qa/render-transition-contact-sheet.png",
+    "qa/render-verification.json"
+  ],
+  "checks": {
+    "nonblankFrames": true,
+    "subjectsUncropped": true,
+    "primaryDominant": true,
+    "directionAndOcclusionCoherent": true,
+    "captionSafeAreaClear": true,
+    "noVisibleGreenFringe": true,
+    "transitionsRecoverCleanly": true,
+    "sfxAlignedWithin250ms": true
+  }
+}

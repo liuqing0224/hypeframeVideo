@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>星种森林</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      @font-face {
+        font-family: "PixelChinese";
+        src: local("PingFang SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0c2a27;
+      }
+      body {
+        font-family: "PixelChinese", sans-serif;
+      }
+      #main {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0c2a27;
+      }
+      .scene-slot {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      .caption {
+        position: absolute;
+        left: 170px;
+        bottom: 58px;
+        width: 1580px;
+        min-height: 108px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 54px;
+        color: #f7f0df;
+        background: #0c2a27;
+        border: 5px solid #f3c969;
+        box-shadow: 12px 12px 0 #041513;
+      }
+      .caption p {
+        margin: 0;
+        max-width: 1460px;
+        font-size: 42px;
+        line-height: 1.35;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0;
+      }
+      .transition {
+        position: absolute;
+        inset: 0;
+        z-index: 800;
+        overflow: hidden;
+      }
+      .transition-fx {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        opacity: 0;
+        background: #f3c969;
+      }
+      .transition span {
+        position: absolute;
+        display: block;
+        background: #ee8cb8;
+      }
+      .transition-whip-pan span {
+        top: 0;
+        width: 34%;
+        height: 100%;
+      }
+      .transition-whip-pan span:nth-child(1) { left: 0; background: #f3c969; }
+      .transition-whip-pan span:nth-child(2) { left: 33%; background: #f7f0df; }
+      .transition-whip-pan span:nth-child(3) { left: 66%; background: #ee8cb8; }
+      .transition-horizontal-blinds { background: transparent; }
+      .transition-horizontal-blinds span { left: 0; width: 100%; height: 92px; }
+      .transition-chromatic-split { background: #f3c969; mix-blend-mode: screen; }
+      .transition-chromatic-split span { inset: 0; width: 100%; height: 100%; }
+      .transition-chromatic-split span:nth-child(1) { left: -24px; background: #ff334f; }
+      .transition-chromatic-split span:nth-child(2) { left: 24px; background: #22d9ff; }
+      .transition-chromatic-split span:nth-child(3) { background: #f7f0df; opacity: .42; }
+      .transition-grid-dissolve { background: transparent; }
+      .transition-grid-dissolve span { width: 242px; height: 218px; }
+      .transition-blur-through, .transition-light-leak {
+        background: #ee8cb8;
+        box-shadow: inset 0 0 180px #f7f0df;
+      }
+      .transition-blur-through span, .transition-light-leak span {
+        width: 42%;
+        height: 100%;
+        top: 0;
+        opacity: .36;
+      }
+      .transition-blur-through span:nth-child(2), .transition-light-leak span:nth-child(2) { left: 30%; }
+      .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="main" data-composition-id="main" data-start="0"
+         data-duration="26" data-width="1920" data-height="1080" data-fps="30">
+
+      <div id="slot-01-start" class="clip scene-slot"
+           data-composition-id="01-start"
+           data-composition-src="compositions/01-start.html"
+           data-start="0"
+           data-duration="9.5"
+           data-track-index="10"></div>
+      <div id="slot-02-middle" class="clip scene-slot"
+           data-composition-id="02-middle"
+           data-composition-src="compositions/02-middle.html"
+           data-start="9.5"
+           data-duration="8"
+           data-track-index="10"></div>
+      <div id="slot-03-end" class="clip scene-slot"
+           data-composition-id="03-end"
+           data-composition-src="compositions/03-end.html"
+           data-start="17.5"
+           data-duration="8.5"
+           data-track-index="10"></div>
+
+      <div id="transition-1-blur-through" class="clip transition"
+           data-start="9.18" data-duration="0.64" data-track-index="800">
+        <div id="transition-1-blur-through-fx" class="transition-fx transition-blur-through">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div id="transition-2-light-leak" class="clip transition"
+           data-start="17.16" data-duration="0.68" data-track-index="800">
+        <div id="transition-2-light-leak-fx" class="transition-fx transition-light-leak">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div id="caption-1" class="clip caption"
+           data-start="0.45" data-duration="8.7" data-track-index="900">
+        <p>守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。</p>
+      </div>
+      <div id="caption-2" class="clip caption"
+           data-start="9.95" data-duration="7.2" data-track-index="900">
+        <p>叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。</p>
+      </div>
+      <div id="caption-3" class="clip caption"
+           data-start="17.95" data-duration="7.7" data-track-index="900">
+        <p>星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。</p>
+      </div>
+
+      <audio id="narration" class="clip" src="assets/audio/narration.wav"
+             data-start="0" data-duration="26" data-track-index="950" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/audio/music.wav"
+             data-start="0" data-duration="26" data-track-index="951" data-volume="0.2"></audio>
+      <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
+             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
+      <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
+             data-start="9.58" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+      <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
+             data-start="17.58" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#transition-1-blur-through-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.32,ease:"sine.in"}, 9.18);
+        tl.to("#transition-1-blur-through-fx", {opacity:0,scale:1.08,duration:0.32,ease:"sine.out"}, 9.5);
+        tl.set("#transition-1-blur-through-fx", {opacity:0}, 9.82);
+        tl.fromTo("#transition-2-light-leak-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.34,ease:"sine.in"}, 17.16);
+        tl.to("#transition-2-light-leak-fx", {opacity:0,scale:1.08,duration:0.34,ease:"sine.out"}, 17.5);
+        tl.set("#transition-2-light-leak-fx", {opacity:0}, 17.84);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

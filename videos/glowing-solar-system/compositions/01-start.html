@@ -1,0 +1,168 @@
+<template id="01-start-template">
+  <div
+    id="scene-01-start"
+    data-composition-id="01-start"
+    data-width="1920"
+    data-height="1080"
+    data-duration="10"
+  >
+
+      <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
+        <img src="assets/processed/01-start/backdrop.png" alt="" />
+      </div>
+      <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
+        <img src="assets/processed/01-start/rear.png" alt="" />
+      </div>
+      <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
+        <img src="assets/processed/01-start/architecture.png" alt="" />
+      </div>
+      <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
+        <div class="sprite-mirror" style="">
+          <img src="assets/processed/01-start/tertiary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
+        <div class="sprite-mirror" style="">
+          <img src="assets/processed/01-start/secondary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
+        <div class="sprite-mirror" style="">
+          <img src="assets/processed/01-start/primary.png" alt="" />
+        </div>
+      </div>
+      <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
+        <img src="assets/processed/01-start/foreground.png" alt="" />
+      </div>
+
+      <div class="pixel-accent breeze b-1" style="left:280px;top:260px;width:18px;height:18px"></div>
+      <div class="pixel-accent breeze b-2" style="left:1470px;top:390px;width:14px;height:14px"></div>
+      <div class="pixel-accent breeze b-3" style="left:370px;top:680px;width:22px;height:22px"></div>
+
+    <style>
+      #scene-01-start {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #071b2e;
+        color: #f5f7ff;
+        image-rendering: pixelated;
+      }
+      #scene-01-start .layer {
+        position: absolute;
+        overflow: hidden;
+        transform-origin: 50% 70%;
+      }
+      #scene-01-start .layer img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        image-rendering: pixelated;
+      }
+      #scene-01-start .backdrop {
+        inset: 0;
+        z-index: 0;
+      }
+      #scene-01-start .backdrop img {
+        object-fit: cover;
+      }
+      #scene-01-start .rear {
+        left: 0;
+        top: 25px;
+        width: 1920px;
+        height: 770px;
+        z-index: 1;
+        opacity: 0.86;
+      }
+      #scene-01-start .architecture {
+        left: 155px;
+        top: 105px;
+        width: 1610px;
+        height: 800px;
+        z-index: 2;
+      }
+      #scene-01-start .subject img {
+        filter:
+          drop-shadow(4px 0 #f5f7ff)
+          drop-shadow(-4px 0 #f5f7ff)
+          drop-shadow(0 4px #f5f7ff)
+          drop-shadow(0 16px 8px rgba(0, 0, 0, 0.34));
+      }
+      #scene-01-start .sprite-mirror {
+        width: 100%;
+        height: 100%;
+      }
+      #scene-01-start .tertiary {
+        right: 105px;
+        top: 385px;
+        width: 330px;
+        height: 485px;
+        z-index: 3;
+      }
+      #scene-01-start .secondary {
+        left: 95px;
+        top: 300px;
+        width: 450px;
+        height: 590px;
+        z-index: 4;
+      }
+      #scene-01-start .primary {
+        left: 615px;
+        top: 190px;
+        width: 690px;
+        height: 715px;
+        z-index: 5;
+      }
+      #scene-01-start .foreground {
+        left: 0;
+        bottom: 0;
+        width: 1920px;
+        height: 500px;
+        z-index: 6;
+      }
+      #scene-01-start .pixel-accent {
+        position: absolute;
+        z-index: 7;
+        opacity: 0;
+        background: #ffc857;
+      }
+      #scene-01-start .glow {
+        position: absolute;
+        left: 790px;
+        top: 310px;
+        width: 340px;
+        height: 340px;
+        z-index: 4;
+        opacity: 0;
+        border: 28px solid #ffc857;
+        box-shadow: 0 0 80px #ffc857;
+      }
+    </style>
+    <script>
+      (function () {
+        const root = document.querySelector("#scene-01-start");
+        const q = (selector) => root.querySelector(selector);
+        const qAll = (selector) => root.querySelectorAll(selector);
+        const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.035, duration: 7.2, ease: "none"}, 0);
+      tl.fromTo(q(".rear img"), {opacity: 0, x: -34}, {opacity: 0.86, x: 0, duration: 1.404, ease: "power2.out"}, 0);
+      tl.fromTo(q(".architecture img"), {opacity: 0, y: 28, scale: 0.98}, {opacity: 1, y: 0, scale: 1, duration: 1.8, ease: "power2.out"}, 0);
+      tl.fromTo(q(".primary img"), {opacity: 0, y: 72, scale: 0.86}, {opacity: 1, y: 0, scale: 1, duration: 1.55, ease: "back.out(1.45)"}, 0.25);
+      tl.fromTo(q(".secondary img"), {opacity: 0, x: -62, y: 36, scale: 0.9}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 1.05, ease: "power2.out"}, 0.75);
+      tl.fromTo(q(".tertiary img"), {opacity: 0, x: 48, y: 22, scale: 0.95}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.6, ease: "power2.out"}, 1.2);
+      tl.fromTo(q(".foreground img"), {opacity: 0, y: 22}, {opacity: 1, y: 0, duration: 1.26, ease: "power2.out"}, 0.54);
+      tl.to(q(".primary img"), {y: -8, duration: 1.35, ease: "sine.inOut"}, 1.8);
+      tl.to(q(".primary img"), {y: 0, duration: 1.35, ease: "sine.inOut"}, 3.15);
+      tl.to(q(".primary img"), {y: -6, duration: 1.35, ease: "sine.inOut"}, 4.5);
+      tl.to(q(".primary img"), {y: 0, duration: 1.35, ease: "sine.inOut"}, 5.85);
+      tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 5.4, stagger: 0.18, ease: "sine.inOut"}, 1.8);
+      tl.to(root, {opacity: 0.98, duration: 1, ease: "power1.in"}, 9);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["01-start"] = tl;
+      })();
+    </script>
+  </div>
+</template>
