@@ -12,15 +12,18 @@ length: narration-driven
 
 ## Intent
 
-把任务卡《会发光的太阳系》制作成三个镜头的手工像素分层动画。故事依次呈现开始、挑战和结果，
-保持儿童视角、真实因果关系和清晰的主角层级。
+把任务卡《会发光的太阳系》制作成三场九镜头的专业漫剧。故事依次呈现开始、挑战和结果，
+每场包含建立、动作和反应镜头，保持儿童视角、真实因果关系和清晰的主角层级。
 
 ## Customizations
 
-- HyperFrames modular composition with three scenes.
+- HyperFrames modular composition with three scenes and nine internal shots.
 - Background, rear environment, architecture, characters, and foreground stay independent.
+- Use wide, medium, and close framings with motivated cuts and character micro-performance.
+- Re-block characters, architecture, rear, and foreground for every editorial shot.
+- Keep narration concise; let short character dialogue carry key decisions and reactions.
 - Real narration duration determines the static composition duration.
-- One Chinese caption track, local music, and scene sound marks.
+- One cue-based Chinese caption track, local music, ambience, and shot sound marks.
 
 ## Assets
 

@@ -7,6 +7,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 
+SEAM_PASS_RATIO = 0.02
+SEAM_CLEAN_RATIO = 0.002
+
+
 def cover(image: Image.Image, width: int, height: int) -> Image.Image:
     scale = max(width / image.width, height / image.height)
     resized = image.convert("RGB").resize(
@@ -104,7 +108,14 @@ def split_by_seams(sheet: Image.Image, count: int = 3) -> tuple[list[Image.Image
                 "minX": int(seam.min()),
                 "maxX": int(seam.max()),
                 "foregroundCollisionRatio": round(collision, 6),
-                "pass": collision <= 0.002,
+                "quality": (
+                    "clean"
+                    if collision <= SEAM_CLEAN_RATIO
+                    else "shared-prop-contact"
+                    if collision <= SEAM_PASS_RATIO
+                    else "collision"
+                ),
+                "pass": collision <= SEAM_PASS_RATIO,
             }
         )
     xs = np.arange(sheet.width)[None, :]

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "batch_id": "ai-little-director-pixel-v1",
+  "batch_id": "ai-little-director-manga-v2",
   "defaults": {
     "width": 1920,
     "height": 1080,
@@ -29,6 +29,46 @@
       "palette": ["明亮彩色", "温暖夕阳", "天空蓝", "广州塔红"],
       "music_mood": ["快乐", "激动"],
       "director_intent": "像一次从云端俯瞰广州的快乐探险。",
+    "manga": {
+      "director_profile": {
+        "id": "cloud-clue-expedition",
+        "story_engine": "从观察到推理再到共同确认，镜头像研学手账逐页补全线索。",
+        "shot_signatures": {
+          "start": ["arrival-postcard", "lookout-pov", "binocular-reaction"],
+          "middle": ["fog-obstacle", "clue-crosscut", "map-proof"],
+          "end": ["city-reveal", "team-gather", "photo-freeze"]
+        },
+        "ending_mode": "camera-photo-freeze"
+      },
+      "pacing": "cinematic",
+        "dialogue_ratio": 0.67,
+        "audience_grade": "primary-and-middle-school",
+        "voice_cast": {
+          "primary": "zh-CN-XiaoyiNeural",
+          "secondary": "zh-CN-YunxiNeural",
+          "tertiary": "zh-CN-YunyangNeural"
+        },
+        "must_show": ["珠江与广州城市中轴线", "地图、方向与灯光共同构成推理线索", "夕阳下的全队合影"],
+        "avoid": ["把地标答案提前说出", "让云雾遮挡整场动作", "改变四名同学的服装与随身道具"],
+        "factual_notes": ["广州塔观景台可俯瞰珠江与广州城市景观"],
+        "scene_scripts": {
+          "start": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "小雨和三位同学来到广州塔观景台。"},
+            {"speaker": "小雨", "role": "primary", "kind": "dialogue", "text": "先找珠江，再确认城市中轴线！"},
+            {"speaker": "红帽同学", "role": "tertiary", "kind": "dialogue", "text": "望远镜准备好了！"}
+          ],
+          "middle": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "云雾遮住城市，地图上的线索变得模糊。"},
+            {"speaker": "蓝背心同学", "role": "secondary", "kind": "dialogue", "text": "珠江的走向能帮我们定位。"},
+            {"speaker": "小雨", "role": "primary", "kind": "dialogue", "text": "结合方向和灯光，我们一起推理！"}
+          ],
+          "end": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "云雾散开，小队成功找出地标。"},
+            {"speaker": "小雨", "role": "primary", "kind": "dialogue", "text": "任务完成，大家靠近一点！"},
+            {"speaker": "红帽同学", "role": "tertiary", "kind": "dialogue", "text": "看镜头，三、二、一！"}
+          ]
+        }
+      },
       "shot_hints": [
         {
           "title": "抵达云端",
@@ -78,6 +118,46 @@
       "palette": ["星空深蓝", "电光青", "太阳金", "明亮彩色"],
       "music_mood": ["神秘", "激动", "温暖"],
       "director_intent": "像一场会发光的博物馆宇宙探险。",
+    "manga": {
+      "director_profile": {
+        "id": "orbital-repair-countdown",
+        "story_engine": "故障逐级扩大，三人按轨道顺序接力修复，亮度与节奏逐镜头累积。",
+        "shot_signatures": {
+          "start": ["blackout-system", "planet-failure-scan", "robot-alert"],
+          "middle": ["fragment-chase", "orbit-sequence", "energy-lock"],
+          "end": ["core-ignition", "planet-chain-light", "cosmic-reveal"]
+        },
+        "ending_mode": "eight-planet-chain-light"
+      },
+      "pacing": "cinematic",
+        "dialogue_ratio": 0.67,
+        "audience_grade": "primary-and-middle-school",
+        "voice_cast": {
+          "primary": "zh-CN-XiaoyiNeural",
+          "secondary": "zh-CN-YunxiNeural",
+          "tertiary": "zh-CN-YunyangNeural"
+        },
+        "must_show": ["逐颗熄灭的太阳系模型", "按顺序修复轨道", "太阳和八颗行星全部点亮"],
+        "avoid": ["改变八颗行星的数量", "让修复过程缺少顺序", "改变小曦、阿朗和小光的外观"],
+        "factual_notes": ["太阳系包含八颗行星", "好奇心是故事主题而非科学结论"],
+        "scene_scripts": {
+          "start": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "中央太阳系模型正在一颗颗熄灭。"},
+            {"speaker": "小曦", "role": "primary", "kind": "dialogue", "text": "阿朗，你看，行星正在失去亮光！"},
+            {"speaker": "小光", "role": "tertiary", "kind": "dialogue", "text": "能量连接异常，请帮助我修复轨道。"}
+          ],
+          "middle": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "三人沿着行星轨道寻找能量碎片。"},
+            {"speaker": "阿朗", "role": "secondary", "kind": "dialogue", "text": "先按顺序连接轨道，别接错位置！"},
+            {"speaker": "小曦", "role": "primary", "kind": "dialogue", "text": "我去拿金色碎片，小光负责扫描！"}
+          ],
+          "end": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "太阳和八颗行星全部重新发光。"},
+            {"speaker": "阿朗", "role": "secondary", "kind": "dialogue", "text": "最后一条轨道接通了！"},
+            {"speaker": "小光", "role": "tertiary", "kind": "dialogue", "text": "好奇心，就是点亮未知的光。"}
+          ]
+        }
+      },
       "shot_hints": [
         {
           "title": "熄灭的展厅",
@@ -127,6 +207,53 @@
       "palette": ["宣纸米白", "朱砂红", "海洋蓝", "温暖夕阳"],
       "music_mood": ["冒险", "激动", "温暖"],
       "director_intent": "像一封跨越六百年的勇气来信。",
+    "manga": {
+      "director_profile": {
+        "id": "time-letter-chronicle",
+        "story_engine": "古今相遇以反打建立信任，航图横移推进协作，书信交接把私人情感引向远航。",
+        "shot_signatures": {
+          "start": ["ink-portal", "era-reverse-shot", "zhenghe-reaction"],
+          "middle": ["wind-scattered-chart", "star-route-table", "course-restored"],
+          "end": ["letter-approach", "two-hand-handoff", "ship-horizon"]
+        },
+        "scene_role_maps": {
+          "end": {
+            "primary": "secondary",
+            "secondary": "primary",
+            "tertiary": "tertiary"
+          }
+        },
+        "ending_mode": "letter-to-horizon"
+      },
+      "pacing": "cinematic",
+        "dialogue_ratio": 0.67,
+        "audience_grade": "primary-and-middle-school",
+        "voice_cast": {
+          "primary": "zh-CN-YunxiNeural",
+          "secondary": "zh-CN-YunyangNeural",
+          "tertiary": "zh-CN-YunjianNeural"
+        },
+        "must_show": ["发光航海图与墨色时光门", "星位、季风和航向线索", "封有红色印章的时光信"],
+        "avoid": ["添加未经任务卡支持的历史事件", "使用现代港口物件", "改变郑和与子墨的时代服装"],
+        "factual_notes": ["故事发生在明代古港", "历史信息只采用任务卡已经给出的内容"],
+        "scene_scripts": {
+          "start": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "子墨穿过发光墨迹，来到明代古港。"},
+            {"speaker": "子墨", "role": "primary", "kind": "dialogue", "text": "这里真是六百年前的港口？"},
+            {"speaker": "郑和", "role": "secondary", "kind": "dialogue", "text": "少年，你从何处而来？"}
+          ],
+          "middle": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "海风吹散了航海图上的路线标记。"},
+            {"speaker": "子墨", "role": "primary", "kind": "dialogue", "text": "可以用星位和季风重新确认方向。"},
+            {"speaker": "郑和", "role": "secondary", "kind": "dialogue", "text": "好，我们一起把航线找回来。"}
+          ],
+          "end": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "郑和把写给未来少年的信交给子墨。"},
+            {"speaker": "郑和", "role": "secondary", "kind": "dialogue", "text": "愿你永远保有探索世界的勇气。"},
+            {"speaker": "子墨", "role": "primary", "kind": "dialogue", "text": "我会把这封信带回未来。"}
+          ]
+        }
+      },
       "shot_hints": [
         {
           "title": "航海图开门",
@@ -176,6 +303,46 @@
       "palette": ["森林深绿", "星空靛蓝", "萤火金", "花朵粉"],
       "music_mood": ["神秘", "温暖"],
       "director_intent": "像一场安静又勇敢的森林守护行动。",
+    "manga": {
+      "director_profile": {
+        "id": "star-seed-pilgrimage",
+        "story_engine": "围绕一颗脆弱星种持续前行，空间从低矮黑林抬升到古树冠顶，最后由一点光扩散全森林。",
+        "shot_signatures": {
+          "start": ["dark-forest-wide", "seed-offering", "seed-glow-close"],
+          "middle": ["storm-low-angle", "guardian-run", "fallen-log-leap"],
+          "end": ["tree-crown-climb", "seed-bloom", "animal-ring-celebration"]
+        },
+        "ending_mode": "vertical-star-bloom"
+      },
+      "pacing": "gentle",
+        "dialogue_ratio": 0.67,
+        "audience_grade": "primary-and-middle-school",
+        "voice_cast": {
+          "primary": "zh-CN-XiaoyiNeural",
+          "secondary": "zh-CN-XiaoxiaoNeural",
+          "tertiary": "zh-CN-YunxiaNeural"
+        },
+        "must_show": ["微弱发亮的星种", "风雨中的护送行动", "古树顶端绽放的星花"],
+        "avoid": ["让星种在抵达古树前盛开", "把风雨表现成伤害角色的灾难", "改变叶芽、小鹿和猫头鹰的外观"],
+        "factual_notes": ["星种、星花和发光森林属于任务卡的童话设定"],
+        "scene_scripts": {
+          "start": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "失去星光的森林里，小鹿带来一颗星种。"},
+            {"speaker": "叶芽", "role": "primary", "kind": "dialogue", "text": "别怕，我会保护这颗星种。"},
+            {"speaker": "小鹿", "role": "secondary", "kind": "dialogue", "text": "最高的古树还在等它。"}
+          ],
+          "middle": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "叶芽和小鹿顶着风雨穿过森林。"},
+            {"speaker": "叶芽", "role": "primary", "kind": "dialogue", "text": "风雨再大，也不能让星种熄灭。"},
+            {"speaker": "小鹿", "role": "secondary", "kind": "dialogue", "text": "跟紧我，我们越过前面的断木！"}
+          ],
+          "end": [
+            {"speaker": "旁白", "role": "narrator", "kind": "narration", "text": "星种在古树顶端开成漫天星花。"},
+            {"speaker": "叶芽", "role": "primary", "kind": "dialogue", "text": "我们做到了，森林重新亮起来了！"},
+            {"speaker": "猫头鹰", "role": "tertiary", "kind": "dialogue", "text": "星花开满天空啦！"}
+          ]
+        }
+      },
       "shot_hints": [
         {
           "title": "微弱星种",

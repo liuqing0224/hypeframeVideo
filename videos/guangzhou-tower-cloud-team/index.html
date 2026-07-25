@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
     <title>广州塔云端小队</title>
     <script src="vendor/gsap.min.js"></script>
     <style>
@@ -10,6 +10,12 @@
       @font-face {
         font-family: "PixelChinese";
         src: local("PingFang SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
+      @font-face {
+        font-family: "Songti SC";
+        src: local("Songti SC");
         font-style: normal;
         font-weight: 400 900;
       }
@@ -41,17 +47,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #17324d;
         background: #e9f5f5;
-        border: 5px solid #e34a3a;
-        box-shadow: 12px 12px 0 #0b2435;
+        border: 5px solid #17324d;
+        box-shadow: 10px 10px 0 #0b2435;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #17324d;
+        color: #e9f5f5;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #17324d;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #f7b32b;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #e34a3a;
       }
       .caption p {
         margin: 0;
@@ -61,6 +99,41 @@
         font-weight: 700;
         text-align: center;
         letter-spacing: 0;
+      }
+      .caption span {
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: #e9f5f5;
+        background: #e34a3a;
+      }
+      body.style-science .caption {
+        right: 110px;
+        left: auto;
+        border-color: #e34a3a;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 #f7b32b;
+      }
+      body.style-history .caption {
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "Songti SC", serif;
+      }
+      body.style-fantasy .caption {
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: #f7b32b;
+        box-shadow: 0 0 34px #f7b32b;
+      }
+      body.style-field-trip .caption {
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 #f7b32b;
       }
       .transition {
         position: absolute;
@@ -111,75 +184,83 @@
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
     </style>
   </head>
-  <body>
-    <div id="main" data-composition-id="main" data-start="0"
-         data-duration="28.5" data-width="1920" data-height="1080" data-fps="30">
+  <body class="style-field-trip">
+    <div data-hf-id="hf-mgxf" id="main" data-composition-id="main" data-start="0" data-duration="38.5" data-width="1920" data-height="1080" data-fps="30">
 
-      <div id="slot-01-start" class="clip scene-slot"
-           data-composition-id="01-start"
-           data-composition-src="compositions/01-start.html"
-           data-start="0"
-           data-duration="9"
-           data-track-index="10"></div>
-      <div id="slot-02-middle" class="clip scene-slot"
-           data-composition-id="02-middle"
-           data-composition-src="compositions/02-middle.html"
-           data-start="9"
-           data-duration="10.5"
-           data-track-index="10"></div>
-      <div id="slot-03-end" class="clip scene-slot"
-           data-composition-id="03-end"
-           data-composition-src="compositions/03-end.html"
-           data-start="19.5"
-           data-duration="9"
-           data-track-index="10"></div>
+      <div data-hf-id="hf-w409" id="slot-01-start" class="clip scene-slot" data-composition-id="01-start" data-composition-src="compositions/01-start.html" data-start="0" data-duration="12.5" data-track-index="10"></div>
+      <div data-hf-id="hf-wbue" id="slot-02-middle" class="clip scene-slot" data-composition-id="02-middle" data-composition-src="compositions/02-middle.html" data-start="12.5" data-duration="13.5" data-track-index="10"></div>
+      <div data-hf-id="hf-hkfg" id="slot-03-end" class="clip scene-slot" data-composition-id="03-end" data-composition-src="compositions/03-end.html" data-start="26" data-duration="12.5" data-track-index="10"></div>
 
-      <div id="transition-1-whip-pan" class="clip transition"
-           data-start="8.58" data-duration="0.84" data-track-index="800">
-        <div id="transition-1-whip-pan-fx" class="transition-fx transition-whip-pan">
-          <span></span><span></span><span></span>
+      <div data-hf-id="hf-b505" id="transition-1-whip-pan" class="clip transition" data-layout-allow-overflow="" data-start="12.05" data-duration="0.9" data-track-index="800">
+        <div data-hf-id="hf-2iwa" id="transition-1-whip-pan-fx" class="transition-fx transition-whip-pan" data-layout-allow-overflow="">
+          <span data-hf-id="hf-uckh"></span><span data-hf-id="hf-l73p"></span><span data-hf-id="hf-me0s"></span>
         </div>
       </div>
-      <div id="transition-2-horizontal-blinds" class="clip transition"
-           data-start="19.14" data-duration="0.72" data-track-index="800">
-        <div id="transition-2-horizontal-blinds-fx" class="transition-fx transition-horizontal-blinds">
-          <span style="top:0px"></span><span style="top:90px"></span><span style="top:180px"></span><span style="top:270px"></span><span style="top:360px"></span><span style="top:450px"></span><span style="top:540px"></span><span style="top:630px"></span><span style="top:720px"></span><span style="top:810px"></span><span style="top:900px"></span><span style="top:990px"></span>
+      <div data-hf-id="hf-2i0m" id="transition-2-horizontal-blinds" class="clip transition" data-layout-allow-overflow="" data-start="25.55" data-duration="0.9" data-track-index="800">
+        <div data-hf-id="hf-h0l5" id="transition-2-horizontal-blinds-fx" class="transition-fx transition-horizontal-blinds" data-layout-allow-overflow="">
+          <span data-hf-id="hf-d5h3" style="top:0px"></span><span data-hf-id="hf-th8i" style="top:90px"></span><span data-hf-id="hf-n54m" style="top:180px"></span><span data-hf-id="hf-mqtk" style="top:270px"></span><span data-hf-id="hf-id72" style="top:360px"></span><span data-hf-id="hf-6bbo" style="top:450px"></span><span data-hf-id="hf-d532" style="top:540px"></span><span data-hf-id="hf-d0xs" style="top:630px"></span><span data-hf-id="hf-ze7a" style="top:720px"></span><span data-hf-id="hf-px4k" style="top:810px"></span><span data-hf-id="hf-itie" style="top:900px"></span><span data-hf-id="hf-ezdd" style="top:990px"></span>
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption"
-           data-start="0.45" data-duration="8.2" data-track-index="900">
-        <p>小雨和三位同学来到广州塔观景台，准备完成寻找城市地标的研学任务。</p>
+      <div data-hf-id="hf-e9gs" id="caption-1" class="clip caption caption-narrator caption-narration" data-start="0.45" data-duration="2.052" data-track-index="900">
+        <span data-hf-id="hf-k6p3">旁白</span><p data-hf-id="hf-8s53">小雨和三位同学来</p>
       </div>
-      <div id="caption-2" class="clip caption"
-           data-start="9.45" data-duration="9.7" data-track-index="900">
-        <p>云雾遮住城市，大家根据地图、方向和灯光提示一起推理，寻找珠江和城市中轴线。</p>
+      <div data-hf-id="hf-h7uz" id="caption-2" class="clip caption caption-narrator caption-narration" data-start="2.502" data-duration="2.052" data-track-index="900">
+        <span data-hf-id="hf-32br">旁白</span><p data-hf-id="hf-xrp1">到广州塔观景台。</p>
       </div>
-      <div id="caption-3" class="clip caption"
-           data-start="19.95" data-duration="8.2" data-track-index="900">
-        <p>云雾散开，小队成功找出地标，并在温暖夕阳下拍下全队的云端合影。</p>
+      <div data-hf-id="hf-u3ux" id="caption-3" class="clip caption caption-primary caption-dialogue" data-start="4.974" data-duration="3.816" data-track-index="900">
+        <span data-hf-id="hf-epwm">小雨</span><p data-hf-id="hf-7ros">先找珠江，再确认城市中轴线！</p>
+      </div>
+      <div data-hf-id="hf-nbug" id="caption-4" class="clip caption caption-tertiary caption-dialogue" data-start="9.21" data-duration="2.088" data-track-index="900">
+        <span data-hf-id="hf-l6c2">红帽同学</span><p data-hf-id="hf-8rfz">望远镜准备好了！</p>
+      </div>
+      <div data-hf-id="hf-oi83" id="caption-5" class="clip caption caption-narrator caption-narration" data-start="12.95" data-duration="1.689" data-track-index="900">
+        <span data-hf-id="hf-2o0q">旁白</span><p data-hf-id="hf-qqa9">云雾遮住城市，</p>
+      </div>
+      <div data-hf-id="hf-re9i" id="caption-6" class="clip caption caption-narrator caption-narration" data-start="14.639" data-duration="2.655" data-track-index="900">
+        <span data-hf-id="hf-29pp">旁白</span><p data-hf-id="hf-e0uu">地图上的线索变得模糊。</p>
+      </div>
+      <div data-hf-id="hf-joto" id="caption-7" class="clip caption caption-secondary caption-dialogue" data-start="17.714" data-duration="3.048" data-track-index="900">
+        <span data-hf-id="hf-98vn">蓝背心同学</span><p data-hf-id="hf-kyew">珠江的走向能帮我们定位。</p>
+      </div>
+      <div data-hf-id="hf-gdw0" id="caption-8" class="clip caption caption-primary caption-dialogue" data-start="21.182" data-duration="1.971" data-track-index="900">
+        <span data-hf-id="hf-yiwa">小雨</span><p data-hf-id="hf-ulq2">结合方向和灯光，</p>
+      </div>
+      <div data-hf-id="hf-0ctg" id="caption-9" class="clip caption caption-primary caption-dialogue" data-start="23.153" data-duration="1.725" data-track-index="900">
+        <span data-hf-id="hf-yx7b">小雨</span><p data-hf-id="hf-1dss">我们一起推理！</p>
+      </div>
+      <div data-hf-id="hf-31l4" id="caption-10" class="clip caption caption-narrator caption-narration" data-start="26.45" data-duration="3.624" data-track-index="900">
+        <span data-hf-id="hf-51uw">旁白</span><p data-hf-id="hf-7ilz">云雾散开，小队成功找出地标。</p>
+      </div>
+      <div data-hf-id="hf-t4r1" id="caption-11" class="clip caption caption-primary caption-dialogue" data-start="30.494" data-duration="3.24" data-track-index="900">
+        <span data-hf-id="hf-zbic">小雨</span><p data-hf-id="hf-0frf">任务完成，大家靠近一点！</p>
+      </div>
+      <div data-hf-id="hf-mm8y" id="caption-12" class="clip caption caption-tertiary caption-dialogue" data-start="34.154" data-duration="3.216" data-track-index="900">
+        <span data-hf-id="hf-1vh2">红帽同学</span><p data-hf-id="hf-8v8q">看镜头，三、二、一！</p>
       </div>
 
-      <audio id="narration" class="clip" src="assets/audio/narration.wav"
-             data-start="0" data-duration="28.5" data-track-index="950" data-volume="1"></audio>
-      <audio id="music" class="clip" src="assets/audio/music.wav"
-             data-start="0" data-duration="28.5" data-track-index="951" data-volume="0.2"></audio>
-      <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
-             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
-      <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
-             data-start="9.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
-      <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
-             data-start="19.58" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-0eqo" id="narration" class="clip" src="assets/audio/narration.wav" data-start="0" data-duration="38.5" data-track-index="950" data-volume="1"></audio>
+      <audio data-hf-id="hf-resy" id="music" class="clip" src="assets/audio/music.wav" data-start="0" data-duration="38.5" data-track-index="951" data-volume="0.24"></audio>
+      <audio data-hf-id="hf-xnu9" id="ambience" class="clip" src="assets/audio/ambience.wav" data-start="0" data-duration="38.5" data-track-index="952" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-o9kp" id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav" data-start="0.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-4rnq" id="sfx-01-start-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="4.974" data-duration="1" data-track-index="954" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-4m4t" id="sfx-01-start-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="9.21" data-duration="1" data-track-index="955" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-9okn" id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="12.58" data-duration="1" data-track-index="956" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-bv33" id="sfx-02-middle-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="17.714" data-duration="1" data-track-index="957" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-4sc2" id="sfx-02-middle-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="21.182" data-duration="1" data-track-index="958" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-u5kd" id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav" data-start="26.08" data-duration="1" data-track-index="959" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-m09q" id="sfx-03-end-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="30.494" data-duration="1" data-track-index="960" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-b3wu" id="sfx-03-end-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="34.154" data-duration="1" data-track-index="961" data-volume="0.44"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#transition-1-whip-pan-fx", {opacity:0,x:-1920}, {opacity:1,x:0,duration:0.42,ease:"power4.in"}, 8.58);
-        tl.to("#transition-1-whip-pan-fx", {opacity:0,x:1920,duration:0.42,ease:"power4.out"}, 9);
-        tl.set("#transition-1-whip-pan-fx", {opacity:0}, 9.42);
-        tl.fromTo("#transition-2-horizontal-blinds-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.36,ease:"sine.in"}, 19.14);
-        tl.to("#transition-2-horizontal-blinds-fx", {opacity:0,scale:1.08,duration:0.36,ease:"sine.out"}, 19.5);
-        tl.set("#transition-2-horizontal-blinds-fx", {opacity:0}, 19.86);
+      tl.fromTo("#transition-1-whip-pan-fx", {opacity:0,x:-1920}, {opacity:1,x:0,duration:0.45,ease:"power4.in"}, 12.05);
+        tl.to("#transition-1-whip-pan-fx", {opacity:0,x:1920,duration:0.45,ease:"power4.out"}, 12.5);
+        tl.set("#transition-1-whip-pan-fx", {opacity:0}, 12.95);
+        tl.fromTo("#transition-2-horizontal-blinds-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.45,ease:"sine.in"}, 25.55);
+        tl.to("#transition-2-horizontal-blinds-fx", {opacity:0,scale:1.08,duration:0.45,ease:"sine.out"}, 26);
+        tl.set("#transition-2-horizontal-blinds-fx", {opacity:0}, 26.45);
       window.__timelines["main"] = tl;
     </script>
   </body>

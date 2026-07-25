@@ -1,8 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080">
     <title>会发光的太阳系</title>
     <script src="vendor/gsap.min.js"></script>
     <style>
@@ -10,6 +10,12 @@
       @font-face {
         font-family: "PixelChinese";
         src: local("PingFang SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
+      @font-face {
+        font-family: "Songti SC";
+        src: local("Songti SC");
         font-style: normal;
         font-weight: 400 900;
       }
@@ -41,17 +47,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #f5f7ff;
         background: #071b2e;
-        border: 5px solid #28d7d0;
-        box-shadow: 12px 12px 0 #020b16;
+        border: 5px solid #f5f7ff;
+        box-shadow: 10px 10px 0 #020b16;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #f5f7ff;
+        color: #071b2e;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #f5f7ff;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #ffc857;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #28d7d0;
       }
       .caption p {
         margin: 0;
@@ -61,6 +99,41 @@
         font-weight: 700;
         text-align: center;
         letter-spacing: 0;
+      }
+      .caption span {
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: #071b2e;
+        background: #28d7d0;
+      }
+      body.style-science .caption {
+        right: 110px;
+        left: auto;
+        border-color: #28d7d0;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 #ffc857;
+      }
+      body.style-history .caption {
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "Songti SC", serif;
+      }
+      body.style-fantasy .caption {
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: #ffc857;
+        box-shadow: 0 0 34px #ffc857;
+      }
+      body.style-field-trip .caption {
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 #ffc857;
       }
       .transition {
         position: absolute;
@@ -111,75 +184,92 @@
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
     </style>
   </head>
-  <body>
-    <div id="main" data-composition-id="main" data-start="0"
-         data-duration="29.5" data-width="1920" data-height="1080" data-fps="30">
+  <body class="style-science">
+    <div data-hf-id="hf-mgxf" id="main" data-composition-id="main" data-start="0" data-duration="38.5" data-width="1920" data-height="1080" data-fps="30">
 
-      <div id="slot-01-start" class="clip scene-slot"
-           data-composition-id="01-start"
-           data-composition-src="compositions/01-start.html"
-           data-start="0"
-           data-duration="10"
-           data-track-index="10"></div>
-      <div id="slot-02-middle" class="clip scene-slot"
-           data-composition-id="02-middle"
-           data-composition-src="compositions/02-middle.html"
-           data-start="10"
-           data-duration="9.5"
-           data-track-index="10"></div>
-      <div id="slot-03-end" class="clip scene-slot"
-           data-composition-id="03-end"
-           data-composition-src="compositions/03-end.html"
-           data-start="19.5"
-           data-duration="10"
-           data-track-index="10"></div>
+      <div data-hf-id="hf-765f" id="slot-01-start" class="clip scene-slot" data-composition-id="01-start" data-composition-src="compositions/01-start.html" data-start="0" data-duration="13" data-track-index="10"></div>
+      <div data-hf-id="hf-lp0g" id="slot-02-middle" class="clip scene-slot" data-composition-id="02-middle" data-composition-src="compositions/02-middle.html" data-start="13" data-duration="14" data-track-index="10"></div>
+      <div data-hf-id="hf-3ymy" id="slot-03-end" class="clip scene-slot" data-composition-id="03-end" data-composition-src="compositions/03-end.html" data-start="27" data-duration="11.5" data-track-index="10"></div>
 
-      <div id="transition-1-chromatic-split" class="clip transition"
-           data-start="9.62" data-duration="0.76" data-track-index="800">
-        <div id="transition-1-chromatic-split-fx" class="transition-fx transition-chromatic-split">
-          <span></span><span></span><span></span>
+      <div data-hf-id="hf-kv3n" id="transition-1-chromatic-split" class="clip transition" data-layout-allow-overflow="" data-start="12.55" data-duration="0.9" data-track-index="800">
+        <div data-hf-id="hf-ien4" id="transition-1-chromatic-split-fx" class="transition-fx transition-chromatic-split" data-layout-allow-overflow="">
+          <span data-hf-id="hf-uckh"></span><span data-hf-id="hf-l73p"></span><span data-hf-id="hf-me0s"></span>
         </div>
       </div>
-      <div id="transition-2-grid-dissolve" class="clip transition"
-           data-start="19.1" data-duration="0.8" data-track-index="800">
-        <div id="transition-2-grid-dissolve-fx" class="transition-fx transition-grid-dissolve">
-          <span style="left:0px;top:0px"></span><span style="left:240px;top:0px"></span><span style="left:480px;top:0px"></span><span style="left:720px;top:0px"></span><span style="left:960px;top:0px"></span><span style="left:1200px;top:0px"></span><span style="left:1440px;top:0px"></span><span style="left:1680px;top:0px"></span><span style="left:0px;top:216px"></span><span style="left:240px;top:216px"></span><span style="left:480px;top:216px"></span><span style="left:720px;top:216px"></span><span style="left:960px;top:216px"></span><span style="left:1200px;top:216px"></span><span style="left:1440px;top:216px"></span><span style="left:1680px;top:216px"></span><span style="left:0px;top:432px"></span><span style="left:240px;top:432px"></span><span style="left:480px;top:432px"></span><span style="left:720px;top:432px"></span><span style="left:960px;top:432px"></span><span style="left:1200px;top:432px"></span><span style="left:1440px;top:432px"></span><span style="left:1680px;top:432px"></span><span style="left:0px;top:648px"></span><span style="left:240px;top:648px"></span><span style="left:480px;top:648px"></span><span style="left:720px;top:648px"></span><span style="left:960px;top:648px"></span><span style="left:1200px;top:648px"></span><span style="left:1440px;top:648px"></span><span style="left:1680px;top:648px"></span><span style="left:0px;top:864px"></span><span style="left:240px;top:864px"></span><span style="left:480px;top:864px"></span><span style="left:720px;top:864px"></span><span style="left:960px;top:864px"></span><span style="left:1200px;top:864px"></span><span style="left:1440px;top:864px"></span><span style="left:1680px;top:864px"></span>
+      <div data-hf-id="hf-zmdo" id="transition-2-grid-dissolve" class="clip transition" data-layout-allow-overflow="" data-start="26.55" data-duration="0.9" data-track-index="800">
+        <div data-hf-id="hf-fkyh" id="transition-2-grid-dissolve-fx" class="transition-fx transition-grid-dissolve" data-layout-allow-overflow="">
+          <span data-hf-id="hf-azqn" style="left:0px;top:0px"></span><span data-hf-id="hf-yvsx" style="left:240px;top:0px"></span><span data-hf-id="hf-2bkb" style="left:480px;top:0px"></span><span data-hf-id="hf-j6sq" style="left:720px;top:0px"></span><span data-hf-id="hf-yeqo" style="left:960px;top:0px"></span><span data-hf-id="hf-iluw" style="left:1200px;top:0px"></span><span data-hf-id="hf-35o2" style="left:1440px;top:0px"></span><span data-hf-id="hf-7c3w" style="left:1680px;top:0px"></span><span data-hf-id="hf-ds3g" style="left:0px;top:216px"></span><span data-hf-id="hf-43ra" style="left:240px;top:216px"></span><span data-hf-id="hf-b23k" style="left:480px;top:216px"></span><span data-hf-id="hf-t9et" style="left:720px;top:216px"></span><span data-hf-id="hf-rmqz" style="left:960px;top:216px"></span><span data-hf-id="hf-7cdv" style="left:1200px;top:216px"></span><span data-hf-id="hf-ccrx" style="left:1440px;top:216px"></span><span data-hf-id="hf-sk3z" style="left:1680px;top:216px"></span><span data-hf-id="hf-wubg" style="left:0px;top:432px"></span><span data-hf-id="hf-pbqm" style="left:240px;top:432px"></span><span data-hf-id="hf-60ds" style="left:480px;top:432px"></span><span data-hf-id="hf-wlbd" style="left:720px;top:432px"></span><span data-hf-id="hf-67mn" style="left:960px;top:432px"></span><span data-hf-id="hf-vlqf" style="left:1200px;top:432px"></span><span data-hf-id="hf-jp2p" style="left:1440px;top:432px"></span><span data-hf-id="hf-p1z7" style="left:1680px;top:432px"></span><span data-hf-id="hf-1z39" style="left:0px;top:648px"></span><span data-hf-id="hf-thu3" style="left:240px;top:648px"></span><span data-hf-id="hf-n4vl" style="left:480px;top:648px"></span><span data-hf-id="hf-cxm8" style="left:720px;top:648px"></span><span data-hf-id="hf-apdu" style="left:960px;top:648px"></span><span data-hf-id="hf-khlm" style="left:1200px;top:648px"></span><span data-hf-id="hf-a7zc" style="left:1440px;top:648px"></span><span data-hf-id="hf-8awu" style="left:1680px;top:648px"></span><span data-hf-id="hf-t4rx" style="left:0px;top:864px"></span><span data-hf-id="hf-j08z" style="left:240px;top:864px"></span><span data-hf-id="hf-j6gp" style="left:480px;top:864px"></span><span data-hf-id="hf-mh5g" style="left:720px;top:864px"></span><span data-hf-id="hf-8wda" style="left:960px;top:864px"></span><span data-hf-id="hf-4sk6" style="left:1200px;top:864px"></span><span data-hf-id="hf-wd8s" style="left:1440px;top:864px"></span><span data-hf-id="hf-wwi2" style="left:1680px;top:864px"></span>
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption"
-           data-start="0.45" data-duration="9.2" data-track-index="900">
-        <p>小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。</p>
+      <div data-hf-id="hf-0o2y" id="caption-1" class="clip caption caption-narrator caption-narration" data-start="0.45" data-duration="1.725" data-track-index="900">
+        <span data-hf-id="hf-k6p3">旁白</span><p data-hf-id="hf-kg9g">中央太阳系模型</p>
       </div>
-      <div id="caption-2" class="clip caption"
-           data-start="10.45" data-duration="8.7" data-track-index="900">
-        <p>三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。</p>
+      <div data-hf-id="hf-orio" id="caption-2" class="clip caption caption-narrator caption-narration" data-start="2.175" data-duration="1.971" data-track-index="900">
+        <span data-hf-id="hf-32br">旁白</span><p data-hf-id="hf-7im5">正在一颗颗熄灭。</p>
       </div>
-      <div id="caption-3" class="clip caption"
-           data-start="19.95" data-duration="9.2" data-track-index="900">
-        <p>太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。</p>
+      <div data-hf-id="hf-9brk" id="caption-3" class="clip caption caption-primary caption-dialogue" data-start="4.566" data-duration="1.45" data-track-index="900">
+        <span data-hf-id="hf-f338">小曦</span><p data-hf-id="hf-ogue">阿朗，你看，</p>
+      </div>
+      <div data-hf-id="hf-hosx" id="caption-4" class="clip caption caption-primary caption-dialogue" data-start="6.016" data-duration="2.174" data-track-index="900">
+        <span data-hf-id="hf-8ufw">小曦</span><p data-hf-id="hf-ug87">行星正在失去亮光！</p>
+      </div>
+      <div data-hf-id="hf-12y0" id="caption-5" class="clip caption caption-tertiary caption-dialogue" data-start="8.61" data-duration="1.575" data-track-index="900">
+        <span data-hf-id="hf-pl3t">小光</span><p data-hf-id="hf-dqqw">能量连接异常，</p>
+      </div>
+      <div data-hf-id="hf-h7tq" id="caption-6" class="clip caption caption-tertiary caption-dialogue" data-start="10.185" data-duration="2.025" data-track-index="900">
+        <span data-hf-id="hf-4e0d">小光</span><p data-hf-id="hf-9bx6">请帮助我修复轨道。</p>
+      </div>
+      <div data-hf-id="hf-mwh8" id="caption-7" class="clip caption caption-narrator caption-narration" data-start="13.45" data-duration="1.826" data-track-index="900">
+        <span data-hf-id="hf-2o0q">旁白</span><p data-hf-id="hf-v3ge">三人沿着行星轨</p>
+      </div>
+      <div data-hf-id="hf-75dg" id="caption-8" class="clip caption caption-narrator caption-narration" data-start="15.276" data-duration="2.086" data-track-index="900">
+        <span data-hf-id="hf-29pp">旁白</span><p data-hf-id="hf-92nw">道寻找能量碎片。</p>
+      </div>
+      <div data-hf-id="hf-h47v" id="caption-9" class="clip caption caption-secondary caption-dialogue" data-start="17.782" data-duration="2.261" data-track-index="900">
+        <span data-hf-id="hf-utav">阿朗</span><p data-hf-id="hf-06mp">先按顺序连接轨道，</p>
+      </div>
+      <div data-hf-id="hf-uz4d" id="caption-10" class="clip caption caption-secondary caption-dialogue" data-start="20.043" data-duration="1.507" data-track-index="900">
+        <span data-hf-id="hf-4xxz">阿朗</span><p data-hf-id="hf-gjx0">别接错位置！</p>
+      </div>
+      <div data-hf-id="hf-iwfz" id="caption-11" class="clip caption caption-primary caption-dialogue" data-start="21.97" data-duration="2.035" data-track-index="900">
+        <span data-hf-id="hf-7nit">小曦</span><p data-hf-id="hf-f1co">我去拿金色碎片，</p>
+      </div>
+      <div data-hf-id="hf-79jl" id="caption-12" class="clip caption caption-primary caption-dialogue" data-start="24.005" data-duration="1.781" data-track-index="900">
+        <span data-hf-id="hf-81tu">小曦</span><p data-hf-id="hf-6otu">小光负责扫描！</p>
+      </div>
+      <div data-hf-id="hf-lsp9" id="caption-13" class="clip caption caption-narrator caption-narration" data-start="27.45" data-duration="3.744" data-track-index="900">
+        <span data-hf-id="hf-51uw">旁白</span><p data-hf-id="hf-vqg6">太阳和八颗行星全部重新发光。</p>
+      </div>
+      <div data-hf-id="hf-35ee" id="caption-14" class="clip caption caption-secondary caption-dialogue" data-start="31.614" data-duration="2.448" data-track-index="900">
+        <span data-hf-id="hf-4jmy">阿朗</span><p data-hf-id="hf-cxcx">最后一条轨道接通了！</p>
+      </div>
+      <div data-hf-id="hf-9j0j" id="caption-15" class="clip caption caption-tertiary caption-dialogue" data-start="34.482" data-duration="3.096" data-track-index="900">
+        <span data-hf-id="hf-5kxg">小光</span><p data-hf-id="hf-ykb9">好奇心，就是点亮未知的光。</p>
       </div>
 
-      <audio id="narration" class="clip" src="assets/audio/narration.wav"
-             data-start="0" data-duration="29.5" data-track-index="950" data-volume="1"></audio>
-      <audio id="music" class="clip" src="assets/audio/music.wav"
-             data-start="0" data-duration="29.5" data-track-index="951" data-volume="0.2"></audio>
-      <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
-             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
-      <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
-             data-start="10.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
-      <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
-             data-start="19.58" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-0eqo" id="narration" class="clip" src="assets/audio/narration.wav" data-start="0" data-duration="38.5" data-track-index="950" data-volume="1"></audio>
+      <audio data-hf-id="hf-resy" id="music" class="clip" src="assets/audio/music.wav" data-start="0" data-duration="38.5" data-track-index="951" data-volume="0.24"></audio>
+      <audio data-hf-id="hf-xnu9" id="ambience" class="clip" src="assets/audio/ambience.wav" data-start="0" data-duration="38.5" data-track-index="952" data-volume="0.42"></audio>
+      <audio data-hf-id="hf-o9kp" id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav" data-start="0.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-971f" id="sfx-01-start-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="4.566" data-duration="1" data-track-index="954" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-yg3w" id="sfx-01-start-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="8.61" data-duration="1" data-track-index="955" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-d8wf" id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav" data-start="13.08" data-duration="1" data-track-index="956" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-oyjw" id="sfx-02-middle-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="17.782" data-duration="1" data-track-index="957" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-1lhb" id="sfx-02-middle-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="21.97" data-duration="1" data-track-index="958" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-ja6a" id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav" data-start="27.08" data-duration="1" data-track-index="959" data-volume="0.72"></audio>
+      <audio data-hf-id="hf-maoh" id="sfx-03-end-shot-2" class="clip" src="assets/audio/sfx-cut.wav" data-start="31.614" data-duration="1" data-track-index="960" data-volume="0.44"></audio>
+      <audio data-hf-id="hf-sbyi" id="sfx-03-end-shot-3" class="clip" src="assets/audio/sfx-rustle.wav" data-start="34.482" data-duration="1" data-track-index="961" data-volume="0.44"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#transition-1-chromatic-split-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.38,ease:"steps(4)"}, 9.62);
-        tl.to("#transition-1-chromatic-split-fx", {opacity:0,duration:0.38,ease:"steps(4)"}, 10);
-        tl.set("#transition-1-chromatic-split-fx", {opacity:0}, 10.38);
-        tl.fromTo("#transition-2-grid-dissolve-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.4,ease:"steps(4)"}, 19.1);
-        tl.to("#transition-2-grid-dissolve-fx", {opacity:0,duration:0.4,ease:"steps(4)"}, 19.5);
-        tl.set("#transition-2-grid-dissolve-fx", {opacity:0}, 19.9);
+      tl.fromTo("#transition-1-chromatic-split-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.45,ease:"steps(4)"}, 12.55);
+        tl.to("#transition-1-chromatic-split-fx", {opacity:0,duration:0.45,ease:"steps(4)"}, 13);
+        tl.set("#transition-1-chromatic-split-fx", {opacity:0}, 13.45);
+        tl.fromTo("#transition-2-grid-dissolve-fx", {opacity:0,scale:1.08}, {opacity:0.94,scale:1,duration:0.45,ease:"steps(4)"}, 26.55);
+        tl.to("#transition-2-grid-dissolve-fx", {opacity:0,duration:0.45,ease:"steps(4)"}, 27);
+        tl.set("#transition-2-grid-dissolve-fx", {opacity:0}, 27.45);
       window.__timelines["main"] = tl;
     </script>
   </body>

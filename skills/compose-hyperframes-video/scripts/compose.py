@@ -31,6 +31,10 @@ def number(value: float) -> str:
     return f"{value:.3f}".rstrip("0").rstrip(".")
 
 
+def clean_generated_html(value: str) -> str:
+    return "\n".join(line.rstrip() for line in value.splitlines()) + "\n"
+
+
 def asset_src(path: str) -> str:
     return path
 
@@ -45,9 +49,273 @@ def subject_markup(scene: dict, role: str, layer_index: int) -> str:
     return f"""
       <div class="layer cutout subject {role}" data-pixel-layer="{role}" data-pixel-z="{layer_index}">
         <div class="sprite-mirror" style="{image_style}">
-          <img src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
+          <div class="blocking blocking-{role}">
+            <div class="entrance"><div class="performance performance-{role}">
+              <img data-layout-ignore src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>"""
+
+
+def scene_shots(scene: dict) -> list[dict]:
+    shots = scene.get("shots") or []
+    duration = float(scene["durationSeconds"])
+    if len(shots) != 3:
+        shots = [
+            {"id": f"{scene['id']}-shot-1", "framing": "wide", "focusRole": "ensemble"},
+            {"id": f"{scene['id']}-shot-2", "framing": "medium", "focusRole": "primary"},
+            {"id": f"{scene['id']}-shot-3", "framing": "close", "focusRole": "primary"},
+        ]
+    weights = [0.31, 0.37, 0.32]
+    cursor = 0.0
+    normalized = []
+    for index, shot in enumerate(shots):
+        start = float(shot.get("startSeconds", cursor))
+        if "durationSeconds" in shot:
+            shot_duration = float(shot["durationSeconds"])
+        elif index == len(shots) - 1:
+            shot_duration = duration - start
+        else:
+            shot_duration = duration * weights[index]
+        end = duration if index == len(shots) - 1 else min(duration, start + shot_duration)
+        normalized.append({**shot, "startSeconds": start, "durationSeconds": end - start})
+        cursor = end
+    return normalized
+
+
+def shot_camera(shot: dict, index: int, style_key: str = "field-trip") -> dict[str, float]:
+    framing = shot.get("framing", "medium")
+    focus = shot.get("focusRole", "primary")
+    scale = {"wide": 1.0, "medium": 1.16, "close": 1.38}.get(framing, 1.16)
+    anchors = {
+        "primary": (0, -34),
+        "secondary": (210, -12),
+        "tertiary": (-250, -8),
+        "ensemble": (0, 0),
+        "architecture": (0, 40),
+    }
+    x, y = anchors.get(focus, (0, 0))
+    profiles = {
+        "field-trip": {"x": (1, -1, 1)[index], "y": 1, "scale": 1, "push": 1, "rotation": (-0.7, 0.45, -0.35)[index]},
+        "science": {"x": (1.2, -1.05, 1.15)[index], "y": 0.72, "scale": 1.04, "push": 1.65, "rotation": 0},
+        "history": {"x": (0.65, 1.15, -0.75)[index], "y": 0.55, "scale": 0.94, "push": 0.62, "rotation": 0},
+        "fantasy": {"x": 0.45, "y": (0.25, 1.25, -0.8)[index], "scale": 1.01, "push": 0.8, "rotation": (0.25, -0.35, 0.2)[index]},
+    }
+    profile = profiles.get(style_key, profiles["field-trip"])
+    return {
+        "x": x * profile["x"],
+        "y": y * profile["y"],
+        "scale": scale * profile["scale"],
+        "push": (0.018 + index * 0.004) * profile["push"],
+        "rotation": profile["rotation"],
+    }
+
+
+def shot_blocking(shot: dict, index: int) -> dict:
+    if shot.get("blocking"):
+        return shot["blocking"]
+    offsets = (-90, 45, 0)
+    return {
+        "subjects": {
+            "primary": {
+                "x": offsets[index],
+                "y": -8 * index,
+                "scale": (0.9, 1.02, 1.08)[index],
+                "opacity": 1,
+            },
+            "secondary": {
+                "x": (-30, 95, -70)[index],
+                "y": 12 * index,
+                "scale": (0.9, 0.96, 0.8)[index],
+                "opacity": (0.95, 0.86, 0.42)[index],
+            },
+            "tertiary": {
+                "x": (45, -85, 75)[index],
+                "y": 10 * index,
+                "scale": (0.86, 0.9, 0.76)[index],
+                "opacity": (0.9, 0.76, 0.34)[index],
+            },
+        },
+        "environment": {
+            "rear": {"x": (-12, 18, -22)[index], "y": -4 * index, "scale": 1 + index * 0.02},
+            "architecture": {"x": (0, -36, 54)[index], "y": 4 * index, "scale": 0.98 + index * 0.04},
+            "foreground": {"x": (18, -28, 36)[index], "y": 6 * index, "scale": 1.02 + index * 0.02},
+        },
+        "travel": {"role": "primary", "x": (18, 52, -24)[index], "y": (-4, -10, -6)[index]},
+    }
+
+
+def blocking_timeline(shot: dict, index: int, start: float, duration: float) -> list[str]:
+    blocking = shot_blocking(shot, index)
+    rows = []
+    for role, state in blocking["subjects"].items():
+        rows.append(
+            f'tl.set(q(".blocking-{role}"), '
+            f'{{x:{number(state["x"])},y:{number(state["y"])},'
+            f'scale:{number(state["scale"])},opacity:{number(state["opacity"])}}}, '
+            f'{number(start)});'
+        )
+    for layer, state in blocking["environment"].items():
+        rows.append(
+            f'tl.set(q(".{layer}"), '
+            f'{{x:{number(state["x"])},y:{number(state["y"])},'
+            f'scale:{number(state["scale"])}}}, {number(start)});'
+        )
+    travel = blocking["travel"]
+    move_start = start + min(0.16, duration * 0.08)
+    move_duration = max(0.3, min(duration * 0.48, duration - 0.2))
+    if travel["role"] == "ensemble":
+        relative_x = f"{'+' if travel['x'] >= 0 else '-'}={number(abs(travel['x']))}"
+        relative_y = f"{'+' if travel['y'] >= 0 else '-'}={number(abs(travel['y']))}"
+        rows.append(
+            f'tl.to(qAll(".blocking"), '
+            f'{{x:"{relative_x}",y:"{relative_y}",'
+            f'duration:{number(move_duration)},ease:"power1.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    else:
+        state = blocking["subjects"][travel["role"]]
+        rows.append(
+            f'tl.to(q(".blocking-{travel["role"]}"), '
+            f'{{x:{number(state["x"] + travel["x"])},'
+            f'y:{number(state["y"] + travel["y"])},'
+            f'duration:{number(move_duration)},ease:"power2.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    for layer, factor in (("rear", -0.1), ("architecture", -0.16), ("foreground", -0.24)):
+        state = blocking["environment"][layer]
+        rows.append(
+            f'tl.to(q(".{layer}"), '
+            f'{{x:{number(state["x"] + travel["x"] * factor)},'
+            f'y:{number(state["y"] + travel["y"] * factor)},'
+            f'duration:{number(move_duration)},ease:"sine.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    return rows
+
+
+def transformed_bounds(base: dict, state: dict) -> dict[str, float]:
+    scale = float(state["scale"])
+    width = base["width"] * scale
+    height = base["height"] * scale
+    return {
+        "x": round(base["x"] + state["x"] + (base["width"] - width) / 2, 3),
+        "y": round(
+            base["y"] + state["y"] + (base["height"] - height) * 0.75,
+            3,
+        ),
+        "width": round(width, 3),
+        "height": round(height, 3),
+    }
+
+
+def blocking_varies(shots: list[dict]) -> bool:
+    for role in ("primary", "secondary", "tertiary"):
+        states = {
+            (
+                row["blocking"]["subjects"][role]["x"],
+                row["blocking"]["subjects"][role]["y"],
+                row["blocking"]["subjects"][role]["scale"],
+                row["blocking"]["subjects"][role]["opacity"],
+            )
+            for row in shots
+        }
+        if len(states) < 3:
+            return False
+    for layer in ("rear", "architecture", "foreground"):
+        states = {
+            (
+                row["blocking"]["environment"][layer]["x"],
+                row["blocking"]["environment"][layer]["y"],
+                row["blocking"]["environment"][layer]["scale"],
+            )
+            for row in shots
+        }
+        if len(states) < 3:
+            return False
+    return True
+
+
+def shot_timeline(scene: dict) -> str:
+    rows = []
+    shots = scene_shots(scene)
+    for index, shot in enumerate(shots):
+        start = shot["startSeconds"]
+        duration = shot["durationSeconds"]
+        rows.extend(blocking_timeline(shot, index, start, duration))
+        camera = shot_camera(shot, index, scene.get("_styleKey", "field-trip"))
+        selector = ".camera-rig"
+        rows.append(
+            f'tl.set(q("{selector}"), {{x:{number(camera["x"])},y:{number(camera["y"])},'
+            f'scale:{number(camera["scale"])},rotation:{number(camera["rotation"])}}}, {number(start)});'
+        )
+        rows.append(
+            f'tl.to(q("{selector}"), {{scale:{number(camera["scale"] + camera["push"])},'
+            f'duration:{number(max(0.1, duration - 0.03))},ease:"none"}}, {number(start)});'
+        )
+        focus = shot.get("focusRole", "primary")
+        if focus in {"primary", "secondary", "tertiary"}:
+            anticipation = start + min(0.22, duration * 0.12)
+            settle = min(0.32, duration * 0.14)
+            rows.append(
+                f'tl.to(q(".performance-{focus}"), {{y:-12,rotation:{2 if index % 2 == 0 else -2},'
+                f'scale:1.025,duration:{number(settle)},ease:"power2.out"}}, {number(anticipation)});'
+            )
+            rows.append(
+                f'tl.to(q(".performance-{focus}"), {{y:0,rotation:0,scale:1,'
+                f'duration:{number(settle)},ease:"power2.inOut"}}, {number(anticipation + settle)});'
+            )
+        if index:
+            rows.append(
+                f'tl.fromTo(q(".internal-cut"), {{opacity:0.22}}, '
+                f'{{opacity:0,duration:0.12,ease:"power2.out"}}, {number(start)});'
+            )
+        rows.append(
+            f'tl.set(qAll(".comic-treatment"), {{opacity:0}}, {number(start)});'
+        )
+        rows.append(
+            f'tl.set(q(".treatment-{index + 1}"), {{opacity:1}}, {number(start)});'
+        )
+        if shot.get("layoutMode") in {"reaction-panel", "decision-inset"}:
+            rows.append(
+                f'tl.fromTo(q(".treatment-{index + 1} .panel-inset"), '
+                f'{{x:90,scale:0.92}}, {{x:0,scale:1,duration:0.24,'
+                f'ease:"power3.out"}}, {number(start)});'
+            )
+    return "\n      ".join(rows)
+
+
+def comic_treatments(scene: dict) -> str:
+    rows = []
+    for index, shot in enumerate(scene_shots(scene), start=1):
+        mode = html.escape(shot.get("layoutMode", "full-bleed"))
+        focus = shot.get("focusRole", "primary")
+        inset = ""
+        if focus in {"primary", "secondary", "tertiary"}:
+            source_direction = scene.get("sourceDirections", {}).get(
+                focus,
+                scene["sourceDirection"],
+            )
+            mirror = source_direction != scene["direction"]
+            mirror_class = " portrait-mirrored" if mirror else ""
+            inset = (
+                '<div class="panel-inset">'
+                f'<div class="panel-portrait{mirror_class}" '
+                f'style="background-image:url(&quot;'
+                f'{html.escape(asset_src(scene["assets"][focus]))}'
+                f'&quot;)"></div>'
+                '</div>'
+            )
+        rows.append(
+            f'<div class="comic-treatment treatment-{index} mode-{mode}" '
+            f'data-shot-purpose="{html.escape(shot.get("purpose", "shot"))}" '
+            f'data-shot-signature="{html.escape(shot.get("signature", shot.get("purpose", "shot")))}">'
+            f'{inset}<i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i>'
+            '<i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i>'
+            '<i class="impact-ray ray-c"></i></div>'
+        )
+    return "".join(rows)
 
 
 def common_scene_css(scene: dict, tokens: dict) -> str:
@@ -68,6 +336,23 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         position: absolute;
         overflow: hidden;
         transform-origin: 50% 70%;
+      }}
+      #{root_id} .camera-rig {{
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+      }}
+      #{root_id} .subject {{
+        overflow: visible;
+      }}
+      #{root_id} .entrance,
+      #{root_id} .blocking,
+      #{root_id} .performance {{
+        width: 100%;
+        height: 100%;
+        transform-origin: 50% 75%;
       }}
       #{root_id} .layer img {{
         display: block;
@@ -154,6 +439,259 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         border: 28px solid {tokens['accent2']};
         box-shadow: 0 0 80px {tokens['accent2']};
       }}
+      #{root_id} .internal-cut {{
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        background: {tokens['ink']};
+        mix-blend-mode: screen;
+      }}
+      #{root_id} .comic-treatment {{
+        position: absolute;
+        inset: 0;
+        z-index: 18;
+        opacity: 0;
+        pointer-events: none;
+      }}
+      #{root_id} .panel-edge {{
+        position: absolute;
+        display: none;
+        border: 12px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['accent']};
+      }}
+      #{root_id} .panel-inset {{
+        position: absolute;
+        display: none;
+        right: 88px;
+        top: 72px;
+        width: 760px;
+        height: 760px;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, {tokens['canvas']} 0 48%, {tokens['accent2']} 48% 52%, {tokens['canvas']} 52%);
+        border: 12px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['accent']};
+        transform-origin: 70% 50%;
+      }}
+      #{root_id} .panel-portrait {{
+        width: 100%;
+        height: 112%;
+        background-repeat: no-repeat;
+        background-position: 50% 8%;
+        background-size: 155% auto;
+        filter:
+          drop-shadow(4px 0 {tokens['ink']})
+          drop-shadow(-4px 0 {tokens['ink']})
+          drop-shadow(0 4px {tokens['ink']});
+      }}
+      #{root_id} .panel-portrait.portrait-mirrored {{
+        transform: scaleX(-1);
+      }}
+      #{root_id} .mode-reaction-panel .panel-inset,
+      #{root_id} .mode-decision-inset .panel-inset {{
+        display: block;
+      }}
+      #{root_id} .mode-reaction-panel .edge-a,
+      #{root_id} .mode-decision-inset .edge-a {{
+        display: none;
+      }}
+      #{root_id} .mode-decision-inset .edge-b {{
+        display: block;
+        left: 92px;
+        bottom: 170px;
+        width: 430px;
+        height: 280px;
+        border-width: 8px;
+        box-shadow: 8px 8px 0 {tokens['accent2']};
+      }}
+      #{root_id} .mode-speaker-stage .edge-a {{
+        display: block;
+        left: 70px;
+        top: 82px;
+        width: 1080px;
+        height: 760px;
+        border-right: 0;
+        box-shadow: none;
+      }}
+      #{root_id} .mode-action-diagonal::before,
+      #{root_id} .mode-impact-frame::before {{
+        content: "";
+        position: absolute;
+        inset: -180px;
+        border: 34px solid {tokens['accent2']};
+        transform: rotate(-5deg);
+        opacity: .7;
+      }}
+      #{root_id} .impact-ray {{
+        position: absolute;
+        display: none;
+        width: 720px;
+        height: 14px;
+        background: {tokens['accent2']};
+        transform-origin: right center;
+      }}
+      #{root_id} .mode-action-diagonal .impact-ray,
+      #{root_id} .mode-impact-frame .impact-ray {{
+        display: block;
+        right: -80px;
+        top: 210px;
+      }}
+      #{root_id} .mode-action-diagonal .ray-b,
+      #{root_id} .mode-impact-frame .ray-b {{ top: 510px; transform: rotate(8deg); }}
+      #{root_id} .mode-action-diagonal .ray-c,
+      #{root_id} .mode-impact-frame .ray-c {{ top: 760px; transform: rotate(-10deg); }}
+      #{root_id} .mode-closing-tableau {{
+        box-shadow: inset 0 0 0 18px {tokens['accent2']};
+      }}
+      #{root_id}[data-visual-grammar="science"] .panel-inset {{
+        clip-path: polygon(8% 0, 100% 0, 100% 86%, 92% 100%, 0 100%, 0 14%);
+        border-color: {tokens['accent']};
+        box-shadow: 16px 0 0 {tokens['accent2']};
+        background-color: {tokens['shadow']};
+      }}
+      #{root_id}[data-visual-grammar="science"] .comic-treatment::after {{
+        content: "";
+        position: absolute;
+        inset: 34px;
+        border: 3px solid {tokens['accent']};
+        opacity: .55;
+      }}
+      #{root_id}[data-visual-grammar="history"] .panel-inset {{
+        right: auto;
+        left: 96px;
+        top: 118px;
+        width: 620px;
+        height: 700px;
+        border-width: 8px 20px;
+        box-shadow: 18px 0 0 {tokens['accent']};
+        background: {tokens['canvas']};
+      }}
+      #{root_id}[data-visual-grammar="history"] .impact-ray {{
+        height: 5px;
+        background: {tokens['accent']};
+      }}
+      #{root_id}[data-visual-grammar="fantasy"] .panel-inset {{
+        right: 120px;
+        top: 105px;
+        width: 700px;
+        height: 700px;
+        border-radius: 48% 52% 44% 56%;
+        border-color: {tokens['accent2']};
+        box-shadow: 0 0 48px {tokens['accent2']};
+        background: {tokens['shadow']};
+      }}
+      #{root_id}[data-visual-grammar="fantasy"] .impact-ray {{
+        height: 8px;
+        border-radius: 50%;
+        filter: blur(2px);
+      }}
+      #{root_id}[data-visual-grammar="field-trip"] .panel-inset {{
+        transform: rotate(1.2deg);
+        border-style: solid;
+        box-shadow: 14px 14px 0 {tokens['accent2']};
+      }}
+      #{root_id} [data-shot-signature="binocular-reaction"] .panel-inset {{
+        width: 660px;
+        height: 660px;
+        border-radius: 50%;
+        clip-path: ellipse(48% 44% at 50% 50%);
+      }}
+      #{root_id} [data-shot-signature="orbit-sequence"]::before {{
+        content: "";
+        position: absolute;
+        inset: 160px 240px;
+        border: 12px double {tokens['accent']};
+        transform: rotate(-7deg);
+      }}
+      #{root_id} [data-shot-signature="two-hand-handoff"] .panel-inset {{
+        left: 320px;
+        right: 320px;
+        top: 270px;
+        width: auto;
+        height: 350px;
+        border-width: 10px 28px;
+      }}
+      #{root_id} [data-shot-signature="two-hand-handoff"] .panel-portrait {{
+        background-position: 50% 48%;
+        background-size: 88% auto;
+      }}
+      #{root_id} [data-shot-signature="seed-bloom"] .panel-inset {{
+        left: 610px;
+        right: auto;
+        top: 120px;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+      }}
+      #{root_id} [data-shot-signature="photo-freeze"] {{
+        box-shadow: inset 0 0 0 26px {tokens['canvas']}, inset 0 0 0 34px {tokens['ink']};
+      }}
+      #{root_id} .ending-signature {{
+        position: absolute;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+      }}
+      #{root_id} .photo-shutter i {{
+        position: absolute;
+        width: 150px;
+        height: 110px;
+        border: 12px solid {tokens['ink']};
+      }}
+      #{root_id} .photo-shutter i:nth-child(1) {{ left:55px;top:55px;border-right:0;border-bottom:0; }}
+      #{root_id} .photo-shutter i:nth-child(2) {{ right:55px;top:55px;border-left:0;border-bottom:0; }}
+      #{root_id} .photo-shutter i:nth-child(3) {{ left:55px;bottom:55px;border-right:0;border-top:0; }}
+      #{root_id} .photo-shutter i:nth-child(4) {{ right:55px;bottom:55px;border-left:0;border-top:0; }}
+      #{root_id} .orbit-finale {{
+        left: 610px;
+        top: 190px;
+        width: 700px;
+        height: 700px;
+        border: 8px solid {tokens['accent']};
+        border-radius: 50%;
+      }}
+      #{root_id} .orbit-dot {{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: {tokens['accent2']};
+        transform-origin: 0 0;
+      }}
+      #{root_id} .od-1 {{ transform:rotate(45deg) translateX(315px); }}
+      #{root_id} .od-2 {{ transform:rotate(90deg) translateX(315px); }}
+      #{root_id} .od-3 {{ transform:rotate(135deg) translateX(315px); }}
+      #{root_id} .od-4 {{ transform:rotate(180deg) translateX(315px); }}
+      #{root_id} .od-5 {{ transform:rotate(225deg) translateX(315px); }}
+      #{root_id} .od-6 {{ transform:rotate(270deg) translateX(315px); }}
+      #{root_id} .od-7 {{ transform:rotate(315deg) translateX(315px); }}
+      #{root_id} .letter-finale .seal-ring {{
+        position:absolute;left:160px;bottom:175px;width:170px;height:170px;
+        border:18px double {tokens['accent']};border-radius:50%;
+      }}
+      #{root_id} .letter-finale .horizon-rule {{
+        position:absolute;left:300px;right:90px;top:47%;height:6px;
+        background:{tokens['accent']};
+      }}
+      #{root_id} .bloom-finale {{
+        left:760px;top:390px;width:400px;height:400px;
+      }}
+      #{root_id} .bloom-ray {{
+        position:absolute;left:50%;top:50%;width:360px;height:18px;
+        border-radius:50%;background:{tokens['accent2']};
+        transform-origin:0 50%;filter:blur(3px);
+      }}
+      #{root_id} .br-1 {{ transform:rotate(45deg); }}
+      #{root_id} .br-2 {{ transform:rotate(90deg); }}
+      #{root_id} .br-3 {{ transform:rotate(135deg); }}
+      #{root_id} .br-4 {{ transform:rotate(180deg); }}
+      #{root_id} .br-5 {{ transform:rotate(225deg); }}
+      #{root_id} .br-6 {{ transform:rotate(270deg); }}
+      #{root_id} .br-7 {{ transform:rotate(315deg); }}
     </style>"""
 
 
@@ -182,7 +720,21 @@ def accents(scene: dict) -> str:
                 f'<div class="pixel-accent particle p-{index}" '
                 f'style="left:{left}px;top:{top}px;width:{size}px;height:{size}px"></div>'
             )
-        return '<div class="glow"></div>' + "".join(pixels)
+        ending_markup = {
+            "camera-photo-freeze": '<div class="ending-signature photo-shutter"><i></i><i></i><i></i><i></i></div>',
+            "eight-planet-chain-light": (
+                '<div class="ending-signature orbit-finale">'
+                + "".join(f'<i class="orbit-dot od-{i}"></i>' for i in range(8))
+                + '</div>'
+            ),
+            "letter-to-horizon": '<div class="ending-signature letter-finale"><i class="seal-ring"></i><i class="horizon-rule"></i></div>',
+            "vertical-star-bloom": (
+                '<div class="ending-signature bloom-finale">'
+                + "".join(f'<i class="bloom-ray br-{i}"></i>' for i in range(8))
+                + '</div>'
+            ),
+        }.get(scene.get("endingMode"), "")
+        return '<div class="glow"></div>' + "".join(pixels) + ending_markup
     return """
       <div class="pixel-accent breeze b-1" style="left:280px;top:260px;width:18px;height:18px"></div>
       <div class="pixel-accent breeze b-2" style="left:1470px;top:390px;width:14px;height:14px"></div>
@@ -239,6 +791,29 @@ def end_timeline(scene: dict) -> str:
     action_end = duration * 0.72
     exit_at = duration * 0.90
     particle_duration = max(0.9, action_end - entrance)
+    ending_motion = {
+        "camera-photo-freeze": (
+            f'tl.fromTo(qAll(".photo-shutter i"), {{opacity:0,scale:1.3}}, '
+            f'{{opacity:1,scale:1,duration:0.18,stagger:0.03,ease:"power4.out"}}, '
+            f'{number(action_end)});'
+        ),
+        "eight-planet-chain-light": (
+            f'tl.fromTo(qAll(".orbit-dot"), {{opacity:0,scale:0.2}}, '
+            f'{{opacity:1,scale:1,duration:0.24,stagger:0.1,ease:"back.out(1.8)"}}, '
+            f'{number(entrance)});'
+        ),
+        "letter-to-horizon": (
+            f'tl.fromTo(q(".horizon-rule"), {{opacity:0,scaleX:0}}, '
+            f'{{opacity:1,scaleX:1,duration:1.1,ease:"power2.out"}}, {number(action_end - 0.7)});'
+            f'tl.fromTo(q(".seal-ring"), {{opacity:0,scale:1.5,rotation:-16}}, '
+            f'{{opacity:0.8,scale:1,rotation:0,duration:0.4,ease:"power4.out"}}, {number(action_end)});'
+        ),
+        "vertical-star-bloom": (
+            f'tl.fromTo(qAll(".bloom-ray"), {{opacity:0,scaleX:0}}, '
+            f'{{opacity:0.72,scaleX:1,duration:0.9,stagger:0.05,ease:"sine.out"}}, '
+            f'{number(action_end - 0.5)});'
+        ),
+    }.get(scene.get("endingMode"), "")
     return f"""
       tl.fromTo(q(".backdrop img"), {{scale: 1}}, {{scale: 1.045, duration: {number(action_end)}, ease: "none"}}, 0);
       tl.fromTo(q(".architecture img"), {{opacity: 0, scale: 0.9}}, {{opacity: 1, scale: 1, duration: {number(entrance)}, ease: "back.out(1.25)"}}, 0);
@@ -250,6 +825,7 @@ def end_timeline(scene: dict) -> str:
       tl.fromTo(qAll(".particle"), {{opacity: 0, x: 0, y: 30, scale: 0.4}}, {{opacity: 0.9, x: 0, y: -42, scale: 1.15, duration: {number(particle_duration)}, stagger: 0.06, ease: "power2.out"}}, {number(entrance * 0.7)});
       tl.to(q(".primary img"), {{y: -8, duration: {number((action_end - entrance) * 0.5)}, ease: "sine.inOut"}}, {number(entrance)});
       tl.to(q(".primary img"), {{y: 0, duration: {number((action_end - entrance) * 0.5)}, ease: "sine.inOut"}}, {number((entrance + action_end) * 0.5)});
+      {ending_motion}
       tl.to(root, {{opacity: 0.99, duration: {number(duration - exit_at)}, ease: "power1.in"}}, {number(exit_at)});"""
 
 
@@ -262,24 +838,25 @@ def scene_html(scene: dict, tokens: dict) -> str:
     layers = [
         f"""
       <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
-        <img src="{html.escape(asset_src(scene['assets']['backdrop']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['backdrop']))}" alt="" />
       </div>""",
         f"""
       <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
-        <img src="{html.escape(asset_src(scene['assets']['rear']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['rear']))}" alt="" />
       </div>""",
         f"""
       <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
-        <img src="{html.escape(asset_src(scene['assets']['architecture']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['architecture']))}" alt="" />
       </div>""",
         subject_markup(scene, "tertiary", 3),
         subject_markup(scene, "secondary", 4),
         subject_markup(scene, "primary", 5),
         f"""
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
-        <img src="{html.escape(asset_src(scene['assets']['foreground']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['foreground']))}" alt="" />
       </div>""",
     ]
+    editorial_timeline = shot_timeline(scene)
     return f"""<template id="{scene['id']}-template">
   <div
     id="scene-{scene['id']}"
@@ -287,10 +864,17 @@ def scene_html(scene: dict, tokens: dict) -> str:
     data-width="1920"
     data-height="1080"
     data-duration="{number(scene['durationSeconds'])}"
+    data-visual-grammar="{html.escape(scene.get('_styleKey', 'field-trip'))}"
+    data-ending-mode="{html.escape(scene.get('endingMode') or 'none')}"
+    data-layout-allow-overflow
   >
-    {''.join(layers)}
-    {accents(scene)}
-    {common_scene_css(scene, tokens)}
+    <div class="camera-rig" data-layout-allow-overflow>
+      {''.join(layers)}
+      {accents(scene)}
+    </div>
+    <div class="internal-cut"></div>
+    {comic_treatments(scene)}
+      {common_scene_css(scene, tokens)}
     <script>
       (function () {{
         const root = document.querySelector("#scene-{scene['id']}");
@@ -298,6 +882,7 @@ def scene_html(scene: dict, tokens: dict) -> str:
         const qAll = (selector) => root.querySelectorAll(selector);
         const tl = gsap.timeline({{ paused: true }});
         {timeline}
+        {editorial_timeline}
         window.__timelines = window.__timelines || {{}};
         window.__timelines["{scene['id']}"] = tl;
       }})();
@@ -329,9 +914,9 @@ def transition_markup(manifest: dict) -> tuple[str, str]:
             children = "<span></span><span></span><span></span>"
         markup.append(
             f"""
-      <div id="{transition_id}" class="clip transition"
+      <div id="{transition_id}" class="clip transition" data-layout-allow-overflow
            data-start="{number(start)}" data-duration="{number(duration)}" data-track-index="800">
-        <div id="{transition_id}-fx" class="transition-fx transition-{kind}">
+        <div id="{transition_id}-fx" class="transition-fx transition-{kind}" data-layout-allow-overflow>
           {children}
         </div>
       </div>"""
@@ -374,14 +959,29 @@ def transition_markup(manifest: dict) -> tuple[str, str]:
 
 def caption_markup(manifest: dict) -> str:
     rows = []
-    for index, scene in enumerate(manifest["scenes"]):
-        start = scene["captionFrom"]
-        duration = scene["captionTo"] - start
+    cues = manifest.get("captions")
+    if not cues:
+        cues = [
+            {
+                "startSeconds": scene["captionFrom"],
+                "endSeconds": scene["captionTo"],
+                "text": scene["narration"],
+                "speaker": "旁白",
+                "role": "narrator",
+            }
+            for scene in manifest["scenes"]
+        ]
+    for index, cue in enumerate(cues):
+        start = cue["startSeconds"]
+        duration = cue["endSeconds"] - start
+        speaker = cue.get("speaker", "旁白")
+        role = cue.get("role", "narrator")
+        kind = cue.get("kind", "narration")
         rows.append(
             f"""
-      <div id="caption-{index + 1}" class="clip caption"
+      <div id="caption-{index + 1}" class="clip caption caption-{html.escape(role)} caption-{html.escape(kind)}"
            data-start="{number(start)}" data-duration="{number(duration)}" data-track-index="900">
-        <p>{html.escape(scene['narration'])}</p>
+        <span>{html.escape(speaker)}</span><p>{html.escape(cue['text'])}</p>
       </div>"""
         )
     return "".join(rows)
@@ -390,6 +990,14 @@ def caption_markup(manifest: dict) -> str:
 def audio_markup(manifest: dict) -> str:
     total = manifest["metadata"]["durationSeconds"]
     audio = manifest["audio"]
+    if manifest.get("audioClips"):
+        return "".join(
+            f"""
+      <audio id="{html.escape(clip['id'])}" class="clip" src="{html.escape(clip['src'])}"
+             data-start="{number(clip['startSeconds'])}" data-duration="{number(clip['durationSeconds'])}"
+             data-track-index="{clip.get('trackIndex', 950)}" data-volume="{number(clip.get('volume', 1))}"></audio>"""
+            for clip in manifest["audioClips"]
+        )
     rows = [
         f"""
       <audio id="narration" class="clip" src="{html.escape(audio['narrationPath'])}"
@@ -440,6 +1048,12 @@ def index_html(manifest: dict) -> str:
         font-style: normal;
         font-weight: 400 900;
       }}
+      @font-face {{
+        font-family: "Songti SC";
+        src: local("Songti SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }}
       html, body {{
         margin: 0;
         width: 1920px;
@@ -468,17 +1082,49 @@ def index_html(manifest: dict) -> str:
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: {tokens['ink']};
         background: {tokens['canvas']};
-        border: 5px solid {tokens['accent']};
-        box-shadow: 12px 12px 0 {tokens['shadow']};
+        border: 5px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['shadow']};
+      }}
+      .caption-dialogue, .caption-thought {{
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: {tokens['ink']};
+        color: {tokens['canvas']};
+        transform: rotate(-0.4deg);
+      }}
+      .caption-dialogue::after {{
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: {tokens['ink']};
+        border-left-width: 42px;
+      }}
+      .caption-thought {{
+        border: 6px dashed {tokens['accent2']};
+      }}
+      .caption-narration {{
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid {tokens['accent']};
       }}
       .caption p {{
         margin: 0;
@@ -488,6 +1134,41 @@ def index_html(manifest: dict) -> str:
         font-weight: 700;
         text-align: center;
         letter-spacing: 0;
+      }}
+      .caption span {{
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: {tokens['canvas']};
+        background: {tokens['accent']};
+      }}
+      body.style-science .caption {{
+        right: 110px;
+        left: auto;
+        border-color: {tokens['accent']};
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 {tokens['accent2']};
+      }}
+      body.style-history .caption {{
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "{manifest['style']['fontDisplay']}", serif;
+      }}
+      body.style-fantasy .caption {{
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: {tokens['accent2']};
+        box-shadow: 0 0 34px {tokens['accent2']};
+      }}
+      body.style-field-trip .caption {{
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 {tokens['accent2']};
       }}
       .transition {{
         position: absolute;
@@ -538,7 +1219,7 @@ def index_html(manifest: dict) -> str:
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) {{ right: 0; }}
     </style>
   </head>
-  <body>
+  <body class="style-{html.escape(manifest['style']['key'])}">
     <div id="main" data-composition-id="main" data-start="0"
          data-duration="{number(total)}" data-width="1920" data-height="1080" data-fps="30">
       {''.join(scene_hosts)}
@@ -569,8 +1250,49 @@ def motion_payload(scene: dict) -> dict:
         "secondary": {"x": 95, "y": 300, "width": 450, "height": 590},
         "tertiary": {"x": 1485, "y": 385, "width": 330, "height": 485},
     }
+    shots = scene_shots(scene)
+    shot_rows = []
+    cuts = []
+    for index, shot in enumerate(shots):
+        camera = shot_camera(shot, index, scene.get("_styleKey", "field-trip"))
+        blocking = shot_blocking(shot, index)
+        travel = blocking["travel"]
+        blocking_bounds = {}
+        blocking_end_bounds = {}
+        for role, base in bounds.items():
+            state = blocking["subjects"][role]
+            start_bounds = transformed_bounds(base, state)
+            end_state = dict(state)
+            if travel["role"] in {role, "ensemble"}:
+                end_state["x"] += travel["x"]
+                end_state["y"] += travel["y"]
+            blocking_bounds[role] = start_bounds
+            blocking_end_bounds[role] = transformed_bounds(base, end_state)
+        shot_rows.append(
+            {
+                "id": shot["id"],
+                "index": index + 1,
+                "framing": shot.get("framing", "medium"),
+                "focusRole": shot.get("focusRole", "primary"),
+                "from": round(shot["startSeconds"], 6),
+                "to": round(shot["startSeconds"] + shot["durationSeconds"], 6),
+                "camera": camera,
+                "blocking": blocking,
+                "blockingBounds": blocking_bounds,
+                "blockingEndBounds": blocking_end_bounds,
+            }
+        )
+        if index:
+            cuts.append(
+                {
+                    "fromShot": shots[index - 1]["id"],
+                    "toShot": shot["id"],
+                    "at": round(shot["startSeconds"], 6),
+                    "anticipationAt": round(max(0, shot["startSeconds"] - 0.18), 6),
+                }
+            )
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 3,
         "compositionId": scene["id"],
         "durationSeconds": duration,
         "layerOrder": LAYER_ORDER,
@@ -583,6 +1305,12 @@ def motion_payload(scene: dict) -> dict:
         "subjects": [
             {"id": role, "role": role, "entranceStart": starts[role], "bounds": bounds[role]}
             for role in ("primary", "secondary", "tertiary")
+        ],
+        "shots": shot_rows,
+        "cuts": cuts,
+        "captionSegments": [
+            cue
+            for cue in scene.get("captions", [])
         ],
         "motionRules": scene["motionRules"],
         "transitionIn": scene["transitionIn"],
@@ -601,6 +1329,9 @@ def motion_payload(scene: dict) -> dict:
             "subjectsStayInFrame": True,
             "plannedHoldWindow": True,
             "noUnboundedAnimation": True,
+            "threeEditorialShots": len(shot_rows) == 3,
+            "framingVariety": len({shot["framing"] for shot in shot_rows}) >= 3,
+            "shotBlockingVariety": blocking_varies(shot_rows),
         },
     }
 
@@ -653,8 +1384,12 @@ def compose(production: Path, adopt: bool = True) -> None:
     compositions.mkdir(parents=True, exist_ok=True)
     evidence = ["index.html", "vendor/gsap.min.js"]
     for scene in manifest["scenes"]:
+        scene["_styleKey"] = manifest["style"]["key"]
         html_path = compositions / f"{scene['id']}.html"
-        html_path.write_text(scene_html(scene, manifest["style"]["tokens"]), encoding="utf-8")
+        html_path.write_text(
+            clean_generated_html(scene_html(scene, manifest["style"]["tokens"])),
+            encoding="utf-8",
+        )
         motion_path = compositions / f"{scene['id']}.motion.json"
         motion_path.write_text(
             json.dumps(motion_payload(scene), ensure_ascii=False, indent=2) + "\n",
@@ -666,7 +1401,10 @@ def compose(production: Path, adopt: bool = True) -> None:
                 motion_path.relative_to(production).as_posix(),
             ]
         )
-    (production / "index.html").write_text(index_html(manifest), encoding="utf-8")
+    (production / "index.html").write_text(
+        clean_generated_html(index_html(manifest)),
+        encoding="utf-8",
+    )
     update_storyboard(production)
     if adopt:
         adopt_media(production)

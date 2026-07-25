@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "metadata": {
     "id": "star-seed-forest",
     "title": "星种森林",
@@ -12,10 +12,18 @@
     "directorIntent": "像一场安静又勇敢的森林守护行动。",
     "width": 1920,
     "height": 1080,
-    "fps": 30
+    "fps": 30,
+    "format": "professional-manga-v1"
   },
   "style": {
     "key": "fantasy",
+    "visualGrammar": {
+      "id": "enchanted-storybook",
+      "direction": "魔法绘本：有机叶形窗口、中心光晕、漂浮粒子和柔性穿越。",
+      "panel": "椭圆叶形光窗，边缘发光，焦点围绕中心生长。",
+      "caption": "轻盈的低位咒语条与思绪框。",
+      "camera": "纵向漂移与呼吸式推拉，减少硬横移。"
+    },
     "visual": [
       "梦幻童话",
       "温馨治愈",
@@ -45,7 +53,56 @@
     "provider": "edge",
     "voice": "zh-CN-XiaoxiaoNeural",
     "rate": "-4%",
-    "pitch": "+0Hz"
+    "pitch": "+0Hz",
+    "voiceCast": {
+      "narrator": "zh-CN-XiaoxiaoNeural",
+      "primary": "zh-CN-XiaoyiNeural",
+      "secondary": "zh-CN-XiaoxiaoNeural",
+      "tertiary": "zh-CN-YunxiaNeural",
+      "ensemble": "zh-CN-XiaoxiaoNeural"
+    }
+  },
+  "manga": {
+    "pacing": "gentle",
+    "dialogueRatio": 0.67,
+    "audienceGrade": "primary-and-middle-school",
+    "mustShow": [
+      "微弱发亮的星种",
+      "风雨中的护送行动",
+      "古树顶端绽放的星花"
+    ],
+    "avoid": [
+      "让星种在抵达古树前盛开",
+      "把风雨表现成伤害角色的灾难",
+      "改变叶芽、小鹿和猫头鹰的外观"
+    ],
+    "factualNotes": [
+      "星种、星花和发光森林属于任务卡的童话设定"
+    ],
+    "shotCount": 9,
+    "shotsPerScene": 3,
+    "directorProfile": {
+      "id": "star-seed-pilgrimage",
+      "story_engine": "围绕一颗脆弱星种持续前行，空间从低矮黑林抬升到古树冠顶，最后由一点光扩散全森林。",
+      "shot_signatures": {
+        "start": [
+          "dark-forest-wide",
+          "seed-offering",
+          "seed-glow-close"
+        ],
+        "middle": [
+          "storm-low-angle",
+          "guardian-run",
+          "fallen-log-leap"
+        ],
+        "end": [
+          "tree-crown-climb",
+          "seed-bloom",
+          "animal-ring-celebration"
+        ]
+      },
+      "ending_mode": "vertical-star-bloom"
+    }
   },
   "scenes": [
     {
@@ -54,6 +111,199 @@
       "beat": "start",
       "title": "微弱星种",
       "narration": "守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "失去星光的森林里，小鹿带来一颗星种。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "别怕，我会保护这颗星种。"
+        },
+        {
+          "speaker": "小鹿",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "最高的古树还在等它。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01-start-shot-1",
+          "index": 1,
+          "purpose": "establish",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "full-bleed",
+          "signature": "dark-forest-wide",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "交代空间、人物关系和故事目标",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -150,
+                "y": 20,
+                "scale": 0.84,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -30,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 65,
+                "y": 6,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -18,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 12,
+                "scale": 0.96
+              },
+              "foreground": {
+                "x": 24,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 18,
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-2",
+          "index": 2,
+          "purpose": "discovery",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "speaker-stage",
+          "signature": "seed-offering",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让主角发现异常并推动事件发生",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 45,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 105,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -85,
+                "y": 14,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 12,
+                "y": -8,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": -42,
+                "y": 0,
+                "scale": 1.04
+              },
+              "foreground": {
+                "x": -34,
+                "y": 0,
+                "scale": 1.035
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-3",
+          "index": 3,
+          "purpose": "reaction",
+          "framing": "close",
+          "focusRole": "secondary",
+          "layoutMode": "reaction-panel",
+          "signature": "seed-glow-close",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "用反应特写建立情绪钩子",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 125,
+                "y": -28,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 95,
+                "y": 28,
+                "scale": 0.76,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -12,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -78,
+                "y": 8,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "cut",
       "motionRules": [
         "multi-phase-camera",
@@ -62,6 +312,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "微弱星种",
         "primary": "穿绿色斗篷、戴叶片帽的少年守林人叶芽，双手接住微弱发光的星种",
@@ -83,7 +338,8 @@
         "primary": "assets/processed/01-start/primary.png",
         "secondary": "assets/processed/01-start/secondary.png",
         "tertiary": "assets/processed/01-start/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -91,6 +347,199 @@
       "beat": "middle",
       "title": "风雨护送",
       "narration": "叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "叶芽和小鹿顶着风雨穿过森林。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "风雨再大，也不能让星种熄灭。"
+        },
+        {
+          "speaker": "小鹿",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "跟紧我，我们越过前面的断木！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "02-middle-shot-1",
+          "index": 1,
+          "purpose": "pressure",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "pressure-wide",
+          "signature": "storm-low-angle",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "展示困难规模和空间压力",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -135,
+                "y": 22,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -65,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 72,
+                "y": 8,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 22,
+                "y": 0,
+                "scale": 1.01
+              },
+              "architecture": {
+                "x": 34,
+                "y": 8,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": -28,
+                "y": 8,
+                "scale": 1.03
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": -20,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-2",
+          "index": 2,
+          "purpose": "action",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "action-diagonal",
+          "signature": "guardian-run",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "用连续动作呈现解决过程",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 80,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 165,
+                "y": -4,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -155,
+                "y": 2,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -10,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -55,
+                "y": -4,
+                "scale": 1.055
+              },
+              "foreground": {
+                "x": 38,
+                "y": 0,
+                "scale": 1.045
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-3",
+          "index": 3,
+          "purpose": "decision",
+          "framing": "close",
+          "focusRole": "secondary",
+          "layoutMode": "decision-inset",
+          "signature": "fallen-log-leap",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "锁定关键判断、道具或情绪转折",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -72,
+                "y": -30,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 82,
+                "y": 24,
+                "scale": 0.74,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 18,
+                "y": -14,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": 72,
+                "y": 4,
+                "scale": 1.075
+              },
+              "foreground": {
+                "x": -46,
+                "y": 14,
+                "scale": 1.065
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "blur-through",
       "motionRules": [
         "coordinate-target-zoom",
@@ -99,6 +548,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "风雨护送",
         "primary": "叶芽弯腰护住怀里的星种，在强风中向前攀爬",
@@ -120,7 +574,8 @@
         "primary": "assets/processed/02-middle/primary.png",
         "secondary": "assets/processed/02-middle/secondary.png",
         "tertiary": "assets/processed/02-middle/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -128,6 +583,199 @@
       "beat": "end",
       "title": "星花盛开",
       "narration": "星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "星种在古树顶端开成漫天星花。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "我们做到了，森林重新亮起来了！"
+        },
+        {
+          "speaker": "猫头鹰",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "星花开满天空啦！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "03-end-shot-1",
+          "index": 1,
+          "purpose": "climax",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "impact-frame",
+          "signature": "tree-crown-climb",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "完成决定性动作并释放高潮",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -105,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -90,
+                "y": 0,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 100,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 20,
+                "y": -6,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": 48,
+                "y": -4,
+                "scale": 1.05
+              },
+              "foreground": {
+                "x": -36,
+                "y": 2,
+                "scale": 1.04
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-2",
+          "index": 2,
+          "purpose": "payoff",
+          "framing": "close",
+          "focusRole": "primary",
+          "layoutMode": "reaction-panel",
+          "signature": "seed-bloom",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让观众看清结果和人物反应",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 95,
+                "y": -34,
+                "scale": 1.14,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 105,
+                "y": 25,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -92,
+                "y": 22,
+                "scale": 0.76,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -28,
+                "y": -12,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": -68,
+                "y": 4,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-3",
+          "index": 3,
+          "purpose": "resolution",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "closing-tableau",
+          "signature": "animal-ring-celebration",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "回到环境，给故事留下完整余韵",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 0,
+                "y": 14,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -18,
+                "y": 12,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 18,
+                "y": 10,
+                "scale": 0.86,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 0,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 6,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": 0,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 0,
+              "y": -6
+            }
+          }
+        }
+      ],
       "transitionIn": "light-leak",
       "motionRules": [
         "center-outward-expansion",
@@ -136,6 +784,11 @@
       ],
       "direction": "left",
       "sourceDirection": "left",
+      "sourceDirections": {
+        "primary": "left",
+        "secondary": "left",
+        "tertiary": "left"
+      },
       "shot": {
         "title": "星花盛开",
         "primary": "叶芽在古树顶端举起绽放的星种，脸上露出安心笑容",
@@ -158,11 +811,7 @@
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
       },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "left",
-        "tertiary": "left"
-      }
+      "endingMode": "vertical-star-bloom"
     }
   ]
 }

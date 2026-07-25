@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "metadata": {
     "id": "navigator-time-letter",
     "title": "大航海家的时光信",
@@ -12,10 +12,18 @@
     "directorIntent": "像一封跨越六百年的勇气来信。",
     "width": 1920,
     "height": 1080,
-    "fps": 30
+    "fps": 30,
+    "format": "professional-manga-v1"
   },
   "style": {
     "key": "history",
+    "visualGrammar": {
+      "id": "scroll-chronicle",
+      "direction": "历史长卷：横向展开、朱砂印记、竖向分栏和克制的平移。",
+      "panel": "窄长卷轴窗，焦点框偏左，保留大面积叙事环境。",
+      "caption": "史料题签式横条，衬线感更强。",
+      "camera": "缓慢横向移轴，近景不过度放大。"
+    },
     "visual": [
       "中国风",
       "冒险电影",
@@ -46,7 +54,64 @@
     "provider": "edge",
     "voice": "zh-CN-XiaoxiaoNeural",
     "rate": "-4%",
-    "pitch": "+0Hz"
+    "pitch": "+0Hz",
+    "voiceCast": {
+      "narrator": "zh-CN-XiaoxiaoNeural",
+      "primary": "zh-CN-YunxiNeural",
+      "secondary": "zh-CN-YunyangNeural",
+      "tertiary": "zh-CN-YunjianNeural",
+      "ensemble": "zh-CN-XiaoxiaoNeural"
+    }
+  },
+  "manga": {
+    "pacing": "cinematic",
+    "dialogueRatio": 0.67,
+    "audienceGrade": "primary-and-middle-school",
+    "mustShow": [
+      "发光航海图与墨色时光门",
+      "星位、季风和航向线索",
+      "封有红色印章的时光信"
+    ],
+    "avoid": [
+      "添加未经任务卡支持的历史事件",
+      "使用现代港口物件",
+      "改变郑和与子墨的时代服装"
+    ],
+    "factualNotes": [
+      "故事发生在明代古港",
+      "历史信息只采用任务卡已经给出的内容"
+    ],
+    "shotCount": 9,
+    "shotsPerScene": 3,
+    "directorProfile": {
+      "id": "time-letter-chronicle",
+      "story_engine": "古今相遇以反打建立信任，航图横移推进协作，书信交接把私人情感引向远航。",
+      "shot_signatures": {
+        "start": [
+          "ink-portal",
+          "era-reverse-shot",
+          "zhenghe-reaction"
+        ],
+        "middle": [
+          "wind-scattered-chart",
+          "star-route-table",
+          "course-restored"
+        ],
+        "end": [
+          "letter-approach",
+          "two-hand-handoff",
+          "ship-horizon"
+        ]
+      },
+      "scene_role_maps": {
+        "end": {
+          "primary": "secondary",
+          "secondary": "primary",
+          "tertiary": "tertiary"
+        }
+      },
+      "ending_mode": "letter-to-horizon"
+    }
   },
   "scenes": [
     {
@@ -55,6 +120,199 @@
       "beat": "start",
       "title": "航海图开门",
       "narration": "子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "子墨穿过发光墨迹，来到明代古港。"
+        },
+        {
+          "speaker": "子墨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "这里真是六百年前的港口？"
+        },
+        {
+          "speaker": "郑和",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "少年，你从何处而来？"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01-start-shot-1",
+          "index": 1,
+          "purpose": "establish",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "full-bleed",
+          "signature": "ink-portal",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "交代空间、人物关系和故事目标",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -150,
+                "y": 20,
+                "scale": 0.84,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -30,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 65,
+                "y": 6,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -18,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 12,
+                "scale": 0.96
+              },
+              "foreground": {
+                "x": 24,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 18,
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-2",
+          "index": 2,
+          "purpose": "discovery",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "speaker-stage",
+          "signature": "era-reverse-shot",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让主角发现异常并推动事件发生",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 45,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 105,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -85,
+                "y": 14,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 12,
+                "y": -8,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": -42,
+                "y": 0,
+                "scale": 1.04
+              },
+              "foreground": {
+                "x": -34,
+                "y": 0,
+                "scale": 1.035
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-3",
+          "index": 3,
+          "purpose": "reaction",
+          "framing": "close",
+          "focusRole": "secondary",
+          "layoutMode": "reaction-panel",
+          "signature": "zhenghe-reaction",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "用反应特写建立情绪钩子",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 125,
+                "y": -28,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 95,
+                "y": 28,
+                "scale": 0.76,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -12,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -78,
+                "y": 8,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "cut",
       "motionRules": [
         "multi-phase-camera",
@@ -63,6 +321,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "航海图开门",
         "primary": "穿现代深蓝校服的中国少年子墨，被发光航海图吸入墨色时光门",
@@ -85,11 +348,7 @@
         "secondary": "assets/processed/01-start/secondary.png",
         "tertiary": "assets/processed/01-start/tertiary.png"
       },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "left",
-        "tertiary": "left"
-      }
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -97,6 +356,199 @@
       "beat": "middle",
       "title": "重建航线",
       "narration": "海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "海风吹散了航海图上的路线标记。"
+        },
+        {
+          "speaker": "子墨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "可以用星位和季风重新确认方向。"
+        },
+        {
+          "speaker": "郑和",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "好，我们一起把航线找回来。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "02-middle-shot-1",
+          "index": 1,
+          "purpose": "pressure",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "pressure-wide",
+          "signature": "wind-scattered-chart",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "展示困难规模和空间压力",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -135,
+                "y": 22,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -65,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 72,
+                "y": 8,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 22,
+                "y": 0,
+                "scale": 1.01
+              },
+              "architecture": {
+                "x": 34,
+                "y": 8,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": -28,
+                "y": 8,
+                "scale": 1.03
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": -20,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-2",
+          "index": 2,
+          "purpose": "action",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "action-diagonal",
+          "signature": "star-route-table",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "用连续动作呈现解决过程",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 80,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 165,
+                "y": -4,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -155,
+                "y": 2,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -10,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -55,
+                "y": -4,
+                "scale": 1.055
+              },
+              "foreground": {
+                "x": 38,
+                "y": 0,
+                "scale": 1.045
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-3",
+          "index": 3,
+          "purpose": "decision",
+          "framing": "close",
+          "focusRole": "secondary",
+          "layoutMode": "decision-inset",
+          "signature": "course-restored",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "锁定关键判断、道具或情绪转折",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -72,
+                "y": -30,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 82,
+                "y": 24,
+                "scale": 0.74,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 18,
+                "y": -14,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": 72,
+                "y": 4,
+                "scale": 1.075
+              },
+              "foreground": {
+                "x": -46,
+                "y": 14,
+                "scale": 1.065
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "whip-pan",
       "motionRules": [
         "coordinate-target-zoom",
@@ -105,6 +557,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "重建航线",
         "primary": "子墨跪在木桌前用手指连接星位与季风方向",
@@ -126,7 +583,8 @@
         "primary": "assets/processed/02-middle/primary.png",
         "secondary": "assets/processed/02-middle/secondary.png",
         "tertiary": "assets/processed/02-middle/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -134,6 +592,199 @@
       "beat": "end",
       "title": "写给未来",
       "narration": "郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "郑和把写给未来少年的信交给子墨。"
+        },
+        {
+          "speaker": "郑和",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "愿你永远保有探索世界的勇气。"
+        },
+        {
+          "speaker": "子墨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "我会把这封信带回未来。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "03-end-shot-1",
+          "index": 1,
+          "purpose": "climax",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "impact-frame",
+          "signature": "letter-approach",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "完成决定性动作并释放高潮",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -105,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -90,
+                "y": 0,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 100,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 20,
+                "y": -6,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": 48,
+                "y": -4,
+                "scale": 1.05
+              },
+              "foreground": {
+                "x": -36,
+                "y": 2,
+                "scale": 1.04
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-2",
+          "index": 2,
+          "purpose": "payoff",
+          "framing": "close",
+          "focusRole": "primary",
+          "layoutMode": "reaction-panel",
+          "signature": "two-hand-handoff",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让观众看清结果和人物反应",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 95,
+                "y": -34,
+                "scale": 1.14,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 105,
+                "y": 25,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -92,
+                "y": 22,
+                "scale": 0.76,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -28,
+                "y": -12,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": -68,
+                "y": 4,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-3",
+          "index": 3,
+          "purpose": "resolution",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "closing-tableau",
+          "signature": "ship-horizon",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "回到环境，给故事留下完整余韵",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 0,
+                "y": 14,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -18,
+                "y": 12,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 18,
+                "y": 10,
+                "scale": 0.86,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 0,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 6,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": 0,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 0,
+              "y": -6
+            }
+          }
+        }
+      ],
       "transitionIn": "horizontal-blinds",
       "motionRules": [
         "center-outward-expansion",
@@ -142,6 +793,11 @@
       ],
       "direction": "left",
       "sourceDirection": "left",
+      "sourceDirections": {
+        "primary": "left",
+        "secondary": "left",
+        "tertiary": "left"
+      },
       "shot": {
         "title": "写给未来",
         "primary": "郑和郑重把封有红色印章的书信递向子墨",
@@ -155,7 +811,7 @@
       "assets": {
         "backdropSource": "assets/source/03-end-backdrop-v1.png",
         "environmentSource": "assets/source/03-end-environment-v1.png",
-        "charactersSource": "assets/source/03-end-characters-v2.png",
+        "charactersSource": "assets/source/03-end-characters-v1.png",
         "backdrop": "assets/processed/03-end/backdrop.png",
         "rear": "assets/processed/03-end/rear.png",
         "architecture": "assets/processed/03-end/architecture.png",
@@ -164,11 +820,7 @@
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
       },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "left",
-        "tertiary": "left"
-      }
+      "endingMode": "letter-to-horizon"
     }
   ]
 }

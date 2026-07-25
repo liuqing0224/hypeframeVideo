@@ -1,0 +1,4 @@
+interface:
+  display_name: "Professional Manga Video Director"
+  short_description: "Direct distinctive manga stories without templates"
+  default_prompt: "Use $direct-professional-manga-video to give this story its own visual grammar, shot signatures, climax, and ending."

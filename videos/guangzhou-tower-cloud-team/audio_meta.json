@@ -1,298 +1,620 @@
 {
   "provider": "edge",
   "voice": "zh-CN-XiaoxiaoNeural",
+  "voiceCast": {
+    "narrator": "zh-CN-XiaoxiaoNeural",
+    "primary": "zh-CN-XiaoyiNeural",
+    "secondary": "zh-CN-YunxiNeural",
+    "tertiary": "zh-CN-YunyangNeural",
+    "ensemble": "zh-CN-XiaoxiaoNeural"
+  },
   "voices": [
     {
       "sceneId": "01-start",
-      "text": "小雨和三位同学来到广州塔观景台，准备完成寻找城市地标的研学任务。",
-      "rawDuration": 7.536,
-      "durationSeconds": 9.0,
-      "path": "assets/audio/segments/01-start.wav",
+      "lineId": "01-start-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "小雨和三位同学来到广州塔观景台。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 4.104,
+      "startSeconds": 0.45,
+      "path": "assets/audio/lines/01-start-line-1.wav",
       "words": [
         {
           "text": "小雨",
           "start": 0.552083,
-          "duration": 0.481791
+          "duration": 0.481791,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "和",
           "start": 1.059916,
-          "duration": 0.130208
+          "duration": 0.130208,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "三",
           "start": 1.203125,
-          "duration": 0.208333
+          "duration": 0.208333,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "位",
           "start": 1.411458,
-          "duration": 0.14325
+          "duration": 0.130208,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "同学",
-          "start": 1.567708,
-          "duration": 0.585958
+          "start": 1.554708,
+          "duration": 0.585958,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "来到",
-          "start": 2.257833,
-          "duration": 0.338541
+          "start": 2.244791,
+          "duration": 0.3125,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "广州",
-          "start": 2.622416,
-          "duration": 0.390625
+          "start": 2.583333,
+          "duration": 0.377625,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "塔观",
-          "start": 3.026041,
-          "duration": 0.416666
+          "start": 2.973958,
+          "duration": 0.416666,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
-          "text": "景",
-          "start": 3.442708,
-          "duration": 0.182291
+          "text": "景台",
+          "start": 3.403666,
+          "duration": 0.546875,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "先找珠江，再确认城市中轴线！",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rawDuration": 3.816,
+      "startSeconds": 4.974,
+      "path": "assets/audio/lines/01-start-line-2.wav",
+      "words": [
+        {
+          "text": "先",
+          "start": 5.076083,
+          "duration": 0.338541,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "台",
-          "start": 3.625,
-          "duration": 0.364583
+          "text": "找",
+          "start": 5.414625,
+          "duration": 0.15625,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "准备",
-          "start": 4.315125,
-          "duration": 0.3125
+          "text": "珠江",
+          "start": 5.583916,
+          "duration": 0.46875,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "完成",
-          "start": 4.640625,
-          "duration": 0.494791
+          "text": "再",
+          "start": 6.261,
+          "duration": 0.169291,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "寻找",
-          "start": 5.161458,
-          "duration": 0.416666
+          "text": "确认",
+          "start": 6.443291,
+          "duration": 0.364583,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "城市",
-          "start": 5.604166,
-          "duration": 0.403666
+          "start": 6.820875,
+          "duration": 0.364583,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "地标",
-          "start": 6.020833,
-          "duration": 0.364583
+          "text": "中",
+          "start": 7.1985,
+          "duration": 0.208333,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "的",
-          "start": 6.385416,
-          "duration": 0.104166
+          "text": "轴线",
+          "start": 7.406833,
+          "duration": 0.46875,
+          "lineId": "01-start-line-2",
+          "speaker": "小雨",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "speaker": "红帽同学",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "望远镜准备好了！",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 2.088,
+      "startSeconds": 9.21,
+      "path": "assets/audio/lines/01-start-line-3.wav",
+      "words": [
+        {
+          "text": "望远镜",
+          "start": 9.312083,
+          "duration": 0.651041,
+          "lineId": "01-start-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "研学",
-          "start": 6.515625,
-          "duration": 0.403666
+          "text": "准备",
+          "start": 9.989166,
+          "duration": 0.247416,
+          "lineId": "01-start-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "任务",
-          "start": 6.932291,
-          "duration": 0.442708
+          "text": "好",
+          "start": 10.249583,
+          "duration": 0.221375,
+          "lineId": "01-start-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
+        },
+        {
+          "text": "了",
+          "start": 10.470958,
+          "duration": 0.221375,
+          "lineId": "01-start-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         }
       ]
     },
     {
       "sceneId": "02-middle",
-      "text": "云雾遮住城市，大家根据地图、方向和灯光提示一起推理，寻找珠江和城市中轴线。",
-      "rawDuration": 9.0,
-      "durationSeconds": 10.5,
-      "path": "assets/audio/segments/02-middle.wav",
+      "lineId": "02-middle-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "云雾遮住城市，地图上的线索变得模糊。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 4.344,
+      "startSeconds": 12.95,
+      "path": "assets/audio/lines/02-middle-line-1.wav",
       "words": [
         {
           "text": "云雾",
-          "start": 9.552083,
-          "duration": 0.403666
+          "start": 13.052083,
+          "duration": 0.403666,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "遮住",
-          "start": 9.981791,
-          "duration": 0.2995
+          "start": 13.481791,
+          "duration": 0.3125,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "城市",
-          "start": 10.294291,
-          "duration": 0.572916
-        },
-        {
-          "text": "大家",
-          "start": 11.192708,
-          "duration": 0.351583
-        },
-        {
-          "text": "根据",
-          "start": 11.557291,
-          "duration": 0.351583
+          "start": 13.807291,
+          "duration": 0.572916,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "地图",
-          "start": 11.934916,
-          "duration": 0.559916
+          "start": 14.692708,
+          "duration": 0.338541,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "上",
+          "start": 15.03125,
+          "duration": 0.195333,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "的",
+          "start": 15.226583,
+          "duration": 0.078125,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "线索",
+          "start": 15.317708,
+          "duration": 0.520833,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "变得",
+          "start": 15.864583,
+          "duration": 0.260416,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "模糊",
+          "start": 16.138041,
+          "duration": 0.559916,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "speaker": "蓝背心同学",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "珠江的走向能帮我们定位。",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 3.048,
+      "startSeconds": 17.714,
+      "path": "assets/audio/lines/02-middle-line-2.wav",
+      "words": [
+        {
+          "text": "珠江",
+          "start": 17.816083,
+          "duration": 0.429708,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "的",
+          "start": 18.245791,
+          "duration": 0.078125,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "走向",
+          "start": 18.336916,
+          "duration": 0.546875,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "能",
+          "start": 18.987958,
+          "duration": 0.195333,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "帮",
+          "start": 19.183291,
+          "duration": 0.091166,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "我们",
+          "start": 19.287458,
+          "duration": 0.169291,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        },
+        {
+          "text": "定位",
+          "start": 19.46975,
+          "duration": 0.377625,
+          "lineId": "02-middle-line-2",
+          "speaker": "蓝背心同学",
+          "role": "secondary"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "结合方向和灯光，我们一起推理！",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rawDuration": 3.696,
+      "startSeconds": 21.182,
+      "path": "assets/audio/lines/02-middle-line-3.wav",
+      "words": [
+        {
+          "text": "结合",
+          "start": 21.284083,
+          "duration": 0.416666,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "方向",
-          "start": 12.703125,
-          "duration": 0.46875
+          "start": 21.713791,
+          "duration": 0.403666,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "和",
-          "start": 13.197916,
-          "duration": 0.15625
+          "start": 22.130458,
+          "duration": 0.130208,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "灯光",
-          "start": 13.367208,
-          "duration": 0.377625
+          "start": 22.273666,
+          "duration": 0.45575,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "提示",
-          "start": 13.757833,
-          "duration": 0.546875
+          "text": "我们",
+          "start": 23.002833,
+          "duration": 0.208333,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "一起",
-          "start": 14.395833,
-          "duration": 0.364583
+          "start": 23.224208,
+          "duration": 0.260416,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
           "text": "推理",
-          "start": 14.773458,
-          "duration": 0.507833
-        },
-        {
-          "text": "寻找",
-          "start": 15.59375,
-          "duration": 0.46875
-        },
-        {
-          "text": "珠",
-          "start": 16.088541,
-          "duration": 0.182291
-        },
-        {
-          "text": "江和城",
-          "start": 16.283875,
-          "duration": 0.638
-        },
-        {
-          "text": "市",
-          "start": 16.921875,
-          "duration": 0.195333
-        },
-        {
-          "text": "中轴线",
-          "start": 17.130208,
-          "duration": 0.716166
+          "start": 23.497625,
+          "duration": 0.46875,
+          "lineId": "02-middle-line-3",
+          "speaker": "小雨",
+          "role": "primary"
         }
       ]
     },
     {
       "sceneId": "03-end",
-      "text": "云雾散开，小队成功找出地标，并在温暖夕阳下拍下全队的云端合影。",
-      "rawDuration": 7.344,
-      "durationSeconds": 9.0,
-      "path": "assets/audio/segments/03-end.wav",
+      "lineId": "03-end-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "云雾散开，小队成功找出地标。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.624,
+      "startSeconds": 26.45,
+      "path": "assets/audio/lines/03-end-line-1.wav",
       "words": [
         {
           "text": "云雾",
-          "start": 20.052083,
-          "duration": 0.325541
+          "start": 26.552083,
+          "duration": 0.338541,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "散开",
-          "start": 20.390625,
-          "duration": 0.585958
+          "start": 26.903666,
+          "duration": 0.572916,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "小队",
-          "start": 21.315125,
-          "duration": 0.403666
+          "start": 27.75,
+          "duration": 0.429708,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "成功",
-          "start": 21.744791,
-          "duration": 0.377625
+          "start": 28.20575,
+          "duration": 0.390625,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "找出",
-          "start": 22.135416,
-          "duration": 0.338541
+          "start": 28.609375,
+          "duration": 0.338541,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "地标",
-          "start": 22.487,
-          "duration": 0.481791
+          "start": 28.960958,
+          "duration": 0.494791,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "任务完成，大家靠近一点！",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rawDuration": 3.24,
+      "startSeconds": 30.494,
+      "path": "assets/audio/lines/03-end-line-2.wav",
+      "words": [
+        {
+          "text": "任务",
+          "start": 30.596083,
+          "duration": 0.2995,
+          "lineId": "03-end-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "并",
-          "start": 23.255208,
-          "duration": 0.169291
+          "text": "完成",
+          "start": 30.908583,
+          "duration": 0.494791,
+          "lineId": "03-end-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "在",
-          "start": 23.4245,
-          "duration": 0.169291
+          "text": "大家",
+          "start": 31.62475,
+          "duration": 0.351583,
+          "lineId": "03-end-line-2",
+          "speaker": "小雨",
+          "role": "primary"
         },
         {
-          "text": "温暖",
-          "start": 23.619791,
-          "duration": 0.364583
+          "text": "靠近一点",
+          "start": 31.989333,
+          "duration": 0.846375,
+          "lineId": "03-end-line-2",
+          "speaker": "小雨",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "speaker": "红帽同学",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "看镜头，三、二、一！",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 3.216,
+      "startSeconds": 34.154,
+      "path": "assets/audio/lines/03-end-line-3.wav",
+      "words": [
+        {
+          "text": "看",
+          "start": 34.256083,
+          "duration": 0.273458,
+          "lineId": "03-end-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "夕阳",
-          "start": 23.997416,
-          "duration": 0.403625
+          "text": "镜头",
+          "start": 34.529541,
+          "duration": 0.520833,
+          "lineId": "03-end-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "下",
-          "start": 24.401041,
-          "duration": 0.286458
+          "text": "三",
+          "start": 35.258708,
+          "duration": 0.46875,
+          "lineId": "03-end-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "拍",
-          "start": 24.791666,
-          "duration": 0.208333
+          "text": "二",
+          "start": 35.92275,
+          "duration": 0.3125,
+          "lineId": "03-end-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         },
         {
-          "text": "下",
-          "start": 25.0,
-          "duration": 0.195333
-        },
-        {
-          "text": "全队",
-          "start": 25.208333,
-          "duration": 0.442708
-        },
-        {
-          "text": "的",
-          "start": 25.651041,
-          "duration": 0.091166
-        },
-        {
-          "text": "云端",
-          "start": 25.76825,
-          "duration": 0.351583
-        },
-        {
-          "text": "合影",
-          "start": 26.132833,
-          "duration": 0.546875
+          "text": "一",
+          "start": 36.443583,
+          "duration": 0.325541,
+          "lineId": "03-end-line-3",
+          "speaker": "红帽同学",
+          "role": "tertiary"
         }
       ]
     }
   ],
   "bgm": {
     "path": "assets/audio/music.wav",
-    "duration": 28.5
+    "duration": 38.5
+  },
+  "ambience": {
+    "path": "assets/audio/ambience.wav",
+    "duration": 38.5
   },
   "sfx": [
     {
@@ -306,7 +628,271 @@
     {
       "id": "chime",
       "path": "assets/audio/sfx-chime.wav"
+    },
+    {
+      "id": "cut",
+      "path": "assets/audio/sfx-cut.wav"
+    },
+    {
+      "id": "rustle",
+      "path": "assets/audio/sfx-rustle.wav"
     }
   ],
-  "total_duration_s": 28.5
+  "sfxEvents": [
+    {
+      "id": "sfx-1",
+      "src": "assets/audio/sfx-impact.wav",
+      "startSeconds": 0.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 953,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-1",
+      "cue": "impact"
+    },
+    {
+      "id": "sfx-01-start-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 4.974,
+      "durationSeconds": 1.0,
+      "trackIndex": 954,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-01-start-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 9.21,
+      "durationSeconds": 1.0,
+      "trackIndex": 955,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-2",
+      "src": "assets/audio/sfx-whoosh.wav",
+      "startSeconds": 12.58,
+      "durationSeconds": 1.0,
+      "trackIndex": 956,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-1",
+      "cue": "whoosh"
+    },
+    {
+      "id": "sfx-02-middle-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 17.714,
+      "durationSeconds": 1.0,
+      "trackIndex": 957,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-02-middle-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 21.182,
+      "durationSeconds": 1.0,
+      "trackIndex": 958,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-3",
+      "src": "assets/audio/sfx-chime.wav",
+      "startSeconds": 26.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 959,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-1",
+      "cue": "chime"
+    },
+    {
+      "id": "sfx-03-end-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 30.494,
+      "durationSeconds": 1.0,
+      "trackIndex": 960,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-03-end-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 34.154,
+      "durationSeconds": 1.0,
+      "trackIndex": 961,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-3",
+      "cue": "rustle"
+    }
+  ],
+  "captions": [
+    {
+      "id": "01-start-line-1-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "小雨和三位同学来",
+      "startSeconds": 0.45,
+      "endSeconds": 2.502
+    },
+    {
+      "id": "01-start-line-1-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "到广州塔观景台。",
+      "startSeconds": 2.502,
+      "endSeconds": 4.554
+    },
+    {
+      "id": "01-start-line-2-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "先找珠江，再确认城市中轴线！",
+      "startSeconds": 4.974,
+      "endSeconds": 8.79
+    },
+    {
+      "id": "01-start-line-3-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "红帽同学",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "望远镜准备好了！",
+      "startSeconds": 9.21,
+      "endSeconds": 11.298
+    },
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "云雾遮住城市，",
+      "startSeconds": 12.95,
+      "endSeconds": 14.639333
+    },
+    {
+      "id": "02-middle-line-1-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "地图上的线索变得模糊。",
+      "startSeconds": 14.639333,
+      "endSeconds": 17.294
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "蓝背心同学",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "珠江的走向能帮我们定位。",
+      "startSeconds": 17.714,
+      "endSeconds": 20.762
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "结合方向和灯光，",
+      "startSeconds": 21.182,
+      "endSeconds": 23.1532
+    },
+    {
+      "id": "02-middle-line-3-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我们一起推理！",
+      "startSeconds": 23.1532,
+      "endSeconds": 24.878
+    },
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "云雾散开，小队成功找出地标。",
+      "startSeconds": 26.45,
+      "endSeconds": 30.074
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "任务完成，大家靠近一点！",
+      "startSeconds": 30.494,
+      "endSeconds": 33.734
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "红帽同学",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "看镜头，三、二、一！",
+      "startSeconds": 34.154,
+      "endSeconds": 37.37
+    }
+  ],
+  "total_duration_s": 38.5
 }

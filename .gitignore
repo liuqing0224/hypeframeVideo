@@ -21,6 +21,8 @@ videos/*/qa/render-evidence/
 videos/*/qa/render-transitions/
 videos/*/qa/render-verification.json
 videos/*/qa/scene-midpoints/
+videos/*/qa/shot-midpoints/
+videos/*/qa/render-shots/
 videos/*/qa/verification.json
 qa/offline-smoke/*/
 out/

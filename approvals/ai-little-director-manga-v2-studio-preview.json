@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "batchId": "ai-little-director-manga-v2",
+  "approvedAt": "2026-07-25T15:54:54.804419+00:00",
+  "approvedBy": "user",
+  "productions": [
+    {
+      "id": "guangzhou-tower-cloud-team",
+      "compositionSha256": "f6e2fafcf00d93b505a496d3a56656087ca05c418f19d6415e9bea41e5e6ce49"
+    },
+    {
+      "id": "glowing-solar-system",
+      "compositionSha256": "ab9cb52702b8a0bc68b7980d9cb2ae1030a419ebb347b2c07757a1fd5d0906ca"
+    },
+    {
+      "id": "navigator-time-letter",
+      "compositionSha256": "dfe868c4c5e80a77c4828a3100ffa937af354c4770fd5587823be89e2e4a55b4"
+    },
+    {
+      "id": "star-seed-forest",
+      "compositionSha256": "a619c0634f91036e92dedccdbb26d736820da500fb8d0801d210c37736440744"
+    }
+  ]
+}

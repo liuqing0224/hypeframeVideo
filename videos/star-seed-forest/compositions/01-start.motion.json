@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "compositionId": "01-start",
-  "durationSeconds": 9.5,
+  "durationSeconds": 12.5,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.71
+      2.25
     ],
     "action": [
-      1.71,
-      6.84
+      2.25,
+      9.0
     ],
     "hold": [
-      6.84,
-      8.55
+      9.0,
+      11.25
     ],
     "transition": [
-      8.55,
-      9.5
+      11.25,
+      12.5
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.2375,
+      "entranceStart": 0.3125,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.7125,
+      "entranceStart": 0.9375,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,376 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.14,
+      "entranceStart": 1.5,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "01-start-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 5.19,
+      "camera": {
+        "x": 0.0,
+        "y": 0.0,
+        "scale": 1.01,
+        "push": 0.0144,
+        "rotation": 0.25
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": -150,
+            "y": 20,
+            "scale": 0.84,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": -30,
+            "y": 18,
+            "scale": 0.86,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": 65,
+            "y": 6,
+            "scale": 0.82,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": -18,
+            "y": 0,
+            "scale": 1.0
+          },
+          "architecture": {
+            "x": 0,
+            "y": 12,
+            "scale": 0.96
+          },
+          "foreground": {
+            "x": 24,
+            "y": 8,
+            "scale": 1.02
+          }
+        },
+        "travel": {
+          "role": "ensemble",
+          "x": 18,
+          "y": -4
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 520.2,
+          "y": 295.8,
+          "width": 579.6,
+          "height": 600.6
+        },
+        "secondary": {
+          "x": 96.5,
+          "y": 379.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1579.7,
+          "y": 456.475,
+          "width": 270.6,
+          "height": 397.7
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 538.2,
+          "y": 291.8,
+          "width": 579.6,
+          "height": 600.6
+        },
+        "secondary": {
+          "x": 114.5,
+          "y": 375.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1597.7,
+          "y": 452.475,
+          "width": 270.6,
+          "height": 397.7
+        }
+      }
+    },
+    {
+      "id": "01-start-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 5.19,
+      "to": 8.85,
+      "camera": {
+        "x": 0.0,
+        "y": -42.5,
+        "scale": 1.1716,
+        "push": 0.0176,
+        "rotation": -0.35
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": 45,
+            "y": -24,
+            "scale": 1.1,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": 105,
+            "y": 4,
+            "scale": 0.78,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": -85,
+            "y": 14,
+            "scale": 0.78,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": 12,
+            "y": -8,
+            "scale": 1.025
+          },
+          "architecture": {
+            "x": -42,
+            "y": 0,
+            "scale": 1.04
+          },
+          "foreground": {
+            "x": -34,
+            "y": 0,
+            "scale": 1.035
+          }
+        },
+        "travel": {
+          "role": "primary",
+          "x": 42,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 625.5,
+          "y": 112.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 249.5,
+          "y": 401.35,
+          "width": 351.0,
+          "height": 460.2
+        },
+        "tertiary": {
+          "x": 1436.3,
+          "y": 479.025,
+          "width": 257.4,
+          "height": 378.3
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 667.5,
+          "y": 104.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 249.5,
+          "y": 401.35,
+          "width": 351.0,
+          "height": 460.2
+        },
+        "tertiary": {
+          "x": 1436.3,
+          "y": 479.025,
+          "width": 257.4,
+          "height": 378.3
+        }
+      }
+    },
+    {
+      "id": "01-start-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "secondary",
+      "from": 8.85,
+      "to": 12.5,
+      "camera": {
+        "x": 94.5,
+        "y": 9.600000000000001,
+        "scale": 1.3938,
+        "push": 0.0208,
+        "rotation": 0.2
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": 125,
+            "y": -28,
+            "scale": 0.78,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": 145,
+            "y": -24,
+            "scale": 1.04,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": 95,
+            "y": 28,
+            "scale": 0.76,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": -24,
+            "y": -12,
+            "scale": 1.04
+          },
+          "architecture": {
+            "x": -78,
+            "y": 8,
+            "scale": 1.07
+          },
+          "foreground": {
+            "x": 42,
+            "y": 12,
+            "scale": 1.06
+          }
+        },
+        "travel": {
+          "role": "secondary",
+          "x": 48,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 815.9,
+          "y": 279.975,
+          "width": 538.2,
+          "height": 557.7
+        },
+        "secondary": {
+          "x": 231.0,
+          "y": 258.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1619.6,
+          "y": 500.3,
+          "width": 250.8,
+          "height": 368.6
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 815.9,
+          "y": 279.975,
+          "width": 538.2,
+          "height": 557.7
+        },
+        "secondary": {
+          "x": 279.0,
+          "y": 250.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1619.6,
+          "y": 500.3,
+          "width": 250.8,
+          "height": 368.6
+        }
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "01-start-shot-1",
+      "toShot": "01-start-shot-2",
+      "at": 5.19,
+      "anticipationAt": 5.01
+    },
+    {
+      "fromShot": "01-start-shot-2",
+      "toShot": "01-start-shot-3",
+      "at": 8.85,
+      "anticipationAt": 8.67
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "01-start-line-1-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "失去星光的森林里，",
+      "startSeconds": 0.45,
+      "endSeconds": 2.61
+    },
+    {
+      "id": "01-start-line-1-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "小鹿带来一颗星种。",
+      "startSeconds": 2.61,
+      "endSeconds": 4.77
+    },
+    {
+      "id": "01-start-line-2-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "叶芽",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "别怕，我会保护这颗星种。",
+      "startSeconds": 5.19,
+      "endSeconds": 8.43
+    },
+    {
+      "id": "01-start-line-3-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "小鹿",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "最高的古树还在等它。",
+      "startSeconds": 8.85,
+      "endSeconds": 11.37
     }
   ],
   "motionRules": [
@@ -81,6 +444,9 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true,
+    "shotBlockingVariety": true
   }
 }

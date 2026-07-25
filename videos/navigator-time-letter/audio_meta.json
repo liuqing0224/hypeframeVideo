@@ -1,303 +1,692 @@
 {
   "provider": "edge",
   "voice": "zh-CN-XiaoxiaoNeural",
+  "voiceCast": {
+    "narrator": "zh-CN-XiaoxiaoNeural",
+    "primary": "zh-CN-YunxiNeural",
+    "secondary": "zh-CN-YunyangNeural",
+    "tertiary": "zh-CN-YunjianNeural",
+    "ensemble": "zh-CN-XiaoxiaoNeural"
+  },
   "voices": [
     {
       "sceneId": "01-start",
-      "text": "子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。",
-      "rawDuration": 8.376,
-      "durationSeconds": 10.0,
-      "path": "assets/audio/segments/01-start.wav",
+      "lineId": "01-start-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "子墨穿过发光墨迹，来到明代古港。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.96,
+      "startSeconds": 0.45,
+      "path": "assets/audio/lines/01-start-line-1.wav",
       "words": [
         {
           "text": "子墨",
           "start": 0.552083,
-          "duration": 0.507833
-        },
-        {
-          "text": "在",
-          "start": 1.085958,
-          "duration": 0.221375
-        },
-        {
-          "text": "博物馆",
-          "start": 1.320333,
-          "duration": 0.533833
-        },
-        {
-          "text": "触碰",
-          "start": 1.854166,
-          "duration": 0.377625
-        },
-        {
-          "text": "航海",
-          "start": 2.244791,
-          "duration": 0.416666
-        },
-        {
-          "text": "图",
-          "start": 2.661458,
-          "duration": 0.364583
+          "duration": 0.46875,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "穿过",
-          "start": 3.338541,
-          "duration": 0.351583
+          "start": 1.033875,
+          "duration": 0.377625,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "发光",
-          "start": 3.716166,
-          "duration": 0.351583
+          "start": 1.4375,
+          "duration": 0.351583,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "墨迹",
-          "start": 4.08075,
-          "duration": 0.546875
+          "start": 1.802083,
+          "duration": 0.520833,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "来到",
-          "start": 4.731791,
-          "duration": 0.3125
-        },
-        {
-          "text": "六百",
-          "start": 5.070333,
-          "duration": 0.351541
-        },
-        {
-          "text": "年",
-          "start": 5.421875,
-          "duration": 0.182291
-        },
-        {
-          "text": "前",
-          "start": 5.617208,
-          "duration": 0.195291
-        },
-        {
-          "text": "的",
-          "start": 5.8125,
-          "duration": 0.091166
+          "start": 2.557291,
+          "duration": 0.2995,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "明代",
-          "start": 5.929708,
-          "duration": 0.338541
+          "start": 2.882833,
+          "duration": 0.390625,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "古港",
+          "start": 3.286458,
+          "duration": 0.507833,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "这里真是六百年前的港口？",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 2.856,
+      "startSeconds": 4.83,
+      "path": "assets/audio/lines/01-start-line-2.wav",
+      "words": [
+        {
+          "text": "这里",
+          "start": 4.932083,
+          "duration": 0.325541,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "真是",
+          "start": 5.270625,
+          "duration": 0.286458,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "六百",
+          "start": 5.583125,
+          "duration": 0.3125,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "年",
+          "start": 5.895625,
+          "duration": 0.14325,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "前",
+          "start": 6.038875,
+          "duration": 0.117166,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "的",
+          "start": 6.156041,
+          "duration": 0.065125,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
         },
         {
           "text": "港口",
-          "start": 6.28125,
-          "duration": 0.546875
+          "start": 6.234166,
+          "duration": 0.520833,
+          "lineId": "01-start-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "少年，你从何处而来？",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 2.52,
+      "startSeconds": 8.106,
+      "path": "assets/audio/lines/01-start-line-3.wav",
+      "words": [
+        {
+          "text": "少年",
+          "start": 8.208083,
+          "duration": 0.559916,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
-          "text": "并",
-          "start": 7.0495,
-          "duration": 0.195333
+          "text": "你",
+          "start": 8.911208,
+          "duration": 0.14325,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
-          "text": "见到",
-          "start": 7.257833,
-          "duration": 0.325541
+          "text": "从",
+          "start": 9.054458,
+          "duration": 0.169291,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
-          "text": "郑和",
-          "start": 7.596375,
-          "duration": 0.612
+          "text": "何处",
+          "start": 9.24975,
+          "duration": 0.338541,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "而",
+          "start": 9.601333,
+          "duration": 0.130208,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "来",
+          "start": 9.731541,
+          "duration": 0.2995,
+          "lineId": "01-start-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
         }
       ]
     },
     {
       "sceneId": "02-middle",
-      "text": "海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。",
-      "rawDuration": 8.592,
-      "durationSeconds": 10.0,
-      "path": "assets/audio/segments/02-middle.wav",
+      "lineId": "02-middle-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "海风吹散了航海图上的路线标记。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.672,
+      "startSeconds": 11.95,
+      "path": "assets/audio/lines/02-middle-line-1.wav",
       "words": [
         {
           "text": "海风",
-          "start": 10.552083,
-          "duration": 0.46875
+          "start": 12.052083,
+          "duration": 0.585958,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "吹散",
-          "start": 11.033875,
-          "duration": 0.403666
+          "start": 12.664083,
+          "duration": 0.416666,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
-          "text": "航线",
-          "start": 11.463541,
-          "duration": 0.390625
+          "text": "了",
+          "start": 13.08075,
+          "duration": 0.130208,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "航海图",
+          "start": 13.237,
+          "duration": 0.598958,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "上",
+          "start": 13.835958,
+          "duration": 0.195291,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "的",
+          "start": 14.03125,
+          "duration": 0.091166,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        },
+        {
+          "text": "路线",
+          "start": 14.148458,
+          "duration": 0.325541,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "标记",
-          "start": 11.867208,
-          "duration": 0.507833
-        },
+          "start": 14.487,
+          "duration": 0.533875,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "可以用星位和季风重新确认方向。",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 3.84,
+      "startSeconds": 16.042,
+      "path": "assets/audio/lines/02-middle-line-2.wav",
+      "words": [
         {
-          "text": "子墨",
-          "start": 12.739583,
-          "duration": 0.46875
+          "text": "可以",
+          "start": 16.144083,
+          "duration": 0.247416,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
         },
         {
           "text": "用",
-          "start": 13.221375,
-          "duration": 0.221375
-        },
-        {
-          "text": "现代",
-          "start": 13.46875,
-          "duration": 0.377625
-        },
-        {
-          "text": "地理",
-          "start": 13.859375,
-          "duration": 0.273458
-        },
-        {
-          "text": "知识",
-          "start": 14.145833,
-          "duration": 0.520833
-        },
-        {
-          "text": "帮助",
-          "start": 14.770833,
-          "duration": 0.2995
-        },
-        {
-          "text": "船队",
-          "start": 15.083333,
-          "duration": 0.533875
-        },
-        {
-          "text": "重新",
-          "start": 15.64325,
-          "duration": 0.442708
-        },
-        {
-          "text": "确认",
-          "start": 16.098958,
-          "duration": 0.351583
+          "start": 16.4045,
+          "duration": 0.14325,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
         },
         {
           "text": "星位",
-          "start": 16.476583,
-          "duration": 0.507833
-        },
-        {
-          "text": "季风",
-          "start": 17.21875,
-          "duration": 0.481791
+          "start": 16.54775,
+          "duration": 0.494791,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
         },
         {
           "text": "和",
-          "start": 17.726583,
-          "duration": 0.117208
+          "start": 17.068583,
+          "duration": 0.14325,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
         },
         {
-          "text": "航向",
-          "start": 17.856791,
-          "duration": 0.572916
+          "text": "季风",
+          "start": 17.224833,
+          "duration": 0.45575,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "重新",
+          "start": 17.784708,
+          "duration": 0.481791,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "确认",
+          "start": 18.2795,
+          "duration": 0.273458,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "方向",
+          "start": 18.565958,
+          "duration": 0.403666,
+          "lineId": "02-middle-line-2",
+          "speaker": "子墨",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "好，我们一起把航线找回来。",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 2.808,
+      "startSeconds": 20.302,
+      "path": "assets/audio/lines/02-middle-line-3.wav",
+      "words": [
+        {
+          "text": "好",
+          "start": 20.404083,
+          "duration": 0.416666,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "我们",
+          "start": 20.990041,
+          "duration": 0.221375,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "一起",
+          "start": 21.224416,
+          "duration": 0.273416,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "把",
+          "start": 21.497833,
+          "duration": 0.117208,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "航线",
+          "start": 21.628041,
+          "duration": 0.377625,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "找",
+          "start": 22.018666,
+          "duration": 0.182291,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
+        },
+        {
+          "text": "回来",
+          "start": 22.200958,
+          "duration": 0.3125,
+          "lineId": "02-middle-line-3",
+          "speaker": "郑和",
+          "role": "secondary"
         }
       ]
     },
     {
       "sceneId": "03-end",
-      "text": "郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。",
-      "rawDuration": 7.344,
-      "durationSeconds": 9.0,
-      "path": "assets/audio/segments/03-end.wav",
+      "lineId": "03-end-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "郑和把写给未来少年的信交给子墨。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 4.152,
+      "startSeconds": 24.45,
+      "path": "assets/audio/lines/03-end-line-1.wav",
       "words": [
         {
           "text": "郑和",
-          "start": 20.552083,
-          "duration": 0.625
+          "start": 24.552083,
+          "duration": 0.625,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "把",
-          "start": 21.28125,
-          "duration": 0.15625
+          "start": 25.28125,
+          "duration": 0.14325,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "写给",
-          "start": 21.450541,
-          "duration": 0.364583
+          "start": 25.4375,
+          "duration": 0.364583,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "未来",
-          "start": 21.841166,
-          "duration": 0.2995
+          "start": 25.828125,
+          "duration": 0.2995,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "少年",
-          "start": 22.153666,
-          "duration": 0.377583
+          "start": 26.140625,
+          "duration": 0.377625,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "的",
-          "start": 22.53125,
-          "duration": 0.117208
+          "start": 26.51825,
+          "duration": 0.104166,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "信",
-          "start": 22.648458,
-          "duration": 0.338541
+          "start": 26.622416,
+          "duration": 0.338541,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "交给",
-          "start": 23.091166,
-          "duration": 0.364583
+          "start": 27.065125,
+          "duration": 0.364583,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "子墨",
-          "start": 23.46875,
-          "duration": 0.533875
+          "start": 27.442708,
+          "duration": 0.546875,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "愿你永远保有探索世界的勇气。",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 3.288,
+      "startSeconds": 29.022,
+      "path": "assets/audio/lines/03-end-line-2.wav",
+      "words": [
+        {
+          "text": "愿",
+          "start": 29.124083,
+          "duration": 0.221375,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
-          "text": "鼓励",
-          "start": 24.367208,
-          "duration": 0.299458
-        },
-        {
-          "text": "他",
-          "start": 24.666666,
-          "duration": 0.195333
+          "text": "你",
+          "start": 29.345458,
+          "duration": 0.15625,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
           "text": "永远",
-          "start": 24.888041,
-          "duration": 0.416666
+          "start": 29.52775,
+          "duration": 0.3125,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
-          "text": "保持",
-          "start": 25.317708,
-          "duration": 0.377625
+          "text": "保有",
+          "start": 29.85325,
+          "duration": 0.46875,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
           "text": "探索",
-          "start": 25.721375,
-          "duration": 0.390625
+          "start": 30.400125,
+          "duration": 0.364583,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
           "text": "世界",
-          "start": 26.125,
-          "duration": 0.377625
+          "start": 30.77775,
+          "duration": 0.338541,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
           "text": "的",
-          "start": 26.502625,
-          "duration": 0.078125
+          "start": 31.116291,
+          "duration": 0.104166,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
         },
         {
           "text": "勇气",
-          "start": 26.59375,
-          "duration": 0.598958
+          "start": 31.233458,
+          "duration": 0.45575,
+          "lineId": "03-end-line-2",
+          "speaker": "郑和",
+          "role": "secondary"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我会把这封信带回未来。",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 2.688,
+      "startSeconds": 32.73,
+      "path": "assets/audio/lines/03-end-line-3.wav",
+      "words": [
+        {
+          "text": "我",
+          "start": 32.832083,
+          "duration": 0.234375,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "会",
+          "start": 33.066458,
+          "duration": 0.091166,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "把",
+          "start": 33.170625,
+          "duration": 0.104166,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "这",
+          "start": 33.274791,
+          "duration": 0.091166,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "封",
+          "start": 33.378958,
+          "duration": 0.14325,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "信",
+          "start": 33.522208,
+          "duration": 0.208333,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "带回",
+          "start": 33.730541,
+          "duration": 0.273458,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
+        },
+        {
+          "text": "未来",
+          "start": 34.017,
+          "duration": 0.481791,
+          "lineId": "03-end-line-3",
+          "speaker": "子墨",
+          "role": "primary"
         }
       ]
     }
   ],
   "bgm": {
     "path": "assets/audio/music.wav",
-    "duration": 29.0
+    "duration": 36.5
+  },
+  "ambience": {
+    "path": "assets/audio/ambience.wav",
+    "duration": 36.5
   },
   "sfx": [
     {
@@ -311,7 +700,283 @@
     {
       "id": "chime",
       "path": "assets/audio/sfx-chime.wav"
+    },
+    {
+      "id": "cut",
+      "path": "assets/audio/sfx-cut.wav"
+    },
+    {
+      "id": "rustle",
+      "path": "assets/audio/sfx-rustle.wav"
     }
   ],
-  "total_duration_s": 29.0
+  "sfxEvents": [
+    {
+      "id": "sfx-1",
+      "src": "assets/audio/sfx-impact.wav",
+      "startSeconds": 0.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 953,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-1",
+      "cue": "impact"
+    },
+    {
+      "id": "sfx-01-start-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 4.83,
+      "durationSeconds": 1.0,
+      "trackIndex": 954,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-01-start-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 8.106,
+      "durationSeconds": 1.0,
+      "trackIndex": 955,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-2",
+      "src": "assets/audio/sfx-whoosh.wav",
+      "startSeconds": 11.58,
+      "durationSeconds": 1.0,
+      "trackIndex": 956,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-1",
+      "cue": "whoosh"
+    },
+    {
+      "id": "sfx-02-middle-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 16.042,
+      "durationSeconds": 1.0,
+      "trackIndex": 957,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-02-middle-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 20.302,
+      "durationSeconds": 1.0,
+      "trackIndex": 958,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-3",
+      "src": "assets/audio/sfx-chime.wav",
+      "startSeconds": 24.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 959,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-1",
+      "cue": "chime"
+    },
+    {
+      "id": "sfx-03-end-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 29.022,
+      "durationSeconds": 1.0,
+      "trackIndex": 960,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-03-end-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 32.73,
+      "durationSeconds": 1.0,
+      "trackIndex": 961,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-3",
+      "cue": "rustle"
+    }
+  ],
+  "captions": [
+    {
+      "id": "01-start-line-1-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "子墨穿过发光墨迹，",
+      "startSeconds": 0.45,
+      "endSeconds": 2.6775
+    },
+    {
+      "id": "01-start-line-1-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "来到明代古港。",
+      "startSeconds": 2.6775,
+      "endSeconds": 4.41
+    },
+    {
+      "id": "01-start-line-2-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "这里真是六百年前的港口？",
+      "startSeconds": 4.83,
+      "endSeconds": 7.686
+    },
+    {
+      "id": "01-start-line-3-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "少年，你从何处而来？",
+      "startSeconds": 8.106,
+      "endSeconds": 10.626
+    },
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "海风吹散了航海",
+      "startSeconds": 11.95,
+      "endSeconds": 13.6636
+    },
+    {
+      "id": "02-middle-line-1-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "图上的路线标记。",
+      "startSeconds": 13.6636,
+      "endSeconds": 15.622
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "可以用星位和季",
+      "startSeconds": 16.042,
+      "endSeconds": 17.834
+    },
+    {
+      "id": "02-middle-line-2-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "风重新确认方向。",
+      "startSeconds": 17.834,
+      "endSeconds": 19.882
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "好，我们一起把航线找回来。",
+      "startSeconds": 20.302,
+      "endSeconds": 23.11
+    },
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "郑和把写给未来少",
+      "startSeconds": 24.45,
+      "endSeconds": 26.526
+    },
+    {
+      "id": "03-end-line-1-caption-2",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "年的信交给子墨。",
+      "startSeconds": 26.526,
+      "endSeconds": 28.602
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "愿你永远保有探索世界的勇气。",
+      "startSeconds": 29.022,
+      "endSeconds": 32.31
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我会把这封信带回未来。",
+      "startSeconds": 32.73,
+      "endSeconds": 35.418
+    }
+  ],
+  "total_duration_s": 36.5
 }

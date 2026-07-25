@@ -1,4 +1,4 @@
 interface:
   display_name: "Verify HyperFrames Video"
-  short_description: "Check, preview, render, and verify HyperFrames videos"
-  default_prompt: "Use -hyperframes-video to run the required HyperFrames checks and delivery gates for this production."
+  short_description: "Verify story direction and batch differentiation"
+  default_prompt: "Use $verify-hyperframes-video to verify shot signatures, role-aware focus, authored endings, batch differentiation, and render quality."

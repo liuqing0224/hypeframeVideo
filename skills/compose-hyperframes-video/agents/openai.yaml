@@ -1,4 +1,4 @@
 interface:
   display_name: "Compose HyperFrames Video"
-  short_description: "Build deterministic layered HyperFrames compositions"
-  default_prompt: "Use -hyperframes-video to assemble this production as a modular seek-safe HyperFrames video."
+  short_description: "Compose story-specific manga motion and endings"
+  default_prompt: "Use $compose-hyperframes-video to compile this timed production with its director profile, signed shots, and unique ending motif."

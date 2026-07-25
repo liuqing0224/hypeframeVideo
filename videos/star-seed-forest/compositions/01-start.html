@@ -4,40 +4,59 @@
     data-composition-id="01-start"
     data-width="1920"
     data-height="1080"
-    data-duration="9.5"
+    data-duration="12.5"
+    data-visual-grammar="fantasy"
+    data-ending-mode="none"
+    data-layout-allow-overflow
   >
+    <div class="camera-rig" data-layout-allow-overflow>
 
       <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
-        <img src="assets/processed/01-start/backdrop.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/backdrop.png" alt="" />
       </div>
       <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
-        <img src="assets/processed/01-start/rear.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/rear.png" alt="" />
       </div>
       <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
-        <img src="assets/processed/01-start/architecture.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/architecture.png" alt="" />
       </div>
       <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/tertiary.png" alt="" />
+          <div class="blocking blocking-tertiary">
+            <div class="entrance"><div class="performance performance-tertiary">
+              <img data-layout-ignore src="assets/processed/01-start/tertiary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/secondary.png" alt="" />
+          <div class="blocking blocking-secondary">
+            <div class="entrance"><div class="performance performance-secondary">
+              <img data-layout-ignore src="assets/processed/01-start/secondary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/primary.png" alt="" />
+          <div class="blocking blocking-primary">
+            <div class="entrance"><div class="performance performance-primary">
+              <img data-layout-ignore src="assets/processed/01-start/primary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
-        <img src="assets/processed/01-start/foreground.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/foreground.png" alt="" />
       </div>
 
       <div class="pixel-accent breeze b-1" style="left:280px;top:260px;width:18px;height:18px"></div>
       <div class="pixel-accent breeze b-2" style="left:1470px;top:390px;width:14px;height:14px"></div>
       <div class="pixel-accent breeze b-3" style="left:370px;top:680px;width:22px;height:22px"></div>
+    </div>
+    <div class="internal-cut"></div>
+    <div class="comic-treatment treatment-1 mode-full-bleed" data-shot-purpose="establish" data-shot-signature="dark-forest-wide"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-2 mode-speaker-stage" data-shot-purpose="discovery" data-shot-signature="seed-offering"><div class="panel-inset"><div class="panel-portrait" style="background-image:url(&quot;assets/processed/01-start/primary.png&quot;)"></div></div><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-3 mode-reaction-panel" data-shot-purpose="reaction" data-shot-signature="seed-glow-close"><div class="panel-inset"><div class="panel-portrait" style="background-image:url(&quot;assets/processed/01-start/secondary.png&quot;)"></div></div><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div>
 
     <style>
       #scene-01-start {
@@ -53,6 +72,23 @@
         position: absolute;
         overflow: hidden;
         transform-origin: 50% 70%;
+      }
+      #scene-01-start .camera-rig {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+      }
+      #scene-01-start .subject {
+        overflow: visible;
+      }
+      #scene-01-start .entrance,
+      #scene-01-start .blocking,
+      #scene-01-start .performance {
+        width: 100%;
+        height: 100%;
+        transform-origin: 50% 75%;
       }
       #scene-01-start .layer img {
         display: block;
@@ -139,6 +175,259 @@
         border: 28px solid #ee8cb8;
         box-shadow: 0 0 80px #ee8cb8;
       }
+      #scene-01-start .internal-cut {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        background: #f7f0df;
+        mix-blend-mode: screen;
+      }
+      #scene-01-start .comic-treatment {
+        position: absolute;
+        inset: 0;
+        z-index: 18;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #scene-01-start .panel-edge {
+        position: absolute;
+        display: none;
+        border: 12px solid #f7f0df;
+        box-shadow: 10px 10px 0 #f3c969;
+      }
+      #scene-01-start .panel-inset {
+        position: absolute;
+        display: none;
+        right: 88px;
+        top: 72px;
+        width: 760px;
+        height: 760px;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, #0c2a27 0 48%, #ee8cb8 48% 52%, #0c2a27 52%);
+        border: 12px solid #f7f0df;
+        box-shadow: 10px 10px 0 #f3c969;
+        transform-origin: 70% 50%;
+      }
+      #scene-01-start .panel-portrait {
+        width: 100%;
+        height: 112%;
+        background-repeat: no-repeat;
+        background-position: 50% 8%;
+        background-size: 155% auto;
+        filter:
+          drop-shadow(4px 0 #f7f0df)
+          drop-shadow(-4px 0 #f7f0df)
+          drop-shadow(0 4px #f7f0df);
+      }
+      #scene-01-start .panel-portrait.portrait-mirrored {
+        transform: scaleX(-1);
+      }
+      #scene-01-start .mode-reaction-panel .panel-inset,
+      #scene-01-start .mode-decision-inset .panel-inset {
+        display: block;
+      }
+      #scene-01-start .mode-reaction-panel .edge-a,
+      #scene-01-start .mode-decision-inset .edge-a {
+        display: none;
+      }
+      #scene-01-start .mode-decision-inset .edge-b {
+        display: block;
+        left: 92px;
+        bottom: 170px;
+        width: 430px;
+        height: 280px;
+        border-width: 8px;
+        box-shadow: 8px 8px 0 #ee8cb8;
+      }
+      #scene-01-start .mode-speaker-stage .edge-a {
+        display: block;
+        left: 70px;
+        top: 82px;
+        width: 1080px;
+        height: 760px;
+        border-right: 0;
+        box-shadow: none;
+      }
+      #scene-01-start .mode-action-diagonal::before,
+      #scene-01-start .mode-impact-frame::before {
+        content: "";
+        position: absolute;
+        inset: -180px;
+        border: 34px solid #ee8cb8;
+        transform: rotate(-5deg);
+        opacity: .7;
+      }
+      #scene-01-start .impact-ray {
+        position: absolute;
+        display: none;
+        width: 720px;
+        height: 14px;
+        background: #ee8cb8;
+        transform-origin: right center;
+      }
+      #scene-01-start .mode-action-diagonal .impact-ray,
+      #scene-01-start .mode-impact-frame .impact-ray {
+        display: block;
+        right: -80px;
+        top: 210px;
+      }
+      #scene-01-start .mode-action-diagonal .ray-b,
+      #scene-01-start .mode-impact-frame .ray-b { top: 510px; transform: rotate(8deg); }
+      #scene-01-start .mode-action-diagonal .ray-c,
+      #scene-01-start .mode-impact-frame .ray-c { top: 760px; transform: rotate(-10deg); }
+      #scene-01-start .mode-closing-tableau {
+        box-shadow: inset 0 0 0 18px #ee8cb8;
+      }
+      #scene-01-start[data-visual-grammar="science"] .panel-inset {
+        clip-path: polygon(8% 0, 100% 0, 100% 86%, 92% 100%, 0 100%, 0 14%);
+        border-color: #f3c969;
+        box-shadow: 16px 0 0 #ee8cb8;
+        background-color: #041513;
+      }
+      #scene-01-start[data-visual-grammar="science"] .comic-treatment::after {
+        content: "";
+        position: absolute;
+        inset: 34px;
+        border: 3px solid #f3c969;
+        opacity: .55;
+      }
+      #scene-01-start[data-visual-grammar="history"] .panel-inset {
+        right: auto;
+        left: 96px;
+        top: 118px;
+        width: 620px;
+        height: 700px;
+        border-width: 8px 20px;
+        box-shadow: 18px 0 0 #f3c969;
+        background: #0c2a27;
+      }
+      #scene-01-start[data-visual-grammar="history"] .impact-ray {
+        height: 5px;
+        background: #f3c969;
+      }
+      #scene-01-start[data-visual-grammar="fantasy"] .panel-inset {
+        right: 120px;
+        top: 105px;
+        width: 700px;
+        height: 700px;
+        border-radius: 48% 52% 44% 56%;
+        border-color: #ee8cb8;
+        box-shadow: 0 0 48px #ee8cb8;
+        background: #041513;
+      }
+      #scene-01-start[data-visual-grammar="fantasy"] .impact-ray {
+        height: 8px;
+        border-radius: 50%;
+        filter: blur(2px);
+      }
+      #scene-01-start[data-visual-grammar="field-trip"] .panel-inset {
+        transform: rotate(1.2deg);
+        border-style: solid;
+        box-shadow: 14px 14px 0 #ee8cb8;
+      }
+      #scene-01-start [data-shot-signature="binocular-reaction"] .panel-inset {
+        width: 660px;
+        height: 660px;
+        border-radius: 50%;
+        clip-path: ellipse(48% 44% at 50% 50%);
+      }
+      #scene-01-start [data-shot-signature="orbit-sequence"]::before {
+        content: "";
+        position: absolute;
+        inset: 160px 240px;
+        border: 12px double #f3c969;
+        transform: rotate(-7deg);
+      }
+      #scene-01-start [data-shot-signature="two-hand-handoff"] .panel-inset {
+        left: 190px;
+        right: 190px;
+        top: 250px;
+        width: auto;
+        height: 430px;
+        border-width: 10px 28px;
+      }
+      #scene-01-start [data-shot-signature="two-hand-handoff"] .panel-portrait {
+        background-position: 50% 48%;
+        background-size: 88% auto;
+      }
+      #scene-01-start [data-shot-signature="seed-bloom"] .panel-inset {
+        left: 610px;
+        right: auto;
+        top: 120px;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+      }
+      #scene-01-start [data-shot-signature="photo-freeze"] {
+        box-shadow: inset 0 0 0 26px #0c2a27, inset 0 0 0 34px #f7f0df;
+      }
+      #scene-01-start .ending-signature {
+        position: absolute;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+      }
+      #scene-01-start .photo-shutter i {
+        position: absolute;
+        width: 150px;
+        height: 110px;
+        border: 12px solid #f7f0df;
+      }
+      #scene-01-start .photo-shutter i:nth-child(1) { left:55px;top:55px;border-right:0;border-bottom:0; }
+      #scene-01-start .photo-shutter i:nth-child(2) { right:55px;top:55px;border-left:0;border-bottom:0; }
+      #scene-01-start .photo-shutter i:nth-child(3) { left:55px;bottom:55px;border-right:0;border-top:0; }
+      #scene-01-start .photo-shutter i:nth-child(4) { right:55px;bottom:55px;border-left:0;border-top:0; }
+      #scene-01-start .orbit-finale {
+        left: 610px;
+        top: 190px;
+        width: 700px;
+        height: 700px;
+        border: 8px solid #f3c969;
+        border-radius: 50%;
+      }
+      #scene-01-start .orbit-dot {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #ee8cb8;
+        transform-origin: 0 0;
+      }
+      #scene-01-start .od-1 { transform:rotate(45deg) translateX(315px); }
+      #scene-01-start .od-2 { transform:rotate(90deg) translateX(315px); }
+      #scene-01-start .od-3 { transform:rotate(135deg) translateX(315px); }
+      #scene-01-start .od-4 { transform:rotate(180deg) translateX(315px); }
+      #scene-01-start .od-5 { transform:rotate(225deg) translateX(315px); }
+      #scene-01-start .od-6 { transform:rotate(270deg) translateX(315px); }
+      #scene-01-start .od-7 { transform:rotate(315deg) translateX(315px); }
+      #scene-01-start .letter-finale .seal-ring {
+        position:absolute;left:160px;bottom:175px;width:170px;height:170px;
+        border:18px double #f3c969;border-radius:50%;
+      }
+      #scene-01-start .letter-finale .horizon-rule {
+        position:absolute;left:300px;right:90px;top:47%;height:6px;
+        background:#f3c969;
+      }
+      #scene-01-start .bloom-finale {
+        left:760px;top:390px;width:400px;height:400px;
+      }
+      #scene-01-start .bloom-ray {
+        position:absolute;left:50%;top:50%;width:360px;height:18px;
+        border-radius:50%;background:#ee8cb8;
+        transform-origin:0 50%;filter:blur(3px);
+      }
+      #scene-01-start .br-1 { transform:rotate(45deg); }
+      #scene-01-start .br-2 { transform:rotate(90deg); }
+      #scene-01-start .br-3 { transform:rotate(135deg); }
+      #scene-01-start .br-4 { transform:rotate(180deg); }
+      #scene-01-start .br-5 { transform:rotate(225deg); }
+      #scene-01-start .br-6 { transform:rotate(270deg); }
+      #scene-01-start .br-7 { transform:rotate(315deg); }
     </style>
     <script>
       (function () {
@@ -147,19 +436,68 @@
         const qAll = (selector) => root.querySelectorAll(selector);
         const tl = gsap.timeline({ paused: true });
 
-      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.035, duration: 6.84, ease: "none"}, 0);
-      tl.fromTo(q(".rear img"), {opacity: 0, x: -34}, {opacity: 0.86, x: 0, duration: 1.334, ease: "power2.out"}, 0);
-      tl.fromTo(q(".architecture img"), {opacity: 0, y: 28, scale: 0.98}, {opacity: 1, y: 0, scale: 1, duration: 1.71, ease: "power2.out"}, 0);
-      tl.fromTo(q(".primary img"), {opacity: 0, y: 72, scale: 0.86}, {opacity: 1, y: 0, scale: 1, duration: 1.472, ease: "back.out(1.45)"}, 0.238);
-      tl.fromTo(q(".secondary img"), {opacity: 0, x: -62, y: 36, scale: 0.9}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.997, ease: "power2.out"}, 0.713);
-      tl.fromTo(q(".tertiary img"), {opacity: 0, x: 48, y: 22, scale: 0.95}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.57, ease: "power2.out"}, 1.14);
-      tl.fromTo(q(".foreground img"), {opacity: 0, y: 22}, {opacity: 1, y: 0, duration: 1.197, ease: "power2.out"}, 0.513);
-      tl.to(q(".primary img"), {y: -8, duration: 1.282, ease: "sine.inOut"}, 1.71);
-      tl.to(q(".primary img"), {y: 0, duration: 1.282, ease: "sine.inOut"}, 2.992);
-      tl.to(q(".primary img"), {y: -6, duration: 1.282, ease: "sine.inOut"}, 4.275);
-      tl.to(q(".primary img"), {y: 0, duration: 1.282, ease: "sine.inOut"}, 5.558);
-      tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 5.13, stagger: 0.18, ease: "sine.inOut"}, 1.71);
-      tl.to(root, {opacity: 0.98, duration: 0.95, ease: "power1.in"}, 8.55);
+      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.035, duration: 9, ease: "none"}, 0);
+      tl.fromTo(q(".rear img"), {opacity: 0, x: -34}, {opacity: 0.86, x: 0, duration: 1.755, ease: "power2.out"}, 0);
+      tl.fromTo(q(".architecture img"), {opacity: 0, y: 28, scale: 0.98}, {opacity: 1, y: 0, scale: 1, duration: 2.25, ease: "power2.out"}, 0);
+      tl.fromTo(q(".primary img"), {opacity: 0, y: 72, scale: 0.86}, {opacity: 1, y: 0, scale: 1, duration: 1.938, ease: "back.out(1.45)"}, 0.312);
+      tl.fromTo(q(".secondary img"), {opacity: 0, x: -62, y: 36, scale: 0.9}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 1.312, ease: "power2.out"}, 0.938);
+      tl.fromTo(q(".tertiary img"), {opacity: 0, x: 48, y: 22, scale: 0.95}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.75, ease: "power2.out"}, 1.5);
+      tl.fromTo(q(".foreground img"), {opacity: 0, y: 22}, {opacity: 1, y: 0, duration: 1.575, ease: "power2.out"}, 0.675);
+      tl.to(q(".primary img"), {y: -8, duration: 1.688, ease: "sine.inOut"}, 2.25);
+      tl.to(q(".primary img"), {y: 0, duration: 1.688, ease: "sine.inOut"}, 3.938);
+      tl.to(q(".primary img"), {y: -6, duration: 1.688, ease: "sine.inOut"}, 5.625);
+      tl.to(q(".primary img"), {y: 0, duration: 1.688, ease: "sine.inOut"}, 7.312);
+      tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 6.75, stagger: 0.18, ease: "sine.inOut"}, 2.25);
+      tl.to(root, {opacity: 0.98, duration: 1.25, ease: "power1.in"}, 11.25);
+        tl.set(q(".blocking-primary"), {x:-150,y:20,scale:0.84,opacity:1}, 0);
+      tl.set(q(".blocking-secondary"), {x:-30,y:18,scale:0.86,opacity:1}, 0);
+      tl.set(q(".blocking-tertiary"), {x:65,y:6,scale:0.82,opacity:1}, 0);
+      tl.set(q(".rear"), {x:-18,y:0,scale:1}, 0);
+      tl.set(q(".architecture"), {x:0,y:12,scale:0.96}, 0);
+      tl.set(q(".foreground"), {x:24,y:8,scale:1.02}, 0);
+      tl.to(qAll(".blocking"), {x:"+=18",y:"-=4",duration:2.491,ease:"power1.inOut"}, 0.16);
+      tl.to(q(".rear"), {x:-19.8,y:0.4,duration:2.491,ease:"sine.inOut"}, 0.16);
+      tl.to(q(".architecture"), {x:-2.88,y:12.64,duration:2.491,ease:"sine.inOut"}, 0.16);
+      tl.to(q(".foreground"), {x:19.68,y:8.96,duration:2.491,ease:"sine.inOut"}, 0.16);
+      tl.set(q(".camera-rig"), {x:0,y:0,scale:1.01,rotation:0.25}, 0);
+      tl.to(q(".camera-rig"), {scale:1.024,duration:5.16,ease:"none"}, 0);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 0);
+      tl.set(q(".treatment-1"), {opacity:1}, 0);
+      tl.set(q(".blocking-primary"), {x:45,y:-24,scale:1.1,opacity:1}, 5.19);
+      tl.set(q(".blocking-secondary"), {x:105,y:4,scale:0.78,opacity:1}, 5.19);
+      tl.set(q(".blocking-tertiary"), {x:-85,y:14,scale:0.78,opacity:1}, 5.19);
+      tl.set(q(".rear"), {x:12,y:-8,scale:1.025}, 5.19);
+      tl.set(q(".architecture"), {x:-42,y:0,scale:1.04}, 5.19);
+      tl.set(q(".foreground"), {x:-34,y:0,scale:1.035}, 5.19);
+      tl.to(q(".blocking-primary"), {x:87,y:-32,duration:1.757,ease:"power2.inOut"}, 5.35);
+      tl.to(q(".rear"), {x:7.8,y:-7.2,duration:1.757,ease:"sine.inOut"}, 5.35);
+      tl.to(q(".architecture"), {x:-48.72,y:1.28,duration:1.757,ease:"sine.inOut"}, 5.35);
+      tl.to(q(".foreground"), {x:-44.08,y:1.92,duration:1.757,ease:"sine.inOut"}, 5.35);
+      tl.set(q(".camera-rig"), {x:0,y:-42.5,scale:1.172,rotation:-0.35}, 5.19);
+      tl.to(q(".camera-rig"), {scale:1.189,duration:3.63,ease:"none"}, 5.19);
+      tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 5.41);
+      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.73);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 5.19);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 5.19);
+      tl.set(q(".treatment-2"), {opacity:1}, 5.19);
+      tl.set(q(".blocking-primary"), {x:125,y:-28,scale:0.78,opacity:1}, 8.85);
+      tl.set(q(".blocking-secondary"), {x:145,y:-24,scale:1.04,opacity:1}, 8.85);
+      tl.set(q(".blocking-tertiary"), {x:95,y:28,scale:0.76,opacity:1}, 8.85);
+      tl.set(q(".rear"), {x:-24,y:-12,scale:1.04}, 8.85);
+      tl.set(q(".architecture"), {x:-78,y:8,scale:1.07}, 8.85);
+      tl.set(q(".foreground"), {x:42,y:12,scale:1.06}, 8.85);
+      tl.to(q(".blocking-secondary"), {x:193,y:-32,duration:1.752,ease:"power2.inOut"}, 9.01);
+      tl.to(q(".rear"), {x:-28.8,y:-11.2,duration:1.752,ease:"sine.inOut"}, 9.01);
+      tl.to(q(".architecture"), {x:-85.68,y:9.28,duration:1.752,ease:"sine.inOut"}, 9.01);
+      tl.to(q(".foreground"), {x:30.48,y:13.92,duration:1.752,ease:"sine.inOut"}, 9.01);
+      tl.set(q(".camera-rig"), {x:94.5,y:9.6,scale:1.394,rotation:0.2}, 8.85);
+      tl.to(q(".camera-rig"), {scale:1.415,duration:3.62,ease:"none"}, 8.85);
+      tl.to(q(".performance-secondary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 9.07);
+      tl.to(q(".performance-secondary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 9.39);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 8.85);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 8.85);
+      tl.set(q(".treatment-3"), {opacity:1}, 8.85);
+      tl.fromTo(q(".treatment-3 .panel-inset"), {x:90,scale:0.92}, {x:0,scale:1,duration:0.24,ease:"power3.out"}, 8.85);
         window.__timelines = window.__timelines || {};
         window.__timelines["01-start"] = tl;
       })();

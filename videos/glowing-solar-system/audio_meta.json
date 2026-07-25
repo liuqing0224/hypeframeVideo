@@ -1,313 +1,684 @@
 {
   "provider": "edge",
   "voice": "zh-CN-XiaoxiaoNeural",
+  "voiceCast": {
+    "narrator": "zh-CN-XiaoxiaoNeural",
+    "primary": "zh-CN-XiaoyiNeural",
+    "secondary": "zh-CN-YunxiNeural",
+    "tertiary": "zh-CN-YunyangNeural",
+    "ensemble": "zh-CN-XiaoxiaoNeural"
+  },
   "voices": [
     {
       "sceneId": "01-start",
-      "text": "小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。",
-      "rawDuration": 8.4,
-      "durationSeconds": 10.0,
-      "path": "assets/audio/segments/01-start.wav",
+      "lineId": "01-start-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "中央太阳系模型正在一颗颗熄灭。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.696,
+      "startSeconds": 0.45,
+      "path": "assets/audio/lines/01-start-line-1.wav",
       "words": [
         {
-          "text": "小曦",
-          "start": 0.552083,
-          "duration": 0.507833
-        },
-        {
-          "text": "和",
-          "start": 1.085958,
-          "duration": 0.130208
-        },
-        {
-          "text": "阿朗",
-          "start": 1.229166,
-          "duration": 0.494791
-        },
-        {
-          "text": "在",
-          "start": 1.828125,
-          "duration": 0.234375
-        },
-        {
-          "text": "科技",
-          "start": 2.075541,
-          "duration": 0.364583
-        },
-        {
-          "text": "博物馆",
-          "start": 2.453125,
-          "duration": 0.625
-        },
-        {
-          "text": "遇见",
-          "start": 3.169291,
-          "duration": 0.390625
-        },
-        {
-          "text": "机器人",
-          "start": 3.585958,
-          "duration": 0.429708
-        },
-        {
-          "text": "小光",
-          "start": 4.028666,
-          "duration": 0.507833
-        },
-        {
-          "text": "发现",
-          "start": 4.888041,
-          "duration": 0.429708
-        },
-        {
           "text": "中央",
-          "start": 5.34375,
-          "duration": 0.325541
+          "start": 0.552083,
+          "duration": 0.403666,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "太阳系",
-          "start": 5.682291,
-          "duration": 0.520833
+          "start": 0.96875,
+          "duration": 0.546875,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "模型",
-          "start": 6.216166,
-          "duration": 0.533875
+          "start": 1.528666,
+          "duration": 0.546875,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "正在",
-          "start": 6.854166,
-          "duration": 0.364583
+          "start": 2.179708,
+          "duration": 0.351583,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "一",
-          "start": 7.244791,
-          "duration": 0.091166
+          "start": 2.557291,
+          "duration": 0.091166,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "颗",
-          "start": 7.335958,
-          "duration": 0.182291
+          "start": 2.648458,
+          "duration": 0.182291,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "颗",
-          "start": 7.51825,
-          "duration": 0.169291
+          "start": 2.83075,
+          "duration": 0.182291,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "熄灭",
-          "start": 7.700541,
-          "duration": 0.533875
+          "start": 3.026041,
+          "duration": 0.507833,
+          "lineId": "01-start-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "阿朗，你看，行星正在失去亮光！",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rawDuration": 3.624,
+      "startSeconds": 4.566,
+      "path": "assets/audio/lines/01-start-line-2.wav",
+      "words": [
+        {
+          "text": "阿朗",
+          "start": 4.668083,
+          "duration": 0.364583,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "你",
+          "start": 5.267041,
+          "duration": 0.117208,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "看",
+          "start": 5.38425,
+          "duration": 0.195333,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "行星",
+          "start": 5.839958,
+          "duration": 0.429708,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "正在",
+          "start": 6.282666,
+          "duration": 0.260416,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "失去",
+          "start": 6.556125,
+          "duration": 0.247416,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "亮光",
+          "start": 6.816541,
+          "duration": 0.45575,
+          "lineId": "01-start-line-2",
+          "speaker": "小曦",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "能量连接异常，请帮助我修复轨道。",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 3.6,
+      "startSeconds": 8.61,
+      "path": "assets/audio/lines/01-start-line-3.wav",
+      "words": [
+        {
+          "text": "能量",
+          "start": 8.712083,
+          "duration": 0.46875,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "连接",
+          "start": 9.206875,
+          "duration": 0.3125,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "异常",
+          "start": 9.532416,
+          "duration": 0.45575,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "请",
+          "start": 10.131375,
+          "duration": 0.221375,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "帮助",
+          "start": 10.36575,
+          "duration": 0.299458,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "我",
+          "start": 10.665208,
+          "duration": 0.130208,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "修复",
+          "start": 10.821458,
+          "duration": 0.364583,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
+        },
+        {
+          "text": "轨道",
+          "start": 11.199083,
+          "duration": 0.403666,
+          "lineId": "01-start-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         }
       ]
     },
     {
       "sceneId": "02-middle",
-      "text": "三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。",
-      "rawDuration": 7.872,
-      "durationSeconds": 9.5,
-      "path": "assets/audio/segments/02-middle.wav",
+      "lineId": "02-middle-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "三人沿着行星轨道寻找能量碎片。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.912,
+      "startSeconds": 13.45,
+      "path": "assets/audio/lines/02-middle-line-1.wav",
       "words": [
         {
           "text": "三",
-          "start": 10.552083,
-          "duration": 0.3125
+          "start": 13.552083,
+          "duration": 0.325541,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "人",
-          "start": 10.864583,
-          "duration": 0.221375
+          "start": 13.877625,
+          "duration": 0.195333,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "沿着",
-          "start": 11.112,
-          "duration": 0.286458
+          "start": 14.098958,
+          "duration": 0.286458,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "行星",
-          "start": 11.4245,
-          "duration": 0.390625
+          "start": 14.411458,
+          "duration": 0.377625,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "轨道",
-          "start": 11.828125,
-          "duration": 0.507833
+          "start": 14.802083,
+          "duration": 0.507833,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "寻找",
-          "start": 12.440125,
-          "duration": 0.429708
+          "start": 15.414083,
+          "duration": 0.429708,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "能量",
-          "start": 12.895833,
-          "duration": 0.3125
+          "start": 15.869791,
+          "duration": 0.3125,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "碎片",
-          "start": 13.221375,
-          "duration": 0.533875
-        },
+          "start": 16.195333,
+          "duration": 0.546875,
+          "lineId": "02-middle-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "先按顺序连接轨道，别接错位置！",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 3.768,
+      "startSeconds": 17.782,
+      "path": "assets/audio/lines/02-middle-line-2.wav",
+      "words": [
         {
-          "text": "并",
-          "start": 14.119791,
-          "duration": 0.182291
+          "text": "先",
+          "start": 17.884083,
+          "duration": 0.2995,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
           "text": "按",
-          "start": 14.302083,
-          "duration": 0.208333
-        },
-        {
-          "text": "正确",
-          "start": 14.536458,
-          "duration": 0.325541
+          "start": 18.183583,
+          "duration": 0.130208,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
           "text": "顺序",
-          "start": 14.875,
-          "duration": 0.442708
-        },
-        {
-          "text": "修复",
-          "start": 15.34375,
-          "duration": 0.364583
-        },
-        {
-          "text": "轨道",
-          "start": 15.721375,
-          "duration": 0.481791
-        },
-        {
-          "text": "重新",
-          "start": 16.411458,
-          "duration": 0.45575
+          "start": 18.326791,
+          "duration": 0.390625,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
           "text": "连接",
-          "start": 16.880208,
-          "duration": 0.338541
+          "start": 18.743458,
+          "duration": 0.260416,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
-          "text": "能量",
-          "start": 17.231791,
-          "duration": 0.46875
+          "text": "轨道",
+          "start": 19.016916,
+          "duration": 0.481791,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
+        },
+        {
+          "text": "别",
+          "start": 19.876291,
+          "duration": 0.182291,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
+        },
+        {
+          "text": "接错",
+          "start": 20.058583,
+          "duration": 0.273458,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
+        },
+        {
+          "text": "位置",
+          "start": 20.345041,
+          "duration": 0.286458,
+          "lineId": "02-middle-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我去拿金色碎片，小光负责扫描！",
+      "voice": "zh-CN-XiaoyiNeural",
+      "rawDuration": 3.816,
+      "startSeconds": 21.97,
+      "path": "assets/audio/lines/02-middle-line-3.wav",
+      "words": [
+        {
+          "text": "我",
+          "start": 22.072083,
+          "duration": 0.14325,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "去",
+          "start": 22.215333,
+          "duration": 0.130208,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "拿",
+          "start": 22.358541,
+          "duration": 0.169291,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "金色",
+          "start": 22.540833,
+          "duration": 0.377625,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "碎片",
+          "start": 22.931458,
+          "duration": 0.45575,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "小光",
+          "start": 23.595541,
+          "duration": 0.442708,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "负责",
+          "start": 24.05125,
+          "duration": 0.286458,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
+        },
+        {
+          "text": "扫描",
+          "start": 24.35075,
+          "duration": 0.533875,
+          "lineId": "02-middle-line-3",
+          "speaker": "小曦",
+          "role": "primary"
         }
       ]
     },
     {
       "sceneId": "03-end",
-      "text": "太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。",
-      "rawDuration": 8.64,
-      "durationSeconds": 10.0,
-      "path": "assets/audio/segments/03-end.wav",
+      "lineId": "03-end-line-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "太阳和八颗行星全部重新发光。",
+      "voice": "zh-CN-XiaoxiaoNeural",
+      "rawDuration": 3.744,
+      "startSeconds": 27.45,
+      "path": "assets/audio/lines/03-end-line-1.wav",
       "words": [
         {
           "text": "太阳",
-          "start": 20.052083,
-          "duration": 0.481791
+          "start": 27.552083,
+          "duration": 0.481791,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "和",
-          "start": 20.559916,
-          "duration": 0.15625
+          "start": 28.059916,
+          "duration": 0.14325,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "八",
-          "start": 20.729166,
-          "duration": 0.169291
+          "start": 28.216166,
+          "duration": 0.16925,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "颗",
-          "start": 20.898458,
-          "duration": 0.182291
+          "start": 28.385416,
+          "duration": 0.182291,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "行星",
-          "start": 21.09375,
-          "duration": 0.46875
+          "start": 28.58075,
+          "duration": 0.546875,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
           "text": "全部",
-          "start": 21.588541,
-          "duration": 0.351583
+          "start": 29.231791,
+          "duration": 0.429708,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
-          "text": "点亮",
-          "start": 21.953125,
-          "duration": 0.507833
+          "text": "重新",
+          "start": 29.6875,
+          "duration": 0.403666,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
         },
         {
-          "text": "展厅",
-          "start": 22.773458,
-          "duration": 0.481791
+          "text": "发光",
+          "start": 30.104166,
+          "duration": 0.481791,
+          "lineId": "03-end-line-1",
+          "speaker": "旁白",
+          "role": "narrator"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "最后一条轨道接通了！",
+      "voice": "zh-CN-YunxiNeural",
+      "rawDuration": 2.448,
+      "startSeconds": 31.614,
+      "path": "assets/audio/lines/03-end-line-2.wav",
+      "words": [
+        {
+          "text": "最后",
+          "start": 31.716083,
+          "duration": 0.377625,
+          "lineId": "03-end-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
-          "text": "化为",
-          "start": 23.28125,
-          "duration": 0.325541
+          "text": "一条",
+          "start": 32.106708,
+          "duration": 0.221375,
+          "lineId": "03-end-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
-          "text": "星空",
-          "start": 23.619791,
-          "duration": 0.520833
+          "text": "轨道",
+          "start": 32.341083,
+          "duration": 0.260416,
+          "lineId": "03-end-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
-          "text": "小",
-          "start": 24.492208,
-          "duration": 0.208333
+          "text": "接通",
+          "start": 32.627541,
+          "duration": 0.3125,
+          "lineId": "03-end-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
         },
         {
-          "text": "光",
-          "start": 24.700541,
-          "duration": 0.182291
-        },
-        {
-          "text": "告诉他们",
-          "start": 24.895833,
-          "duration": 0.742208
-        },
+          "text": "了",
+          "start": 32.940041,
+          "duration": 0.221375,
+          "lineId": "03-end-line-2",
+          "speaker": "阿朗",
+          "role": "secondary"
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "好奇心，就是点亮未知的光。",
+      "voice": "zh-CN-YunyangNeural",
+      "rawDuration": 3.096,
+      "startSeconds": 34.482,
+      "path": "assets/audio/lines/03-end-line-3.wav",
+      "words": [
         {
           "text": "好奇心",
-          "start": 25.729166,
-          "duration": 0.729166
+          "start": 34.584083,
+          "duration": 0.651041,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "就",
-          "start": 26.484375,
-          "duration": 0.169291
+          "start": 35.365333,
+          "duration": 0.182291,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "是",
-          "start": 26.653666,
-          "duration": 0.117208
+          "start": 35.547625,
+          "duration": 0.234375,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "点亮",
-          "start": 26.783875,
-          "duration": 0.403666
+          "start": 35.795041,
+          "duration": 0.429708,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "未知",
-          "start": 27.213541,
-          "duration": 0.351583
+          "start": 36.25075,
+          "duration": 0.351583,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "的",
-          "start": 27.565125,
-          "duration": 0.117166
+          "start": 36.602333,
+          "duration": 0.104166,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         },
         {
           "text": "光",
-          "start": 27.682291,
-          "duration": 0.3125
+          "start": 36.7065,
+          "duration": 0.286458,
+          "lineId": "03-end-line-3",
+          "speaker": "小光",
+          "role": "tertiary"
         }
       ]
     }
   ],
   "bgm": {
     "path": "assets/audio/music.wav",
-    "duration": 29.5
+    "duration": 38.5
+  },
+  "ambience": {
+    "path": "assets/audio/ambience.wav",
+    "duration": 38.5
   },
   "sfx": [
     {
@@ -321,7 +692,307 @@
     {
       "id": "chime",
       "path": "assets/audio/sfx-chime.wav"
+    },
+    {
+      "id": "cut",
+      "path": "assets/audio/sfx-cut.wav"
+    },
+    {
+      "id": "rustle",
+      "path": "assets/audio/sfx-rustle.wav"
     }
   ],
-  "total_duration_s": 29.5
+  "sfxEvents": [
+    {
+      "id": "sfx-1",
+      "src": "assets/audio/sfx-impact.wav",
+      "startSeconds": 0.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 953,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-1",
+      "cue": "impact"
+    },
+    {
+      "id": "sfx-01-start-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 4.566,
+      "durationSeconds": 1.0,
+      "trackIndex": 954,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-01-start-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 8.61,
+      "durationSeconds": 1.0,
+      "trackIndex": 955,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "01-start",
+      "shotId": "01-start-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-2",
+      "src": "assets/audio/sfx-whoosh.wav",
+      "startSeconds": 13.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 956,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-1",
+      "cue": "whoosh"
+    },
+    {
+      "id": "sfx-02-middle-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 17.782,
+      "durationSeconds": 1.0,
+      "trackIndex": 957,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-02-middle-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 21.97,
+      "durationSeconds": 1.0,
+      "trackIndex": 958,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "02-middle",
+      "shotId": "02-middle-shot-3",
+      "cue": "rustle"
+    },
+    {
+      "id": "sfx-3",
+      "src": "assets/audio/sfx-chime.wav",
+      "startSeconds": 27.08,
+      "durationSeconds": 1.0,
+      "trackIndex": 959,
+      "volume": 0.72,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-1",
+      "cue": "chime"
+    },
+    {
+      "id": "sfx-03-end-shot-2",
+      "src": "assets/audio/sfx-cut.wav",
+      "startSeconds": 31.614,
+      "durationSeconds": 1.0,
+      "trackIndex": 960,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-2",
+      "cue": "cut"
+    },
+    {
+      "id": "sfx-03-end-shot-3",
+      "src": "assets/audio/sfx-rustle.wav",
+      "startSeconds": 34.482,
+      "durationSeconds": 1.0,
+      "trackIndex": 961,
+      "volume": 0.44,
+      "bus": "sfx",
+      "sceneId": "03-end",
+      "shotId": "03-end-shot-3",
+      "cue": "rustle"
+    }
+  ],
+  "captions": [
+    {
+      "id": "01-start-line-1-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "中央太阳系模型",
+      "startSeconds": 0.45,
+      "endSeconds": 2.1748
+    },
+    {
+      "id": "01-start-line-1-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "正在一颗颗熄灭。",
+      "startSeconds": 2.1748,
+      "endSeconds": 4.146
+    },
+    {
+      "id": "01-start-line-2-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "阿朗，你看，",
+      "startSeconds": 4.566,
+      "endSeconds": 6.0156
+    },
+    {
+      "id": "01-start-line-2-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "行星正在失去亮光！",
+      "startSeconds": 6.0156,
+      "endSeconds": 8.19
+    },
+    {
+      "id": "01-start-line-3-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "能量连接异常，",
+      "startSeconds": 8.61,
+      "endSeconds": 10.185
+    },
+    {
+      "id": "01-start-line-3-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "请帮助我修复轨道。",
+      "startSeconds": 10.185,
+      "endSeconds": 12.21
+    },
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "三人沿着行星轨",
+      "startSeconds": 13.45,
+      "endSeconds": 15.2756
+    },
+    {
+      "id": "02-middle-line-1-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "道寻找能量碎片。",
+      "startSeconds": 15.2756,
+      "endSeconds": 17.362
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "先按顺序连接轨道，",
+      "startSeconds": 17.782,
+      "endSeconds": 20.0428
+    },
+    {
+      "id": "02-middle-line-2-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "别接错位置！",
+      "startSeconds": 20.0428,
+      "endSeconds": 21.55
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我去拿金色碎片，",
+      "startSeconds": 21.97,
+      "endSeconds": 24.0052
+    },
+    {
+      "id": "02-middle-line-3-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "小光负责扫描！",
+      "startSeconds": 24.0052,
+      "endSeconds": 25.786
+    },
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "太阳和八颗行星全部重新发光。",
+      "startSeconds": 27.45,
+      "endSeconds": 31.194
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "最后一条轨道接通了！",
+      "startSeconds": 31.614,
+      "endSeconds": 34.062
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "好奇心，就是点亮未知的光。",
+      "startSeconds": 34.482,
+      "endSeconds": 37.578
+    }
+  ],
+  "total_duration_s": 38.5
 }

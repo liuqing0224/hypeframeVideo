@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "compositionId": "02-middle",
-  "durationSeconds": 8.0,
+  "durationSeconds": 13.0,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.44
+      2.34
     ],
     "action": [
-      1.44,
-      5.76
+      2.34,
+      9.36
     ],
     "hold": [
-      5.76,
-      7.2
+      9.36,
+      11.7
     ],
     "transition": [
-      7.2,
-      8.0
+      11.7,
+      13.0
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.2,
+      "entranceStart": 0.325,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.6,
+      "entranceStart": 0.975,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,364 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 0.96,
+      "entranceStart": 1.56,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "02-middle-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 4.566,
+      "camera": {
+        "x": 0.0,
+        "y": 0.0,
+        "scale": 1.01,
+        "push": 0.0144,
+        "rotation": 0.25
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": -135,
+            "y": 22,
+            "scale": 0.86,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": -65,
+            "y": 18,
+            "scale": 0.86,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": 72,
+            "y": 8,
+            "scale": 0.82,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": 22,
+            "y": 0,
+            "scale": 1.01
+          },
+          "architecture": {
+            "x": 34,
+            "y": 8,
+            "scale": 0.98
+          },
+          "foreground": {
+            "x": -28,
+            "y": 8,
+            "scale": 1.03
+          }
+        },
+        "travel": {
+          "role": "ensemble",
+          "x": -20,
+          "y": 4
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 528.3,
+          "y": 287.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 61.5,
+          "y": 379.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1586.7,
+          "y": 458.475,
+          "width": 270.6,
+          "height": 397.7
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 508.3,
+          "y": 291.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 41.5,
+          "y": 383.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1566.7,
+          "y": 462.475,
+          "width": 270.6,
+          "height": 397.7
+        }
+      }
+    },
+    {
+      "id": "02-middle-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 4.566,
+      "to": 8.562,
+      "camera": {
+        "x": 0.0,
+        "y": -42.5,
+        "scale": 1.1716,
+        "push": 0.0176,
+        "rotation": -0.35
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": 80,
+            "y": -24,
+            "scale": 1.1,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": 165,
+            "y": -4,
+            "scale": 0.78,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": -155,
+            "y": 2,
+            "scale": 0.78,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": -24,
+            "y": -10,
+            "scale": 1.04
+          },
+          "architecture": {
+            "x": -55,
+            "y": -4,
+            "scale": 1.055
+          },
+          "foreground": {
+            "x": 38,
+            "y": 0,
+            "scale": 1.045
+          }
+        },
+        "travel": {
+          "role": "primary",
+          "x": 42,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 660.5,
+          "y": 112.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 309.5,
+          "y": 393.35,
+          "width": 351.0,
+          "height": 460.2
+        },
+        "tertiary": {
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 702.5,
+          "y": 104.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 309.5,
+          "y": 393.35,
+          "width": 351.0,
+          "height": 460.2
+        },
+        "tertiary": {
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
+        }
+      }
+    },
+    {
+      "id": "02-middle-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "secondary",
+      "from": 8.562,
+      "to": 13.0,
+      "camera": {
+        "x": 94.5,
+        "y": 9.600000000000001,
+        "scale": 1.3938,
+        "push": 0.0208,
+        "rotation": 0.2
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": -72,
+            "y": -30,
+            "scale": 0.78,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": 145,
+            "y": -24,
+            "scale": 1.04,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": 82,
+            "y": 24,
+            "scale": 0.74,
+            "opacity": 1.0
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": 18,
+            "y": -14,
+            "scale": 1.045
+          },
+          "architecture": {
+            "x": 72,
+            "y": 4,
+            "scale": 1.075
+          },
+          "foreground": {
+            "x": -46,
+            "y": 14,
+            "scale": 1.065
+          }
+        },
+        "travel": {
+          "role": "secondary",
+          "x": 48,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 618.9,
+          "y": 277.975,
+          "width": 538.2,
+          "height": 557.7
+        },
+        "secondary": {
+          "x": 231.0,
+          "y": 258.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1609.9,
+          "y": 503.575,
+          "width": 244.2,
+          "height": 358.9
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 618.9,
+          "y": 277.975,
+          "width": 538.2,
+          "height": 557.7
+        },
+        "secondary": {
+          "x": 279.0,
+          "y": 250.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1609.9,
+          "y": 503.575,
+          "width": 244.2,
+          "height": 358.9
+        }
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "02-middle-shot-1",
+      "toShot": "02-middle-shot-2",
+      "at": 4.566,
+      "anticipationAt": 4.386
+    },
+    {
+      "fromShot": "02-middle-shot-2",
+      "toShot": "02-middle-shot-3",
+      "at": 8.562,
+      "anticipationAt": 8.382
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "叶芽和小鹿顶着风雨穿过森林。",
+      "startSeconds": 12.95,
+      "endSeconds": 16.646
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "叶芽",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "风雨再大，也不能让星种熄灭。",
+      "startSeconds": 17.066,
+      "endSeconds": 20.642
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小鹿",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "跟紧我，我们越过前面的断木！",
+      "startSeconds": 21.062,
+      "endSeconds": 24.302
     }
   ],
   "motionRules": [
@@ -81,6 +432,9 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true,
+    "shotBlockingVariety": true
   }
 }

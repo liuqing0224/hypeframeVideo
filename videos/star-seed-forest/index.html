@@ -13,6 +13,12 @@
         font-style: normal;
         font-weight: 400 900;
       }
+      @font-face {
+        font-family: "Songti SC";
+        src: local("Songti SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
       html, body {
         margin: 0;
         width: 1920px;
@@ -41,17 +47,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #f7f0df;
         background: #0c2a27;
-        border: 5px solid #f3c969;
-        box-shadow: 12px 12px 0 #041513;
+        border: 5px solid #f7f0df;
+        box-shadow: 10px 10px 0 #041513;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #f7f0df;
+        color: #0c2a27;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #f7f0df;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #ee8cb8;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #f3c969;
       }
       .caption p {
         margin: 0;
@@ -61,6 +99,41 @@
         font-weight: 700;
         text-align: center;
         letter-spacing: 0;
+      }
+      .caption span {
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: #0c2a27;
+        background: #f3c969;
+      }
+      body.style-science .caption {
+        right: 110px;
+        left: auto;
+        border-color: #f3c969;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 #ee8cb8;
+      }
+      body.style-history .caption {
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "Songti SC", serif;
+      }
+      body.style-fantasy .caption {
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: #ee8cb8;
+        box-shadow: 0 0 34px #ee8cb8;
+      }
+      body.style-field-trip .caption {
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 #ee8cb8;
       }
       .transition {
         position: absolute;
@@ -111,75 +184,133 @@
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
     </style>
   </head>
-  <body>
+  <body class="style-fantasy">
     <div id="main" data-composition-id="main" data-start="0"
-         data-duration="26" data-width="1920" data-height="1080" data-fps="30">
+         data-duration="38" data-width="1920" data-height="1080" data-fps="30">
 
       <div id="slot-01-start" class="clip scene-slot"
            data-composition-id="01-start"
            data-composition-src="compositions/01-start.html"
            data-start="0"
-           data-duration="9.5"
+           data-duration="12.5"
            data-track-index="10"></div>
       <div id="slot-02-middle" class="clip scene-slot"
            data-composition-id="02-middle"
            data-composition-src="compositions/02-middle.html"
-           data-start="9.5"
-           data-duration="8"
+           data-start="12.5"
+           data-duration="13"
            data-track-index="10"></div>
       <div id="slot-03-end" class="clip scene-slot"
            data-composition-id="03-end"
            data-composition-src="compositions/03-end.html"
-           data-start="17.5"
-           data-duration="8.5"
+           data-start="25.5"
+           data-duration="12.5"
            data-track-index="10"></div>
 
-      <div id="transition-1-blur-through" class="clip transition"
-           data-start="9.18" data-duration="0.64" data-track-index="800">
-        <div id="transition-1-blur-through-fx" class="transition-fx transition-blur-through">
+      <div id="transition-1-blur-through" class="clip transition" data-layout-allow-overflow
+           data-start="12.05" data-duration="0.9" data-track-index="800">
+        <div id="transition-1-blur-through-fx" class="transition-fx transition-blur-through" data-layout-allow-overflow>
           <span></span><span></span><span></span>
         </div>
       </div>
-      <div id="transition-2-light-leak" class="clip transition"
-           data-start="17.16" data-duration="0.68" data-track-index="800">
-        <div id="transition-2-light-leak-fx" class="transition-fx transition-light-leak">
+      <div id="transition-2-light-leak" class="clip transition" data-layout-allow-overflow
+           data-start="25.05" data-duration="0.9" data-track-index="800">
+        <div id="transition-2-light-leak-fx" class="transition-fx transition-light-leak" data-layout-allow-overflow>
           <span></span><span></span><span></span>
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption"
-           data-start="0.45" data-duration="8.7" data-track-index="900">
-        <p>守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。</p>
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
+           data-start="0.45" data-duration="2.16" data-track-index="900">
+        <span>旁白</span><p>失去星光的森林里，</p>
       </div>
-      <div id="caption-2" class="clip caption"
-           data-start="9.95" data-duration="7.2" data-track-index="900">
-        <p>叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。</p>
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
+           data-start="2.61" data-duration="2.16" data-track-index="900">
+        <span>旁白</span><p>小鹿带来一颗星种。</p>
       </div>
-      <div id="caption-3" class="clip caption"
-           data-start="17.95" data-duration="7.7" data-track-index="900">
-        <p>星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。</p>
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
+           data-start="5.19" data-duration="3.24" data-track-index="900">
+        <span>叶芽</span><p>别怕，我会保护这颗星种。</p>
+      </div>
+      <div id="caption-4" class="clip caption caption-secondary caption-dialogue"
+           data-start="8.85" data-duration="2.52" data-track-index="900">
+        <span>小鹿</span><p>最高的古树还在等它。</p>
+      </div>
+      <div id="caption-5" class="clip caption caption-narrator caption-narration"
+           data-start="12.95" data-duration="3.696" data-track-index="900">
+        <span>旁白</span><p>叶芽和小鹿顶着风雨穿过森林。</p>
+      </div>
+      <div id="caption-6" class="clip caption caption-primary caption-dialogue"
+           data-start="17.066" data-duration="3.576" data-track-index="900">
+        <span>叶芽</span><p>风雨再大，也不能让星种熄灭。</p>
+      </div>
+      <div id="caption-7" class="clip caption caption-secondary caption-dialogue"
+           data-start="21.062" data-duration="3.24" data-track-index="900">
+        <span>小鹿</span><p>跟紧我，我们越过前面的断木！</p>
+      </div>
+      <div id="caption-8" class="clip caption caption-narrator caption-narration"
+           data-start="25.95" data-duration="3.768" data-track-index="900">
+        <span>旁白</span><p>星种在古树顶端开成漫天星花。</p>
+      </div>
+      <div id="caption-9" class="clip caption caption-primary caption-dialogue"
+           data-start="30.138" data-duration="1.421" data-track-index="900">
+        <span>叶芽</span><p>我们做到了，</p>
+      </div>
+      <div id="caption-10" class="clip caption caption-primary caption-dialogue"
+           data-start="31.559" data-duration="2.131" data-track-index="900">
+        <span>叶芽</span><p>森林重新亮起来了！</p>
+      </div>
+      <div id="caption-11" class="clip caption caption-tertiary caption-dialogue"
+           data-start="34.11" data-duration="2.688" data-track-index="900">
+        <span>猫头鹰</span><p>星花开满天空啦！</p>
       </div>
 
       <audio id="narration" class="clip" src="assets/audio/narration.wav"
-             data-start="0" data-duration="26" data-track-index="950" data-volume="1"></audio>
+             data-start="0" data-duration="38"
+             data-track-index="950" data-volume="1"></audio>
       <audio id="music" class="clip" src="assets/audio/music.wav"
-             data-start="0" data-duration="26" data-track-index="951" data-volume="0.2"></audio>
+             data-start="0" data-duration="38"
+             data-track-index="951" data-volume="0.24"></audio>
+      <audio id="ambience" class="clip" src="assets/audio/ambience.wav"
+             data-start="0" data-duration="38"
+             data-track-index="952" data-volume="0.42"></audio>
       <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
-             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
+             data-start="0.08" data-duration="1"
+             data-track-index="953" data-volume="0.72"></audio>
+      <audio id="sfx-01-start-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="5.19" data-duration="1"
+             data-track-index="954" data-volume="0.44"></audio>
+      <audio id="sfx-01-start-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="8.85" data-duration="1"
+             data-track-index="955" data-volume="0.44"></audio>
       <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
-             data-start="9.58" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+             data-start="12.58" data-duration="1"
+             data-track-index="956" data-volume="0.72"></audio>
+      <audio id="sfx-02-middle-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="17.066" data-duration="1"
+             data-track-index="957" data-volume="0.44"></audio>
+      <audio id="sfx-02-middle-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="21.062" data-duration="1"
+             data-track-index="958" data-volume="0.44"></audio>
       <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
-             data-start="17.58" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+             data-start="25.58" data-duration="1"
+             data-track-index="959" data-volume="0.72"></audio>
+      <audio id="sfx-03-end-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="30.138" data-duration="1"
+             data-track-index="960" data-volume="0.44"></audio>
+      <audio id="sfx-03-end-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="34.11" data-duration="1"
+             data-track-index="961" data-volume="0.44"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#transition-1-blur-through-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.32,ease:"sine.in"}, 9.18);
-        tl.to("#transition-1-blur-through-fx", {opacity:0,scale:1.08,duration:0.32,ease:"sine.out"}, 9.5);
-        tl.set("#transition-1-blur-through-fx", {opacity:0}, 9.82);
-        tl.fromTo("#transition-2-light-leak-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.34,ease:"sine.in"}, 17.16);
-        tl.to("#transition-2-light-leak-fx", {opacity:0,scale:1.08,duration:0.34,ease:"sine.out"}, 17.5);
-        tl.set("#transition-2-light-leak-fx", {opacity:0}, 17.84);
+      tl.fromTo("#transition-1-blur-through-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.45,ease:"sine.in"}, 12.05);
+        tl.to("#transition-1-blur-through-fx", {opacity:0,scale:1.08,duration:0.45,ease:"sine.out"}, 12.5);
+        tl.set("#transition-1-blur-through-fx", {opacity:0}, 12.95);
+        tl.fromTo("#transition-2-light-leak-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.45,ease:"sine.in"}, 25.05);
+        tl.to("#transition-2-light-leak-fx", {opacity:0,scale:1.08,duration:0.45,ease:"sine.out"}, 25.5);
+        tl.set("#transition-2-light-leak-fx", {opacity:0}, 25.95);
       window.__timelines["main"] = tl;
     </script>
   </body>

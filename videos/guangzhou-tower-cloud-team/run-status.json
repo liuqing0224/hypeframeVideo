@@ -14,16 +14,10 @@
     "visual_generation": {
       "status": "complete",
       "evidence": [
-        "assets/source/01-start-backdrop-v1.png",
-        "assets/source/01-start-environment-v1.png",
-        "assets/source/01-start-characters-v1.png",
-        "assets/source/02-middle-backdrop-v1.png",
-        "assets/source/02-middle-environment-v1.png",
-        "assets/source/02-middle-characters-v1.png",
-        "assets/source/03-end-backdrop-v1.png",
-        "assets/source/03-end-environment-v1.png",
-        "assets/source/03-end-characters-v2.png"
-      ]
+        "tmp/imagegen/prompt-queue.jsonl",
+        "asset-manifest.json"
+      ],
+      "updatedAt": "2026-07-25T12:58:08.613176+00:00"
     },
     "audio": {
       "status": "complete",
@@ -32,7 +26,8 @@
         "production-manifest.json",
         "qa/audio.json",
         "assets/audio/narration.wav",
-        "assets/audio/music.wav"
+        "assets/audio/music.wav",
+        "assets/audio/ambience.wav"
       ]
     },
     "layer_processing": {
@@ -65,7 +60,7 @@
         "qa/hyperframes-check.log",
         "qa/hyperframes-snapshot.log",
         "qa/animation-map.log",
-        "qa/scene-midpoints",
+        "qa/shot-midpoints",
         "qa/animation-map",
         "qa/animation-map.log"
       ]
@@ -73,22 +68,23 @@
     "preview": {
       "status": "complete",
       "evidence": [
-        "approvals/ai-little-director-pixel-v1-studio-preview.json"
+        "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-24T17:59:05.153178+00:00"
+      "updatedAt": "2026-07-25T15:54:54.815744+00:00"
     },
     "render": {
       "status": "complete",
       "evidence": [
         "renders/guangzhou-tower-cloud-team.mp4"
       ],
-      "updatedAt": "2026-07-24T18:01:53.239624+00:00"
+      "updatedAt": "2026-07-25T15:59:09.267251+00:00"
     },
     "qa": {
       "status": "complete",
       "evidence": [
         "qa/render-verification.json",
         "qa/render-contact-sheet.png",
+        "qa/render-shot-contact-sheet.png",
         "qa/render-transition-contact-sheet.png"
       ]
     }

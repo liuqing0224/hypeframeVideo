@@ -49,6 +49,116 @@
         "direction": {"enum": ["left", "right"]}
       }
     },
+    "mangaLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["speaker", "role", "kind", "text"],
+      "properties": {
+        "speaker": {"type": "string", "minLength": 1},
+        "role": {
+          "enum": ["narrator", "primary", "secondary", "tertiary", "ensemble"]
+        },
+        "kind": {"enum": ["narration", "dialogue", "thought"]},
+        "text": {"type": "string", "minLength": 1, "maxLength": 40}
+      }
+    },
+    "manga": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "director_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "story_engine", "shot_signatures", "ending_mode"],
+          "properties": {
+            "id": {"type": "string", "minLength": 1},
+            "story_engine": {"type": "string", "minLength": 1},
+            "ending_mode": {"type": "string", "minLength": 1},
+            "scene_role_maps": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "primary": {"enum": ["primary", "secondary", "tertiary"]},
+                  "secondary": {"enum": ["primary", "secondary", "tertiary"]},
+                  "tertiary": {"enum": ["primary", "secondary", "tertiary"]}
+                }
+              }
+            },
+            "shot_signatures": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["start", "middle", "end"],
+              "properties": {
+                "start": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "middle": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "end": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                }
+              }
+            }
+          }
+        },
+        "pacing": {"enum": ["compact", "standard", "cinematic", "gentle"]},
+        "dialogue_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "audience_grade": {"type": "string", "minLength": 1},
+        "voice_cast": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        },
+        "must_show": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "avoid": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "factual_notes": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "scene_scripts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "middle", "end"],
+          "properties": {
+            "start": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {"$ref": "#/$defs/mangaLine"}
+            },
+            "middle": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {"$ref": "#/$defs/mangaLine"}
+            },
+            "end": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 4,
+              "items": {"$ref": "#/$defs/mangaLine"}
+            }
+          }
+        }
+      }
+    },
     "card": {
       "type": "object",
       "additionalProperties": false,
@@ -86,7 +196,8 @@
         "palette": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
         "music_mood": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
         "director_intent": {"type": "string", "minLength": 1},
-        "shot_hints": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/shot"}}
+        "shot_hints": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/shot"}},
+        "manga": {"$ref": "#/$defs/manga"}
       }
     }
   }

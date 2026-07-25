@@ -8,6 +8,8 @@
   frame check remains at 4px and motion sidecars assert all final subject bounds.
 - Every sub-composition midpoint snapshot is visible and correctly mounted.
 - Motion sidecars pass and the animation map has no unexplained frozen windows.
+- Every scene has three distinct subject and environment blocking states; all
+  subject start and travel-end bounds remain inside 1920x1080.
 - Final Studio preview is explicitly approved before rendering.
 
 ## Encoded Output

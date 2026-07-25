@@ -60,6 +60,24 @@ def write_json(path: Path, payload: dict) -> None:
     temp.replace(path)
 
 
+def production_fingerprint(production: Path) -> str:
+    digest = hashlib.sha256()
+    paths = [
+        production / "production-manifest.json",
+        production / "index.html",
+        *sorted((production / "compositions").glob("*.html")),
+        *sorted((production / "compositions").glob("*.motion.json")),
+    ]
+    for path in paths:
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        digest.update(path.relative_to(production).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
 def load_batch(path: Path, validate: bool = True) -> dict:
     payload = load_json(path)
     if validate:
@@ -146,7 +164,7 @@ def init_project(production: Path) -> None:
         [
             "npx",
             "--yes",
-            "hyperframes@0.7.70",
+            "hyperframes@0.7.71",
             "init",
             str(production),
             "--non-interactive",
@@ -200,6 +218,18 @@ def set_ready_states(production: Path) -> dict:
         if condition and stages[stage]["status"] in {"pending", "blocked"}:
             stages[stage] = {"status": "ready", "evidence": [], "updatedAt": now_iso()}
 
+    if (
+        queue_complete(production)
+        and stages["visual_generation"]["status"] in {"pending", "ready", "running"}
+    ):
+        stages["visual_generation"] = {
+            "status": "complete",
+            "evidence": [
+                "tmp/imagegen/prompt-queue.jsonl",
+                "asset-manifest.json",
+            ],
+            "updatedAt": now_iso(),
+        }
     ready("visual_generation", stages["plan"]["status"] == "complete" and not queue_complete(production))
     ready("audio", stages["plan"]["status"] == "complete")
     ready("layer_processing", stages["visual_generation"]["status"] == "complete")
@@ -334,10 +364,10 @@ def approval_path(workspace: Path, batch_id: str) -> Path:
 def build_batch_contact_sheet(batch: dict, workspace: Path) -> Path:
     rows: list[tuple[str, Image.Image]] = []
     for card in batch["cards"]:
-        source_path = (
-            production_path(workspace, card["id"])
-            / "qa/scene-midpoints/contact-sheet.jpg"
-        )
+        production = production_path(workspace, card["id"])
+        source_path = production / "qa/shot-midpoints/contact-sheet.jpg"
+        if not source_path.is_file():
+            source_path = production / "qa/scene-midpoints/contact-sheet.jpg"
         if not source_path.is_file():
             raise FileNotFoundError(source_path)
         with Image.open(source_path) as source:
@@ -356,6 +386,34 @@ def build_batch_contact_sheet(batch: dict, workspace: Path) -> Path:
         canvas.paste(image, (0, top))
         top += image.height
     target = workspace / "qa/batch-contact-sheet.jpg"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(target, quality=92)
+    return target
+
+
+def build_batch_render_contact_sheet(batch: dict, workspace: Path) -> Path:
+    rows: list[tuple[str, Image.Image]] = []
+    for card in batch["cards"]:
+        production = production_path(workspace, card["id"])
+        source_path = production / "qa/render-shot-contact-sheet.png"
+        if not source_path.is_file():
+            raise FileNotFoundError(source_path)
+        with Image.open(source_path) as source:
+            image = source.convert("RGB")
+            image.thumbnail((1800, 1080), Image.Resampling.LANCZOS)
+            rows.append((card["id"], image.copy()))
+    label_height = 40
+    width = max(image.width for _, image in rows)
+    height = sum(label_height + image.height for _, image in rows)
+    canvas = Image.new("RGB", (width, height), "#101010")
+    draw = ImageDraw.Draw(canvas)
+    top = 0
+    for card_id, image in rows:
+        draw.text((14, top + 12), card_id, fill="#ffffff")
+        top += label_height
+        canvas.paste(image, (0, top))
+        top += image.height
+    target = workspace / "qa" / f"{batch['batch_id']}-render-contact-sheet.jpg"
     target.parent.mkdir(parents=True, exist_ok=True)
     canvas.save(target, quality=92)
     return target
@@ -380,11 +438,19 @@ def start_previews(
         if not_checked:
             raise ValueError(f"cannot approve unchecked previews: {not_checked}")
         approval = {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "batchId": batch["batch_id"],
             "approvedAt": now_iso(),
             "approvedBy": approved_by,
-            "productions": [card["id"] for card in batch["cards"]],
+            "productions": [
+                {
+                    "id": card["id"],
+                    "compositionSha256": production_fingerprint(
+                        production_path(workspace, card["id"])
+                    ),
+                }
+                for card in batch["cards"]
+            ],
         }
         write_json(approval_path(workspace, batch["batch_id"]), approval)
         for card in batch["cards"]:
@@ -407,7 +473,7 @@ def start_previews(
         command = [
             "npx",
             "--yes",
-            "hyperframes@0.7.70",
+            "hyperframes@0.7.71",
             "preview",
             "--background",
             "--no-open",
@@ -418,7 +484,7 @@ def start_previews(
             command = [
                 "npx",
                 "--yes",
-                "hyperframes@0.7.70",
+                "hyperframes@0.7.71",
                 "preview",
                 "--stop",
             ]
@@ -428,7 +494,7 @@ def start_previews(
             if stop
             else (
                 f"http://localhost:{base_port + index}/"
-                f"#project/{production.name}"
+                f"#project/{production.name}?v=1&comp=index.html&t=0"
             )
         )
         update_stage(
@@ -454,7 +520,20 @@ def approval_valid(batch: dict, workspace: Path) -> bool:
     if not path.is_file():
         return False
     payload = load_json(path)
-    return payload.get("productions") == [card["id"] for card in batch["cards"]]
+    expected = [
+        {
+            "id": card["id"],
+            "compositionSha256": production_fingerprint(
+                production_path(workspace, card["id"])
+            ),
+        }
+        for card in batch["cards"]
+    ]
+    return (
+        payload.get("schemaVersion") == 2
+        and payload.get("batchId") == batch["batch_id"]
+        and payload.get("productions") == expected
+    )
 
 
 def render_one(
@@ -476,7 +555,7 @@ def render_one(
                     [
                         "npx",
                         "--yes",
-                        "hyperframes@0.7.70",
+                        "hyperframes@0.7.71",
                         "render",
                         "--quality",
                         "high",
@@ -723,7 +802,11 @@ def main() -> None:
                 )
                 for production in productions
             ]
-            print_summary([future.result() for future in futures])
+            results = [future.result() for future in futures]
+        contact_sheet = build_batch_render_contact_sheet(batch, workspace)
+        for result in results:
+            result["batchContactSheet"] = str(contact_sheet)
+        print_summary(results)
 
 
 if __name__ == "__main__":

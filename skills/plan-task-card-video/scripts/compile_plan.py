@@ -11,6 +11,158 @@ BEATS = (
     ("03-end", "end", ["center-outward-expansion", "ambient-glow-bloom", "particle-burst"]),
 )
 
+SHOT_BLUEPRINTS = {
+    "start": (
+        ("establish", "wide", "ensemble", "full-bleed", "交代空间、人物关系和故事目标"),
+        ("discovery", "medium", "primary", "speaker-stage", "让主角发现异常并推动事件发生"),
+        ("reaction", "close", "primary", "reaction-panel", "用反应特写建立情绪钩子"),
+    ),
+    "middle": (
+        ("pressure", "wide", "ensemble", "pressure-wide", "展示困难规模和空间压力"),
+        ("action", "medium", "primary", "action-diagonal", "用连续动作呈现解决过程"),
+        ("decision", "close", "primary", "decision-inset", "锁定关键判断、道具或情绪转折"),
+    ),
+    "end": (
+        ("climax", "medium", "primary", "impact-frame", "完成决定性动作并释放高潮"),
+        ("payoff", "close", "primary", "reaction-panel", "让观众看清结果和人物反应"),
+        ("resolution", "wide", "ensemble", "closing-tableau", "回到环境，给故事留下完整余韵"),
+    ),
+}
+
+BLOCKING_BLUEPRINTS = {
+    "start": (
+        {
+            "subjects": {
+                "primary": (-150, 20, 0.84, 1.0),
+                "secondary": (-30, 18, 0.86, 0.96),
+                "tertiary": (65, 6, 0.82, 0.9),
+            },
+            "environment": {
+                "rear": (-18, 0, 1.0),
+                "architecture": (0, 12, 0.96),
+                "foreground": (24, 8, 1.02),
+            },
+            "travel": {"role": "ensemble", "x": 18, "y": -4},
+        },
+        {
+            "subjects": {
+                "primary": (45, -12, 1.02, 1.0),
+                "secondary": (105, 4, 0.94, 0.88),
+                "tertiary": (-85, 14, 0.84, 0.72),
+            },
+            "environment": {
+                "rear": (12, -8, 1.025),
+                "architecture": (-42, 0, 1.04),
+                "foreground": (-34, 0, 1.035),
+            },
+            "travel": {"role": "primary", "x": 54, "y": -10},
+        },
+        {
+            "subjects": {
+                "primary": (125, -28, 1.1, 1.0),
+                "secondary": (-105, 28, 0.8, 0.38),
+                "tertiary": (95, 28, 0.76, 0.3),
+            },
+            "environment": {
+                "rear": (-24, -12, 1.04),
+                "architecture": (-78, 8, 1.07),
+                "foreground": (42, 12, 1.06),
+            },
+            "travel": {"role": "primary", "x": -28, "y": -8},
+        },
+    ),
+    "middle": (
+        {
+            "subjects": {
+                "primary": (-135, 22, 0.86, 1.0),
+                "secondary": (-65, 18, 0.86, 0.9),
+                "tertiary": (72, 8, 0.82, 0.84),
+            },
+            "environment": {
+                "rear": (22, 0, 1.01),
+                "architecture": (34, 8, 0.98),
+                "foreground": (-28, 8, 1.03),
+            },
+            "travel": {"role": "ensemble", "x": -20, "y": 4},
+        },
+        {
+            "subjects": {
+                "primary": (80, -18, 1.02, 1.0),
+                "secondary": (165, -4, 0.98, 1.0),
+                "tertiary": (-155, 2, 0.92, 0.9),
+            },
+            "environment": {
+                "rear": (-24, -10, 1.04),
+                "architecture": (-55, -4, 1.055),
+                "foreground": (38, 0, 1.045),
+            },
+            "travel": {"role": "primary", "x": 68, "y": -12},
+        },
+        {
+            "subjects": {
+                "primary": (-72, -30, 1.12, 1.0),
+                "secondary": (92, 26, 0.78, 0.42),
+                "tertiary": (82, 24, 0.74, 0.28),
+            },
+            "environment": {
+                "rear": (18, -14, 1.045),
+                "architecture": (72, 4, 1.075),
+                "foreground": (-46, 14, 1.065),
+            },
+            "travel": {"role": "primary", "x": 24, "y": -10},
+        },
+    ),
+    "end": (
+        {
+            "subjects": {
+                "primary": (105, -24, 1.06, 1.0),
+                "secondary": (90, 0, 0.96, 0.94),
+                "tertiary": (-100, 4, 0.9, 0.86),
+            },
+            "environment": {
+                "rear": (-20, -6, 1.025),
+                "architecture": (-48, -4, 1.05),
+                "foreground": (36, 2, 1.04),
+            },
+            "travel": {"role": "primary", "x": 48, "y": -14},
+        },
+        {
+            "subjects": {
+                "primary": (-95, -34, 1.14, 1.0),
+                "secondary": (-105, 25, 0.8, 0.44),
+                "tertiary": (92, 22, 0.76, 0.34),
+            },
+            "environment": {
+                "rear": (28, -12, 1.045),
+                "architecture": (68, 4, 1.07),
+                "foreground": (-42, 12, 1.06),
+            },
+            "travel": {"role": "primary", "x": 34, "y": -8},
+        },
+        {
+            "subjects": {
+                "primary": (0, 14, 0.9, 1.0),
+                "secondary": (18, 12, 0.9, 0.98),
+                "tertiary": (-18, 10, 0.86, 0.94),
+            },
+            "environment": {
+                "rear": (0, 0, 1.0),
+                "architecture": (0, 6, 0.98),
+                "foreground": (0, 8, 1.02),
+            },
+            "travel": {"role": "ensemble", "x": 0, "y": -6},
+        },
+    ),
+}
+
+DEFAULT_VOICE_CAST = {
+    "narrator": "zh-CN-XiaoxiaoNeural",
+    "primary": "zh-CN-XiaoyiNeural",
+    "secondary": "zh-CN-YunxiNeural",
+    "tertiary": "zh-CN-YunyangNeural",
+    "ensemble": "zh-CN-XiaoxiaoNeural",
+}
+
 PALETTES = {
     "science": {
         "canvas": "#071b2e",
@@ -39,6 +191,37 @@ PALETTES = {
         "accent": "#e34a3a",
         "accent2": "#f7b32b",
         "shadow": "#0b2435",
+    },
+}
+
+VISUAL_GRAMMARS = {
+    "field-trip": {
+        "id": "travel-scrapbook",
+        "direction": "旅行手账：错位贴纸、取景框、轻微手持倾斜和明快硬切。",
+        "panel": "偏置矩形照片框，使用印刷套色与纸张投影。",
+        "caption": "采访标签与手账注释条，构图偏左下。",
+        "camera": "不对称横移，近景带轻微旋转。",
+    },
+    "science": {
+        "id": "orbital-console",
+        "direction": "轨道控制台：扫描框、坐标网格、斜切 HUD 和快速目标锁定。",
+        "panel": "六边形或斜切数据窗，焦点框靠右上。",
+        "caption": "窄体终端条与角色呼号，构图偏右下。",
+        "camera": "更快推镜与正负横向扫描。",
+    },
+    "history": {
+        "id": "scroll-chronicle",
+        "direction": "历史长卷：横向展开、朱砂印记、竖向分栏和克制的平移。",
+        "panel": "窄长卷轴窗，焦点框偏左，保留大面积叙事环境。",
+        "caption": "史料题签式横条，衬线感更强。",
+        "camera": "缓慢横向移轴，近景不过度放大。",
+    },
+    "fantasy": {
+        "id": "enchanted-storybook",
+        "direction": "魔法绘本：有机叶形窗口、中心光晕、漂浮粒子和柔性穿越。",
+        "panel": "椭圆叶形光窗，边缘发光，焦点围绕中心生长。",
+        "caption": "轻盈的低位咒语条与思绪框。",
+        "camera": "纵向漂移与呼吸式推拉，减少硬横移。",
     },
 }
 
@@ -101,6 +284,145 @@ def fallback_shot_hints(card: dict[str, Any]) -> list[dict[str, str]]:
     return hints
 
 
+def scene_script(card: dict[str, Any], beat_key: str) -> list[dict[str, str]]:
+    configured = (
+        card.get("manga", {})
+        .get("scene_scripts", {})
+        .get(beat_key)
+    )
+    if configured:
+        return [
+            {
+                "speaker": line["speaker"],
+                "role": line["role"],
+                "kind": line["kind"],
+                "text": line["text"],
+            }
+            for line in configured
+        ]
+    return [
+        {
+            "speaker": "旁白",
+            "role": "narrator",
+            "kind": "narration",
+            "text": card["beats"][beat_key],
+        }
+    ]
+
+
+def distribute_line_indexes(line_count: int, shot_count: int = 3) -> list[list[int]]:
+    assignments: list[list[int]] = [[] for _ in range(shot_count)]
+    if line_count == 1:
+        assignments[shot_count // 2].append(0)
+        return assignments
+    if line_count > 1:
+        for line_index in range(line_count):
+            shot_index = round(line_index * (shot_count - 1) / (line_count - 1))
+            assignments[shot_index].append(line_index)
+    return assignments
+
+
+def focus_blocking(
+    blocking: dict[str, Any],
+    focus_role: str,
+) -> dict[str, Any]:
+    if focus_role not in {"primary", "secondary", "tertiary"}:
+        return blocking
+    focus_targets = {
+        "primary": {"x": blocking["subjects"]["primary"]["x"], "scale": 1.1},
+        "secondary": {"x": 145, "scale": 1.04},
+        "tertiary": {"x": -130, "scale": 1.0},
+    }
+    for role, state in blocking["subjects"].items():
+        if role == focus_role:
+            state.update(
+                {
+                    "x": focus_targets[role]["x"],
+                    "y": min(state["y"], -24),
+                    "scale": max(state["scale"], focus_targets[role]["scale"]),
+                    "opacity": 1.0,
+                }
+            )
+        else:
+            # Keep cutouts visually solid. Hierarchy comes from scale, crop,
+            # screen side, and occlusion rather than ghost-like transparency.
+            state["scale"] = min(state["scale"], 0.78)
+            state["opacity"] = 1.0
+    travel_x = {"primary": 42, "secondary": 48, "tertiary": -48}[focus_role]
+    blocking["travel"] = {"role": focus_role, "x": travel_x, "y": -8}
+    return blocking
+
+
+def build_shots(
+    scene_id: str,
+    beat_key: str,
+    script: list[dict[str, str]],
+    direction: str,
+    director_profile: dict[str, Any] | None = None,
+) -> list[dict[str, Any]]:
+    shots = []
+    line_assignments = distribute_line_indexes(len(script))
+    direction_sign = -1 if direction == "left" else 1
+    signatures = (director_profile or {}).get("shot_signatures", {}).get(
+        beat_key,
+        [],
+    )
+    role_map = (director_profile or {}).get("scene_role_maps", {}).get(
+        beat_key,
+        {},
+    )
+    for index, (purpose, framing, focus_role, layout_mode, intent) in enumerate(
+        SHOT_BLUEPRINTS[beat_key]
+    ):
+        blocking = BLOCKING_BLUEPRINTS[beat_key][index]
+        assigned_roles = [
+            script[line_index]["role"]
+            for line_index in line_assignments[index]
+            if script[line_index]["role"] in {"primary", "secondary", "tertiary"}
+        ]
+        if assigned_roles and purpose not in {"establish", "pressure", "resolution"}:
+            focus_role = role_map.get(assigned_roles[0], assigned_roles[0])
+        compiled_blocking = {
+            "subjects": {
+                role: {
+                    "x": values[0] * direction_sign,
+                    "y": values[1],
+                    "scale": values[2],
+                    "opacity": 1.0,
+                }
+                for role, values in blocking["subjects"].items()
+            },
+            "environment": {
+                layer: {
+                    "x": values[0] * direction_sign,
+                    "y": values[1],
+                    "scale": values[2],
+                }
+                for layer, values in blocking["environment"].items()
+            },
+            "travel": {
+                **blocking["travel"],
+                "x": blocking["travel"]["x"] * direction_sign,
+            },
+        }
+        compiled_blocking = focus_blocking(compiled_blocking, focus_role)
+        shots.append(
+            {
+                "id": f"{scene_id}-shot-{index + 1}",
+                "index": index + 1,
+                "purpose": purpose,
+                "framing": framing,
+                "focusRole": focus_role,
+                "layoutMode": layout_mode,
+                "signature": signatures[index] if index < len(signatures) else purpose,
+                "lineIndexes": line_assignments[index],
+                "intent": intent,
+                "blocking": compiled_blocking,
+            }
+        )
+    return shots
+
+
 def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]:
     key = style_key(card)
     scene_transitions = transitions(key)
@@ -108,6 +430,8 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
     scenes = []
     for index, (scene_id, beat_key, rules) in enumerate(BEATS):
         hint = shot_hints[index]
+        script = scene_script(card, beat_key)
+        director_profile = card.get("manga", {}).get("director_profile", {})
         source_root = f"assets/source/{scene_id}"
         processed_root = f"assets/processed/{scene_id}"
         scenes.append(
@@ -117,6 +441,14 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                 "beat": beat_key,
                 "title": hint["title"],
                 "narration": card["beats"][beat_key],
+                "script": script,
+                "shots": build_shots(
+                    scene_id,
+                    beat_key,
+                    script,
+                    hint["direction"],
+                    director_profile,
+                ),
                 "transitionIn": scene_transitions[index],
                 "motionRules": rules,
                 "direction": hint["direction"],
@@ -127,6 +459,11 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                     "tertiary": hint["direction"],
                 },
                 "shot": hint,
+                "endingMode": (
+                    director_profile.get("ending_mode")
+                    if beat_key == "end"
+                    else None
+                ),
                 "assets": {
                     "backdropSource": f"{source_root}-backdrop-v1.png",
                     "environmentSource": f"{source_root}-environment-v1.png",
@@ -141,8 +478,10 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                 },
             }
         )
+    manga = card.get("manga", {})
+    voice_cast = {**DEFAULT_VOICE_CAST, **manga.get("voice_cast", {})}
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "metadata": {
             "id": card["id"],
             "title": card["title"],
@@ -153,9 +492,11 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
             "width": defaults["width"],
             "height": defaults["height"],
             "fps": defaults["fps"],
+            "format": "professional-manga-v1",
         },
         "style": {
             "key": key,
+            "visualGrammar": VISUAL_GRAMMARS[key],
             "visual": card["visual_style"],
             "paletteWords": card["palette"],
             "musicMood": card["music_mood"],
@@ -163,7 +504,24 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
             "fontDisplay": "Songti SC",
             "fontBody": "PingFang SC",
         },
-        "audio": defaults["audio"],
+        "audio": {
+            **defaults["audio"],
+            "voiceCast": voice_cast,
+        },
+        "manga": {
+            "pacing": manga.get("pacing", "cinematic"),
+            "dialogueRatio": manga.get("dialogue_ratio", 0.6),
+            "audienceGrade": manga.get(
+                "audience_grade",
+                "primary-and-middle-school",
+            ),
+            "mustShow": manga.get("must_show", []),
+            "avoid": manga.get("avoid", []),
+            "factualNotes": manga.get("factual_notes", []),
+            "shotCount": 9,
+            "shotsPerScene": 3,
+            "directorProfile": manga.get("director_profile", {}),
+        },
         "scenes": scenes,
     }
 
@@ -184,15 +542,18 @@ length: narration-driven
 
 ## Intent
 
-把任务卡《{meta['title']}》制作成三个镜头的手工像素分层动画。故事依次呈现开始、挑战和结果，
-保持儿童视角、真实因果关系和清晰的主角层级。
+把任务卡《{meta['title']}》制作成三场九镜头的专业漫剧。故事依次呈现开始、挑战和结果，
+每场包含建立、动作和反应镜头，保持儿童视角、真实因果关系和清晰的主角层级。
 
 ## Customizations
 
-- HyperFrames modular composition with three scenes.
+- HyperFrames modular composition with three scenes and nine internal shots.
 - Background, rear environment, architecture, characters, and foreground stay independent.
+- Use wide, medium, and close framings with motivated cuts and character micro-performance.
+- Re-block characters, architecture, rear, and foreground for every editorial shot.
+- Keep narration concise; let short character dialogue carry key decisions and reactions.
 - Real narration duration determines the static composition duration.
-- One Chinese caption track, local music, and scene sound marks.
+- One cue-based Chinese caption track, local music, ambience, and shot sound marks.
 
 ## Assets
 
@@ -209,9 +570,15 @@ length: narration-driven
 
 
 def write_script(output: Path, plan: dict[str, Any]) -> None:
-    rows = ["# Narration", ""]
+    rows = ["# Manga Performance Script", ""]
     for scene in plan["scenes"]:
-        rows.extend([f"## {scene['id']} - {scene['title']}", "", scene["narration"], ""])
+        rows.extend([f"## {scene['id']} - {scene['title']}", ""])
+        for line in scene["script"]:
+            rows.append(
+                f"- [{line['kind']}/{line['role']}] "
+                f"{line['speaker']}：{line['text']}"
+            )
+        rows.append("")
     (output / "SCRIPT.md").write_text("\n".join(rows), encoding="utf-8")
 
 
@@ -226,6 +593,10 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
         "audience: primary-and-middle-school-students",
         "---",
         "",
+        f"director_profile: {plan['manga']['directorProfile'].get('id', 'default')}",
+        f"story_engine: {plan['manga']['directorProfile'].get('story_engine', '')}",
+        f"ending_mode: {plan['manga']['directorProfile'].get('ending_mode', 'default')}",
+        "",
     ]
     for scene in plan["scenes"]:
         timed = timings.get(scene["id"])
@@ -239,20 +610,50 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
                 f"- duration: {duration}",
                 f"- transition_in: {scene['transitionIn']}",
                 f"- scene: {scene['shot']['architecture']}；{scene['shot']['primary']}",
-                f"- voiceover: {scene['narration']}",
+                f"- performance_lines: {len(scene['script'])}",
                 f"- motion: {', '.join(scene['motionRules'])}",
                 "- sfx: scene-impact",
                 "",
-                f"{scene['title']}承担故事的 {scene['beat']} 节点。主角先出现，环境和配角随后补齐纵深。",
+                f"{scene['title']}承担故事的 {scene['beat']} 节点。",
                 "",
             ]
         )
+        for shot in scene["shots"]:
+            shot_lines = [
+                scene["script"][line_index]
+                for line_index in shot["lineIndexes"]
+            ]
+            rendered_lines = (
+                [f"{line['speaker']}：{line['text']}" for line in shot_lines]
+                or ["silent"]
+            )
+            rows.extend(
+                [
+                    f"### Shot {scene['index']}.{shot['index']} - {shot['purpose']}",
+                    "",
+                    f"- framing: {shot['framing']}",
+                    f"- focus: {shot['focusRole']}",
+                    f"- signature: {shot['signature']}",
+                    f"- intent: {shot['intent']}",
+                    (
+                        "- blocking: "
+                        + "; ".join(
+                            f"{role} x={state['x']} y={state['y']} "
+                            f"scale={state['scale']} opacity={state['opacity']}"
+                            for role, state in shot["blocking"]["subjects"].items()
+                        )
+                    ),
+                    *(f"- line: {line}" for line in rendered_lines),
+                    "",
+                ]
+            )
     return "\n".join(rows)
 
 
 def write_frame(output: Path, plan: dict[str, Any]) -> None:
     style = plan["style"]
     tokens = style["tokens"]
+    grammar = style["visualGrammar"]
     text = f"""---
 canvas: "{tokens['canvas']}"
 ink: "{tokens['ink']}"
@@ -264,11 +665,19 @@ font_body: "{style['fontBody']}"
 corner_radius: 0
 ---
 
-# Layered Pixel Collage
+# Professional Layered Pixel Manga
 
-Use crisp pixel clusters, torn-paper silhouettes, restrained halftone texture, visible foreground framing,
-and a clear primary/secondary/tertiary hierarchy. Avoid rounded interface cards, full-screen moving grain,
-photorealism, readable text inside generated images, and flat one-image camera moves.
+Visual grammar: `{grammar['id']}`.
+
+{grammar['direction']}
+
+- Panel language: {grammar['panel']}
+- Caption language: {grammar['caption']}
+- Camera language: {grammar['camera']}
+
+Keep crisp pixel clusters, layered parallax, one dominant focal point, and clear
+primary/secondary/tertiary hierarchy. Do not fall back to the other task-card
+grammars, generic centered panels, or one shared camera curve.
 """
     (output / "frame.md").write_text(text, encoding="utf-8")
 

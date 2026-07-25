@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "metadata": {
     "id": "glowing-solar-system",
     "title": "会发光的太阳系",
@@ -12,10 +12,18 @@
     "directorIntent": "像一场会发光的博物馆宇宙探险。",
     "width": 1920,
     "height": 1080,
-    "fps": 30
+    "fps": 30,
+    "format": "professional-manga-v1"
   },
   "style": {
     "key": "science",
+    "visualGrammar": {
+      "id": "orbital-console",
+      "direction": "轨道控制台：扫描框、坐标网格、斜切 HUD 和快速目标锁定。",
+      "panel": "六边形或斜切数据窗，焦点框靠右上。",
+      "caption": "窄体终端条与角色呼号，构图偏右下。",
+      "camera": "更快推镜与正负横向扫描。"
+    },
     "visual": [
       "卡通动画",
       "科技未来",
@@ -46,7 +54,57 @@
     "provider": "edge",
     "voice": "zh-CN-XiaoxiaoNeural",
     "rate": "-4%",
-    "pitch": "+0Hz"
+    "pitch": "+0Hz",
+    "voiceCast": {
+      "narrator": "zh-CN-XiaoxiaoNeural",
+      "primary": "zh-CN-XiaoyiNeural",
+      "secondary": "zh-CN-YunxiNeural",
+      "tertiary": "zh-CN-YunyangNeural",
+      "ensemble": "zh-CN-XiaoxiaoNeural"
+    }
+  },
+  "manga": {
+    "pacing": "cinematic",
+    "dialogueRatio": 0.67,
+    "audienceGrade": "primary-and-middle-school",
+    "mustShow": [
+      "逐颗熄灭的太阳系模型",
+      "按顺序修复轨道",
+      "太阳和八颗行星全部点亮"
+    ],
+    "avoid": [
+      "改变八颗行星的数量",
+      "让修复过程缺少顺序",
+      "改变小曦、阿朗和小光的外观"
+    ],
+    "factualNotes": [
+      "太阳系包含八颗行星",
+      "好奇心是故事主题而非科学结论"
+    ],
+    "shotCount": 9,
+    "shotsPerScene": 3,
+    "directorProfile": {
+      "id": "orbital-repair-countdown",
+      "story_engine": "故障逐级扩大，三人按轨道顺序接力修复，亮度与节奏逐镜头累积。",
+      "shot_signatures": {
+        "start": [
+          "blackout-system",
+          "planet-failure-scan",
+          "robot-alert"
+        ],
+        "middle": [
+          "fragment-chase",
+          "orbit-sequence",
+          "energy-lock"
+        ],
+        "end": [
+          "core-ignition",
+          "planet-chain-light",
+          "cosmic-reveal"
+        ]
+      },
+      "ending_mode": "eight-planet-chain-light"
+    }
   },
   "scenes": [
     {
@@ -55,6 +113,199 @@
       "beat": "start",
       "title": "熄灭的展厅",
       "narration": "小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "中央太阳系模型正在一颗颗熄灭。"
+        },
+        {
+          "speaker": "小曦",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "阿朗，你看，行星正在失去亮光！"
+        },
+        {
+          "speaker": "小光",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "能量连接异常，请帮助我修复轨道。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01-start-shot-1",
+          "index": 1,
+          "purpose": "establish",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "full-bleed",
+          "signature": "blackout-system",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "交代空间、人物关系和故事目标",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -150,
+                "y": 20,
+                "scale": 0.84,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -30,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 65,
+                "y": 6,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -18,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 12,
+                "scale": 0.96
+              },
+              "foreground": {
+                "x": 24,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 18,
+              "y": -4
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-2",
+          "index": 2,
+          "purpose": "discovery",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "speaker-stage",
+          "signature": "planet-failure-scan",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让主角发现异常并推动事件发生",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 45,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 105,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -85,
+                "y": 14,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 12,
+                "y": -8,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": -42,
+                "y": 0,
+                "scale": 1.04
+              },
+              "foreground": {
+                "x": -34,
+                "y": 0,
+                "scale": 1.035
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "01-start-shot-3",
+          "index": 3,
+          "purpose": "reaction",
+          "framing": "close",
+          "focusRole": "tertiary",
+          "layoutMode": "reaction-panel",
+          "signature": "robot-alert",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "用反应特写建立情绪钩子",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 125,
+                "y": -28,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -105,
+                "y": 28,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -130,
+                "y": -24,
+                "scale": 1.0,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -12,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -78,
+                "y": 8,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "tertiary",
+              "x": -48,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "cut",
       "motionRules": [
         "multi-phase-camera",
@@ -63,6 +314,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "熄灭的展厅",
         "primary": "穿橙色连帽外套的中国女孩小曦，抬头看着熄灭的太阳系模型",
@@ -84,7 +340,8 @@
         "primary": "assets/processed/01-start/primary.png",
         "secondary": "assets/processed/01-start/secondary.png",
         "tertiary": "assets/processed/01-start/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -92,6 +349,199 @@
       "beat": "middle",
       "title": "追逐能量",
       "narration": "三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "三人沿着行星轨道寻找能量碎片。"
+        },
+        {
+          "speaker": "阿朗",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "先按顺序连接轨道，别接错位置！"
+        },
+        {
+          "speaker": "小曦",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "我去拿金色碎片，小光负责扫描！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "02-middle-shot-1",
+          "index": 1,
+          "purpose": "pressure",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "pressure-wide",
+          "signature": "fragment-chase",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "展示困难规模和空间压力",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -135,
+                "y": 22,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -65,
+                "y": 18,
+                "scale": 0.86,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 72,
+                "y": 8,
+                "scale": 0.82,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 22,
+                "y": 0,
+                "scale": 1.01
+              },
+              "architecture": {
+                "x": 34,
+                "y": 8,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": -28,
+                "y": 8,
+                "scale": 1.03
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": -20,
+              "y": 4
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-2",
+          "index": 2,
+          "purpose": "action",
+          "framing": "medium",
+          "focusRole": "secondary",
+          "layoutMode": "action-diagonal",
+          "signature": "orbit-sequence",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "用连续动作呈现解决过程",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 80,
+                "y": -18,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -155,
+                "y": 2,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -24,
+                "y": -10,
+                "scale": 1.04
+              },
+              "architecture": {
+                "x": -55,
+                "y": -4,
+                "scale": 1.055
+              },
+              "foreground": {
+                "x": 38,
+                "y": 0,
+                "scale": 1.045
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "02-middle-shot-3",
+          "index": 3,
+          "purpose": "decision",
+          "framing": "close",
+          "focusRole": "primary",
+          "layoutMode": "decision-inset",
+          "signature": "energy-lock",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "锁定关键判断、道具或情绪转折",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -72,
+                "y": -30,
+                "scale": 1.12,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 92,
+                "y": 26,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 82,
+                "y": 24,
+                "scale": 0.74,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 18,
+                "y": -14,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": 72,
+                "y": 4,
+                "scale": 1.075
+              },
+              "foreground": {
+                "x": -46,
+                "y": 14,
+                "scale": 1.065
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        }
+      ],
       "transitionIn": "chromatic-split",
       "motionRules": [
         "coordinate-target-zoom",
@@ -100,6 +550,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "追逐能量",
         "primary": "小曦向前奔跑并伸手抓住一块金色能量碎片",
@@ -121,7 +576,8 @@
         "primary": "assets/processed/02-middle/primary.png",
         "secondary": "assets/processed/02-middle/secondary.png",
         "tertiary": "assets/processed/02-middle/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -129,6 +585,199 @@
       "beat": "end",
       "title": "点亮未知",
       "narration": "太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "太阳和八颗行星全部重新发光。"
+        },
+        {
+          "speaker": "阿朗",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "最后一条轨道接通了！"
+        },
+        {
+          "speaker": "小光",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "好奇心，就是点亮未知的光。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "03-end-shot-1",
+          "index": 1,
+          "purpose": "climax",
+          "framing": "medium",
+          "focusRole": "primary",
+          "layoutMode": "impact-frame",
+          "signature": "core-ignition",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "完成决定性动作并释放高潮",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": -105,
+                "y": -24,
+                "scale": 1.1,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -90,
+                "y": 0,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 100,
+                "y": 4,
+                "scale": 0.78,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 20,
+                "y": -6,
+                "scale": 1.025
+              },
+              "architecture": {
+                "x": 48,
+                "y": -4,
+                "scale": 1.05
+              },
+              "foreground": {
+                "x": -36,
+                "y": 2,
+                "scale": 1.04
+              }
+            },
+            "travel": {
+              "role": "primary",
+              "x": 42,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-2",
+          "index": 2,
+          "purpose": "payoff",
+          "framing": "close",
+          "focusRole": "secondary",
+          "layoutMode": "reaction-panel",
+          "signature": "planet-chain-light",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让观众看清结果和人物反应",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 95,
+                "y": -34,
+                "scale": 0.78,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": 145,
+                "y": -24,
+                "scale": 1.04,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": -92,
+                "y": 22,
+                "scale": 0.76,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": -28,
+                "y": -12,
+                "scale": 1.045
+              },
+              "architecture": {
+                "x": -68,
+                "y": 4,
+                "scale": 1.07
+              },
+              "foreground": {
+                "x": 42,
+                "y": 12,
+                "scale": 1.06
+              }
+            },
+            "travel": {
+              "role": "secondary",
+              "x": 48,
+              "y": -8
+            }
+          }
+        },
+        {
+          "id": "03-end-shot-3",
+          "index": 3,
+          "purpose": "resolution",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "layoutMode": "closing-tableau",
+          "signature": "cosmic-reveal",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "回到环境，给故事留下完整余韵",
+          "blocking": {
+            "subjects": {
+              "primary": {
+                "x": 0,
+                "y": 14,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "secondary": {
+                "x": -18,
+                "y": 12,
+                "scale": 0.9,
+                "opacity": 1.0
+              },
+              "tertiary": {
+                "x": 18,
+                "y": 10,
+                "scale": 0.86,
+                "opacity": 1.0
+              }
+            },
+            "environment": {
+              "rear": {
+                "x": 0,
+                "y": 0,
+                "scale": 1.0
+              },
+              "architecture": {
+                "x": 0,
+                "y": 6,
+                "scale": 0.98
+              },
+              "foreground": {
+                "x": 0,
+                "y": 8,
+                "scale": 1.02
+              }
+            },
+            "travel": {
+              "role": "ensemble",
+              "x": 0,
+              "y": -6
+            }
+          }
+        }
+      ],
       "transitionIn": "grid-dissolve",
       "motionRules": [
         "center-outward-expansion",
@@ -137,6 +786,11 @@
       ],
       "direction": "left",
       "sourceDirection": "left",
+      "sourceDirections": {
+        "primary": "left",
+        "secondary": "left",
+        "tertiary": "left"
+      },
       "shot": {
         "title": "点亮未知",
         "primary": "小曦站在中央高举最后一块能量碎片，脸上充满惊喜",
@@ -159,11 +813,7 @@
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
       },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "right",
-        "tertiary": "left"
-      }
+      "endingMode": "eight-planet-chain-light"
     }
   ]
 }

@@ -13,6 +13,12 @@
         font-style: normal;
         font-weight: 400 900;
       }
+      @font-face {
+        font-family: "Songti SC";
+        src: local("Songti SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
       html, body {
         margin: 0;
         width: 1920px;
@@ -41,17 +47,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #211b18;
         background: #e8d6ae;
-        border: 5px solid #a9362b;
-        box-shadow: 12px 12px 0 #3c2a20;
+        border: 5px solid #211b18;
+        box-shadow: 10px 10px 0 #3c2a20;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #211b18;
+        color: #e8d6ae;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #211b18;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #2c6c80;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #a9362b;
       }
       .caption p {
         margin: 0;
@@ -61,6 +99,41 @@
         font-weight: 700;
         text-align: center;
         letter-spacing: 0;
+      }
+      .caption span {
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: #e8d6ae;
+        background: #a9362b;
+      }
+      body.style-science .caption {
+        right: 110px;
+        left: auto;
+        border-color: #a9362b;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 #2c6c80;
+      }
+      body.style-history .caption {
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "Songti SC", serif;
+      }
+      body.style-fantasy .caption {
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: #2c6c80;
+        box-shadow: 0 0 34px #2c6c80;
+      }
+      body.style-field-trip .caption {
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 #2c6c80;
       }
       .transition {
         position: absolute;
@@ -111,75 +184,141 @@
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
     </style>
   </head>
-  <body>
+  <body class="style-history">
     <div id="main" data-composition-id="main" data-start="0"
-         data-duration="29" data-width="1920" data-height="1080" data-fps="30">
+         data-duration="36.5" data-width="1920" data-height="1080" data-fps="30">
 
       <div id="slot-01-start" class="clip scene-slot"
            data-composition-id="01-start"
            data-composition-src="compositions/01-start.html"
            data-start="0"
-           data-duration="10"
+           data-duration="11.5"
            data-track-index="10"></div>
       <div id="slot-02-middle" class="clip scene-slot"
            data-composition-id="02-middle"
            data-composition-src="compositions/02-middle.html"
-           data-start="10"
-           data-duration="10"
+           data-start="11.5"
+           data-duration="12.5"
            data-track-index="10"></div>
       <div id="slot-03-end" class="clip scene-slot"
            data-composition-id="03-end"
            data-composition-src="compositions/03-end.html"
-           data-start="20"
-           data-duration="9"
+           data-start="24"
+           data-duration="12.5"
            data-track-index="10"></div>
 
-      <div id="transition-1-whip-pan" class="clip transition"
-           data-start="9.6" data-duration="0.8" data-track-index="800">
-        <div id="transition-1-whip-pan-fx" class="transition-fx transition-whip-pan">
+      <div id="transition-1-whip-pan" class="clip transition" data-layout-allow-overflow
+           data-start="11.05" data-duration="0.9" data-track-index="800">
+        <div id="transition-1-whip-pan-fx" class="transition-fx transition-whip-pan" data-layout-allow-overflow>
           <span></span><span></span><span></span>
         </div>
       </div>
-      <div id="transition-2-horizontal-blinds" class="clip transition"
-           data-start="19.64" data-duration="0.72" data-track-index="800">
-        <div id="transition-2-horizontal-blinds-fx" class="transition-fx transition-horizontal-blinds">
+      <div id="transition-2-horizontal-blinds" class="clip transition" data-layout-allow-overflow
+           data-start="23.55" data-duration="0.9" data-track-index="800">
+        <div id="transition-2-horizontal-blinds-fx" class="transition-fx transition-horizontal-blinds" data-layout-allow-overflow>
           <span style="top:0px"></span><span style="top:90px"></span><span style="top:180px"></span><span style="top:270px"></span><span style="top:360px"></span><span style="top:450px"></span><span style="top:540px"></span><span style="top:630px"></span><span style="top:720px"></span><span style="top:810px"></span><span style="top:900px"></span><span style="top:990px"></span>
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption"
-           data-start="0.45" data-duration="9.2" data-track-index="900">
-        <p>子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。</p>
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
+           data-start="0.45" data-duration="2.228" data-track-index="900">
+        <span>旁白</span><p>子墨穿过发光墨迹，</p>
       </div>
-      <div id="caption-2" class="clip caption"
-           data-start="10.45" data-duration="9.2" data-track-index="900">
-        <p>海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。</p>
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
+           data-start="2.678" data-duration="1.732" data-track-index="900">
+        <span>旁白</span><p>来到明代古港。</p>
       </div>
-      <div id="caption-3" class="clip caption"
-           data-start="20.45" data-duration="8.2" data-track-index="900">
-        <p>郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。</p>
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
+           data-start="4.83" data-duration="2.856" data-track-index="900">
+        <span>子墨</span><p>这里真是六百年前的港口？</p>
+      </div>
+      <div id="caption-4" class="clip caption caption-secondary caption-dialogue"
+           data-start="8.106" data-duration="2.52" data-track-index="900">
+        <span>郑和</span><p>少年，你从何处而来？</p>
+      </div>
+      <div id="caption-5" class="clip caption caption-narrator caption-narration"
+           data-start="11.95" data-duration="1.714" data-track-index="900">
+        <span>旁白</span><p>海风吹散了航海</p>
+      </div>
+      <div id="caption-6" class="clip caption caption-narrator caption-narration"
+           data-start="13.664" data-duration="1.958" data-track-index="900">
+        <span>旁白</span><p>图上的路线标记。</p>
+      </div>
+      <div id="caption-7" class="clip caption caption-primary caption-dialogue"
+           data-start="16.042" data-duration="1.792" data-track-index="900">
+        <span>子墨</span><p>可以用星位和季</p>
+      </div>
+      <div id="caption-8" class="clip caption caption-primary caption-dialogue"
+           data-start="17.834" data-duration="2.048" data-track-index="900">
+        <span>子墨</span><p>风重新确认方向。</p>
+      </div>
+      <div id="caption-9" class="clip caption caption-secondary caption-dialogue"
+           data-start="20.302" data-duration="2.808" data-track-index="900">
+        <span>郑和</span><p>好，我们一起把航线找回来。</p>
+      </div>
+      <div id="caption-10" class="clip caption caption-narrator caption-narration"
+           data-start="24.45" data-duration="2.076" data-track-index="900">
+        <span>旁白</span><p>郑和把写给未来少</p>
+      </div>
+      <div id="caption-11" class="clip caption caption-narrator caption-narration"
+           data-start="26.526" data-duration="2.076" data-track-index="900">
+        <span>旁白</span><p>年的信交给子墨。</p>
+      </div>
+      <div id="caption-12" class="clip caption caption-secondary caption-dialogue"
+           data-start="29.022" data-duration="3.288" data-track-index="900">
+        <span>郑和</span><p>愿你永远保有探索世界的勇气。</p>
+      </div>
+      <div id="caption-13" class="clip caption caption-primary caption-dialogue"
+           data-start="32.73" data-duration="2.688" data-track-index="900">
+        <span>子墨</span><p>我会把这封信带回未来。</p>
       </div>
 
       <audio id="narration" class="clip" src="assets/audio/narration.wav"
-             data-start="0" data-duration="29" data-track-index="950" data-volume="1"></audio>
+             data-start="0" data-duration="36.5"
+             data-track-index="950" data-volume="1"></audio>
       <audio id="music" class="clip" src="assets/audio/music.wav"
-             data-start="0" data-duration="29" data-track-index="951" data-volume="0.2"></audio>
+             data-start="0" data-duration="36.5"
+             data-track-index="951" data-volume="0.24"></audio>
+      <audio id="ambience" class="clip" src="assets/audio/ambience.wav"
+             data-start="0" data-duration="36.5"
+             data-track-index="952" data-volume="0.42"></audio>
       <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
-             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
+             data-start="0.08" data-duration="1"
+             data-track-index="953" data-volume="0.72"></audio>
+      <audio id="sfx-01-start-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="4.83" data-duration="1"
+             data-track-index="954" data-volume="0.44"></audio>
+      <audio id="sfx-01-start-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="8.106" data-duration="1"
+             data-track-index="955" data-volume="0.44"></audio>
       <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
-             data-start="10.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+             data-start="11.58" data-duration="1"
+             data-track-index="956" data-volume="0.72"></audio>
+      <audio id="sfx-02-middle-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="16.042" data-duration="1"
+             data-track-index="957" data-volume="0.44"></audio>
+      <audio id="sfx-02-middle-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="20.302" data-duration="1"
+             data-track-index="958" data-volume="0.44"></audio>
       <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
-             data-start="20.08" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+             data-start="24.08" data-duration="1"
+             data-track-index="959" data-volume="0.72"></audio>
+      <audio id="sfx-03-end-shot-2" class="clip" src="assets/audio/sfx-cut.wav"
+             data-start="29.022" data-duration="1"
+             data-track-index="960" data-volume="0.44"></audio>
+      <audio id="sfx-03-end-shot-3" class="clip" src="assets/audio/sfx-rustle.wav"
+             data-start="32.73" data-duration="1"
+             data-track-index="961" data-volume="0.44"></audio>
     </div>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#transition-1-whip-pan-fx", {opacity:0,x:-1920}, {opacity:1,x:0,duration:0.4,ease:"power4.in"}, 9.6);
-        tl.to("#transition-1-whip-pan-fx", {opacity:0,x:1920,duration:0.4,ease:"power4.out"}, 10);
-        tl.set("#transition-1-whip-pan-fx", {opacity:0}, 10.4);
-        tl.fromTo("#transition-2-horizontal-blinds-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.36,ease:"sine.in"}, 19.64);
-        tl.to("#transition-2-horizontal-blinds-fx", {opacity:0,scale:1.08,duration:0.36,ease:"sine.out"}, 20);
-        tl.set("#transition-2-horizontal-blinds-fx", {opacity:0}, 20.36);
+      tl.fromTo("#transition-1-whip-pan-fx", {opacity:0,x:-1920}, {opacity:1,x:0,duration:0.45,ease:"power4.in"}, 11.05);
+        tl.to("#transition-1-whip-pan-fx", {opacity:0,x:1920,duration:0.45,ease:"power4.out"}, 11.5);
+        tl.set("#transition-1-whip-pan-fx", {opacity:0}, 11.95);
+        tl.fromTo("#transition-2-horizontal-blinds-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.45,ease:"sine.in"}, 23.55);
+        tl.to("#transition-2-horizontal-blinds-fx", {opacity:0,scale:1.08,duration:0.45,ease:"sine.out"}, 24);
+        tl.set("#transition-2-horizontal-blinds-fx", {opacity:0}, 24.45);
       window.__timelines["main"] = tl;
     </script>
   </body>

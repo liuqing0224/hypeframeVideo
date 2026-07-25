@@ -93,12 +93,12 @@
       "id": "03-end-character",
       "sceneId": "03-end",
       "kind": "character-sheet",
-      "sourcePath": "assets/source/03-end-characters-v2.png",
+      "sourcePath": "assets/source/03-end-characters-v1.png",
       "status": "generated",
       "width": 1536,
       "height": 1024,
       "mode": "RGB",
-      "sha256": "266b41fb8929218a84b51e67220b9e38262366f152e8d2622369bf9eb184bc01"
+      "sha256": "4d1b48f08687c57f88ee57e0fe54fd99da3da3faaa92ddd1e2005096f925e4b0"
     }
   ]
 }
