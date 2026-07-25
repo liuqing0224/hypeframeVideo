@@ -34,11 +34,12 @@ uses a high-contrast manga balloon treatment with a tail; thought lines use a
 dashed treatment. Spoken wording and root-level caption ownership are
 unchanged.
 
-### P2: comic treatments are graphic overlays, not true alternate panels
+### P2: comic treatments initially reused the same full-frame view
 
-The current reaction and decision borders add editorial rhythm but reuse the
-same underlying camera view. A later asset/composition revision should support
-real inset crops or alternate pose plates with independent camera framing.
+Improved in v3.1. Reaction and decision shots now render an independently
+framed, animated bust/action crop of the focused character. The inset remains
+derived from the current cutout; a later asset revision should replace it with
+an alternate expression or pose plate.
 
 ## Verification
 
@@ -46,5 +47,7 @@ real inset crops or alternate pose plates with independent camera framing.
 - Four productions passed composition, HyperFrames lint, strict check,
   snapshots, transition frames, frame checks, and animation-map review.
 - New midpoint contact sheets show no translucent subject cutouts.
+- Preview URLs explicitly select `comp=index.html`; Studio no longer opens on
+  an empty "No compositions found" state.
 - Render remains blocked until the new composition hashes receive explicit
   Studio approval.

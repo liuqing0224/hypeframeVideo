@@ -264,6 +264,12 @@ def shot_timeline(scene: dict) -> str:
         rows.append(
             f'tl.set(q(".treatment-{index + 1}"), {{opacity:1}}, {number(start)});'
         )
+        if shot.get("layoutMode") in {"reaction-panel", "decision-inset"}:
+            rows.append(
+                f'tl.fromTo(q(".treatment-{index + 1} .panel-inset"), '
+                f'{{x:90,scale:0.92}}, {{x:0,scale:1,duration:0.24,'
+                f'ease:"power3.out"}}, {number(start)});'
+            )
     return "\n      ".join(rows)
 
 
@@ -271,10 +277,27 @@ def comic_treatments(scene: dict) -> str:
     rows = []
     for index, shot in enumerate(scene_shots(scene), start=1):
         mode = html.escape(shot.get("layoutMode", "full-bleed"))
+        focus = shot.get("focusRole", "primary")
+        inset = ""
+        if focus in {"primary", "secondary", "tertiary"}:
+            source_direction = scene.get("sourceDirections", {}).get(
+                focus,
+                scene["sourceDirection"],
+            )
+            mirror = source_direction != scene["direction"]
+            mirror_class = " portrait-mirrored" if mirror else ""
+            inset = (
+                '<div class="panel-inset">'
+                f'<div class="panel-portrait{mirror_class}" '
+                f'style="background-image:url(&quot;'
+                f'{html.escape(asset_src(scene["assets"][focus]))}'
+                f'&quot;)"></div>'
+                '</div>'
+            )
         rows.append(
             f'<div class="comic-treatment treatment-{index} mode-{mode}" '
             f'data-shot-purpose="{html.escape(shot.get("purpose", "shot"))}">'
-            '<i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i>'
+            f'{inset}<i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i>'
             '<i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i>'
             '<i class="impact-ray ray-c"></i></div>'
         )
@@ -424,15 +447,41 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         border: 12px solid {tokens['ink']};
         box-shadow: 10px 10px 0 {tokens['accent']};
       }}
-      #{root_id} .mode-reaction-panel .edge-a,
-      #{root_id} .mode-decision-inset .edge-a {{
-        display: block;
+      #{root_id} .panel-inset {{
+        position: absolute;
+        display: none;
         right: 88px;
         top: 72px;
         width: 760px;
         height: 760px;
-        border-left-width: 22px;
-        transform: rotate(-1.5deg);
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, {tokens['canvas']} 0 48%, {tokens['accent2']} 48% 52%, {tokens['canvas']} 52%);
+        border: 12px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['accent']};
+        transform-origin: 70% 50%;
+      }}
+      #{root_id} .panel-portrait {{
+        width: 100%;
+        height: 112%;
+        background-repeat: no-repeat;
+        background-position: 50% 8%;
+        background-size: 155% auto;
+        filter:
+          drop-shadow(4px 0 {tokens['ink']})
+          drop-shadow(-4px 0 {tokens['ink']})
+          drop-shadow(0 4px {tokens['ink']});
+      }}
+      #{root_id} .panel-portrait.portrait-mirrored {{
+        transform: scaleX(-1);
+      }}
+      #{root_id} .mode-reaction-panel .panel-inset,
+      #{root_id} .mode-decision-inset .panel-inset {{
+        display: block;
+      }}
+      #{root_id} .mode-reaction-panel .edge-a,
+      #{root_id} .mode-decision-inset .edge-a {{
+        display: none;
       }}
       #{root_id} .mode-decision-inset .edge-b {{
         display: block;

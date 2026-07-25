@@ -68,20 +68,20 @@
     "preview": {
       "status": "running",
       "evidence": [
-        "http://localhost:3302/#project/glowing-solar-system"
+        "http://localhost:3302/#project/glowing-solar-system?v=1&comp=index.html&t=0"
       ],
-      "updatedAt": "2026-07-25T13:40:28.410095+00:00"
+      "updatedAt": "2026-07-25T14:06:42.135127+00:00"
     },
     "render": {
       "status": "blocked",
       "evidence": [],
       "error": "final Studio preview approval is required",
-      "updatedAt": "2026-07-25T13:34:18.124657+00:00"
+      "updatedAt": "2026-07-25T14:02:55.963318+00:00"
     },
     "qa": {
       "status": "pending",
       "evidence": [],
-      "updatedAt": "2026-07-25T13:34:18.123685+00:00"
+      "updatedAt": "2026-07-25T14:02:55.962552+00:00"
     }
   }
 }

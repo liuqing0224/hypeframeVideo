@@ -494,7 +494,7 @@ def start_previews(
             if stop
             else (
                 f"http://localhost:{base_port + index}/"
-                f"#project/{production.name}"
+                f"#project/{production.name}?v=1&comp=index.html&t=0"
             )
         )
         update_stage(

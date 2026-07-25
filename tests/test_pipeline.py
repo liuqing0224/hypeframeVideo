@@ -411,6 +411,8 @@ def test_composition_emits_comic_treatments_and_caption_grammar(
     root = (synthetic_production / "index.html").read_text(encoding="utf-8")
     assert "mode-reaction-panel" in first_scene
     assert 'q(".treatment-3"), {opacity:1}' in first_scene
+    assert 'class="panel-inset"' in first_scene
+    assert '.treatment-3 .panel-inset' in first_scene
     assert "caption-dialogue" in root
     assert "caption-narration" in root
 
