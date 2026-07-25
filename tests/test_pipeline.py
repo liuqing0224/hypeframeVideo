@@ -384,6 +384,40 @@ def test_professional_shots_use_crisp_subjects_and_authored_layouts(
     )
 
 
+def test_each_task_card_compiles_a_distinct_story_directing_profile(
+    scripts,
+    tmp_path,
+):
+    batch = json.loads(BATCH_PATH.read_text(encoding="utf-8"))
+    profiles = []
+    endings = []
+    signatures = []
+    grammars = []
+    for card in batch["cards"]:
+        production = tmp_path / "videos" / card["id"]
+        plan = scripts["plan"].compile_card(BATCH_PATH, card["id"], production)
+        profile = plan["manga"]["directorProfile"]
+        profiles.append(profile["id"])
+        endings.append(profile["ending_mode"])
+        grammars.append(plan["style"]["visualGrammar"]["id"])
+        signatures.append(
+            tuple(
+                shot["signature"]
+                for scene in plan["scenes"]
+                for shot in scene["shots"]
+            )
+        )
+
+    assert len(set(profiles)) == 4
+    assert len(set(endings)) == 4
+    assert len(set(grammars)) == 4
+    assert len(set(signatures)) == 4
+    history = scripts["plan"].build_plan(
+        *scripts["plan"].load_card(BATCH_PATH, "navigator-time-letter")
+    )
+    assert history["scenes"][2]["shots"][1]["focusRole"] == "primary"
+
+
 def test_composition_emits_comic_treatments_and_caption_grammar(
     scripts,
     synthetic_production,

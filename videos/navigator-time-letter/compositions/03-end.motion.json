@@ -73,10 +73,11 @@
       "from": 0.0,
       "to": 5.022,
       "camera": {
-        "x": 0,
-        "y": -34,
-        "scale": 1.16,
-        "push": 0.018
+        "x": 0.0,
+        "y": -18.700000000000003,
+        "scale": 1.0903999999999998,
+        "push": 0.01116,
+        "rotation": 0
       },
       "blocking": {
         "subjects": {
@@ -167,27 +168,28 @@
       "id": "03-end-shot-2",
       "index": 2,
       "framing": "close",
-      "focusRole": "secondary",
+      "focusRole": "primary",
       "from": 5.022,
       "to": 8.73,
       "camera": {
-        "x": 210,
-        "y": -12,
-        "scale": 1.38,
-        "push": 0.022
+        "x": 0.0,
+        "y": -18.700000000000003,
+        "scale": 1.2972,
+        "push": 0.01364,
+        "rotation": 0
       },
       "blocking": {
         "subjects": {
           "primary": {
             "x": 95,
             "y": -34,
-            "scale": 0.78,
+            "scale": 1.14,
             "opacity": 1.0
           },
           "secondary": {
-            "x": 145,
-            "y": -24,
-            "scale": 1.04,
+            "x": 105,
+            "y": 25,
+            "scale": 0.78,
             "opacity": 1.0
           },
           "tertiary": {
@@ -215,23 +217,23 @@
           }
         },
         "travel": {
-          "role": "secondary",
-          "x": 48,
+          "role": "primary",
+          "x": 42,
           "y": -8
         }
       },
       "blockingBounds": {
         "primary": {
-          "x": 785.9,
-          "y": 273.975,
-          "width": 538.2,
-          "height": 557.7
+          "x": 661.7,
+          "y": 80.925,
+          "width": 786.6,
+          "height": 815.1
         },
         "secondary": {
-          "x": 231.0,
-          "y": 258.3,
-          "width": 468.0,
-          "height": 613.6
+          "x": 249.5,
+          "y": 422.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
           "x": 1432.6,
@@ -242,16 +244,16 @@
       },
       "blockingEndBounds": {
         "primary": {
-          "x": 785.9,
-          "y": 273.975,
-          "width": 538.2,
-          "height": 557.7
+          "x": 703.7,
+          "y": 72.925,
+          "width": 786.6,
+          "height": 815.1
         },
         "secondary": {
-          "x": 279.0,
-          "y": 250.3,
-          "width": 468.0,
-          "height": 613.6
+          "x": 249.5,
+          "y": 422.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
           "x": 1432.6,
@@ -269,10 +271,11 @@
       "from": 8.73,
       "to": 12.5,
       "camera": {
-        "x": 0,
-        "y": 0,
-        "scale": 1.0,
-        "push": 0.026
+        "x": -0.0,
+        "y": 0.0,
+        "scale": 0.94,
+        "push": 0.01612,
+        "rotation": 0
       },
       "blocking": {
         "subjects": {

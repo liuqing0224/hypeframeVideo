@@ -19,6 +19,13 @@
   },
   "style": {
     "key": "science",
+    "visualGrammar": {
+      "id": "orbital-console",
+      "direction": "轨道控制台：扫描框、坐标网格、斜切 HUD 和快速目标锁定。",
+      "panel": "六边形或斜切数据窗，焦点框靠右上。",
+      "caption": "窄体终端条与角色呼号，构图偏右下。",
+      "camera": "更快推镜与正负横向扫描。"
+    },
     "visual": [
       "卡通动画",
       "科技未来",
@@ -122,6 +129,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "full-bleed",
+          "signature": "blackout-system",
           "lineIndexes": [
             0
           ],
@@ -180,6 +188,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "speaker-stage",
+          "signature": "planet-failure-scan",
           "lineIndexes": [
             1
           ],
@@ -238,6 +247,7 @@
           "framing": "close",
           "focusRole": "tertiary",
           "layoutMode": "reaction-panel",
+          "signature": "robot-alert",
           "lineIndexes": [
             2
           ],
@@ -591,7 +601,8 @@
           "speaker": "小光",
           "role": "tertiary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -648,6 +659,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "pressure-wide",
+          "signature": "fragment-chase",
           "lineIndexes": [
             0
           ],
@@ -706,6 +718,7 @@
           "framing": "medium",
           "focusRole": "secondary",
           "layoutMode": "action-diagonal",
+          "signature": "orbit-sequence",
           "lineIndexes": [
             1
           ],
@@ -764,6 +777,7 @@
           "framing": "close",
           "focusRole": "primary",
           "layoutMode": "decision-inset",
+          "signature": "energy-lock",
           "lineIndexes": [
             2
           ],
@@ -1125,7 +1139,8 @@
           "speaker": "小曦",
           "role": "primary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -1182,6 +1197,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "impact-frame",
+          "signature": "core-ignition",
           "lineIndexes": [
             0
           ],
@@ -1240,6 +1256,7 @@
           "framing": "close",
           "focusRole": "secondary",
           "layoutMode": "reaction-panel",
+          "signature": "planet-chain-light",
           "lineIndexes": [
             1
           ],
@@ -1298,6 +1315,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "closing-tableau",
+          "signature": "cosmic-reveal",
           "lineIndexes": [
             2
           ],
@@ -1591,7 +1609,8 @@
           "speaker": "小光",
           "role": "tertiary"
         }
-      ]
+      ],
+      "endingMode": "eight-planet-chain-light"
     }
   ],
   "deliverables": {
@@ -1917,5 +1936,29 @@
       "shotId": "03-end-shot-3",
       "cue": "rustle"
     }
-  ]
+  ],
+  "manga": {
+    "directorProfile": {
+      "id": "orbital-repair-countdown",
+      "story_engine": "故障逐级扩大，三人按轨道顺序接力修复，亮度与节奏逐镜头累积。",
+      "shot_signatures": {
+        "start": [
+          "blackout-system",
+          "planet-failure-scan",
+          "robot-alert"
+        ],
+        "middle": [
+          "fragment-chase",
+          "orbit-sequence",
+          "energy-lock"
+        ],
+        "end": [
+          "core-ignition",
+          "planet-chain-light",
+          "cosmic-reveal"
+        ]
+      },
+      "ending_mode": "eight-planet-chain-light"
+    }
+  }
 }

@@ -17,6 +17,13 @@
   },
   "style": {
     "key": "history",
+    "visualGrammar": {
+      "id": "scroll-chronicle",
+      "direction": "历史长卷：横向展开、朱砂印记、竖向分栏和克制的平移。",
+      "panel": "窄长卷轴窗，焦点框偏左，保留大面积叙事环境。",
+      "caption": "史料题签式横条，衬线感更强。",
+      "camera": "缓慢横向移轴，近景不过度放大。"
+    },
     "visual": [
       "中国风",
       "冒险电影",
@@ -75,7 +82,36 @@
       "历史信息只采用任务卡已经给出的内容"
     ],
     "shotCount": 9,
-    "shotsPerScene": 3
+    "shotsPerScene": 3,
+    "directorProfile": {
+      "id": "time-letter-chronicle",
+      "story_engine": "古今相遇以反打建立信任，航图横移推进协作，书信交接把私人情感引向远航。",
+      "shot_signatures": {
+        "start": [
+          "ink-portal",
+          "era-reverse-shot",
+          "zhenghe-reaction"
+        ],
+        "middle": [
+          "wind-scattered-chart",
+          "star-route-table",
+          "course-restored"
+        ],
+        "end": [
+          "letter-approach",
+          "two-hand-handoff",
+          "ship-horizon"
+        ]
+      },
+      "scene_role_maps": {
+        "end": {
+          "primary": "secondary",
+          "secondary": "primary",
+          "tertiary": "tertiary"
+        }
+      },
+      "ending_mode": "letter-to-horizon"
+    }
   },
   "scenes": [
     {
@@ -112,6 +148,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "full-bleed",
+          "signature": "ink-portal",
           "lineIndexes": [
             0
           ],
@@ -168,6 +205,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "speaker-stage",
+          "signature": "era-reverse-shot",
           "lineIndexes": [
             1
           ],
@@ -224,6 +262,7 @@
           "framing": "close",
           "focusRole": "secondary",
           "layoutMode": "reaction-panel",
+          "signature": "zhenghe-reaction",
           "lineIndexes": [
             2
           ],
@@ -308,7 +347,8 @@
         "primary": "assets/processed/01-start/primary.png",
         "secondary": "assets/processed/01-start/secondary.png",
         "tertiary": "assets/processed/01-start/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -344,6 +384,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "pressure-wide",
+          "signature": "wind-scattered-chart",
           "lineIndexes": [
             0
           ],
@@ -400,6 +441,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "action-diagonal",
+          "signature": "star-route-table",
           "lineIndexes": [
             1
           ],
@@ -456,6 +498,7 @@
           "framing": "close",
           "focusRole": "secondary",
           "layoutMode": "decision-inset",
+          "signature": "course-restored",
           "lineIndexes": [
             2
           ],
@@ -540,7 +583,8 @@
         "primary": "assets/processed/02-middle/primary.png",
         "secondary": "assets/processed/02-middle/secondary.png",
         "tertiary": "assets/processed/02-middle/tertiary.png"
-      }
+      },
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -576,6 +620,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "impact-frame",
+          "signature": "letter-approach",
           "lineIndexes": [
             0
           ],
@@ -630,8 +675,9 @@
           "index": 2,
           "purpose": "payoff",
           "framing": "close",
-          "focusRole": "secondary",
+          "focusRole": "primary",
           "layoutMode": "reaction-panel",
+          "signature": "two-hand-handoff",
           "lineIndexes": [
             1
           ],
@@ -641,13 +687,13 @@
               "primary": {
                 "x": 95,
                 "y": -34,
-                "scale": 0.78,
+                "scale": 1.14,
                 "opacity": 1.0
               },
               "secondary": {
-                "x": 145,
-                "y": -24,
-                "scale": 1.04,
+                "x": 105,
+                "y": 25,
+                "scale": 0.78,
                 "opacity": 1.0
               },
               "tertiary": {
@@ -675,8 +721,8 @@
               }
             },
             "travel": {
-              "role": "secondary",
-              "x": 48,
+              "role": "primary",
+              "x": 42,
               "y": -8
             }
           }
@@ -688,6 +734,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "closing-tableau",
+          "signature": "ship-horizon",
           "lineIndexes": [
             2
           ],
@@ -772,7 +819,8 @@
         "primary": "assets/processed/03-end/primary.png",
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
-      }
+      },
+      "endingMode": "letter-to-horizon"
     }
   ]
 }

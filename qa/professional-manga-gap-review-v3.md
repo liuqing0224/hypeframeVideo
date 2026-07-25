@@ -51,3 +51,21 @@ an alternate expression or pose plate.
   an empty "No compositions found" state.
 - Render remains blocked until the new composition hashes receive explicit
   Studio approval.
+
+## Story-specific directing v4
+
+The batch no longer shares one visual/editorial template:
+
+- Guangzhou uses a clue-expedition grammar: lookout POV, map proof, city
+  reveal, and a camera-photo freeze ending.
+- Solar System uses an orbital repair countdown: fault scan, ordered orbit
+  montage, energy lock, and an eight-planet chain-light ending.
+- Navigator uses a horizontal chronicle: era reverse shots, chart-table
+  collaboration, role-aware letter handoff, and a letter-to-horizon ending.
+- Star Seed uses a vertical pilgrimage: low storm angles, guarded movement,
+  tree-crown ascent, and an outward star-bloom ending.
+
+Task cards now own `director_profile`, nine `shot_signatures`, optional
+per-scene semantic-to-asset role maps, and one story-specific `ending_mode`.
+The compiler verifies that all four profiles, endings, grammars, and signature
+sets are distinct.

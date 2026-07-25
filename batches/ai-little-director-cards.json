@@ -29,8 +29,18 @@
       "palette": ["明亮彩色", "温暖夕阳", "天空蓝", "广州塔红"],
       "music_mood": ["快乐", "激动"],
       "director_intent": "像一次从云端俯瞰广州的快乐探险。",
-      "manga": {
-        "pacing": "cinematic",
+    "manga": {
+      "director_profile": {
+        "id": "cloud-clue-expedition",
+        "story_engine": "从观察到推理再到共同确认，镜头像研学手账逐页补全线索。",
+        "shot_signatures": {
+          "start": ["arrival-postcard", "lookout-pov", "binocular-reaction"],
+          "middle": ["fog-obstacle", "clue-crosscut", "map-proof"],
+          "end": ["city-reveal", "team-gather", "photo-freeze"]
+        },
+        "ending_mode": "camera-photo-freeze"
+      },
+      "pacing": "cinematic",
         "dialogue_ratio": 0.67,
         "audience_grade": "primary-and-middle-school",
         "voice_cast": {
@@ -108,8 +118,18 @@
       "palette": ["星空深蓝", "电光青", "太阳金", "明亮彩色"],
       "music_mood": ["神秘", "激动", "温暖"],
       "director_intent": "像一场会发光的博物馆宇宙探险。",
-      "manga": {
-        "pacing": "cinematic",
+    "manga": {
+      "director_profile": {
+        "id": "orbital-repair-countdown",
+        "story_engine": "故障逐级扩大，三人按轨道顺序接力修复，亮度与节奏逐镜头累积。",
+        "shot_signatures": {
+          "start": ["blackout-system", "planet-failure-scan", "robot-alert"],
+          "middle": ["fragment-chase", "orbit-sequence", "energy-lock"],
+          "end": ["core-ignition", "planet-chain-light", "cosmic-reveal"]
+        },
+        "ending_mode": "eight-planet-chain-light"
+      },
+      "pacing": "cinematic",
         "dialogue_ratio": 0.67,
         "audience_grade": "primary-and-middle-school",
         "voice_cast": {
@@ -187,8 +207,25 @@
       "palette": ["宣纸米白", "朱砂红", "海洋蓝", "温暖夕阳"],
       "music_mood": ["冒险", "激动", "温暖"],
       "director_intent": "像一封跨越六百年的勇气来信。",
-      "manga": {
-        "pacing": "cinematic",
+    "manga": {
+      "director_profile": {
+        "id": "time-letter-chronicle",
+        "story_engine": "古今相遇以反打建立信任，航图横移推进协作，书信交接把私人情感引向远航。",
+        "shot_signatures": {
+          "start": ["ink-portal", "era-reverse-shot", "zhenghe-reaction"],
+          "middle": ["wind-scattered-chart", "star-route-table", "course-restored"],
+          "end": ["letter-approach", "two-hand-handoff", "ship-horizon"]
+        },
+        "scene_role_maps": {
+          "end": {
+            "primary": "secondary",
+            "secondary": "primary",
+            "tertiary": "tertiary"
+          }
+        },
+        "ending_mode": "letter-to-horizon"
+      },
+      "pacing": "cinematic",
         "dialogue_ratio": 0.67,
         "audience_grade": "primary-and-middle-school",
         "voice_cast": {
@@ -266,8 +303,18 @@
       "palette": ["森林深绿", "星空靛蓝", "萤火金", "花朵粉"],
       "music_mood": ["神秘", "温暖"],
       "director_intent": "像一场安静又勇敢的森林守护行动。",
-      "manga": {
-        "pacing": "gentle",
+    "manga": {
+      "director_profile": {
+        "id": "star-seed-pilgrimage",
+        "story_engine": "围绕一颗脆弱星种持续前行，空间从低矮黑林抬升到古树冠顶，最后由一点光扩散全森林。",
+        "shot_signatures": {
+          "start": ["dark-forest-wide", "seed-offering", "seed-glow-close"],
+          "middle": ["storm-low-angle", "guardian-run", "fallen-log-leap"],
+          "end": ["tree-crown-climb", "seed-bloom", "animal-ring-celebration"]
+        },
+        "ending_mode": "vertical-star-bloom"
+      },
+      "pacing": "gentle",
         "dialogue_ratio": 0.67,
         "audience_grade": "primary-and-middle-school",
         "voice_cast": {

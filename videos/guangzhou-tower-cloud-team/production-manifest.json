@@ -19,6 +19,13 @@
   },
   "style": {
     "key": "field-trip",
+    "visualGrammar": {
+      "id": "travel-scrapbook",
+      "direction": "旅行手账：错位贴纸、取景框、轻微手持倾斜和明快硬切。",
+      "panel": "偏置矩形照片框，使用印刷套色与纸张投影。",
+      "caption": "采访标签与手账注释条，构图偏左下。",
+      "camera": "不对称横移，近景带轻微旋转。"
+    },
     "visual": [
       "卡通动画",
       "冒险电影",
@@ -121,6 +128,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "full-bleed",
+          "signature": "arrival-postcard",
           "lineIndexes": [
             0
           ],
@@ -179,6 +187,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "speaker-stage",
+          "signature": "lookout-pov",
           "lineIndexes": [
             1
           ],
@@ -237,6 +246,7 @@
           "framing": "close",
           "focusRole": "tertiary",
           "layoutMode": "reaction-panel",
+          "signature": "binocular-reaction",
           "lineIndexes": [
             2
           ],
@@ -550,7 +560,8 @@
           "speaker": "红帽同学",
           "role": "tertiary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -607,6 +618,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "pressure-wide",
+          "signature": "fog-obstacle",
           "lineIndexes": [
             0
           ],
@@ -665,6 +677,7 @@
           "framing": "medium",
           "focusRole": "secondary",
           "layoutMode": "action-diagonal",
+          "signature": "clue-crosscut",
           "lineIndexes": [
             1
           ],
@@ -723,6 +736,7 @@
           "framing": "close",
           "focusRole": "primary",
           "layoutMode": "decision-inset",
+          "signature": "map-proof",
           "lineIndexes": [
             2
           ],
@@ -1064,7 +1078,8 @@
           "speaker": "小雨",
           "role": "primary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -1121,6 +1136,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "impact-frame",
+          "signature": "city-reveal",
           "lineIndexes": [
             0
           ],
@@ -1179,6 +1195,7 @@
           "framing": "close",
           "focusRole": "primary",
           "layoutMode": "reaction-panel",
+          "signature": "team-gather",
           "lineIndexes": [
             1
           ],
@@ -1237,6 +1254,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "closing-tableau",
+          "signature": "photo-freeze",
           "lineIndexes": [
             2
           ],
@@ -1490,7 +1508,8 @@
           "speaker": "红帽同学",
           "role": "tertiary"
         }
-      ]
+      ],
+      "endingMode": "camera-photo-freeze"
     }
   ],
   "deliverables": {
@@ -1780,5 +1799,29 @@
       "shotId": "03-end-shot-3",
       "cue": "rustle"
     }
-  ]
+  ],
+  "manga": {
+    "directorProfile": {
+      "id": "cloud-clue-expedition",
+      "story_engine": "从观察到推理再到共同确认，镜头像研学手账逐页补全线索。",
+      "shot_signatures": {
+        "start": [
+          "arrival-postcard",
+          "lookout-pov",
+          "binocular-reaction"
+        ],
+        "middle": [
+          "fog-obstacle",
+          "clue-crosscut",
+          "map-proof"
+        ],
+        "end": [
+          "city-reveal",
+          "team-gather",
+          "photo-freeze"
+        ]
+      },
+      "ending_mode": "camera-photo-freeze"
+    }
+  }
 }

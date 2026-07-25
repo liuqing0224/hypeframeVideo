@@ -66,6 +66,53 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
+        "director_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "story_engine", "shot_signatures", "ending_mode"],
+          "properties": {
+            "id": {"type": "string", "minLength": 1},
+            "story_engine": {"type": "string", "minLength": 1},
+            "ending_mode": {"type": "string", "minLength": 1},
+            "scene_role_maps": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "primary": {"enum": ["primary", "secondary", "tertiary"]},
+                  "secondary": {"enum": ["primary", "secondary", "tertiary"]},
+                  "tertiary": {"enum": ["primary", "secondary", "tertiary"]}
+                }
+              }
+            },
+            "shot_signatures": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["start", "middle", "end"],
+              "properties": {
+                "start": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "middle": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                },
+                "end": {
+                  "type": "array",
+                  "minItems": 3,
+                  "maxItems": 3,
+                  "items": {"type": "string", "minLength": 1}
+                }
+              }
+            }
+          }
+        },
         "pacing": {"enum": ["compact", "standard", "cinematic", "gentle"]},
         "dialogue_ratio": {"type": "number", "minimum": 0, "maximum": 1},
         "audience_grade": {"type": "string", "minLength": 1},

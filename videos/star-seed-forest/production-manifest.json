@@ -19,6 +19,13 @@
   },
   "style": {
     "key": "fantasy",
+    "visualGrammar": {
+      "id": "enchanted-storybook",
+      "direction": "魔法绘本：有机叶形窗口、中心光晕、漂浮粒子和柔性穿越。",
+      "panel": "椭圆叶形光窗，边缘发光，焦点围绕中心生长。",
+      "caption": "轻盈的低位咒语条与思绪框。",
+      "camera": "纵向漂移与呼吸式推拉，减少硬横移。"
+    },
     "visual": [
       "梦幻童话",
       "温馨治愈",
@@ -121,6 +128,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "full-bleed",
+          "signature": "dark-forest-wide",
           "lineIndexes": [
             0
           ],
@@ -179,6 +187,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "speaker-stage",
+          "signature": "seed-offering",
           "lineIndexes": [
             1
           ],
@@ -237,6 +246,7 @@
           "framing": "close",
           "focusRole": "secondary",
           "layoutMode": "reaction-panel",
+          "signature": "seed-glow-close",
           "lineIndexes": [
             2
           ],
@@ -582,7 +592,8 @@
           "speaker": "小鹿",
           "role": "secondary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "02-middle",
@@ -639,6 +650,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "pressure-wide",
+          "signature": "storm-low-angle",
           "lineIndexes": [
             0
           ],
@@ -697,6 +709,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "action-diagonal",
+          "signature": "guardian-run",
           "lineIndexes": [
             1
           ],
@@ -755,6 +768,7 @@
           "framing": "close",
           "focusRole": "secondary",
           "layoutMode": "decision-inset",
+          "signature": "fallen-log-leap",
           "lineIndexes": [
             2
           ],
@@ -1080,7 +1094,8 @@
           "speaker": "小鹿",
           "role": "secondary"
         }
-      ]
+      ],
+      "endingMode": null
     },
     {
       "id": "03-end",
@@ -1137,6 +1152,7 @@
           "framing": "medium",
           "focusRole": "primary",
           "layoutMode": "impact-frame",
+          "signature": "tree-crown-climb",
           "lineIndexes": [
             0
           ],
@@ -1195,6 +1211,7 @@
           "framing": "close",
           "focusRole": "primary",
           "layoutMode": "reaction-panel",
+          "signature": "seed-bloom",
           "lineIndexes": [
             1
           ],
@@ -1253,6 +1270,7 @@
           "framing": "wide",
           "focusRole": "ensemble",
           "layoutMode": "closing-tableau",
+          "signature": "animal-ring-celebration",
           "lineIndexes": [
             2
           ],
@@ -1534,7 +1552,8 @@
           "speaker": "猫头鹰",
           "role": "tertiary"
         }
-      ]
+      ],
+      "endingMode": "vertical-star-bloom"
     }
   ],
   "deliverables": {
@@ -1812,5 +1831,29 @@
       "shotId": "03-end-shot-3",
       "cue": "rustle"
     }
-  ]
+  ],
+  "manga": {
+    "directorProfile": {
+      "id": "star-seed-pilgrimage",
+      "story_engine": "围绕一颗脆弱星种持续前行，空间从低矮黑林抬升到古树冠顶，最后由一点光扩散全森林。",
+      "shot_signatures": {
+        "start": [
+          "dark-forest-wide",
+          "seed-offering",
+          "seed-glow-close"
+        ],
+        "middle": [
+          "storm-low-angle",
+          "guardian-run",
+          "fallen-log-leap"
+        ],
+        "end": [
+          "tree-crown-climb",
+          "seed-bloom",
+          "animal-ring-celebration"
+        ]
+      },
+      "ending_mode": "vertical-star-bloom"
+    }
+  }
 }

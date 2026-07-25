@@ -12,6 +12,22 @@ Keep the authored `start`, `middle`, and `end` beats intact. Compile each beat i
 
 The three scenes remain the asset groups. The nine shots control framing, focus, line placement, and editorial rhythm.
 
+## Story-Specific Direction
+
+Do not let a batch share one nine-shot visual template. Every task card should
+own a `director_profile` containing:
+
+- one `story_engine` describing how its conflict and discovery progress;
+- nine story-specific `shot_signatures`, three per beat;
+- one `ending_mode` that resolves the authored story rather than merely
+  returning to a generic ensemble wide;
+- optional `scene_role_maps` when semantic character roles do not match the
+  primary/secondary/tertiary columns of a generated scene sheet.
+
+Color and transition differences do not count as distinct direction. At least
+camera behavior, panel geometry, recurring visual motif, climax construction,
+and ending composition must respond to the card's actual story.
+
 ## Shot Blocking
 
 Every shot must carry a `blocking` state rather than relying on one fixed scene layout:

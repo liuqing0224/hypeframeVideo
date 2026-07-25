@@ -84,7 +84,7 @@ def scene_shots(scene: dict) -> list[dict]:
     return normalized
 
 
-def shot_camera(shot: dict, index: int) -> dict[str, float]:
+def shot_camera(shot: dict, index: int, style_key: str = "field-trip") -> dict[str, float]:
     framing = shot.get("framing", "medium")
     focus = shot.get("focusRole", "primary")
     scale = {"wide": 1.0, "medium": 1.16, "close": 1.38}.get(framing, 1.16)
@@ -96,7 +96,20 @@ def shot_camera(shot: dict, index: int) -> dict[str, float]:
         "architecture": (0, 40),
     }
     x, y = anchors.get(focus, (0, 0))
-    return {"x": x, "y": y, "scale": scale, "push": 0.018 + index * 0.004}
+    profiles = {
+        "field-trip": {"x": (1, -1, 1)[index], "y": 1, "scale": 1, "push": 1, "rotation": (-0.7, 0.45, -0.35)[index]},
+        "science": {"x": (1.2, -1.05, 1.15)[index], "y": 0.72, "scale": 1.04, "push": 1.65, "rotation": 0},
+        "history": {"x": (0.65, 1.15, -0.75)[index], "y": 0.55, "scale": 0.94, "push": 0.62, "rotation": 0},
+        "fantasy": {"x": 0.45, "y": (0.25, 1.25, -0.8)[index], "scale": 1.01, "push": 0.8, "rotation": (0.25, -0.35, 0.2)[index]},
+    }
+    profile = profiles.get(style_key, profiles["field-trip"])
+    return {
+        "x": x * profile["x"],
+        "y": y * profile["y"],
+        "scale": scale * profile["scale"],
+        "push": (0.018 + index * 0.004) * profile["push"],
+        "rotation": profile["rotation"],
+    }
 
 
 def shot_blocking(shot: dict, index: int) -> dict:
@@ -231,11 +244,11 @@ def shot_timeline(scene: dict) -> str:
         start = shot["startSeconds"]
         duration = shot["durationSeconds"]
         rows.extend(blocking_timeline(shot, index, start, duration))
-        camera = shot_camera(shot, index)
+        camera = shot_camera(shot, index, scene.get("_styleKey", "field-trip"))
         selector = ".camera-rig"
         rows.append(
             f'tl.set(q("{selector}"), {{x:{number(camera["x"])},y:{number(camera["y"])},'
-            f'scale:{number(camera["scale"])}}}, {number(start)});'
+            f'scale:{number(camera["scale"])},rotation:{number(camera["rotation"])}}}, {number(start)});'
         )
         rows.append(
             f'tl.to(q("{selector}"), {{scale:{number(camera["scale"] + camera["push"])},'
@@ -296,7 +309,8 @@ def comic_treatments(scene: dict) -> str:
             )
         rows.append(
             f'<div class="comic-treatment treatment-{index} mode-{mode}" '
-            f'data-shot-purpose="{html.escape(shot.get("purpose", "shot"))}">'
+            f'data-shot-purpose="{html.escape(shot.get("purpose", "shot"))}" '
+            f'data-shot-signature="{html.escape(shot.get("signature", shot.get("purpose", "shot")))}">'
             f'{inset}<i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i>'
             '<i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i>'
             '<i class="impact-ray ray-c"></i></div>'
@@ -531,6 +545,153 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
       #{root_id} .mode-closing-tableau {{
         box-shadow: inset 0 0 0 18px {tokens['accent2']};
       }}
+      #{root_id}[data-visual-grammar="science"] .panel-inset {{
+        clip-path: polygon(8% 0, 100% 0, 100% 86%, 92% 100%, 0 100%, 0 14%);
+        border-color: {tokens['accent']};
+        box-shadow: 16px 0 0 {tokens['accent2']};
+        background-color: {tokens['shadow']};
+      }}
+      #{root_id}[data-visual-grammar="science"] .comic-treatment::after {{
+        content: "";
+        position: absolute;
+        inset: 34px;
+        border: 3px solid {tokens['accent']};
+        opacity: .55;
+      }}
+      #{root_id}[data-visual-grammar="history"] .panel-inset {{
+        right: auto;
+        left: 96px;
+        top: 118px;
+        width: 620px;
+        height: 700px;
+        border-width: 8px 20px;
+        box-shadow: 18px 0 0 {tokens['accent']};
+        background: {tokens['canvas']};
+      }}
+      #{root_id}[data-visual-grammar="history"] .impact-ray {{
+        height: 5px;
+        background: {tokens['accent']};
+      }}
+      #{root_id}[data-visual-grammar="fantasy"] .panel-inset {{
+        right: 120px;
+        top: 105px;
+        width: 700px;
+        height: 700px;
+        border-radius: 48% 52% 44% 56%;
+        border-color: {tokens['accent2']};
+        box-shadow: 0 0 48px {tokens['accent2']};
+        background: {tokens['shadow']};
+      }}
+      #{root_id}[data-visual-grammar="fantasy"] .impact-ray {{
+        height: 8px;
+        border-radius: 50%;
+        filter: blur(2px);
+      }}
+      #{root_id}[data-visual-grammar="field-trip"] .panel-inset {{
+        transform: rotate(1.2deg);
+        border-style: solid;
+        box-shadow: 14px 14px 0 {tokens['accent2']};
+      }}
+      #{root_id} [data-shot-signature="binocular-reaction"] .panel-inset {{
+        width: 660px;
+        height: 660px;
+        border-radius: 50%;
+        clip-path: ellipse(48% 44% at 50% 50%);
+      }}
+      #{root_id} [data-shot-signature="orbit-sequence"]::before {{
+        content: "";
+        position: absolute;
+        inset: 160px 240px;
+        border: 12px double {tokens['accent']};
+        transform: rotate(-7deg);
+      }}
+      #{root_id} [data-shot-signature="two-hand-handoff"] .panel-inset {{
+        left: 320px;
+        right: 320px;
+        top: 270px;
+        width: auto;
+        height: 350px;
+        border-width: 10px 28px;
+      }}
+      #{root_id} [data-shot-signature="two-hand-handoff"] .panel-portrait {{
+        background-position: 50% 48%;
+        background-size: 88% auto;
+      }}
+      #{root_id} [data-shot-signature="seed-bloom"] .panel-inset {{
+        left: 610px;
+        right: auto;
+        top: 120px;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+      }}
+      #{root_id} [data-shot-signature="photo-freeze"] {{
+        box-shadow: inset 0 0 0 26px {tokens['canvas']}, inset 0 0 0 34px {tokens['ink']};
+      }}
+      #{root_id} .ending-signature {{
+        position: absolute;
+        inset: 0;
+        z-index: 15;
+        pointer-events: none;
+      }}
+      #{root_id} .photo-shutter i {{
+        position: absolute;
+        width: 150px;
+        height: 110px;
+        border: 12px solid {tokens['ink']};
+      }}
+      #{root_id} .photo-shutter i:nth-child(1) {{ left:55px;top:55px;border-right:0;border-bottom:0; }}
+      #{root_id} .photo-shutter i:nth-child(2) {{ right:55px;top:55px;border-left:0;border-bottom:0; }}
+      #{root_id} .photo-shutter i:nth-child(3) {{ left:55px;bottom:55px;border-right:0;border-top:0; }}
+      #{root_id} .photo-shutter i:nth-child(4) {{ right:55px;bottom:55px;border-left:0;border-top:0; }}
+      #{root_id} .orbit-finale {{
+        left: 610px;
+        top: 190px;
+        width: 700px;
+        height: 700px;
+        border: 8px solid {tokens['accent']};
+        border-radius: 50%;
+      }}
+      #{root_id} .orbit-dot {{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: {tokens['accent2']};
+        transform-origin: 0 0;
+      }}
+      #{root_id} .od-1 {{ transform:rotate(45deg) translateX(315px); }}
+      #{root_id} .od-2 {{ transform:rotate(90deg) translateX(315px); }}
+      #{root_id} .od-3 {{ transform:rotate(135deg) translateX(315px); }}
+      #{root_id} .od-4 {{ transform:rotate(180deg) translateX(315px); }}
+      #{root_id} .od-5 {{ transform:rotate(225deg) translateX(315px); }}
+      #{root_id} .od-6 {{ transform:rotate(270deg) translateX(315px); }}
+      #{root_id} .od-7 {{ transform:rotate(315deg) translateX(315px); }}
+      #{root_id} .letter-finale .seal-ring {{
+        position:absolute;left:160px;bottom:175px;width:170px;height:170px;
+        border:18px double {tokens['accent']};border-radius:50%;
+      }}
+      #{root_id} .letter-finale .horizon-rule {{
+        position:absolute;left:300px;right:90px;top:47%;height:6px;
+        background:{tokens['accent']};
+      }}
+      #{root_id} .bloom-finale {{
+        left:760px;top:390px;width:400px;height:400px;
+      }}
+      #{root_id} .bloom-ray {{
+        position:absolute;left:50%;top:50%;width:360px;height:18px;
+        border-radius:50%;background:{tokens['accent2']};
+        transform-origin:0 50%;filter:blur(3px);
+      }}
+      #{root_id} .br-1 {{ transform:rotate(45deg); }}
+      #{root_id} .br-2 {{ transform:rotate(90deg); }}
+      #{root_id} .br-3 {{ transform:rotate(135deg); }}
+      #{root_id} .br-4 {{ transform:rotate(180deg); }}
+      #{root_id} .br-5 {{ transform:rotate(225deg); }}
+      #{root_id} .br-6 {{ transform:rotate(270deg); }}
+      #{root_id} .br-7 {{ transform:rotate(315deg); }}
     </style>"""
 
 
@@ -559,7 +720,21 @@ def accents(scene: dict) -> str:
                 f'<div class="pixel-accent particle p-{index}" '
                 f'style="left:{left}px;top:{top}px;width:{size}px;height:{size}px"></div>'
             )
-        return '<div class="glow"></div>' + "".join(pixels)
+        ending_markup = {
+            "camera-photo-freeze": '<div class="ending-signature photo-shutter"><i></i><i></i><i></i><i></i></div>',
+            "eight-planet-chain-light": (
+                '<div class="ending-signature orbit-finale">'
+                + "".join(f'<i class="orbit-dot od-{i}"></i>' for i in range(8))
+                + '</div>'
+            ),
+            "letter-to-horizon": '<div class="ending-signature letter-finale"><i class="seal-ring"></i><i class="horizon-rule"></i></div>',
+            "vertical-star-bloom": (
+                '<div class="ending-signature bloom-finale">'
+                + "".join(f'<i class="bloom-ray br-{i}"></i>' for i in range(8))
+                + '</div>'
+            ),
+        }.get(scene.get("endingMode"), "")
+        return '<div class="glow"></div>' + "".join(pixels) + ending_markup
     return """
       <div class="pixel-accent breeze b-1" style="left:280px;top:260px;width:18px;height:18px"></div>
       <div class="pixel-accent breeze b-2" style="left:1470px;top:390px;width:14px;height:14px"></div>
@@ -616,6 +791,29 @@ def end_timeline(scene: dict) -> str:
     action_end = duration * 0.72
     exit_at = duration * 0.90
     particle_duration = max(0.9, action_end - entrance)
+    ending_motion = {
+        "camera-photo-freeze": (
+            f'tl.fromTo(qAll(".photo-shutter i"), {{opacity:0,scale:1.3}}, '
+            f'{{opacity:1,scale:1,duration:0.18,stagger:0.03,ease:"power4.out"}}, '
+            f'{number(action_end)});'
+        ),
+        "eight-planet-chain-light": (
+            f'tl.fromTo(qAll(".orbit-dot"), {{opacity:0,scale:0.2}}, '
+            f'{{opacity:1,scale:1,duration:0.24,stagger:0.1,ease:"back.out(1.8)"}}, '
+            f'{number(entrance)});'
+        ),
+        "letter-to-horizon": (
+            f'tl.fromTo(q(".horizon-rule"), {{opacity:0,scaleX:0}}, '
+            f'{{opacity:1,scaleX:1,duration:1.1,ease:"power2.out"}}, {number(action_end - 0.7)});'
+            f'tl.fromTo(q(".seal-ring"), {{opacity:0,scale:1.5,rotation:-16}}, '
+            f'{{opacity:0.8,scale:1,rotation:0,duration:0.4,ease:"power4.out"}}, {number(action_end)});'
+        ),
+        "vertical-star-bloom": (
+            f'tl.fromTo(qAll(".bloom-ray"), {{opacity:0,scaleX:0}}, '
+            f'{{opacity:0.72,scaleX:1,duration:0.9,stagger:0.05,ease:"sine.out"}}, '
+            f'{number(action_end - 0.5)});'
+        ),
+    }.get(scene.get("endingMode"), "")
     return f"""
       tl.fromTo(q(".backdrop img"), {{scale: 1}}, {{scale: 1.045, duration: {number(action_end)}, ease: "none"}}, 0);
       tl.fromTo(q(".architecture img"), {{opacity: 0, scale: 0.9}}, {{opacity: 1, scale: 1, duration: {number(entrance)}, ease: "back.out(1.25)"}}, 0);
@@ -627,6 +825,7 @@ def end_timeline(scene: dict) -> str:
       tl.fromTo(qAll(".particle"), {{opacity: 0, x: 0, y: 30, scale: 0.4}}, {{opacity: 0.9, x: 0, y: -42, scale: 1.15, duration: {number(particle_duration)}, stagger: 0.06, ease: "power2.out"}}, {number(entrance * 0.7)});
       tl.to(q(".primary img"), {{y: -8, duration: {number((action_end - entrance) * 0.5)}, ease: "sine.inOut"}}, {number(entrance)});
       tl.to(q(".primary img"), {{y: 0, duration: {number((action_end - entrance) * 0.5)}, ease: "sine.inOut"}}, {number((entrance + action_end) * 0.5)});
+      {ending_motion}
       tl.to(root, {{opacity: 0.99, duration: {number(duration - exit_at)}, ease: "power1.in"}}, {number(exit_at)});"""
 
 
@@ -665,6 +864,8 @@ def scene_html(scene: dict, tokens: dict) -> str:
     data-width="1920"
     data-height="1080"
     data-duration="{number(scene['durationSeconds'])}"
+    data-visual-grammar="{html.escape(scene.get('_styleKey', 'field-trip'))}"
+    data-ending-mode="{html.escape(scene.get('endingMode') or 'none')}"
     data-layout-allow-overflow
   >
     <div class="camera-rig" data-layout-allow-overflow>
@@ -673,7 +874,7 @@ def scene_html(scene: dict, tokens: dict) -> str:
     </div>
     <div class="internal-cut"></div>
     {comic_treatments(scene)}
-    {common_scene_css(scene, tokens)}
+      {common_scene_css(scene, tokens)}
     <script>
       (function () {{
         const root = document.querySelector("#scene-{scene['id']}");
@@ -847,6 +1048,12 @@ def index_html(manifest: dict) -> str:
         font-style: normal;
         font-weight: 400 900;
       }}
+      @font-face {{
+        font-family: "Songti SC";
+        src: local("Songti SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }}
       html, body {{
         margin: 0;
         width: 1920px;
@@ -937,6 +1144,32 @@ def index_html(manifest: dict) -> str:
         color: {tokens['canvas']};
         background: {tokens['accent']};
       }}
+      body.style-science .caption {{
+        right: 110px;
+        left: auto;
+        border-color: {tokens['accent']};
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 {tokens['accent2']};
+      }}
+      body.style-history .caption {{
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "{manifest['style']['fontDisplay']}", serif;
+      }}
+      body.style-fantasy .caption {{
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: {tokens['accent2']};
+        box-shadow: 0 0 34px {tokens['accent2']};
+      }}
+      body.style-field-trip .caption {{
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 {tokens['accent2']};
+      }}
       .transition {{
         position: absolute;
         inset: 0;
@@ -986,7 +1219,7 @@ def index_html(manifest: dict) -> str:
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) {{ right: 0; }}
     </style>
   </head>
-  <body>
+  <body class="style-{html.escape(manifest['style']['key'])}">
     <div id="main" data-composition-id="main" data-start="0"
          data-duration="{number(total)}" data-width="1920" data-height="1080" data-fps="30">
       {''.join(scene_hosts)}
@@ -1021,7 +1254,7 @@ def motion_payload(scene: dict) -> dict:
     shot_rows = []
     cuts = []
     for index, shot in enumerate(shots):
-        camera = shot_camera(shot, index)
+        camera = shot_camera(shot, index, scene.get("_styleKey", "field-trip"))
         blocking = shot_blocking(shot, index)
         travel = blocking["travel"]
         blocking_bounds = {}
@@ -1151,6 +1384,7 @@ def compose(production: Path, adopt: bool = True) -> None:
     compositions.mkdir(parents=True, exist_ok=True)
     evidence = ["index.html", "vendor/gsap.min.js"]
     for scene in manifest["scenes"]:
+        scene["_styleKey"] = manifest["style"]["key"]
         html_path = compositions / f"{scene['id']}.html"
         html_path.write_text(
             clean_generated_html(scene_html(scene, manifest["style"]["tokens"])),

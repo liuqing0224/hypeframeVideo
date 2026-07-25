@@ -13,6 +13,12 @@
         font-style: normal;
         font-weight: 400 900;
       }
+      @font-face {
+        font-family: "Songti SC";
+        src: local("Songti SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
       html, body {
         margin: 0;
         width: 1920px;
@@ -103,6 +109,32 @@
         color: #e8d6ae;
         background: #a9362b;
       }
+      body.style-science .caption {
+        right: 110px;
+        left: auto;
+        border-color: #a9362b;
+        clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+        box-shadow: 14px 0 0 #2c6c80;
+      }
+      body.style-history .caption {
+        left: 250px;
+        right: auto;
+        width: 1420px;
+        border-width: 3px 16px;
+        box-shadow: none;
+        font-family: "Songti SC", serif;
+      }
+      body.style-fantasy .caption {
+        left: 270px;
+        right: auto;
+        width: 1380px;
+        border-color: #2c6c80;
+        box-shadow: 0 0 34px #2c6c80;
+      }
+      body.style-field-trip .caption {
+        transform: rotate(-0.25deg);
+        box-shadow: 10px 10px 0 #2c6c80;
+      }
       .transition {
         position: absolute;
         inset: 0;
@@ -152,7 +184,7 @@
       .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
     </style>
   </head>
-  <body>
+  <body class="style-history">
     <div id="main" data-composition-id="main" data-start="0"
          data-duration="36.5" data-width="1920" data-height="1080" data-fps="30">
 

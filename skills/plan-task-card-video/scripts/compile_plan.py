@@ -194,6 +194,37 @@ PALETTES = {
     },
 }
 
+VISUAL_GRAMMARS = {
+    "field-trip": {
+        "id": "travel-scrapbook",
+        "direction": "旅行手账：错位贴纸、取景框、轻微手持倾斜和明快硬切。",
+        "panel": "偏置矩形照片框，使用印刷套色与纸张投影。",
+        "caption": "采访标签与手账注释条，构图偏左下。",
+        "camera": "不对称横移，近景带轻微旋转。",
+    },
+    "science": {
+        "id": "orbital-console",
+        "direction": "轨道控制台：扫描框、坐标网格、斜切 HUD 和快速目标锁定。",
+        "panel": "六边形或斜切数据窗，焦点框靠右上。",
+        "caption": "窄体终端条与角色呼号，构图偏右下。",
+        "camera": "更快推镜与正负横向扫描。",
+    },
+    "history": {
+        "id": "scroll-chronicle",
+        "direction": "历史长卷：横向展开、朱砂印记、竖向分栏和克制的平移。",
+        "panel": "窄长卷轴窗，焦点框偏左，保留大面积叙事环境。",
+        "caption": "史料题签式横条，衬线感更强。",
+        "camera": "缓慢横向移轴，近景不过度放大。",
+    },
+    "fantasy": {
+        "id": "enchanted-storybook",
+        "direction": "魔法绘本：有机叶形窗口、中心光晕、漂浮粒子和柔性穿越。",
+        "panel": "椭圆叶形光窗，边缘发光，焦点围绕中心生长。",
+        "caption": "轻盈的低位咒语条与思绪框。",
+        "camera": "纵向漂移与呼吸式推拉，减少硬横移。",
+    },
+}
+
 
 def load_card(batch_path: Path, card_id: str) -> tuple[dict[str, Any], dict[str, Any]]:
     batch = json.loads(batch_path.read_text(encoding="utf-8"))
@@ -327,10 +358,19 @@ def build_shots(
     beat_key: str,
     script: list[dict[str, str]],
     direction: str,
+    director_profile: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     shots = []
     line_assignments = distribute_line_indexes(len(script))
     direction_sign = -1 if direction == "left" else 1
+    signatures = (director_profile or {}).get("shot_signatures", {}).get(
+        beat_key,
+        [],
+    )
+    role_map = (director_profile or {}).get("scene_role_maps", {}).get(
+        beat_key,
+        {},
+    )
     for index, (purpose, framing, focus_role, layout_mode, intent) in enumerate(
         SHOT_BLUEPRINTS[beat_key]
     ):
@@ -341,7 +381,7 @@ def build_shots(
             if script[line_index]["role"] in {"primary", "secondary", "tertiary"}
         ]
         if assigned_roles and purpose not in {"establish", "pressure", "resolution"}:
-            focus_role = assigned_roles[0]
+            focus_role = role_map.get(assigned_roles[0], assigned_roles[0])
         compiled_blocking = {
             "subjects": {
                 role: {
@@ -374,6 +414,7 @@ def build_shots(
                 "framing": framing,
                 "focusRole": focus_role,
                 "layoutMode": layout_mode,
+                "signature": signatures[index] if index < len(signatures) else purpose,
                 "lineIndexes": line_assignments[index],
                 "intent": intent,
                 "blocking": compiled_blocking,
@@ -390,6 +431,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
     for index, (scene_id, beat_key, rules) in enumerate(BEATS):
         hint = shot_hints[index]
         script = scene_script(card, beat_key)
+        director_profile = card.get("manga", {}).get("director_profile", {})
         source_root = f"assets/source/{scene_id}"
         processed_root = f"assets/processed/{scene_id}"
         scenes.append(
@@ -405,6 +447,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                     beat_key,
                     script,
                     hint["direction"],
+                    director_profile,
                 ),
                 "transitionIn": scene_transitions[index],
                 "motionRules": rules,
@@ -416,6 +459,11 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                     "tertiary": hint["direction"],
                 },
                 "shot": hint,
+                "endingMode": (
+                    director_profile.get("ending_mode")
+                    if beat_key == "end"
+                    else None
+                ),
                 "assets": {
                     "backdropSource": f"{source_root}-backdrop-v1.png",
                     "environmentSource": f"{source_root}-environment-v1.png",
@@ -448,6 +496,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
         },
         "style": {
             "key": key,
+            "visualGrammar": VISUAL_GRAMMARS[key],
             "visual": card["visual_style"],
             "paletteWords": card["palette"],
             "musicMood": card["music_mood"],
@@ -471,6 +520,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
             "factualNotes": manga.get("factual_notes", []),
             "shotCount": 9,
             "shotsPerScene": 3,
+            "directorProfile": manga.get("director_profile", {}),
         },
         "scenes": scenes,
     }
@@ -543,6 +593,10 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
         "audience: primary-and-middle-school-students",
         "---",
         "",
+        f"director_profile: {plan['manga']['directorProfile'].get('id', 'default')}",
+        f"story_engine: {plan['manga']['directorProfile'].get('story_engine', '')}",
+        f"ending_mode: {plan['manga']['directorProfile'].get('ending_mode', 'default')}",
+        "",
     ]
     for scene in plan["scenes"]:
         timed = timings.get(scene["id"])
@@ -579,6 +633,7 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
                     "",
                     f"- framing: {shot['framing']}",
                     f"- focus: {shot['focusRole']}",
+                    f"- signature: {shot['signature']}",
                     f"- intent: {shot['intent']}",
                     (
                         "- blocking: "
@@ -598,6 +653,7 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
 def write_frame(output: Path, plan: dict[str, Any]) -> None:
     style = plan["style"]
     tokens = style["tokens"]
+    grammar = style["visualGrammar"]
     text = f"""---
 canvas: "{tokens['canvas']}"
 ink: "{tokens['ink']}"
@@ -611,12 +667,17 @@ corner_radius: 0
 
 # Professional Layered Pixel Manga
 
-Use crisp pixel clusters, torn-paper silhouettes, restrained halftone texture, visible foreground framing,
-and a clear primary/secondary/tertiary hierarchy. Every scene must provide wide, medium, and close framings,
-one dominant focal point, motivated camera movement, anticipation, action, settle, and secondary motion.
-Keep backgrounds 15–25% quieter than the active subject. Avoid rounded interface cards, heavy explanatory
-caption boxes, full-screen moving grain, photorealism, readable text inside generated images, and flat
-one-image camera moves.
+Visual grammar: `{grammar['id']}`.
+
+{grammar['direction']}
+
+- Panel language: {grammar['panel']}
+- Caption language: {grammar['caption']}
+- Camera language: {grammar['camera']}
+
+Keep crisp pixel clusters, layered parallax, one dominant focal point, and clear
+primary/secondary/tertiary hierarchy. Do not fall back to the other task-card
+grammars, generic centered panels, or one shared camera curve.
 """
     (output / "frame.md").write_text(text, encoding="utf-8")
 

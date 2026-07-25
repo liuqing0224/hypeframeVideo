@@ -70,18 +70,18 @@
       "evidence": [
         "http://localhost:3301/#project/guangzhou-tower-cloud-team?v=1&comp=index.html&t=0"
       ],
-      "updatedAt": "2026-07-25T14:06:36.591017+00:00"
+      "updatedAt": "2026-07-25T14:50:15.833319+00:00"
     },
     "render": {
       "status": "blocked",
       "evidence": [],
       "error": "final Studio preview approval is required",
-      "updatedAt": "2026-07-25T14:02:55.820263+00:00"
+      "updatedAt": "2026-07-25T14:37:03.851187+00:00"
     },
     "qa": {
       "status": "pending",
       "evidence": [],
-      "updatedAt": "2026-07-25T14:02:55.818192+00:00"
+      "updatedAt": "2026-07-25T14:37:03.849843+00:00"
     }
   }
 }
