@@ -66,22 +66,27 @@
       ]
     },
     "preview": {
-      "status": "running",
+      "status": "complete",
       "evidence": [
-        "http://localhost:3301/#project/guangzhou-tower-cloud-team?v=1&comp=index.html&t=0"
+        "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T14:50:15.833319+00:00"
+      "updatedAt": "2026-07-25T15:54:54.815744+00:00"
     },
     "render": {
-      "status": "blocked",
-      "evidence": [],
-      "error": "final Studio preview approval is required",
-      "updatedAt": "2026-07-25T14:37:03.851187+00:00"
+      "status": "complete",
+      "evidence": [
+        "renders/guangzhou-tower-cloud-team.mp4"
+      ],
+      "updatedAt": "2026-07-25T15:59:09.267251+00:00"
     },
     "qa": {
-      "status": "pending",
-      "evidence": [],
-      "updatedAt": "2026-07-25T14:37:03.849843+00:00"
+      "status": "complete",
+      "evidence": [
+        "qa/render-verification.json",
+        "qa/render-contact-sheet.png",
+        "qa/render-shot-contact-sheet.png",
+        "qa/render-transition-contact-sheet.png"
+      ]
     }
   }
 }
