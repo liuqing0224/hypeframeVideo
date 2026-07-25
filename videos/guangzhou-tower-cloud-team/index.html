@@ -41,17 +41,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #17324d;
         background: #e9f5f5;
-        border: 5px solid #e34a3a;
-        box-shadow: 12px 12px 0 #0b2435;
+        border: 5px solid #17324d;
+        box-shadow: 10px 10px 0 #0b2435;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #17324d;
+        color: #e9f5f5;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #17324d;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #f7b32b;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #e34a3a;
       }
       .caption p {
         margin: 0;
@@ -156,51 +188,51 @@
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption caption-narrator"
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
            data-start="0.45" data-duration="2.052" data-track-index="900">
         <span>旁白</span><p>小雨和三位同学来</p>
       </div>
-      <div id="caption-2" class="clip caption caption-narrator"
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
            data-start="2.502" data-duration="2.052" data-track-index="900">
         <span>旁白</span><p>到广州塔观景台。</p>
       </div>
-      <div id="caption-3" class="clip caption caption-primary"
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
            data-start="4.974" data-duration="3.816" data-track-index="900">
         <span>小雨</span><p>先找珠江，再确认城市中轴线！</p>
       </div>
-      <div id="caption-4" class="clip caption caption-tertiary"
+      <div id="caption-4" class="clip caption caption-tertiary caption-dialogue"
            data-start="9.21" data-duration="2.088" data-track-index="900">
         <span>红帽同学</span><p>望远镜准备好了！</p>
       </div>
-      <div id="caption-5" class="clip caption caption-narrator"
+      <div id="caption-5" class="clip caption caption-narrator caption-narration"
            data-start="12.95" data-duration="1.689" data-track-index="900">
         <span>旁白</span><p>云雾遮住城市，</p>
       </div>
-      <div id="caption-6" class="clip caption caption-narrator"
+      <div id="caption-6" class="clip caption caption-narrator caption-narration"
            data-start="14.639" data-duration="2.655" data-track-index="900">
         <span>旁白</span><p>地图上的线索变得模糊。</p>
       </div>
-      <div id="caption-7" class="clip caption caption-secondary"
+      <div id="caption-7" class="clip caption caption-secondary caption-dialogue"
            data-start="17.714" data-duration="3.048" data-track-index="900">
         <span>蓝背心同学</span><p>珠江的走向能帮我们定位。</p>
       </div>
-      <div id="caption-8" class="clip caption caption-primary"
+      <div id="caption-8" class="clip caption caption-primary caption-dialogue"
            data-start="21.182" data-duration="1.971" data-track-index="900">
         <span>小雨</span><p>结合方向和灯光，</p>
       </div>
-      <div id="caption-9" class="clip caption caption-primary"
+      <div id="caption-9" class="clip caption caption-primary caption-dialogue"
            data-start="23.153" data-duration="1.725" data-track-index="900">
         <span>小雨</span><p>我们一起推理！</p>
       </div>
-      <div id="caption-10" class="clip caption caption-narrator"
+      <div id="caption-10" class="clip caption caption-narrator caption-narration"
            data-start="26.45" data-duration="3.624" data-track-index="900">
         <span>旁白</span><p>云雾散开，小队成功找出地标。</p>
       </div>
-      <div id="caption-11" class="clip caption caption-primary"
+      <div id="caption-11" class="clip caption caption-primary caption-dialogue"
            data-start="30.494" data-duration="3.24" data-track-index="900">
         <span>小雨</span><p>任务完成，大家靠近一点！</p>
       </div>
-      <div id="caption-12" class="clip caption caption-tertiary"
+      <div id="caption-12" class="clip caption caption-tertiary caption-dialogue"
            data-start="34.154" data-duration="3.216" data-track-index="900">
         <span>红帽同学</span><p>看镜头，三、二、一！</p>
       </div>

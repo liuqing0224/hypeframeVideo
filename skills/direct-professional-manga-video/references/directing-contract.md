@@ -30,6 +30,16 @@ horizontal offsets when narrative direction changes. A camera crop does not
 count as blocking; at least every subject and two environment layers must
 change state across a scene's three shots.
 
+Subject cutouts remain fully opaque after entrance. Never dim a listener or
+background character into a translucent ghost to indicate focus. Use scale,
+crop, screen side, foreground occlusion, or a clean exit from frame instead.
+
+Each shot also declares a purpose-specific `layoutMode`. Establishing and
+resolution shots may remain full bleed; dialogue/discovery uses speaker
+staging; reaction and decision shots use authored panel borders or inserts;
+action and climax shots use diagonal composition and beat-bound impact marks.
+Changing camera scale alone does not satisfy this rule.
+
 ## Task-Card Manga Block
 
 Use this shape inside a card:

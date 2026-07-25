@@ -41,17 +41,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #f5f7ff;
         background: #071b2e;
-        border: 5px solid #28d7d0;
-        box-shadow: 12px 12px 0 #020b16;
+        border: 5px solid #f5f7ff;
+        box-shadow: 10px 10px 0 #020b16;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #f5f7ff;
+        color: #071b2e;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #f5f7ff;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #ffc857;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #28d7d0;
       }
       .caption p {
         margin: 0;
@@ -156,63 +188,63 @@
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption caption-narrator"
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
            data-start="0.45" data-duration="1.725" data-track-index="900">
         <span>旁白</span><p>中央太阳系模型</p>
       </div>
-      <div id="caption-2" class="clip caption caption-narrator"
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
            data-start="2.175" data-duration="1.971" data-track-index="900">
         <span>旁白</span><p>正在一颗颗熄灭。</p>
       </div>
-      <div id="caption-3" class="clip caption caption-primary"
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
            data-start="4.566" data-duration="1.45" data-track-index="900">
         <span>小曦</span><p>阿朗，你看，</p>
       </div>
-      <div id="caption-4" class="clip caption caption-primary"
+      <div id="caption-4" class="clip caption caption-primary caption-dialogue"
            data-start="6.016" data-duration="2.174" data-track-index="900">
         <span>小曦</span><p>行星正在失去亮光！</p>
       </div>
-      <div id="caption-5" class="clip caption caption-tertiary"
+      <div id="caption-5" class="clip caption caption-tertiary caption-dialogue"
            data-start="8.61" data-duration="1.575" data-track-index="900">
         <span>小光</span><p>能量连接异常，</p>
       </div>
-      <div id="caption-6" class="clip caption caption-tertiary"
+      <div id="caption-6" class="clip caption caption-tertiary caption-dialogue"
            data-start="10.185" data-duration="2.025" data-track-index="900">
         <span>小光</span><p>请帮助我修复轨道。</p>
       </div>
-      <div id="caption-7" class="clip caption caption-narrator"
+      <div id="caption-7" class="clip caption caption-narrator caption-narration"
            data-start="13.45" data-duration="1.826" data-track-index="900">
         <span>旁白</span><p>三人沿着行星轨</p>
       </div>
-      <div id="caption-8" class="clip caption caption-narrator"
+      <div id="caption-8" class="clip caption caption-narrator caption-narration"
            data-start="15.276" data-duration="2.086" data-track-index="900">
         <span>旁白</span><p>道寻找能量碎片。</p>
       </div>
-      <div id="caption-9" class="clip caption caption-secondary"
+      <div id="caption-9" class="clip caption caption-secondary caption-dialogue"
            data-start="17.782" data-duration="2.261" data-track-index="900">
         <span>阿朗</span><p>先按顺序连接轨道，</p>
       </div>
-      <div id="caption-10" class="clip caption caption-secondary"
+      <div id="caption-10" class="clip caption caption-secondary caption-dialogue"
            data-start="20.043" data-duration="1.507" data-track-index="900">
         <span>阿朗</span><p>别接错位置！</p>
       </div>
-      <div id="caption-11" class="clip caption caption-primary"
+      <div id="caption-11" class="clip caption caption-primary caption-dialogue"
            data-start="21.97" data-duration="2.035" data-track-index="900">
         <span>小曦</span><p>我去拿金色碎片，</p>
       </div>
-      <div id="caption-12" class="clip caption caption-primary"
+      <div id="caption-12" class="clip caption caption-primary caption-dialogue"
            data-start="24.005" data-duration="1.781" data-track-index="900">
         <span>小曦</span><p>小光负责扫描！</p>
       </div>
-      <div id="caption-13" class="clip caption caption-narrator"
+      <div id="caption-13" class="clip caption caption-narrator caption-narration"
            data-start="27.45" data-duration="3.744" data-track-index="900">
         <span>旁白</span><p>太阳和八颗行星全部重新发光。</p>
       </div>
-      <div id="caption-14" class="clip caption caption-secondary"
+      <div id="caption-14" class="clip caption caption-secondary caption-dialogue"
            data-start="31.614" data-duration="2.448" data-track-index="900">
         <span>阿朗</span><p>最后一条轨道接通了！</p>
       </div>
-      <div id="caption-15" class="clip caption caption-tertiary"
+      <div id="caption-15" class="clip caption caption-tertiary caption-dialogue"
            data-start="34.482" data-duration="3.096" data-track-index="900">
         <span>小光</span><p>好奇心，就是点亮未知的光。</p>
       </div>

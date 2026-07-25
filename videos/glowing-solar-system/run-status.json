@@ -66,27 +66,22 @@
       ]
     },
     "preview": {
-      "status": "complete",
+      "status": "running",
       "evidence": [
-        "approvals/ai-little-director-manga-v2-studio-preview.json"
+        "http://localhost:3302/#project/glowing-solar-system"
       ],
-      "updatedAt": "2026-07-25T13:01:52.831962+00:00"
+      "updatedAt": "2026-07-25T13:40:28.410095+00:00"
     },
     "render": {
-      "status": "complete",
-      "evidence": [
-        "renders/glowing-solar-system.mp4"
-      ],
-      "updatedAt": "2026-07-25T13:06:47.149152+00:00"
+      "status": "blocked",
+      "evidence": [],
+      "error": "final Studio preview approval is required",
+      "updatedAt": "2026-07-25T13:34:18.124657+00:00"
     },
     "qa": {
-      "status": "complete",
-      "evidence": [
-        "qa/render-verification.json",
-        "qa/render-contact-sheet.png",
-        "qa/render-shot-contact-sheet.png",
-        "qa/render-transition-contact-sheet.png"
-      ]
+      "status": "pending",
+      "evidence": [],
+      "updatedAt": "2026-07-25T13:34:18.123685+00:00"
     }
   }
 }

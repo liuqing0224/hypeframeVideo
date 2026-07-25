@@ -54,6 +54,7 @@
       <div class="pixel-accent breeze b-3" style="left:370px;top:680px;width:22px;height:22px"></div>
     </div>
     <div class="internal-cut"></div>
+    <div class="comic-treatment treatment-1 mode-full-bleed" data-shot-purpose="establish"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-2 mode-speaker-stage" data-shot-purpose="discovery"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-3 mode-reaction-panel" data-shot-purpose="reaction"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div>
 
     <style>
       #scene-01-start {
@@ -181,6 +182,77 @@
         background: #17324d;
         mix-blend-mode: screen;
       }
+      #scene-01-start .comic-treatment {
+        position: absolute;
+        inset: 0;
+        z-index: 18;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #scene-01-start .panel-edge {
+        position: absolute;
+        display: none;
+        border: 12px solid #17324d;
+        box-shadow: 10px 10px 0 #e34a3a;
+      }
+      #scene-01-start .mode-reaction-panel .edge-a,
+      #scene-01-start .mode-decision-inset .edge-a {
+        display: block;
+        right: 88px;
+        top: 72px;
+        width: 760px;
+        height: 760px;
+        border-left-width: 22px;
+        transform: rotate(-1.5deg);
+      }
+      #scene-01-start .mode-decision-inset .edge-b {
+        display: block;
+        left: 92px;
+        bottom: 170px;
+        width: 430px;
+        height: 280px;
+        border-width: 8px;
+        box-shadow: 8px 8px 0 #f7b32b;
+      }
+      #scene-01-start .mode-speaker-stage .edge-a {
+        display: block;
+        left: 70px;
+        top: 82px;
+        width: 1080px;
+        height: 760px;
+        border-right: 0;
+        box-shadow: none;
+      }
+      #scene-01-start .mode-action-diagonal::before,
+      #scene-01-start .mode-impact-frame::before {
+        content: "";
+        position: absolute;
+        inset: -180px;
+        border: 34px solid #f7b32b;
+        transform: rotate(-5deg);
+        opacity: .7;
+      }
+      #scene-01-start .impact-ray {
+        position: absolute;
+        display: none;
+        width: 720px;
+        height: 14px;
+        background: #f7b32b;
+        transform-origin: right center;
+      }
+      #scene-01-start .mode-action-diagonal .impact-ray,
+      #scene-01-start .mode-impact-frame .impact-ray {
+        display: block;
+        right: -80px;
+        top: 210px;
+      }
+      #scene-01-start .mode-action-diagonal .ray-b,
+      #scene-01-start .mode-impact-frame .ray-b { top: 510px; transform: rotate(8deg); }
+      #scene-01-start .mode-action-diagonal .ray-c,
+      #scene-01-start .mode-impact-frame .ray-c { top: 760px; transform: rotate(-10deg); }
+      #scene-01-start .mode-closing-tableau {
+        box-shadow: inset 0 0 0 18px #f7b32b;
+      }
     </style>
     <script>
       (function () {
@@ -203,8 +275,8 @@
       tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 6.75, stagger: 0.18, ease: "sine.inOut"}, 2.25);
       tl.to(root, {opacity: 0.98, duration: 1.25, ease: "power1.in"}, 11.25);
         tl.set(q(".blocking-primary"), {x:-150,y:20,scale:0.84,opacity:1}, 0);
-      tl.set(q(".blocking-secondary"), {x:-30,y:18,scale:0.86,opacity:0.96}, 0);
-      tl.set(q(".blocking-tertiary"), {x:65,y:6,scale:0.82,opacity:0.9}, 0);
+      tl.set(q(".blocking-secondary"), {x:-30,y:18,scale:0.86,opacity:1}, 0);
+      tl.set(q(".blocking-tertiary"), {x:65,y:6,scale:0.82,opacity:1}, 0);
       tl.set(q(".rear"), {x:-18,y:0,scale:1}, 0);
       tl.set(q(".architecture"), {x:0,y:12,scale:0.96}, 0);
       tl.set(q(".foreground"), {x:24,y:8,scale:1.02}, 0);
@@ -214,9 +286,11 @@
       tl.to(q(".foreground"), {x:19.68,y:8.96,duration:2.388,ease:"sine.inOut"}, 0.16);
       tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 0);
       tl.to(q(".camera-rig"), {scale:1.018,duration:4.944,ease:"none"}, 0);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 0);
+      tl.set(q(".treatment-1"), {opacity:1}, 0);
       tl.set(q(".blocking-primary"), {x:45,y:-24,scale:1.1,opacity:1}, 4.974);
-      tl.set(q(".blocking-secondary"), {x:105,y:4,scale:0.86,opacity:0.58}, 4.974);
-      tl.set(q(".blocking-tertiary"), {x:-85,y:14,scale:0.84,opacity:0.58}, 4.974);
+      tl.set(q(".blocking-secondary"), {x:105,y:4,scale:0.78,opacity:1}, 4.974);
+      tl.set(q(".blocking-tertiary"), {x:-85,y:14,scale:0.78,opacity:1}, 4.974);
       tl.set(q(".rear"), {x:12,y:-8,scale:1.025}, 4.974);
       tl.set(q(".architecture"), {x:-42,y:0,scale:1.04}, 4.974);
       tl.set(q(".foreground"), {x:-34,y:0,scale:1.035}, 4.974);
@@ -229,8 +303,10 @@
       tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 5.194);
       tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.514);
       tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 4.974);
-      tl.set(q(".blocking-primary"), {x:125,y:-28,scale:0.86,opacity:0.58}, 9.21);
-      tl.set(q(".blocking-secondary"), {x:-105,y:28,scale:0.8,opacity:0.38}, 9.21);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 4.974);
+      tl.set(q(".treatment-2"), {opacity:1}, 4.974);
+      tl.set(q(".blocking-primary"), {x:125,y:-28,scale:0.78,opacity:1}, 9.21);
+      tl.set(q(".blocking-secondary"), {x:-105,y:28,scale:0.78,opacity:1}, 9.21);
       tl.set(q(".blocking-tertiary"), {x:-130,y:-24,scale:1,opacity:1}, 9.21);
       tl.set(q(".rear"), {x:-24,y:-12,scale:1.04}, 9.21);
       tl.set(q(".architecture"), {x:-78,y:8,scale:1.07}, 9.21);
@@ -244,6 +320,8 @@
       tl.to(q(".performance-tertiary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 9.43);
       tl.to(q(".performance-tertiary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 9.75);
       tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 9.21);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 9.21);
+      tl.set(q(".treatment-3"), {opacity:1}, 9.21);
         window.__timelines = window.__timelines || {};
         window.__timelines["01-start"] = tl;
       })();

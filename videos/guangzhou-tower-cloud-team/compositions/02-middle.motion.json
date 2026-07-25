@@ -90,13 +90,13 @@
             "x": -65,
             "y": 18,
             "scale": 0.86,
-            "opacity": 0.9
+            "opacity": 1.0
           },
           "tertiary": {
             "x": 72,
             "y": 8,
             "scale": 0.82,
-            "opacity": 0.84
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -181,8 +181,8 @@
           "primary": {
             "x": 80,
             "y": -18,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "secondary": {
             "x": 145,
@@ -193,8 +193,8 @@
           "tertiary": {
             "x": -155,
             "y": 2,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -222,10 +222,10 @@
       },
       "blockingBounds": {
         "primary": {
-          "x": 743.3,
-          "y": 247.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 770.9,
+          "y": 289.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
           "x": 231.0,
@@ -234,18 +234,18 @@
           "height": 613.6
         },
         "tertiary": {
-          "x": 1353.1,
-          "y": 437.925,
-          "width": 283.8,
-          "height": 417.1
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
         }
       },
       "blockingEndBounds": {
         "primary": {
-          "x": 743.3,
-          "y": 247.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 770.9,
+          "y": 289.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
           "x": 279.0,
@@ -254,10 +254,10 @@
           "height": 613.6
         },
         "tertiary": {
-          "x": 1353.1,
-          "y": 437.925,
-          "width": 283.8,
-          "height": 417.1
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
         }
       }
     },
@@ -286,13 +286,13 @@
             "x": 92,
             "y": 26,
             "scale": 0.78,
-            "opacity": 0.42
+            "opacity": 1.0
           },
           "tertiary": {
             "x": 82,
             "y": 24,
             "scale": 0.74,
-            "opacity": 0.28
+            "opacity": 1.0
           }
         },
         "environment": {

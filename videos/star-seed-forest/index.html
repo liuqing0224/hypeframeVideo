@@ -41,17 +41,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #f7f0df;
         background: #0c2a27;
-        border: 5px solid #f3c969;
-        box-shadow: 12px 12px 0 #041513;
+        border: 5px solid #f7f0df;
+        box-shadow: 10px 10px 0 #041513;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #f7f0df;
+        color: #0c2a27;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #f7f0df;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #ee8cb8;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #f3c969;
       }
       .caption p {
         margin: 0;
@@ -156,47 +188,47 @@
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption caption-narrator"
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
            data-start="0.45" data-duration="2.16" data-track-index="900">
         <span>旁白</span><p>失去星光的森林里，</p>
       </div>
-      <div id="caption-2" class="clip caption caption-narrator"
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
            data-start="2.61" data-duration="2.16" data-track-index="900">
         <span>旁白</span><p>小鹿带来一颗星种。</p>
       </div>
-      <div id="caption-3" class="clip caption caption-primary"
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
            data-start="5.19" data-duration="3.24" data-track-index="900">
         <span>叶芽</span><p>别怕，我会保护这颗星种。</p>
       </div>
-      <div id="caption-4" class="clip caption caption-secondary"
+      <div id="caption-4" class="clip caption caption-secondary caption-dialogue"
            data-start="8.85" data-duration="2.52" data-track-index="900">
         <span>小鹿</span><p>最高的古树还在等它。</p>
       </div>
-      <div id="caption-5" class="clip caption caption-narrator"
+      <div id="caption-5" class="clip caption caption-narrator caption-narration"
            data-start="12.95" data-duration="3.696" data-track-index="900">
         <span>旁白</span><p>叶芽和小鹿顶着风雨穿过森林。</p>
       </div>
-      <div id="caption-6" class="clip caption caption-primary"
+      <div id="caption-6" class="clip caption caption-primary caption-dialogue"
            data-start="17.066" data-duration="3.576" data-track-index="900">
         <span>叶芽</span><p>风雨再大，也不能让星种熄灭。</p>
       </div>
-      <div id="caption-7" class="clip caption caption-secondary"
+      <div id="caption-7" class="clip caption caption-secondary caption-dialogue"
            data-start="21.062" data-duration="3.24" data-track-index="900">
         <span>小鹿</span><p>跟紧我，我们越过前面的断木！</p>
       </div>
-      <div id="caption-8" class="clip caption caption-narrator"
+      <div id="caption-8" class="clip caption caption-narrator caption-narration"
            data-start="25.95" data-duration="3.768" data-track-index="900">
         <span>旁白</span><p>星种在古树顶端开成漫天星花。</p>
       </div>
-      <div id="caption-9" class="clip caption caption-primary"
+      <div id="caption-9" class="clip caption caption-primary caption-dialogue"
            data-start="30.138" data-duration="1.421" data-track-index="900">
         <span>叶芽</span><p>我们做到了，</p>
       </div>
-      <div id="caption-10" class="clip caption caption-primary"
+      <div id="caption-10" class="clip caption caption-primary caption-dialogue"
            data-start="31.559" data-duration="2.131" data-track-index="900">
         <span>叶芽</span><p>森林重新亮起来了！</p>
       </div>
-      <div id="caption-11" class="clip caption caption-tertiary"
+      <div id="caption-11" class="clip caption caption-tertiary caption-dialogue"
            data-start="34.11" data-duration="2.688" data-track-index="900">
         <span>猫头鹰</span><p>星花开满天空啦！</p>
       </div>

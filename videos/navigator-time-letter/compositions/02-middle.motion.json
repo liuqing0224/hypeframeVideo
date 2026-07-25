@@ -90,13 +90,13 @@
             "x": -65,
             "y": 18,
             "scale": 0.86,
-            "opacity": 0.9
+            "opacity": 1.0
           },
           "tertiary": {
             "x": 72,
             "y": 8,
             "scale": 0.82,
-            "opacity": 0.84
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -187,14 +187,14 @@
           "secondary": {
             "x": 165,
             "y": -4,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "tertiary": {
             "x": -155,
             "y": 2,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -228,16 +228,16 @@
           "height": 786.5
         },
         "secondary": {
-          "x": 291.5,
-          "y": 357.95,
-          "width": 387.0,
-          "height": 507.4
+          "x": 309.5,
+          "y": 393.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
-          "x": 1353.1,
-          "y": 437.925,
-          "width": 283.8,
-          "height": 417.1
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
         }
       },
       "blockingEndBounds": {
@@ -248,16 +248,16 @@
           "height": 786.5
         },
         "secondary": {
-          "x": 291.5,
-          "y": 357.95,
-          "width": 387.0,
-          "height": 507.4
+          "x": 309.5,
+          "y": 393.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
-          "x": 1353.1,
-          "y": 437.925,
-          "width": 283.8,
-          "height": 417.1
+          "x": 1366.3,
+          "y": 467.025,
+          "width": 257.4,
+          "height": 378.3
         }
       }
     },
@@ -279,8 +279,8 @@
           "primary": {
             "x": -72,
             "y": -30,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "secondary": {
             "x": 145,
@@ -292,7 +292,7 @@
             "x": 82,
             "y": 24,
             "scale": 0.74,
-            "opacity": 0.28
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -320,10 +320,10 @@
       },
       "blockingBounds": {
         "primary": {
-          "x": 591.3,
-          "y": 235.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 618.9,
+          "y": 277.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
           "x": 231.0,
@@ -340,10 +340,10 @@
       },
       "blockingEndBounds": {
         "primary": {
-          "x": 591.3,
-          "y": 235.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 618.9,
+          "y": 277.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
           "x": 279.0,

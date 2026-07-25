@@ -51,6 +51,7 @@
       <div class="glow"></div><div class="pixel-accent particle p-0" style="left:410px;top:240px;width:12px;height:12px"></div><div class="pixel-accent particle p-1" style="left:520px;top:170px;width:20px;height:20px"></div><div class="pixel-accent particle p-2" style="left:690px;top:270px;width:28px;height:28px"></div><div class="pixel-accent particle p-3" style="left:930px;top:130px;width:12px;height:12px"></div><div class="pixel-accent particle p-4" style="left:1110px;top:230px;width:20px;height:20px"></div><div class="pixel-accent particle p-5" style="left:1335px;top:165px;width:28px;height:28px"></div><div class="pixel-accent particle p-6" style="left:1480px;top:310px;width:12px;height:12px"></div><div class="pixel-accent particle p-7" style="left:360px;top:520px;width:20px;height:20px"></div><div class="pixel-accent particle p-8" style="left:1530px;top:570px;width:28px;height:28px"></div><div class="pixel-accent particle p-9" style="left:1280px;top:720px;width:12px;height:12px"></div><div class="pixel-accent particle p-10" style="left:620px;top:755px;width:20px;height:20px"></div><div class="pixel-accent particle p-11" style="left:1010px;top:690px;width:28px;height:28px"></div>
     </div>
     <div class="internal-cut"></div>
+    <div class="comic-treatment treatment-1 mode-impact-frame" data-shot-purpose="climax"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-2 mode-reaction-panel" data-shot-purpose="payoff"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div><div class="comic-treatment treatment-3 mode-closing-tableau" data-shot-purpose="resolution"><i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i><i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i><i class="impact-ray ray-c"></i></div>
 
     <style>
       #scene-03-end {
@@ -178,6 +179,77 @@
         background: #f7f0df;
         mix-blend-mode: screen;
       }
+      #scene-03-end .comic-treatment {
+        position: absolute;
+        inset: 0;
+        z-index: 18;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #scene-03-end .panel-edge {
+        position: absolute;
+        display: none;
+        border: 12px solid #f7f0df;
+        box-shadow: 10px 10px 0 #f3c969;
+      }
+      #scene-03-end .mode-reaction-panel .edge-a,
+      #scene-03-end .mode-decision-inset .edge-a {
+        display: block;
+        right: 88px;
+        top: 72px;
+        width: 760px;
+        height: 760px;
+        border-left-width: 22px;
+        transform: rotate(-1.5deg);
+      }
+      #scene-03-end .mode-decision-inset .edge-b {
+        display: block;
+        left: 92px;
+        bottom: 170px;
+        width: 430px;
+        height: 280px;
+        border-width: 8px;
+        box-shadow: 8px 8px 0 #ee8cb8;
+      }
+      #scene-03-end .mode-speaker-stage .edge-a {
+        display: block;
+        left: 70px;
+        top: 82px;
+        width: 1080px;
+        height: 760px;
+        border-right: 0;
+        box-shadow: none;
+      }
+      #scene-03-end .mode-action-diagonal::before,
+      #scene-03-end .mode-impact-frame::before {
+        content: "";
+        position: absolute;
+        inset: -180px;
+        border: 34px solid #ee8cb8;
+        transform: rotate(-5deg);
+        opacity: .7;
+      }
+      #scene-03-end .impact-ray {
+        position: absolute;
+        display: none;
+        width: 720px;
+        height: 14px;
+        background: #ee8cb8;
+        transform-origin: right center;
+      }
+      #scene-03-end .mode-action-diagonal .impact-ray,
+      #scene-03-end .mode-impact-frame .impact-ray {
+        display: block;
+        right: -80px;
+        top: 210px;
+      }
+      #scene-03-end .mode-action-diagonal .ray-b,
+      #scene-03-end .mode-impact-frame .ray-b { top: 510px; transform: rotate(8deg); }
+      #scene-03-end .mode-action-diagonal .ray-c,
+      #scene-03-end .mode-impact-frame .ray-c { top: 760px; transform: rotate(-10deg); }
+      #scene-03-end .mode-closing-tableau {
+        box-shadow: inset 0 0 0 18px #ee8cb8;
+      }
     </style>
     <script>
       (function () {
@@ -198,8 +270,8 @@
       tl.to(q(".primary img"), {y: 0, duration: 3.375, ease: "sine.inOut"}, 5.625);
       tl.to(root, {opacity: 0.99, duration: 1.25, ease: "power1.in"}, 11.25);
         tl.set(q(".blocking-primary"), {x:-105,y:-24,scale:1.1,opacity:1}, 0);
-      tl.set(q(".blocking-secondary"), {x:-90,y:0,scale:0.86,opacity:0.58}, 0);
-      tl.set(q(".blocking-tertiary"), {x:100,y:4,scale:0.86,opacity:0.58}, 0);
+      tl.set(q(".blocking-secondary"), {x:-90,y:0,scale:0.78,opacity:1}, 0);
+      tl.set(q(".blocking-tertiary"), {x:100,y:4,scale:0.78,opacity:1}, 0);
       tl.set(q(".rear"), {x:20,y:-6,scale:1.025}, 0);
       tl.set(q(".architecture"), {x:48,y:-4,scale:1.05}, 0);
       tl.set(q(".foreground"), {x:-36,y:2,scale:1.04}, 0);
@@ -211,9 +283,11 @@
       tl.to(q(".camera-rig"), {scale:1.178,duration:4.608,ease:"none"}, 0);
       tl.to(q(".performance-primary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 0.22);
       tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 0.54);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 0);
+      tl.set(q(".treatment-1"), {opacity:1}, 0);
       tl.set(q(".blocking-primary"), {x:95,y:-34,scale:1.14,opacity:1}, 4.638);
-      tl.set(q(".blocking-secondary"), {x:105,y:25,scale:0.8,opacity:0.44}, 4.638);
-      tl.set(q(".blocking-tertiary"), {x:-92,y:22,scale:0.76,opacity:0.34}, 4.638);
+      tl.set(q(".blocking-secondary"), {x:105,y:25,scale:0.78,opacity:1}, 4.638);
+      tl.set(q(".blocking-tertiary"), {x:-92,y:22,scale:0.76,opacity:1}, 4.638);
       tl.set(q(".rear"), {x:-28,y:-12,scale:1.045}, 4.638);
       tl.set(q(".architecture"), {x:-68,y:4,scale:1.07}, 4.638);
       tl.set(q(".foreground"), {x:42,y:12,scale:1.06}, 4.638);
@@ -226,9 +300,11 @@
       tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 4.858);
       tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.178);
       tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 4.638);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 4.638);
+      tl.set(q(".treatment-2"), {opacity:1}, 4.638);
       tl.set(q(".blocking-primary"), {x:0,y:14,scale:0.9,opacity:1}, 8.61);
-      tl.set(q(".blocking-secondary"), {x:-18,y:12,scale:0.9,opacity:0.98}, 8.61);
-      tl.set(q(".blocking-tertiary"), {x:18,y:10,scale:0.86,opacity:0.94}, 8.61);
+      tl.set(q(".blocking-secondary"), {x:-18,y:12,scale:0.9,opacity:1}, 8.61);
+      tl.set(q(".blocking-tertiary"), {x:18,y:10,scale:0.86,opacity:1}, 8.61);
       tl.set(q(".rear"), {x:0,y:0,scale:1}, 8.61);
       tl.set(q(".architecture"), {x:0,y:6,scale:0.98}, 8.61);
       tl.set(q(".foreground"), {x:0,y:8,scale:1.02}, 8.61);
@@ -239,6 +315,8 @@
       tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 8.61);
       tl.to(q(".camera-rig"), {scale:1.026,duration:3.86,ease:"none"}, 8.61);
       tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 8.61);
+      tl.set(qAll(".comic-treatment"), {opacity:0}, 8.61);
+      tl.set(q(".treatment-3"), {opacity:1}, 8.61);
         window.__timelines = window.__timelines || {};
         window.__timelines["03-end"] = tl;
       })();

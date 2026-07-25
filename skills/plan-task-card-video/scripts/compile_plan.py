@@ -13,19 +13,19 @@ BEATS = (
 
 SHOT_BLUEPRINTS = {
     "start": (
-        ("establish", "wide", "ensemble", "交代空间、人物关系和故事目标"),
-        ("discovery", "medium", "primary", "让主角发现异常并推动事件发生"),
-        ("reaction", "close", "primary", "用反应特写建立情绪钩子"),
+        ("establish", "wide", "ensemble", "full-bleed", "交代空间、人物关系和故事目标"),
+        ("discovery", "medium", "primary", "speaker-stage", "让主角发现异常并推动事件发生"),
+        ("reaction", "close", "primary", "reaction-panel", "用反应特写建立情绪钩子"),
     ),
     "middle": (
-        ("pressure", "wide", "ensemble", "展示困难规模和空间压力"),
-        ("action", "medium", "primary", "用连续动作呈现解决过程"),
-        ("decision", "close", "primary", "锁定关键判断、道具或情绪转折"),
+        ("pressure", "wide", "ensemble", "pressure-wide", "展示困难规模和空间压力"),
+        ("action", "medium", "primary", "action-diagonal", "用连续动作呈现解决过程"),
+        ("decision", "close", "primary", "decision-inset", "锁定关键判断、道具或情绪转折"),
     ),
     "end": (
-        ("climax", "medium", "primary", "完成决定性动作并释放高潮"),
-        ("payoff", "close", "primary", "让观众看清结果和人物反应"),
-        ("resolution", "wide", "ensemble", "回到环境，给故事留下完整余韵"),
+        ("climax", "medium", "primary", "impact-frame", "完成决定性动作并释放高潮"),
+        ("payoff", "close", "primary", "reaction-panel", "让观众看清结果和人物反应"),
+        ("resolution", "wide", "ensemble", "closing-tableau", "回到环境，给故事留下完整余韵"),
     ),
 }
 
@@ -313,8 +313,10 @@ def focus_blocking(
                 }
             )
         else:
-            state["scale"] = min(state["scale"], 0.86)
-            state["opacity"] = min(state["opacity"], 0.58)
+            # Keep cutouts visually solid. Hierarchy comes from scale, crop,
+            # screen side, and occlusion rather than ghost-like transparency.
+            state["scale"] = min(state["scale"], 0.78)
+            state["opacity"] = 1.0
     travel_x = {"primary": 42, "secondary": 48, "tertiary": -48}[focus_role]
     blocking["travel"] = {"role": focus_role, "x": travel_x, "y": -8}
     return blocking
@@ -329,7 +331,7 @@ def build_shots(
     shots = []
     line_assignments = distribute_line_indexes(len(script))
     direction_sign = -1 if direction == "left" else 1
-    for index, (purpose, framing, focus_role, intent) in enumerate(
+    for index, (purpose, framing, focus_role, layout_mode, intent) in enumerate(
         SHOT_BLUEPRINTS[beat_key]
     ):
         blocking = BLOCKING_BLUEPRINTS[beat_key][index]
@@ -346,7 +348,7 @@ def build_shots(
                     "x": values[0] * direction_sign,
                     "y": values[1],
                     "scale": values[2],
-                    "opacity": values[3],
+                    "opacity": 1.0,
                 }
                 for role, values in blocking["subjects"].items()
             },
@@ -371,6 +373,7 @@ def build_shots(
                 "purpose": purpose,
                 "framing": framing,
                 "focusRole": focus_role,
+                "layoutMode": layout_mode,
                 "lineIndexes": line_assignments[index],
                 "intent": intent,
                 "blocking": compiled_blocking,

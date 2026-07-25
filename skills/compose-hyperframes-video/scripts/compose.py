@@ -258,7 +258,27 @@ def shot_timeline(scene: dict) -> str:
                 f'tl.fromTo(q(".internal-cut"), {{opacity:0.22}}, '
                 f'{{opacity:0,duration:0.12,ease:"power2.out"}}, {number(start)});'
             )
+        rows.append(
+            f'tl.set(qAll(".comic-treatment"), {{opacity:0}}, {number(start)});'
+        )
+        rows.append(
+            f'tl.set(q(".treatment-{index + 1}"), {{opacity:1}}, {number(start)});'
+        )
     return "\n      ".join(rows)
+
+
+def comic_treatments(scene: dict) -> str:
+    rows = []
+    for index, shot in enumerate(scene_shots(scene), start=1):
+        mode = html.escape(shot.get("layoutMode", "full-bleed"))
+        rows.append(
+            f'<div class="comic-treatment treatment-{index} mode-{mode}" '
+            f'data-shot-purpose="{html.escape(shot.get("purpose", "shot"))}">'
+            '<i class="panel-edge edge-a"></i><i class="panel-edge edge-b"></i>'
+            '<i class="impact-ray ray-a"></i><i class="impact-ray ray-b"></i>'
+            '<i class="impact-ray ray-c"></i></div>'
+        )
+    return "".join(rows)
 
 
 def common_scene_css(scene: dict, tokens: dict) -> str:
@@ -390,6 +410,77 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         opacity: 0;
         background: {tokens['ink']};
         mix-blend-mode: screen;
+      }}
+      #{root_id} .comic-treatment {{
+        position: absolute;
+        inset: 0;
+        z-index: 18;
+        opacity: 0;
+        pointer-events: none;
+      }}
+      #{root_id} .panel-edge {{
+        position: absolute;
+        display: none;
+        border: 12px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['accent']};
+      }}
+      #{root_id} .mode-reaction-panel .edge-a,
+      #{root_id} .mode-decision-inset .edge-a {{
+        display: block;
+        right: 88px;
+        top: 72px;
+        width: 760px;
+        height: 760px;
+        border-left-width: 22px;
+        transform: rotate(-1.5deg);
+      }}
+      #{root_id} .mode-decision-inset .edge-b {{
+        display: block;
+        left: 92px;
+        bottom: 170px;
+        width: 430px;
+        height: 280px;
+        border-width: 8px;
+        box-shadow: 8px 8px 0 {tokens['accent2']};
+      }}
+      #{root_id} .mode-speaker-stage .edge-a {{
+        display: block;
+        left: 70px;
+        top: 82px;
+        width: 1080px;
+        height: 760px;
+        border-right: 0;
+        box-shadow: none;
+      }}
+      #{root_id} .mode-action-diagonal::before,
+      #{root_id} .mode-impact-frame::before {{
+        content: "";
+        position: absolute;
+        inset: -180px;
+        border: 34px solid {tokens['accent2']};
+        transform: rotate(-5deg);
+        opacity: .7;
+      }}
+      #{root_id} .impact-ray {{
+        position: absolute;
+        display: none;
+        width: 720px;
+        height: 14px;
+        background: {tokens['accent2']};
+        transform-origin: right center;
+      }}
+      #{root_id} .mode-action-diagonal .impact-ray,
+      #{root_id} .mode-impact-frame .impact-ray {{
+        display: block;
+        right: -80px;
+        top: 210px;
+      }}
+      #{root_id} .mode-action-diagonal .ray-b,
+      #{root_id} .mode-impact-frame .ray-b {{ top: 510px; transform: rotate(8deg); }}
+      #{root_id} .mode-action-diagonal .ray-c,
+      #{root_id} .mode-impact-frame .ray-c {{ top: 760px; transform: rotate(-10deg); }}
+      #{root_id} .mode-closing-tableau {{
+        box-shadow: inset 0 0 0 18px {tokens['accent2']};
       }}
     </style>"""
 
@@ -532,6 +623,7 @@ def scene_html(scene: dict, tokens: dict) -> str:
       {accents(scene)}
     </div>
     <div class="internal-cut"></div>
+    {comic_treatments(scene)}
     {common_scene_css(scene, tokens)}
     <script>
       (function () {{
@@ -634,9 +726,10 @@ def caption_markup(manifest: dict) -> str:
         duration = cue["endSeconds"] - start
         speaker = cue.get("speaker", "旁白")
         role = cue.get("role", "narrator")
+        kind = cue.get("kind", "narration")
         rows.append(
             f"""
-      <div id="caption-{index + 1}" class="clip caption caption-{html.escape(role)}"
+      <div id="caption-{index + 1}" class="clip caption caption-{html.escape(role)} caption-{html.escape(kind)}"
            data-start="{number(start)}" data-duration="{number(duration)}" data-track-index="900">
         <span>{html.escape(speaker)}</span><p>{html.escape(cue['text'])}</p>
       </div>"""
@@ -733,17 +826,49 @@ def index_html(manifest: dict) -> str:
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: {tokens['ink']};
         background: {tokens['canvas']};
-        border: 5px solid {tokens['accent']};
-        box-shadow: 12px 12px 0 {tokens['shadow']};
+        border: 5px solid {tokens['ink']};
+        box-shadow: 10px 10px 0 {tokens['shadow']};
+      }}
+      .caption-dialogue, .caption-thought {{
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: {tokens['ink']};
+        color: {tokens['canvas']};
+        transform: rotate(-0.4deg);
+      }}
+      .caption-dialogue::after {{
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: {tokens['ink']};
+        border-left-width: 42px;
+      }}
+      .caption-thought {{
+        border: 6px dashed {tokens['accent2']};
+      }}
+      .caption-narration {{
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid {tokens['accent']};
       }}
       .caption p {{
         margin: 0;

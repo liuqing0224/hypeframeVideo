@@ -109,6 +109,7 @@
           "purpose": "establish",
           "framing": "wide",
           "focusRole": "ensemble",
+          "layoutMode": "full-bleed",
           "lineIndexes": [
             0
           ],
@@ -125,13 +126,13 @@
                 "x": -30,
                 "y": 18,
                 "scale": 0.86,
-                "opacity": 0.96
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": 65,
                 "y": 6,
                 "scale": 0.82,
-                "opacity": 0.9
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -164,6 +165,7 @@
           "purpose": "discovery",
           "framing": "medium",
           "focusRole": "primary",
+          "layoutMode": "speaker-stage",
           "lineIndexes": [
             1
           ],
@@ -179,14 +181,14 @@
               "secondary": {
                 "x": 105,
                 "y": 4,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": -85,
                 "y": 14,
-                "scale": 0.84,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -219,6 +221,7 @@
           "purpose": "reaction",
           "framing": "close",
           "focusRole": "tertiary",
+          "layoutMode": "reaction-panel",
           "lineIndexes": [
             2
           ],
@@ -228,14 +231,14 @@
               "primary": {
                 "x": 125,
                 "y": -28,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "secondary": {
                 "x": -105,
                 "y": 28,
-                "scale": 0.8,
-                "opacity": 0.38
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": -130,
@@ -338,6 +341,7 @@
           "purpose": "pressure",
           "framing": "wide",
           "focusRole": "ensemble",
+          "layoutMode": "pressure-wide",
           "lineIndexes": [
             0
           ],
@@ -354,13 +358,13 @@
                 "x": -65,
                 "y": 18,
                 "scale": 0.86,
-                "opacity": 0.9
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": 72,
                 "y": 8,
                 "scale": 0.82,
-                "opacity": 0.84
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -393,6 +397,7 @@
           "purpose": "action",
           "framing": "medium",
           "focusRole": "secondary",
+          "layoutMode": "action-diagonal",
           "lineIndexes": [
             1
           ],
@@ -402,8 +407,8 @@
               "primary": {
                 "x": 80,
                 "y": -18,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "secondary": {
                 "x": 145,
@@ -414,8 +419,8 @@
               "tertiary": {
                 "x": -155,
                 "y": 2,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -448,6 +453,7 @@
           "purpose": "decision",
           "framing": "close",
           "focusRole": "primary",
+          "layoutMode": "decision-inset",
           "lineIndexes": [
             2
           ],
@@ -464,13 +470,13 @@
                 "x": 92,
                 "y": 26,
                 "scale": 0.78,
-                "opacity": 0.42
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": 82,
                 "y": 24,
                 "scale": 0.74,
-                "opacity": 0.28
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -567,6 +573,7 @@
           "purpose": "climax",
           "framing": "medium",
           "focusRole": "primary",
+          "layoutMode": "impact-frame",
           "lineIndexes": [
             0
           ],
@@ -582,14 +589,14 @@
               "secondary": {
                 "x": -90,
                 "y": 0,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": 100,
                 "y": 4,
-                "scale": 0.86,
-                "opacity": 0.58
+                "scale": 0.78,
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -622,6 +629,7 @@
           "purpose": "payoff",
           "framing": "close",
           "focusRole": "primary",
+          "layoutMode": "reaction-panel",
           "lineIndexes": [
             1
           ],
@@ -637,14 +645,14 @@
               "secondary": {
                 "x": 105,
                 "y": 25,
-                "scale": 0.8,
-                "opacity": 0.44
+                "scale": 0.78,
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": -92,
                 "y": 22,
                 "scale": 0.76,
-                "opacity": 0.34
+                "opacity": 1.0
               }
             },
             "environment": {
@@ -677,6 +685,7 @@
           "purpose": "resolution",
           "framing": "wide",
           "focusRole": "ensemble",
+          "layoutMode": "closing-tableau",
           "lineIndexes": [
             2
           ],
@@ -693,13 +702,13 @@
                 "x": -18,
                 "y": 12,
                 "scale": 0.9,
-                "opacity": 0.98
+                "opacity": 1.0
               },
               "tertiary": {
                 "x": 18,
                 "y": 10,
                 "scale": 0.86,
-                "opacity": 0.94
+                "opacity": 1.0
               }
             },
             "environment": {

@@ -355,6 +355,66 @@ def test_concurrent_production_writes_are_isolated(scripts, tmp_path):
     assert ids == card_ids
 
 
+def test_professional_shots_use_crisp_subjects_and_authored_layouts(
+    scripts,
+    tmp_path,
+):
+    production = tmp_path / "videos/crisp-manga"
+    scripts["plan"].compile_card(
+        BATCH_PATH,
+        "guangzhou-tower-cloud-team",
+        production,
+    )
+    plan = json.loads((production / "story-plan.json").read_text(encoding="utf-8"))
+    shots = [shot for scene in plan["scenes"] for shot in scene["shots"]]
+
+    assert {shot["layoutMode"] for shot in shots} >= {
+        "full-bleed",
+        "speaker-stage",
+        "reaction-panel",
+        "action-diagonal",
+        "decision-inset",
+        "impact-frame",
+        "closing-tableau",
+    }
+    assert all(
+        state["opacity"] == 1.0
+        for shot in shots
+        for state in shot["blocking"]["subjects"].values()
+    )
+
+
+def test_composition_emits_comic_treatments_and_caption_grammar(
+    scripts,
+    synthetic_production,
+):
+    manifest_path = synthetic_production / "production-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    for scene_index, scene in enumerate(manifest["scenes"]):
+        modes = (
+            ("full-bleed", "speaker-stage", "reaction-panel"),
+            ("pressure-wide", "action-diagonal", "decision-inset"),
+            ("impact-frame", "reaction-panel", "closing-tableau"),
+        )[scene_index]
+        for shot, mode in zip(scene["shots"], modes):
+            shot["layoutMode"] = mode
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    scripts["compose"].compose(synthetic_production)
+
+    first_scene = (
+        synthetic_production / "compositions/01-start.html"
+    ).read_text(encoding="utf-8")
+    root = (synthetic_production / "index.html").read_text(encoding="utf-8")
+    assert "mode-reaction-panel" in first_scene
+    assert 'q(".treatment-3"), {opacity:1}' in first_scene
+    assert "caption-dialogue" in root
+    assert "caption-narration" in root
+
+
 def test_ready_state_recovers_completed_visual_queue(scripts, tmp_path):
     production = tmp_path / "videos/recovered"
     scripts["plan"].compile_card(

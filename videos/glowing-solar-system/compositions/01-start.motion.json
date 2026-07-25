@@ -90,13 +90,13 @@
             "x": -30,
             "y": 18,
             "scale": 0.86,
-            "opacity": 0.96
+            "opacity": 1.0
           },
           "tertiary": {
             "x": 65,
             "y": 6,
             "scale": 0.82,
-            "opacity": 0.9
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -187,14 +187,14 @@
           "secondary": {
             "x": 105,
             "y": 4,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "tertiary": {
             "x": -85,
             "y": 14,
-            "scale": 0.84,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           }
         },
         "environment": {
@@ -228,16 +228,16 @@
           "height": 786.5
         },
         "secondary": {
-          "x": 231.5,
-          "y": 365.95,
-          "width": 387.0,
-          "height": 507.4
+          "x": 249.5,
+          "y": 401.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
-          "x": 1426.4,
-          "y": 457.2,
-          "width": 277.2,
-          "height": 407.4
+          "x": 1436.3,
+          "y": 479.025,
+          "width": 257.4,
+          "height": 378.3
         }
       },
       "blockingEndBounds": {
@@ -248,16 +248,16 @@
           "height": 786.5
         },
         "secondary": {
-          "x": 231.5,
-          "y": 365.95,
-          "width": 387.0,
-          "height": 507.4
+          "x": 249.5,
+          "y": 401.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
-          "x": 1426.4,
-          "y": 457.2,
-          "width": 277.2,
-          "height": 407.4
+          "x": 1436.3,
+          "y": 479.025,
+          "width": 257.4,
+          "height": 378.3
         }
       }
     },
@@ -279,14 +279,14 @@
           "primary": {
             "x": 125,
             "y": -28,
-            "scale": 0.86,
-            "opacity": 0.58
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "secondary": {
             "x": -105,
             "y": 28,
-            "scale": 0.8,
-            "opacity": 0.38
+            "scale": 0.78,
+            "opacity": 1.0
           },
           "tertiary": {
             "x": -130,
@@ -320,16 +320,16 @@
       },
       "blockingBounds": {
         "primary": {
-          "x": 788.3,
-          "y": 237.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 815.9,
+          "y": 279.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
-          "x": 35.0,
-          "y": 416.5,
-          "width": 360.0,
-          "height": 472.0
+          "x": 39.5,
+          "y": 425.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
           "x": 1355.0,
@@ -340,16 +340,16 @@
       },
       "blockingEndBounds": {
         "primary": {
-          "x": 788.3,
-          "y": 237.075,
-          "width": 593.4,
-          "height": 614.9
+          "x": 815.9,
+          "y": 279.975,
+          "width": 538.2,
+          "height": 557.7
         },
         "secondary": {
-          "x": 35.0,
-          "y": 416.5,
-          "width": 360.0,
-          "height": 472.0
+          "x": 39.5,
+          "y": 425.35,
+          "width": 351.0,
+          "height": 460.2
         },
         "tertiary": {
           "x": 1307.0,

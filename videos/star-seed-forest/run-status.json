@@ -66,27 +66,22 @@
       ]
     },
     "preview": {
-      "status": "complete",
+      "status": "running",
       "evidence": [
-        "approvals/ai-little-director-manga-v2-studio-preview.json"
+        "http://localhost:3304/#project/star-seed-forest"
       ],
-      "updatedAt": "2026-07-25T13:01:52.832816+00:00"
+      "updatedAt": "2026-07-25T13:40:37.748808+00:00"
     },
     "render": {
-      "status": "complete",
-      "evidence": [
-        "renders/star-seed-forest.mp4"
-      ],
-      "updatedAt": "2026-07-25T13:11:19.021296+00:00"
+      "status": "blocked",
+      "evidence": [],
+      "error": "final Studio preview approval is required",
+      "updatedAt": "2026-07-25T13:34:18.609702+00:00"
     },
     "qa": {
-      "status": "complete",
-      "evidence": [
-        "qa/render-verification.json",
-        "qa/render-contact-sheet.png",
-        "qa/render-shot-contact-sheet.png",
-        "qa/render-transition-contact-sheet.png"
-      ]
+      "status": "pending",
+      "evidence": [],
+      "updatedAt": "2026-07-25T13:34:18.608852+00:00"
     }
   }
 }

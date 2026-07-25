@@ -41,17 +41,49 @@
         position: absolute;
         left: 170px;
         bottom: 58px;
-        width: 1580px;
-        min-height: 108px;
+        width: 1420px;
+        min-height: 96px;
         z-index: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px 54px;
+        padding: 16px 46px;
         color: #211b18;
         background: #e8d6ae;
-        border: 5px solid #a9362b;
-        box-shadow: 12px 12px 0 #3c2a20;
+        border: 5px solid #211b18;
+        box-shadow: 10px 10px 0 #3c2a20;
+      }
+      .caption-dialogue, .caption-thought {
+        left: auto;
+        right: 150px;
+        bottom: 72px;
+        width: auto;
+        max-width: 1180px;
+        min-width: 620px;
+        border-radius: 0;
+        background: #211b18;
+        color: #e8d6ae;
+        transform: rotate(-0.4deg);
+      }
+      .caption-dialogue::after {
+        content: "";
+        position: absolute;
+        right: 110px;
+        bottom: -38px;
+        width: 0;
+        height: 0;
+        border: 20px solid transparent;
+        border-top-color: #211b18;
+        border-left-width: 42px;
+      }
+      .caption-thought {
+        border: 6px dashed #2c6c80;
+      }
+      .caption-narration {
+        left: 150px;
+        bottom: 54px;
+        width: 1280px;
+        border-left: 18px solid #a9362b;
       }
       .caption p {
         margin: 0;
@@ -156,55 +188,55 @@
         </div>
       </div>
 
-      <div id="caption-1" class="clip caption caption-narrator"
+      <div id="caption-1" class="clip caption caption-narrator caption-narration"
            data-start="0.45" data-duration="2.228" data-track-index="900">
         <span>旁白</span><p>子墨穿过发光墨迹，</p>
       </div>
-      <div id="caption-2" class="clip caption caption-narrator"
+      <div id="caption-2" class="clip caption caption-narrator caption-narration"
            data-start="2.678" data-duration="1.732" data-track-index="900">
         <span>旁白</span><p>来到明代古港。</p>
       </div>
-      <div id="caption-3" class="clip caption caption-primary"
+      <div id="caption-3" class="clip caption caption-primary caption-dialogue"
            data-start="4.83" data-duration="2.856" data-track-index="900">
         <span>子墨</span><p>这里真是六百年前的港口？</p>
       </div>
-      <div id="caption-4" class="clip caption caption-secondary"
+      <div id="caption-4" class="clip caption caption-secondary caption-dialogue"
            data-start="8.106" data-duration="2.52" data-track-index="900">
         <span>郑和</span><p>少年，你从何处而来？</p>
       </div>
-      <div id="caption-5" class="clip caption caption-narrator"
+      <div id="caption-5" class="clip caption caption-narrator caption-narration"
            data-start="11.95" data-duration="1.714" data-track-index="900">
         <span>旁白</span><p>海风吹散了航海</p>
       </div>
-      <div id="caption-6" class="clip caption caption-narrator"
+      <div id="caption-6" class="clip caption caption-narrator caption-narration"
            data-start="13.664" data-duration="1.958" data-track-index="900">
         <span>旁白</span><p>图上的路线标记。</p>
       </div>
-      <div id="caption-7" class="clip caption caption-primary"
+      <div id="caption-7" class="clip caption caption-primary caption-dialogue"
            data-start="16.042" data-duration="1.792" data-track-index="900">
         <span>子墨</span><p>可以用星位和季</p>
       </div>
-      <div id="caption-8" class="clip caption caption-primary"
+      <div id="caption-8" class="clip caption caption-primary caption-dialogue"
            data-start="17.834" data-duration="2.048" data-track-index="900">
         <span>子墨</span><p>风重新确认方向。</p>
       </div>
-      <div id="caption-9" class="clip caption caption-secondary"
+      <div id="caption-9" class="clip caption caption-secondary caption-dialogue"
            data-start="20.302" data-duration="2.808" data-track-index="900">
         <span>郑和</span><p>好，我们一起把航线找回来。</p>
       </div>
-      <div id="caption-10" class="clip caption caption-narrator"
+      <div id="caption-10" class="clip caption caption-narrator caption-narration"
            data-start="24.45" data-duration="2.076" data-track-index="900">
         <span>旁白</span><p>郑和把写给未来少</p>
       </div>
-      <div id="caption-11" class="clip caption caption-narrator"
+      <div id="caption-11" class="clip caption caption-narrator caption-narration"
            data-start="26.526" data-duration="2.076" data-track-index="900">
         <span>旁白</span><p>年的信交给子墨。</p>
       </div>
-      <div id="caption-12" class="clip caption caption-secondary"
+      <div id="caption-12" class="clip caption caption-secondary caption-dialogue"
            data-start="29.022" data-duration="3.288" data-track-index="900">
         <span>郑和</span><p>愿你永远保有探索世界的勇气。</p>
       </div>
-      <div id="caption-13" class="clip caption caption-primary"
+      <div id="caption-13" class="clip caption caption-primary caption-dialogue"
            data-start="32.73" data-duration="2.688" data-track-index="900">
         <span>子墨</span><p>我会把这封信带回未来。</p>
       </div>
