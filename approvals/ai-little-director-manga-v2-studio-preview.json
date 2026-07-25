@@ -1,24 +1,24 @@
 {
   "schemaVersion": 2,
   "batchId": "ai-little-director-manga-v2",
-  "approvedAt": "2026-07-25T08:27:44.896433+00:00",
-  "approvedBy": "user",
+  "approvedAt": "2026-07-25T13:01:52.823524+00:00",
+  "approvedBy": "user-rerun-with-shot-blocking",
   "productions": [
     {
       "id": "guangzhou-tower-cloud-team",
-      "compositionSha256": "8baff13b0c39dd8fe6b5cf05f3e4f7f0cdcdadf43d54b4f9556e90f4789e5179"
+      "compositionSha256": "e62389e9dd748b1574e7bd6095fea806b381faeb9640cd2d6b36ba79b13f7c24"
     },
     {
       "id": "glowing-solar-system",
-      "compositionSha256": "ab29aa0478866e5d1adce617d4ecffffc5dbbfa0d137c4d550f83fdbd71a8d22"
+      "compositionSha256": "b4da6958efbf6c7953116dff80e4ee6e5d6a4964c569d2795f97b654fd9685a6"
     },
     {
       "id": "navigator-time-letter",
-      "compositionSha256": "952a3f6eaae5e53579c1094c371b202dce93d3486eec658eefa04962729bae4b"
+      "compositionSha256": "840df009a2cd50ce4745e850fe44a221d7c877ed9b6882bb9c83f28ef8fa000c"
     },
     {
       "id": "star-seed-forest",
-      "compositionSha256": "fca456f81aeb101c7b5bb4006942b201f4f7037b4cbf28a470c10060c53ea619"
+      "compositionSha256": "83427b44be1ae68f0c3956551a838a8d7b140132f2530c4b4f29d1b11a0218c5"
     }
   ]
 }

@@ -17,7 +17,7 @@
         "tmp/imagegen/prompt-queue.jsonl",
         "asset-manifest.json"
       ],
-      "updatedAt": "2026-07-25T08:39:43.496854+00:00"
+      "updatedAt": "2026-07-25T12:58:08.612590+00:00"
     },
     "audio": {
       "status": "complete",
@@ -70,14 +70,14 @@
       "evidence": [
         "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T08:27:44.900355+00:00"
+      "updatedAt": "2026-07-25T13:01:52.832272+00:00"
     },
     "render": {
       "status": "complete",
       "evidence": [
         "renders/navigator-time-letter.mp4"
       ],
-      "updatedAt": "2026-07-25T08:34:54.652731+00:00"
+      "updatedAt": "2026-07-25T13:11:19.326707+00:00"
     },
     "qa": {
       "status": "complete",

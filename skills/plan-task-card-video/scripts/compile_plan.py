@@ -29,6 +29,132 @@ SHOT_BLUEPRINTS = {
     ),
 }
 
+BLOCKING_BLUEPRINTS = {
+    "start": (
+        {
+            "subjects": {
+                "primary": (-150, 20, 0.84, 1.0),
+                "secondary": (-30, 18, 0.86, 0.96),
+                "tertiary": (65, 6, 0.82, 0.9),
+            },
+            "environment": {
+                "rear": (-18, 0, 1.0),
+                "architecture": (0, 12, 0.96),
+                "foreground": (24, 8, 1.02),
+            },
+            "travel": {"role": "ensemble", "x": 18, "y": -4},
+        },
+        {
+            "subjects": {
+                "primary": (45, -12, 1.02, 1.0),
+                "secondary": (105, 4, 0.94, 0.88),
+                "tertiary": (-85, 14, 0.84, 0.72),
+            },
+            "environment": {
+                "rear": (12, -8, 1.025),
+                "architecture": (-42, 0, 1.04),
+                "foreground": (-34, 0, 1.035),
+            },
+            "travel": {"role": "primary", "x": 54, "y": -10},
+        },
+        {
+            "subjects": {
+                "primary": (125, -28, 1.1, 1.0),
+                "secondary": (-105, 28, 0.8, 0.38),
+                "tertiary": (95, 28, 0.76, 0.3),
+            },
+            "environment": {
+                "rear": (-24, -12, 1.04),
+                "architecture": (-78, 8, 1.07),
+                "foreground": (42, 12, 1.06),
+            },
+            "travel": {"role": "primary", "x": -28, "y": -8},
+        },
+    ),
+    "middle": (
+        {
+            "subjects": {
+                "primary": (-135, 22, 0.86, 1.0),
+                "secondary": (-65, 18, 0.86, 0.9),
+                "tertiary": (72, 8, 0.82, 0.84),
+            },
+            "environment": {
+                "rear": (22, 0, 1.01),
+                "architecture": (34, 8, 0.98),
+                "foreground": (-28, 8, 1.03),
+            },
+            "travel": {"role": "ensemble", "x": -20, "y": 4},
+        },
+        {
+            "subjects": {
+                "primary": (80, -18, 1.02, 1.0),
+                "secondary": (165, -4, 0.98, 1.0),
+                "tertiary": (-155, 2, 0.92, 0.9),
+            },
+            "environment": {
+                "rear": (-24, -10, 1.04),
+                "architecture": (-55, -4, 1.055),
+                "foreground": (38, 0, 1.045),
+            },
+            "travel": {"role": "primary", "x": 68, "y": -12},
+        },
+        {
+            "subjects": {
+                "primary": (-72, -30, 1.12, 1.0),
+                "secondary": (92, 26, 0.78, 0.42),
+                "tertiary": (82, 24, 0.74, 0.28),
+            },
+            "environment": {
+                "rear": (18, -14, 1.045),
+                "architecture": (72, 4, 1.075),
+                "foreground": (-46, 14, 1.065),
+            },
+            "travel": {"role": "primary", "x": 24, "y": -10},
+        },
+    ),
+    "end": (
+        {
+            "subjects": {
+                "primary": (105, -24, 1.06, 1.0),
+                "secondary": (90, 0, 0.96, 0.94),
+                "tertiary": (-100, 4, 0.9, 0.86),
+            },
+            "environment": {
+                "rear": (-20, -6, 1.025),
+                "architecture": (-48, -4, 1.05),
+                "foreground": (36, 2, 1.04),
+            },
+            "travel": {"role": "primary", "x": 48, "y": -14},
+        },
+        {
+            "subjects": {
+                "primary": (-95, -34, 1.14, 1.0),
+                "secondary": (-105, 25, 0.8, 0.44),
+                "tertiary": (92, 22, 0.76, 0.34),
+            },
+            "environment": {
+                "rear": (28, -12, 1.045),
+                "architecture": (68, 4, 1.07),
+                "foreground": (-42, 12, 1.06),
+            },
+            "travel": {"role": "primary", "x": 34, "y": -8},
+        },
+        {
+            "subjects": {
+                "primary": (0, 14, 0.9, 1.0),
+                "secondary": (18, 12, 0.9, 0.98),
+                "tertiary": (-18, 10, 0.86, 0.94),
+            },
+            "environment": {
+                "rear": (0, 0, 1.0),
+                "architecture": (0, 6, 0.98),
+                "foreground": (0, 8, 1.02),
+            },
+            "travel": {"role": "ensemble", "x": 0, "y": -6},
+        },
+    ),
+}
+
 DEFAULT_VOICE_CAST = {
     "narrator": "zh-CN-XiaoxiaoNeural",
     "primary": "zh-CN-XiaoyiNeural",
@@ -165,16 +291,79 @@ def distribute_line_indexes(line_count: int, shot_count: int = 3) -> list[list[i
     return assignments
 
 
+def focus_blocking(
+    blocking: dict[str, Any],
+    focus_role: str,
+) -> dict[str, Any]:
+    if focus_role not in {"primary", "secondary", "tertiary"}:
+        return blocking
+    focus_targets = {
+        "primary": {"x": blocking["subjects"]["primary"]["x"], "scale": 1.1},
+        "secondary": {"x": 145, "scale": 1.04},
+        "tertiary": {"x": -130, "scale": 1.0},
+    }
+    for role, state in blocking["subjects"].items():
+        if role == focus_role:
+            state.update(
+                {
+                    "x": focus_targets[role]["x"],
+                    "y": min(state["y"], -24),
+                    "scale": max(state["scale"], focus_targets[role]["scale"]),
+                    "opacity": 1.0,
+                }
+            )
+        else:
+            state["scale"] = min(state["scale"], 0.86)
+            state["opacity"] = min(state["opacity"], 0.58)
+    travel_x = {"primary": 42, "secondary": 48, "tertiary": -48}[focus_role]
+    blocking["travel"] = {"role": focus_role, "x": travel_x, "y": -8}
+    return blocking
+
+
 def build_shots(
     scene_id: str,
     beat_key: str,
     script: list[dict[str, str]],
+    direction: str,
 ) -> list[dict[str, Any]]:
     shots = []
     line_assignments = distribute_line_indexes(len(script))
+    direction_sign = -1 if direction == "left" else 1
     for index, (purpose, framing, focus_role, intent) in enumerate(
         SHOT_BLUEPRINTS[beat_key]
     ):
+        blocking = BLOCKING_BLUEPRINTS[beat_key][index]
+        assigned_roles = [
+            script[line_index]["role"]
+            for line_index in line_assignments[index]
+            if script[line_index]["role"] in {"primary", "secondary", "tertiary"}
+        ]
+        if assigned_roles and purpose not in {"establish", "pressure", "resolution"}:
+            focus_role = assigned_roles[0]
+        compiled_blocking = {
+            "subjects": {
+                role: {
+                    "x": values[0] * direction_sign,
+                    "y": values[1],
+                    "scale": values[2],
+                    "opacity": values[3],
+                }
+                for role, values in blocking["subjects"].items()
+            },
+            "environment": {
+                layer: {
+                    "x": values[0] * direction_sign,
+                    "y": values[1],
+                    "scale": values[2],
+                }
+                for layer, values in blocking["environment"].items()
+            },
+            "travel": {
+                **blocking["travel"],
+                "x": blocking["travel"]["x"] * direction_sign,
+            },
+        }
+        compiled_blocking = focus_blocking(compiled_blocking, focus_role)
         shots.append(
             {
                 "id": f"{scene_id}-shot-{index + 1}",
@@ -184,6 +373,7 @@ def build_shots(
                 "focusRole": focus_role,
                 "lineIndexes": line_assignments[index],
                 "intent": intent,
+                "blocking": compiled_blocking,
             }
         )
     return shots
@@ -207,7 +397,12 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                 "title": hint["title"],
                 "narration": card["beats"][beat_key],
                 "script": script,
-                "shots": build_shots(scene_id, beat_key, script),
+                "shots": build_shots(
+                    scene_id,
+                    beat_key,
+                    script,
+                    hint["direction"],
+                ),
                 "transitionIn": scene_transitions[index],
                 "motionRules": rules,
                 "direction": hint["direction"],
@@ -302,6 +497,7 @@ length: narration-driven
 - HyperFrames modular composition with three scenes and nine internal shots.
 - Background, rear environment, architecture, characters, and foreground stay independent.
 - Use wide, medium, and close framings with motivated cuts and character micro-performance.
+- Re-block characters, architecture, rear, and foreground for every editorial shot.
 - Keep narration concise; let short character dialogue carry key decisions and reactions.
 - Real narration duration determines the static composition duration.
 - One cue-based Chinese caption track, local music, ambience, and shot sound marks.
@@ -381,6 +577,14 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
                     f"- framing: {shot['framing']}",
                     f"- focus: {shot['focusRole']}",
                     f"- intent: {shot['intent']}",
+                    (
+                        "- blocking: "
+                        + "; ".join(
+                            f"{role} x={state['x']} y={state['y']} "
+                            f"scale={state['scale']} opacity={state['opacity']}"
+                            for role, state in shot["blocking"]["subjects"].items()
+                        )
+                    ),
                     *(f"- line: {line}" for line in rendered_lines),
                     "",
                 ]

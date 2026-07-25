@@ -1,6 +1,6 @@
 ---
 name: direct-professional-manga-video
-description: Direct child-authored task-card stories as professional three-scene, nine-shot manga videos with concise multi-character dialogue, purposeful framing, character continuity, relative pacing, and factual restraint. Use when authoring or reviewing a task card's manga script, upgrading a three-beat plan into a motion-comic shot sequence, or diagnosing repetitive narration and flat staging before asset generation.
+description: Direct child-authored task-card stories as professional three-scene, nine-shot manga videos with concise multi-character dialogue, purposeful framing, per-shot character and environment blocking, character continuity, relative pacing, and factual restraint. Use when authoring or reviewing a task card's manga script, upgrading a three-beat plan into a motion-comic shot sequence, or diagnosing repetitive narration, fixed staging, and flat camera-only motion before asset generation.
 ---
 
 # Direct Professional Manga Video
@@ -18,8 +18,9 @@ Read `references/directing-contract.md` before authoring a `manga` block or appr
 3. Add two to four short performance lines per scene. Use narration for necessary causality and dialogue for decisions, discoveries, coordination, and emotional payoff.
 4. Give every line a stable `role` and speaker. Keep individual lines under 40 Chinese characters.
 5. Track costume, signature colors, held props, screen direction, and emotional state across all nine shots.
-6. Set relative pacing with `compact`, `standard`, `cinematic`, or `gentle`; never author a final video duration.
-7. Compile with `plan-task-card-video`, then inspect `SCRIPT.md` and all nine shot entries in `STORYBOARD.md`.
+6. Re-block every shot: place each role and environment layer for that framing, then define one motivated travel action.
+7. Set relative pacing with `compact`, `standard`, `cinematic`, or `gentle`; never author a final video duration.
+8. Compile with `plan-task-card-video`, then inspect `SCRIPT.md` and all nine shot entries in `STORYBOARD.md`.
 
 ## Non-Negotiable Gates
 
@@ -28,6 +29,7 @@ Read `references/directing-contract.md` before authoring a `manga` block or appr
 - For a legacy card without `manga.scene_scripts`, place the complete original beat on the middle shot exactly once. Keep the other two shots silent.
 - Use at least two character roles across the full script; do not turn every line into narrator exposition.
 - Keep dialogue performable, specific, and non-redundant with adjacent narration.
+- Reject a nine-shot plan when character and environment positions remain identical across shots.
 - Reject unexplained changes in identity, clothing, props, time, location, or factual claims.
 - Leave final timings to measured speech plus pacing handles.
 

@@ -37,7 +37,7 @@ audience: primary-and-middle-school-students
 - from: 8.106s
 - duration: 3.394s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ## Frame 2 - 重建航线
 
@@ -71,7 +71,7 @@ audience: primary-and-middle-school-students
 - from: 8.802s
 - duration: 3.698s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ## Frame 3 - 写给未来
 
@@ -98,7 +98,7 @@ audience: primary-and-middle-school-students
 - from: 5.022s
 - duration: 3.708s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ### Shot 3.3 - resolution
 

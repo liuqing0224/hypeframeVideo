@@ -1,4 +1,4 @@
 interface:
   display_name: "Professional Manga Video Director"
-  short_description: "Plan three-act, nine-shot multi-character manga videos"
-  default_prompt: "Use $direct-professional-manga-video to direct this task card as a three-act, nine-shot multi-character manga video."
+  short_description: "Direct nine-shot manga blocking and performances"
+  default_prompt: "Use $direct-professional-manga-video to direct this task card as a three-act manga video with nine distinct shot setups."

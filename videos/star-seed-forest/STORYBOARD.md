@@ -37,7 +37,7 @@ audience: primary-and-middle-school-students
 - from: 8.850s
 - duration: 3.650s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ## Frame 2 - 风雨护送
 
@@ -71,7 +71,7 @@ audience: primary-and-middle-school-students
 - from: 8.562s
 - duration: 4.438s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ## Frame 3 - 星花盛开
 

@@ -17,7 +17,7 @@
         "tmp/imagegen/prompt-queue.jsonl",
         "asset-manifest.json"
       ],
-      "updatedAt": "2026-07-25T08:39:43.495710+00:00"
+      "updatedAt": "2026-07-25T12:58:08.612940+00:00"
     },
     "audio": {
       "status": "complete",
@@ -70,14 +70,14 @@
       "evidence": [
         "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T08:27:44.900066+00:00"
+      "updatedAt": "2026-07-25T13:01:52.831962+00:00"
     },
     "render": {
       "status": "complete",
       "evidence": [
         "renders/glowing-solar-system.mp4"
       ],
-      "updatedAt": "2026-07-25T08:31:20.018767+00:00"
+      "updatedAt": "2026-07-25T13:06:47.149152+00:00"
     },
     "qa": {
       "status": "complete",

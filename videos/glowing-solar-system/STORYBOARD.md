@@ -37,7 +37,7 @@ audience: primary-and-middle-school-students
 - from: 8.610s
 - duration: 4.390s
 - framing: close
-- focus: primary
+- focus: tertiary
 
 ## Frame 2 - 追逐能量
 
@@ -64,7 +64,7 @@ audience: primary-and-middle-school-students
 - from: 4.782s
 - duration: 4.188s
 - framing: medium
-- focus: primary
+- focus: secondary
 
 ### Shot 2.3 - decision
 
@@ -98,7 +98,7 @@ audience: primary-and-middle-school-students
 - from: 4.614s
 - duration: 2.868s
 - framing: close
-- focus: primary
+- focus: secondary
 
 ### Shot 3.3 - resolution
 

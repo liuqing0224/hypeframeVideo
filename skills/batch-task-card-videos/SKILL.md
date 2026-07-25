@@ -1,6 +1,6 @@
 ---
 name: batch-task-card-videos
-description: Orchestrate concurrent batches of child task-card stories into isolated professional manga-style layered-pixel HyperFrames productions, including directing, nine-shot planning, Imagegen prompt queues, transparent layer processing, performance timing, composition, checks, preview approval, retries, and final delivery. Use when Codex must generate or resume one or more videos from the project task-card JSON format.
+description: Orchestrate concurrent batches of child task-card stories into isolated professional manga-style layered-pixel HyperFrames productions, including directing, nine-shot planning, per-shot character and environment blocking, Imagegen prompt queues, transparent layer processing, performance timing, composition, checks, preview approval, retries, and final delivery. Use when Codex must generate or resume one or more videos from the project task-card JSON format.
 ---
 
 # Batch Task Card Videos
@@ -17,12 +17,14 @@ Keep each card in `videos/<card-id>/`. Workers may run different productions con
 ## Workflow
 
 1. Validate the task-card batch and its optional `manga` directing blocks.
-2. Direct each card as three story scenes and nine editorial shots, then prepare planning documents and Imagegen queues.
+2. Direct each card as three story scenes and nine editorial shots with distinct
+   subject/environment blocking, then prepare planning documents and Imagegen queues.
 3. Generate each queued source with the built-in Imagegen tool. Preserve versioned raw files.
 4. Process layers and generate audio concurrently across ready productions.
 5. Compose modular HyperFrames projects and run checks.
 6. Start Studio previews and wait for final approval.
-7. Render with at most two concurrent projects, verify, and promote passing outputs.
+7. Render with at most two concurrent projects, verify and promote passing
+   outputs, then assemble one batch-level nine-shot render contact sheet.
 
 ## Commands
 

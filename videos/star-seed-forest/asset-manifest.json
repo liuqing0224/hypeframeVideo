@@ -6,63 +6,99 @@
       "sceneId": "01-start",
       "kind": "backdrop",
       "sourcePath": "assets/source/01-start-backdrop-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "b99c49ce3c32fedc158533e42dbd1c4bdbd3a9af7779a66d60e8f3e8f2a0ad0a"
     },
     {
       "id": "01-start-environment",
       "sceneId": "01-start",
       "kind": "environment-sheet",
       "sourcePath": "assets/source/01-start-environment-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "b777f1c296b670595c126d362ac12c9bf5483a7032b04edca303fa0f7789c921"
     },
     {
       "id": "01-start-character",
       "sceneId": "01-start",
       "kind": "character-sheet",
       "sourcePath": "assets/source/01-start-characters-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "9ec22930212a12b79a01345cb8b53c95f86a8eadcc26fb17665652477d34025e"
     },
     {
       "id": "02-middle-backdrop",
       "sceneId": "02-middle",
       "kind": "backdrop",
       "sourcePath": "assets/source/02-middle-backdrop-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "f79de4a5fe5ba2edae8b3ec368afc031cc46596724c16f86feb03569cd8ae497"
     },
     {
       "id": "02-middle-environment",
       "sceneId": "02-middle",
       "kind": "environment-sheet",
       "sourcePath": "assets/source/02-middle-environment-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "4684c2f4a53ae5469acdd5f0abdfee4de7bd6cbd4a077a4429324e4f353eb67c"
     },
     {
       "id": "02-middle-character",
       "sceneId": "02-middle",
       "kind": "character-sheet",
       "sourcePath": "assets/source/02-middle-characters-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "sha256": "e48ed050a9af4f3c178136918755bf74210ddeda4d5cee6acdd9fd902d25974a"
     },
     {
       "id": "03-end-backdrop",
       "sceneId": "03-end",
       "kind": "backdrop",
       "sourcePath": "assets/source/03-end-backdrop-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "sha256": "2b75877311e480d90a1319a4c425cebc22cf7afbeffe584201881c25bb526ab5"
     },
     {
       "id": "03-end-environment",
       "sceneId": "03-end",
       "kind": "environment-sheet",
       "sourcePath": "assets/source/03-end-environment-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "53598404cb0225873b906a9b2c3852095f0d3e96bc344adf01966dad052e1efe"
     },
     {
       "id": "03-end-character",
       "sceneId": "03-end",
       "kind": "character-sheet",
       "sourcePath": "assets/source/03-end-characters-v1.png",
-      "status": "pending"
+      "status": "generated",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "sha256": "8a7b0e85ac9f8453463f482f356d5933dc7c6998af4feae994afe9f2cb325541"
     }
   ]
 }

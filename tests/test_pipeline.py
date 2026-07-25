@@ -1,12 +1,14 @@
 import asyncio
 import concurrent.futures
 import copy
+import hashlib
 import json
 import math
 from pathlib import Path
 
 import jsonschema
 import numpy as np
+import yaml
 from PIL import Image, ImageDraw
 
 
@@ -31,6 +33,20 @@ def test_task_card_schema_and_optional_shot_hints(scripts):
     )
     assert len(plan["scenes"]) == 3
     assert plan["scenes"][0]["shot"]["direction"] == "right"
+    for scene in plan["scenes"]:
+        assert len(scene["shots"]) == 3
+        for role in ("primary", "secondary", "tertiary"):
+            states = {
+                tuple(shot["blocking"]["subjects"][role].values())
+                for shot in scene["shots"]
+            }
+            assert len(states) == 3
+        for layer in ("rear", "architecture", "foreground"):
+            states = {
+                tuple(shot["blocking"]["environment"][layer].values())
+                for shot in scene["shots"]
+            }
+            assert len(states) == 3
     assert not any("duration" in card for card in batch["cards"])
 
 
@@ -248,6 +264,9 @@ def test_compose_static_duration_root_audio_layers_and_mirror(
         synthetic_production / "compositions/01-start.html"
     ).read_text(encoding="utf-8")
     assert 'class="sprite-mirror" style="transform: scaleX(-1);"' in first_scene
+    assert 'class="blocking blocking-primary"' in first_scene
+    assert 'tl.set(q(".blocking-primary")' in first_scene
+    assert 'tl.to(q(".blocking-primary")' in first_scene
     assert 'data-duration="4"' in first_scene
     root = (synthetic_production / "index.html").read_text(encoding="utf-8")
     assert 'data-duration="12"' in root
@@ -364,6 +383,59 @@ def test_ready_state_recovers_completed_visual_queue(scripts, tmp_path):
     assert status["stages"]["layer_processing"]["status"] == "ready"
 
 
+def test_prompt_queue_restores_only_matching_generated_assets(scripts, tmp_path):
+    production = tmp_path / "videos/restored-assets"
+    production.mkdir(parents=True)
+    target = production / "assets/source/asset-v1.png"
+    target.parent.mkdir(parents=True)
+    Image.new("RGB", (32, 24), "#224466").save(target)
+    digest = hashlib.sha256(target.read_bytes()).hexdigest()
+    item = {
+        "assetId": "asset",
+        "sceneId": "01-start",
+        "kind": "backdrop",
+        "targetPath": "assets/source/asset-v1.png",
+        "referencePaths": [],
+        "prompt": "same prompt",
+        "status": "pending",
+        "version": 1,
+    }
+    old = {**item, "status": "generated", "sha256": digest}
+    queue_path = production / "tmp/imagegen/prompt-queue.jsonl"
+    queue_path.parent.mkdir(parents=True)
+    queue_path.write_text(json.dumps(old) + "\n", encoding="utf-8")
+    (production / "asset-manifest.json").write_text(
+        json.dumps(
+            {
+                "schemaVersion": 1,
+                "assets": [
+                    {
+                        "id": "asset",
+                        "sceneId": "01-start",
+                        "kind": "backdrop",
+                        "sourcePath": item["targetPath"],
+                        "status": "pending",
+                    }
+                ],
+            }
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    restored = scripts["queue"].restore_generated_assets(production, [item.copy()])
+    assert restored[0]["status"] == "generated"
+    assert restored[0]["sha256"] == digest
+    manifest = json.loads(
+        (production / "asset-manifest.json").read_text(encoding="utf-8")
+    )
+    assert manifest["assets"][0]["status"] == "generated"
+
+    changed = {**item, "prompt": "changed prompt"}
+    not_restored = scripts["queue"].restore_generated_assets(production, [changed])
+    assert not_restored[0]["status"] == "pending"
+
+
 def test_batch_contact_sheet(scripts, tmp_path):
     batch = {"cards": [{"id": "one"}, {"id": "two"}]}
     for card in batch["cards"]:
@@ -382,3 +454,33 @@ def test_batch_contact_sheet(scripts, tmp_path):
     with Image.open(target) as image:
         assert image.width == 900
         assert image.height == (220 + 34) * 2
+
+
+def test_batch_render_contact_sheet(scripts, tmp_path):
+    batch = {"batch_id": "render-batch", "cards": [{"id": "one"}, {"id": "two"}]}
+    for card in batch["cards"]:
+        path = (
+            tmp_path
+            / "videos"
+            / card["id"]
+            / "qa"
+            / "render-shot-contact-sheet.png"
+        )
+        path.parent.mkdir(parents=True)
+        Image.new("RGB", (900, 600), "#334455").save(path)
+    target = scripts["pipeline"].build_batch_render_contact_sheet(batch, tmp_path)
+    assert target == tmp_path / "qa/render-batch-render-contact-sheet.jpg"
+    with Image.open(target) as image:
+        assert image.width == 900
+        assert image.height == (600 + 40) * 2
+
+
+def test_skill_metadata_invokes_matching_project_skill():
+    skill_dirs = sorted(path for path in (REPO_ROOT / "skills").iterdir() if path.is_dir())
+    assert skill_dirs
+    for skill_dir in skill_dirs:
+        metadata = yaml.safe_load(
+            (skill_dir / "agents/openai.yaml").read_text(encoding="utf-8")
+        )
+        prompt = metadata["interface"]["default_prompt"]
+        assert f"${skill_dir.name}" in prompt

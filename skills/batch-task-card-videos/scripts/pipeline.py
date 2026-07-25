@@ -391,6 +391,34 @@ def build_batch_contact_sheet(batch: dict, workspace: Path) -> Path:
     return target
 
 
+def build_batch_render_contact_sheet(batch: dict, workspace: Path) -> Path:
+    rows: list[tuple[str, Image.Image]] = []
+    for card in batch["cards"]:
+        production = production_path(workspace, card["id"])
+        source_path = production / "qa/render-shot-contact-sheet.png"
+        if not source_path.is_file():
+            raise FileNotFoundError(source_path)
+        with Image.open(source_path) as source:
+            image = source.convert("RGB")
+            image.thumbnail((1800, 1080), Image.Resampling.LANCZOS)
+            rows.append((card["id"], image.copy()))
+    label_height = 40
+    width = max(image.width for _, image in rows)
+    height = sum(label_height + image.height for _, image in rows)
+    canvas = Image.new("RGB", (width, height), "#101010")
+    draw = ImageDraw.Draw(canvas)
+    top = 0
+    for card_id, image in rows:
+        draw.text((14, top + 12), card_id, fill="#ffffff")
+        top += label_height
+        canvas.paste(image, (0, top))
+        top += image.height
+    target = workspace / "qa" / f"{batch['batch_id']}-render-contact-sheet.jpg"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    canvas.save(target, quality=92)
+    return target
+
+
 def start_previews(
     batch: dict,
     workspace: Path,
@@ -774,7 +802,11 @@ def main() -> None:
                 )
                 for production in productions
             ]
-            print_summary([future.result() for future in futures])
+            results = [future.result() for future in futures]
+        contact_sheet = build_batch_render_contact_sheet(batch, workspace)
+        for result in results:
+            result["batchContactSheet"] = str(contact_sheet)
+        print_summary(results)
 
 
 if __name__ == "__main__":

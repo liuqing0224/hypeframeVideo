@@ -12,6 +12,24 @@ Keep the authored `start`, `middle`, and `end` beats intact. Compile each beat i
 
 The three scenes remain the asset groups. The nine shots control framing, focus, line placement, and editorial rhythm.
 
+## Shot Blocking
+
+Every shot must carry a `blocking` state rather than relying on one fixed scene layout:
+
+- `subjects.primary|secondary|tertiary`: transform-relative `x`, `y`, `scale`,
+  and `opacity`;
+- `environment.rear|architecture|foreground`: independent parallax `x`, `y`,
+  and `scale`;
+- `travel`: the role or ensemble that moves during the shot, plus its intended
+  displacement.
+
+Use the first shot to establish separated screen zones, the middle shot to
+bring collaborating or conflicting roles into a new spatial relationship, and
+the final shot to isolate a reaction or rebuild the closing ensemble. Mirror
+horizontal offsets when narrative direction changes. A camera crop does not
+count as blocking; at least every subject and two environment layers must
+change state across a scene's three shots.
+
 ## Task-Card Manga Block
 
 Use this shape inside a card:
@@ -87,6 +105,7 @@ Measure real speech before resolving duration. Silent establishing and reaction 
 ## Approval Checklist
 
 - The nine shots read clearly without audio.
+- Character and environment staging changes across all three shots in each scene.
 - Every spoken line has one owner and one shot.
 - Every scene changes the situation.
 - The middle scene contains a visible decision or collaborative action.

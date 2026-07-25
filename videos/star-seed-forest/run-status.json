@@ -17,7 +17,7 @@
         "tmp/imagegen/prompt-queue.jsonl",
         "asset-manifest.json"
       ],
-      "updatedAt": "2026-07-25T08:39:43.497853+00:00"
+      "updatedAt": "2026-07-25T12:58:08.612833+00:00"
     },
     "audio": {
       "status": "complete",
@@ -70,14 +70,14 @@
       "evidence": [
         "approvals/ai-little-director-manga-v2-studio-preview.json"
       ],
-      "updatedAt": "2026-07-25T08:27:44.900653+00:00"
+      "updatedAt": "2026-07-25T13:01:52.832816+00:00"
     },
     "render": {
       "status": "complete",
       "evidence": [
         "renders/star-seed-forest.mp4"
       ],
-      "updatedAt": "2026-07-25T08:35:01.766796+00:00"
+      "updatedAt": "2026-07-25T13:11:19.021296+00:00"
     },
     "qa": {
       "status": "complete",

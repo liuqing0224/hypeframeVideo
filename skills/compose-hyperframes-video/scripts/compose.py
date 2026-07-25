@@ -49,9 +49,11 @@ def subject_markup(scene: dict, role: str, layer_index: int) -> str:
     return f"""
       <div class="layer cutout subject {role}" data-pixel-layer="{role}" data-pixel-z="{layer_index}">
         <div class="sprite-mirror" style="{image_style}">
-          <div class="entrance"><div class="performance performance-{role}">
-            <img data-layout-ignore src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
-          </div></div>
+          <div class="blocking blocking-{role}">
+            <div class="entrance"><div class="performance performance-{role}">
+              <img data-layout-ignore src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>"""
 
@@ -97,12 +99,138 @@ def shot_camera(shot: dict, index: int) -> dict[str, float]:
     return {"x": x, "y": y, "scale": scale, "push": 0.018 + index * 0.004}
 
 
+def shot_blocking(shot: dict, index: int) -> dict:
+    if shot.get("blocking"):
+        return shot["blocking"]
+    offsets = (-90, 45, 0)
+    return {
+        "subjects": {
+            "primary": {
+                "x": offsets[index],
+                "y": -8 * index,
+                "scale": (0.9, 1.02, 1.08)[index],
+                "opacity": 1,
+            },
+            "secondary": {
+                "x": (-30, 95, -70)[index],
+                "y": 12 * index,
+                "scale": (0.9, 0.96, 0.8)[index],
+                "opacity": (0.95, 0.86, 0.42)[index],
+            },
+            "tertiary": {
+                "x": (45, -85, 75)[index],
+                "y": 10 * index,
+                "scale": (0.86, 0.9, 0.76)[index],
+                "opacity": (0.9, 0.76, 0.34)[index],
+            },
+        },
+        "environment": {
+            "rear": {"x": (-12, 18, -22)[index], "y": -4 * index, "scale": 1 + index * 0.02},
+            "architecture": {"x": (0, -36, 54)[index], "y": 4 * index, "scale": 0.98 + index * 0.04},
+            "foreground": {"x": (18, -28, 36)[index], "y": 6 * index, "scale": 1.02 + index * 0.02},
+        },
+        "travel": {"role": "primary", "x": (18, 52, -24)[index], "y": (-4, -10, -6)[index]},
+    }
+
+
+def blocking_timeline(shot: dict, index: int, start: float, duration: float) -> list[str]:
+    blocking = shot_blocking(shot, index)
+    rows = []
+    for role, state in blocking["subjects"].items():
+        rows.append(
+            f'tl.set(q(".blocking-{role}"), '
+            f'{{x:{number(state["x"])},y:{number(state["y"])},'
+            f'scale:{number(state["scale"])},opacity:{number(state["opacity"])}}}, '
+            f'{number(start)});'
+        )
+    for layer, state in blocking["environment"].items():
+        rows.append(
+            f'tl.set(q(".{layer}"), '
+            f'{{x:{number(state["x"])},y:{number(state["y"])},'
+            f'scale:{number(state["scale"])}}}, {number(start)});'
+        )
+    travel = blocking["travel"]
+    move_start = start + min(0.16, duration * 0.08)
+    move_duration = max(0.3, min(duration * 0.48, duration - 0.2))
+    if travel["role"] == "ensemble":
+        relative_x = f"{'+' if travel['x'] >= 0 else '-'}={number(abs(travel['x']))}"
+        relative_y = f"{'+' if travel['y'] >= 0 else '-'}={number(abs(travel['y']))}"
+        rows.append(
+            f'tl.to(qAll(".blocking"), '
+            f'{{x:"{relative_x}",y:"{relative_y}",'
+            f'duration:{number(move_duration)},ease:"power1.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    else:
+        state = blocking["subjects"][travel["role"]]
+        rows.append(
+            f'tl.to(q(".blocking-{travel["role"]}"), '
+            f'{{x:{number(state["x"] + travel["x"])},'
+            f'y:{number(state["y"] + travel["y"])},'
+            f'duration:{number(move_duration)},ease:"power2.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    for layer, factor in (("rear", -0.1), ("architecture", -0.16), ("foreground", -0.24)):
+        state = blocking["environment"][layer]
+        rows.append(
+            f'tl.to(q(".{layer}"), '
+            f'{{x:{number(state["x"] + travel["x"] * factor)},'
+            f'y:{number(state["y"] + travel["y"] * factor)},'
+            f'duration:{number(move_duration)},ease:"sine.inOut"}}, '
+            f'{number(move_start)});'
+        )
+    return rows
+
+
+def transformed_bounds(base: dict, state: dict) -> dict[str, float]:
+    scale = float(state["scale"])
+    width = base["width"] * scale
+    height = base["height"] * scale
+    return {
+        "x": round(base["x"] + state["x"] + (base["width"] - width) / 2, 3),
+        "y": round(
+            base["y"] + state["y"] + (base["height"] - height) * 0.75,
+            3,
+        ),
+        "width": round(width, 3),
+        "height": round(height, 3),
+    }
+
+
+def blocking_varies(shots: list[dict]) -> bool:
+    for role in ("primary", "secondary", "tertiary"):
+        states = {
+            (
+                row["blocking"]["subjects"][role]["x"],
+                row["blocking"]["subjects"][role]["y"],
+                row["blocking"]["subjects"][role]["scale"],
+                row["blocking"]["subjects"][role]["opacity"],
+            )
+            for row in shots
+        }
+        if len(states) < 3:
+            return False
+    for layer in ("rear", "architecture", "foreground"):
+        states = {
+            (
+                row["blocking"]["environment"][layer]["x"],
+                row["blocking"]["environment"][layer]["y"],
+                row["blocking"]["environment"][layer]["scale"],
+            )
+            for row in shots
+        }
+        if len(states) < 3:
+            return False
+    return True
+
+
 def shot_timeline(scene: dict) -> str:
     rows = []
     shots = scene_shots(scene)
     for index, shot in enumerate(shots):
         start = shot["startSeconds"]
         duration = shot["durationSeconds"]
+        rows.extend(blocking_timeline(shot, index, start, duration))
         camera = shot_camera(shot, index)
         selector = ".camera-rig"
         rows.append(
@@ -163,6 +291,7 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         overflow: visible;
       }}
       #{root_id} .entrance,
+      #{root_id} .blocking,
       #{root_id} .performance {{
         width: 100%;
         height: 100%;
@@ -719,6 +848,19 @@ def motion_payload(scene: dict) -> dict:
     cuts = []
     for index, shot in enumerate(shots):
         camera = shot_camera(shot, index)
+        blocking = shot_blocking(shot, index)
+        travel = blocking["travel"]
+        blocking_bounds = {}
+        blocking_end_bounds = {}
+        for role, base in bounds.items():
+            state = blocking["subjects"][role]
+            start_bounds = transformed_bounds(base, state)
+            end_state = dict(state)
+            if travel["role"] in {role, "ensemble"}:
+                end_state["x"] += travel["x"]
+                end_state["y"] += travel["y"]
+            blocking_bounds[role] = start_bounds
+            blocking_end_bounds[role] = transformed_bounds(base, end_state)
         shot_rows.append(
             {
                 "id": shot["id"],
@@ -728,6 +870,9 @@ def motion_payload(scene: dict) -> dict:
                 "from": round(shot["startSeconds"], 6),
                 "to": round(shot["startSeconds"] + shot["durationSeconds"], 6),
                 "camera": camera,
+                "blocking": blocking,
+                "blockingBounds": blocking_bounds,
+                "blockingEndBounds": blocking_end_bounds,
             }
         )
         if index:
@@ -740,7 +885,7 @@ def motion_payload(scene: dict) -> dict:
                 }
             )
     return {
-        "schemaVersion": 2,
+        "schemaVersion": 3,
         "compositionId": scene["id"],
         "durationSeconds": duration,
         "layerOrder": LAYER_ORDER,
@@ -779,6 +924,7 @@ def motion_payload(scene: dict) -> dict:
             "noUnboundedAnimation": True,
             "threeEditorialShots": len(shot_rows) == 3,
             "framingVariety": len({shot["framing"] for shot in shot_rows}) >= 3,
+            "shotBlockingVariety": blocking_varies(shot_rows),
         },
     }
 

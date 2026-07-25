@@ -20,23 +20,29 @@
       </div>
       <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
         <div class="sprite-mirror" style="">
-          <div class="entrance"><div class="performance performance-tertiary">
-            <img data-layout-ignore src="assets/processed/02-middle/tertiary.png" alt="" />
-          </div></div>
+          <div class="blocking blocking-tertiary">
+            <div class="entrance"><div class="performance performance-tertiary">
+              <img data-layout-ignore src="assets/processed/02-middle/tertiary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
         <div class="sprite-mirror" style="">
-          <div class="entrance"><div class="performance performance-secondary">
-            <img data-layout-ignore src="assets/processed/02-middle/secondary.png" alt="" />
-          </div></div>
+          <div class="blocking blocking-secondary">
+            <div class="entrance"><div class="performance performance-secondary">
+              <img data-layout-ignore src="assets/processed/02-middle/secondary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
         <div class="sprite-mirror" style="">
-          <div class="entrance"><div class="performance performance-primary">
-            <img data-layout-ignore src="assets/processed/02-middle/primary.png" alt="" />
-          </div></div>
+          <div class="blocking blocking-primary">
+            <div class="entrance"><div class="performance performance-primary">
+              <img data-layout-ignore src="assets/processed/02-middle/primary.png" alt="" />
+            </div></div>
+          </div>
         </div>
       </div>
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
@@ -81,6 +87,7 @@
         overflow: visible;
       }
       #scene-02-middle .entrance,
+      #scene-02-middle .blocking,
       #scene-02-middle .performance {
         width: 100%;
         height: 100%;
@@ -199,13 +206,43 @@
       tl.to(q(".rear img"), {x: 0, y: 0, duration: 3.645, ease: "sine.inOut"}, 6.075);
       tl.to(q(".primary img"), {x: 24, y: -10, duration: 7.29, ease: "power1.inOut"}, 2.43);
       tl.to(root, {opacity: 0.96, duration: 1.35, ease: "power1.in"}, 12.15);
-        tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 0);
+        tl.set(q(".blocking-primary"), {x:-135,y:22,scale:0.86,opacity:1}, 0);
+      tl.set(q(".blocking-secondary"), {x:-65,y:18,scale:0.86,opacity:0.9}, 0);
+      tl.set(q(".blocking-tertiary"), {x:72,y:8,scale:0.82,opacity:0.84}, 0);
+      tl.set(q(".rear"), {x:22,y:0,scale:1.01}, 0);
+      tl.set(q(".architecture"), {x:34,y:8,scale:0.98}, 0);
+      tl.set(q(".foreground"), {x:-28,y:8,scale:1.03}, 0);
+      tl.to(qAll(".blocking"), {x:"-=20",y:"+=4",duration:2.503,ease:"power1.inOut"}, 0.16);
+      tl.to(q(".rear"), {x:24,y:-0.4,duration:2.503,ease:"sine.inOut"}, 0.16);
+      tl.to(q(".architecture"), {x:37.2,y:7.36,duration:2.503,ease:"sine.inOut"}, 0.16);
+      tl.to(q(".foreground"), {x:-23.2,y:7.04,duration:2.503,ease:"sine.inOut"}, 0.16);
+      tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 0);
       tl.to(q(".camera-rig"), {scale:1.018,duration:5.184,ease:"none"}, 0);
-      tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.16}, 5.214);
+      tl.set(q(".blocking-primary"), {x:80,y:-18,scale:0.86,opacity:0.58}, 5.214);
+      tl.set(q(".blocking-secondary"), {x:145,y:-24,scale:1.04,opacity:1}, 5.214);
+      tl.set(q(".blocking-tertiary"), {x:-155,y:2,scale:0.86,opacity:0.58}, 5.214);
+      tl.set(q(".rear"), {x:-24,y:-10,scale:1.04}, 5.214);
+      tl.set(q(".architecture"), {x:-55,y:-4,scale:1.055}, 5.214);
+      tl.set(q(".foreground"), {x:38,y:0,scale:1.045}, 5.214);
+      tl.to(q(".blocking-secondary"), {x:193,y:-32,duration:1.665,ease:"power2.inOut"}, 5.374);
+      tl.to(q(".rear"), {x:-28.8,y:-9.2,duration:1.665,ease:"sine.inOut"}, 5.374);
+      tl.to(q(".architecture"), {x:-62.68,y:-2.72,duration:1.665,ease:"sine.inOut"}, 5.374);
+      tl.to(q(".foreground"), {x:26.48,y:1.92,duration:1.665,ease:"sine.inOut"}, 5.374);
+      tl.set(q(".camera-rig"), {x:210,y:-12,scale:1.16}, 5.214);
       tl.to(q(".camera-rig"), {scale:1.182,duration:3.438,ease:"none"}, 5.214);
-      tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 5.434);
-      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.754);
+      tl.to(q(".performance-secondary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 5.434);
+      tl.to(q(".performance-secondary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.754);
       tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 5.214);
+      tl.set(q(".blocking-primary"), {x:-72,y:-30,scale:1.12,opacity:1}, 8.682);
+      tl.set(q(".blocking-secondary"), {x:92,y:26,scale:0.78,opacity:0.42}, 8.682);
+      tl.set(q(".blocking-tertiary"), {x:82,y:24,scale:0.74,opacity:0.28}, 8.682);
+      tl.set(q(".rear"), {x:18,y:-14,scale:1.045}, 8.682);
+      tl.set(q(".architecture"), {x:72,y:4,scale:1.075}, 8.682);
+      tl.set(q(".foreground"), {x:-46,y:14,scale:1.065}, 8.682);
+      tl.to(q(".blocking-primary"), {x:-30,y:-38,duration:2.313,ease:"power2.inOut"}, 8.842);
+      tl.to(q(".rear"), {x:13.8,y:-13.2,duration:2.313,ease:"sine.inOut"}, 8.842);
+      tl.to(q(".architecture"), {x:65.28,y:5.28,duration:2.313,ease:"sine.inOut"}, 8.842);
+      tl.to(q(".foreground"), {x:-56.08,y:15.92,duration:2.313,ease:"sine.inOut"}, 8.842);
       tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.38}, 8.682);
       tl.to(q(".camera-rig"), {scale:1.406,duration:4.788,ease:"none"}, 8.682);
       tl.to(q(".performance-primary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 8.902);

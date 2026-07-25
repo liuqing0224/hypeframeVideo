@@ -1,6 +1,6 @@
 ---
 name: verify-hyperframes-video
-description: Validate professional manga-style HyperFrames task-card videos with structural nine-shot checks, cue and speaker checks, strict browser checks, shot and transition snapshots, animation-map review, hash-bound Studio approval, high-quality render, FFprobe verification, evidence frames, and promotion. Use when a composed production is ready for QA, preview, rendering, or failure diagnosis.
+description: Validate professional manga-style HyperFrames task-card videos with structural nine-shot checks, per-shot blocking variety and transformed-bound checks, cue and speaker checks, strict browser checks, shot and transition snapshots, animation-map review, hash-bound Studio approval, high-quality render, FFprobe verification, evidence frames, and promotion. Use when a composed production is ready for QA, preview, rendering, or failure diagnosis.
 ---
 
 # Verify HyperFrames Video
@@ -9,7 +9,8 @@ Read `/hyperframes-cli` before running commands. A successful check is not rende
 
 ## Workflow
 
-1. Verify processed-layer and audio reports.
+1. Verify processed-layer and audio reports plus three distinct subject and
+   environment blocking states per scene.
 2. Run `lint` during iteration.
 3. Run strict `check` with snapshots, transition samples, and frame checks.
 4. Capture every scene midpoint and inspect the contact sheet.

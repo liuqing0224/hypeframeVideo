@@ -1,6 +1,6 @@
 ---
 name: plan-task-card-video
-description: Compile a structured child task card into a deterministic three-scene, nine-shot professional manga production plan with multi-character performance script, BRIEF.md, SCRIPT.md, STORYBOARD.md, frame.md, asset inventory, and mutable run state. Use when starting a task-card video or rebuilding planning artifacts before asset generation.
+description: Compile a structured child task card into a deterministic three-scene, nine-shot professional manga production plan with multi-character performance script, per-shot subject and environment blocking, BRIEF.md, SCRIPT.md, STORYBOARD.md, frame.md, asset inventory, and mutable run state. Use when starting a task-card video or rebuilding planning artifacts before asset generation.
 ---
 
 # Plan Task Card Video
@@ -14,8 +14,9 @@ Compile story intent before generating media. Treat `story-plan.json` as pre-aud
 3. Map start, middle, and end to scene IDs `01-start`, `02-middle`, and `03-end`, with three internal shots per scene.
 4. Use explicit `manga.scene_scripts` when present. Otherwise bind the complete child-authored beat to the middle shot exactly once; keep the establishing and reaction shots silent.
 5. Preserve authored facts and character identities. Do not split, paraphrase, or invent fallback narration.
-6. Write HyperFrames brief, performance script, nine-shot storyboard, design truth, asset inventory, prompt queue inputs, and run state.
-7. Leave final duration unresolved until the audio stage measures real speech and applies pacing handles.
+6. Write transform-relative blocking for all subjects and environment layers in every shot; mirror horizontal intent with narrative direction.
+7. Write HyperFrames brief, performance script, nine-shot storyboard, design truth, asset inventory, prompt queue inputs, and run state.
+8. Leave final duration unresolved until the audio stage measures real speech and applies pacing handles.
 
 ```bash
 python3 skills/plan-task-card-video/scripts/compile_plan.py \

@@ -1,4 +1,4 @@
 interface:
   display_name: "Generate Layered Pixel Assets"
   short_description: "Create and register layered pixel-art scene assets"
-  default_prompt: "Use -layered-pixel-assets to generate the approved layered assets for this production."
+  default_prompt: "Use $generate-layered-pixel-assets to generate the approved layered assets for this production."

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "compositionId": "02-middle",
   "durationSeconds": 13.0,
   "layerOrder": [
@@ -77,6 +77,90 @@
         "y": 0,
         "scale": 1.0,
         "push": 0.018
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": -135,
+            "y": 22,
+            "scale": 0.86,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": -65,
+            "y": 18,
+            "scale": 0.86,
+            "opacity": 0.9
+          },
+          "tertiary": {
+            "x": 72,
+            "y": 8,
+            "scale": 0.82,
+            "opacity": 0.84
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": 22,
+            "y": 0,
+            "scale": 1.01
+          },
+          "architecture": {
+            "x": 34,
+            "y": 8,
+            "scale": 0.98
+          },
+          "foreground": {
+            "x": -28,
+            "y": 8,
+            "scale": 1.03
+          }
+        },
+        "travel": {
+          "role": "ensemble",
+          "x": -20,
+          "y": 4
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 528.3,
+          "y": 287.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 61.5,
+          "y": 379.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1586.7,
+          "y": 458.475,
+          "width": 270.6,
+          "height": 397.7
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 508.3,
+          "y": 291.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 41.5,
+          "y": 383.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1566.7,
+          "y": 462.475,
+          "width": 270.6,
+          "height": 397.7
+        }
       }
     },
     {
@@ -91,20 +175,188 @@
         "y": -34,
         "scale": 1.16,
         "push": 0.022
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": 80,
+            "y": -24,
+            "scale": 1.1,
+            "opacity": 1.0
+          },
+          "secondary": {
+            "x": 165,
+            "y": -4,
+            "scale": 0.86,
+            "opacity": 0.58
+          },
+          "tertiary": {
+            "x": -155,
+            "y": 2,
+            "scale": 0.86,
+            "opacity": 0.58
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": -24,
+            "y": -10,
+            "scale": 1.04
+          },
+          "architecture": {
+            "x": -55,
+            "y": -4,
+            "scale": 1.055
+          },
+          "foreground": {
+            "x": 38,
+            "y": 0,
+            "scale": 1.045
+          }
+        },
+        "travel": {
+          "role": "primary",
+          "x": 42,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 660.5,
+          "y": 112.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 291.5,
+          "y": 357.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1353.1,
+          "y": 437.925,
+          "width": 283.8,
+          "height": 417.1
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 702.5,
+          "y": 104.375,
+          "width": 759.0,
+          "height": 786.5
+        },
+        "secondary": {
+          "x": 291.5,
+          "y": 357.95,
+          "width": 387.0,
+          "height": 507.4
+        },
+        "tertiary": {
+          "x": 1353.1,
+          "y": 437.925,
+          "width": 283.8,
+          "height": 417.1
+        }
       }
     },
     {
       "id": "02-middle-shot-3",
       "index": 3,
       "framing": "close",
-      "focusRole": "primary",
+      "focusRole": "secondary",
       "from": 8.562,
       "to": 13.0,
       "camera": {
-        "x": 0,
-        "y": -34,
+        "x": 210,
+        "y": -12,
         "scale": 1.38,
         "push": 0.026
+      },
+      "blocking": {
+        "subjects": {
+          "primary": {
+            "x": -72,
+            "y": -30,
+            "scale": 0.86,
+            "opacity": 0.58
+          },
+          "secondary": {
+            "x": 145,
+            "y": -24,
+            "scale": 1.04,
+            "opacity": 1.0
+          },
+          "tertiary": {
+            "x": 82,
+            "y": 24,
+            "scale": 0.74,
+            "opacity": 0.28
+          }
+        },
+        "environment": {
+          "rear": {
+            "x": 18,
+            "y": -14,
+            "scale": 1.045
+          },
+          "architecture": {
+            "x": 72,
+            "y": 4,
+            "scale": 1.075
+          },
+          "foreground": {
+            "x": -46,
+            "y": 14,
+            "scale": 1.065
+          }
+        },
+        "travel": {
+          "role": "secondary",
+          "x": 48,
+          "y": -8
+        }
+      },
+      "blockingBounds": {
+        "primary": {
+          "x": 591.3,
+          "y": 235.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 231.0,
+          "y": 258.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1609.9,
+          "y": 503.575,
+          "width": 244.2,
+          "height": 358.9
+        }
+      },
+      "blockingEndBounds": {
+        "primary": {
+          "x": 591.3,
+          "y": 235.075,
+          "width": 593.4,
+          "height": 614.9
+        },
+        "secondary": {
+          "x": 279.0,
+          "y": 250.3,
+          "width": 468.0,
+          "height": 613.6
+        },
+        "tertiary": {
+          "x": 1609.9,
+          "y": 503.575,
+          "width": 244.2,
+          "height": 358.9
+        }
       }
     }
   ],
@@ -179,6 +431,7 @@
     "plannedHoldWindow": true,
     "noUnboundedAnimation": true,
     "threeEditorialShots": true,
-    "framingVariety": true
+    "framingVariety": true,
+    "shotBlockingVariety": true
   }
 }

@@ -37,7 +37,7 @@ audience: primary-and-middle-school-students
 - from: 9.210s
 - duration: 3.290s
 - framing: close
-- focus: primary
+- focus: tertiary
 
 ## Frame 2 - 云雾挑战
 
@@ -64,7 +64,7 @@ audience: primary-and-middle-school-students
 - from: 5.214s
 - duration: 3.468s
 - framing: medium
-- focus: primary
+- focus: secondary
 
 ### Shot 2.3 - decision
 

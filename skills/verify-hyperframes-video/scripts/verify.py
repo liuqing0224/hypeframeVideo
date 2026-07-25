@@ -210,6 +210,14 @@ def structural_checks(production: Path) -> list[dict]:
                     "pass": "<audio" not in source and "<video" not in source,
                     "detail": "sub-compositions must not own driven media",
                 },
+                {
+                    "id": f"{scene['id']}-blocking-wrappers",
+                    "pass": all(
+                        f'class="blocking blocking-{role}"' in source
+                        for role in ("primary", "secondary", "tertiary")
+                    ),
+                    "detail": "per-shot subject blocking wrappers",
+                },
             ]
         )
     return findings
@@ -261,6 +269,50 @@ def motion_checks(production: Path) -> list[dict]:
             shot["to"] - shot["from"] >= 0.8
             for shot in shots
         )
+        blocking_bounds = [
+            bounds
+            for shot in shots
+            for key in ("blockingBounds", "blockingEndBounds")
+            for bounds in shot.get(key, {}).values()
+        ]
+        blocking_in_frame = bool(blocking_bounds) and all(
+            bounds["x"] >= 0
+            and bounds["y"] >= 0
+            and bounds["x"] + bounds["width"] <= 1920
+            and bounds["y"] + bounds["height"] <= 1080
+            for bounds in blocking_bounds
+        )
+        subject_blocking_variety = all(
+            len(
+                {
+                    (
+                        shot["blocking"]["subjects"][role]["x"],
+                        shot["blocking"]["subjects"][role]["y"],
+                        shot["blocking"]["subjects"][role]["scale"],
+                        shot["blocking"]["subjects"][role]["opacity"],
+                    )
+                    for shot in shots
+                    if shot.get("blocking")
+                }
+            )
+            == 3
+            for role in ("primary", "secondary", "tertiary")
+        )
+        environment_blocking_variety = all(
+            len(
+                {
+                    (
+                        shot["blocking"]["environment"][layer]["x"],
+                        shot["blocking"]["environment"][layer]["y"],
+                        shot["blocking"]["environment"][layer]["scale"],
+                    )
+                    for shot in shots
+                    if shot.get("blocking")
+                }
+            )
+            == 3
+            for layer in ("rear", "architecture", "foreground")
+        )
         findings.extend(
             [
                 {
@@ -305,6 +357,27 @@ def motion_checks(production: Path) -> list[dict]:
                     "id": f"{payload['compositionId']}-motivated-cuts",
                     "pass": len(payload.get("cuts", [])) == 2,
                     "detail": payload.get("cuts", []),
+                },
+                {
+                    "id": f"{payload['compositionId']}-shot-blocking-variety",
+                    "pass": (
+                        payload.get("schemaVersion", 0) >= 3
+                        and subject_blocking_variety
+                        and environment_blocking_variety
+                        and payload["assertions"].get("shotBlockingVariety") is True
+                    ),
+                    "detail": [
+                        {
+                            "id": shot.get("id"),
+                            "blocking": shot.get("blocking"),
+                        }
+                        for shot in shots
+                    ],
+                },
+                {
+                    "id": f"{payload['compositionId']}-shot-blocking-in-frame",
+                    "pass": blocking_in_frame,
+                    "detail": blocking_bounds,
                 },
             ]
         )

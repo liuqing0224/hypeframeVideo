@@ -1,4 +1,4 @@
 interface:
   display_name: "Compose HyperFrames Video"
-  short_description: "Build deterministic layered HyperFrames compositions"
-  default_prompt: "Use -hyperframes-video to assemble this production as a modular seek-safe HyperFrames video."
+  short_description: "Compile per-shot blocking into HyperFrames videos"
+  default_prompt: "Use $compose-hyperframes-video to compile this timed production into a modular HyperFrames video with per-shot blocking."

@@ -20,6 +20,7 @@ length: narration-driven
 - HyperFrames modular composition with three scenes and nine internal shots.
 - Background, rear environment, architecture, characters, and foreground stay independent.
 - Use wide, medium, and close framings with motivated cuts and character micro-performance.
+- Re-block characters, architecture, rear, and foreground for every editorial shot.
 - Keep narration concise; let short character dialogue carry key decisions and reactions.
 - Real narration duration determines the static composition duration.
 - One cue-based Chinese caption track, local music, ambience, and shot sound marks.

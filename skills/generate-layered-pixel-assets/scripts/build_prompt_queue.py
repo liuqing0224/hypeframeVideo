@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import argparse
+import hashlib
 import json
 from pathlib import Path
+
+from PIL import Image
 
 
 def shared_style(plan: dict) -> str:
@@ -101,13 +104,59 @@ def queue_items(production: Path, plan: dict) -> list[dict]:
     return items
 
 
+def restore_generated_assets(production: Path, items: list[dict]) -> list[dict]:
+    queue_path = production / "tmp/imagegen/prompt-queue.jsonl"
+    if not queue_path.is_file():
+        return items
+    previous = {
+        item["assetId"]: item
+        for line in queue_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+        for item in [json.loads(line)]
+    }
+    manifest_path = production / "asset-manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest_by_id = {asset["id"]: asset for asset in manifest["assets"]}
+    identity_keys = ("targetPath", "referencePaths", "prompt", "version")
+    for item in items:
+        old = previous.get(item["assetId"])
+        if (
+            old is None
+            or old.get("status") != "generated"
+            or any(old.get(key) != item.get(key) for key in identity_keys)
+            or not old.get("sha256")
+        ):
+            continue
+        target = production / item["targetPath"]
+        if not target.is_file():
+            continue
+        digest = hashlib.sha256(target.read_bytes()).hexdigest()
+        if digest != old["sha256"]:
+            continue
+        with Image.open(target) as image:
+            metadata = {
+                "width": image.width,
+                "height": image.height,
+                "mode": image.mode,
+                "sha256": digest,
+                "status": "generated",
+            }
+        item.update(metadata)
+        manifest_by_id[item["assetId"]].update(metadata)
+    manifest_path.write_text(
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return items
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--production", required=True)
     args = parser.parse_args()
     production = Path(args.production).resolve()
     plan = json.loads((production / "story-plan.json").read_text(encoding="utf-8"))
-    items = queue_items(production, plan)
+    items = restore_generated_assets(production, queue_items(production, plan))
     queue_path = production / "tmp/imagegen/prompt-queue.jsonl"
     queue_path.parent.mkdir(parents=True, exist_ok=True)
     queue_path.write_text(
