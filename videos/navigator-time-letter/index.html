@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>大航海家的时光信</title>
+    <script src="vendor/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      @font-face {
+        font-family: "PixelChinese";
+        src: local("PingFang SC");
+        font-style: normal;
+        font-weight: 400 900;
+      }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #e8d6ae;
+      }
+      body {
+        font-family: "PixelChinese", sans-serif;
+      }
+      #main {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #e8d6ae;
+      }
+      .scene-slot {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+      }
+      .caption {
+        position: absolute;
+        left: 170px;
+        bottom: 58px;
+        width: 1580px;
+        min-height: 108px;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 54px;
+        color: #211b18;
+        background: #e8d6ae;
+        border: 5px solid #a9362b;
+        box-shadow: 12px 12px 0 #3c2a20;
+      }
+      .caption p {
+        margin: 0;
+        max-width: 1460px;
+        font-size: 42px;
+        line-height: 1.35;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0;
+      }
+      .transition {
+        position: absolute;
+        inset: 0;
+        z-index: 800;
+        overflow: hidden;
+      }
+      .transition-fx {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        opacity: 0;
+        background: #a9362b;
+      }
+      .transition span {
+        position: absolute;
+        display: block;
+        background: #2c6c80;
+      }
+      .transition-whip-pan span {
+        top: 0;
+        width: 34%;
+        height: 100%;
+      }
+      .transition-whip-pan span:nth-child(1) { left: 0; background: #a9362b; }
+      .transition-whip-pan span:nth-child(2) { left: 33%; background: #211b18; }
+      .transition-whip-pan span:nth-child(3) { left: 66%; background: #2c6c80; }
+      .transition-horizontal-blinds { background: transparent; }
+      .transition-horizontal-blinds span { left: 0; width: 100%; height: 92px; }
+      .transition-chromatic-split { background: #a9362b; mix-blend-mode: screen; }
+      .transition-chromatic-split span { inset: 0; width: 100%; height: 100%; }
+      .transition-chromatic-split span:nth-child(1) { left: -24px; background: #ff334f; }
+      .transition-chromatic-split span:nth-child(2) { left: 24px; background: #22d9ff; }
+      .transition-chromatic-split span:nth-child(3) { background: #211b18; opacity: .42; }
+      .transition-grid-dissolve { background: transparent; }
+      .transition-grid-dissolve span { width: 242px; height: 218px; }
+      .transition-blur-through, .transition-light-leak {
+        background: #2c6c80;
+        box-shadow: inset 0 0 180px #211b18;
+      }
+      .transition-blur-through span, .transition-light-leak span {
+        width: 42%;
+        height: 100%;
+        top: 0;
+        opacity: .36;
+      }
+      .transition-blur-through span:nth-child(2), .transition-light-leak span:nth-child(2) { left: 30%; }
+      .transition-blur-through span:nth-child(3), .transition-light-leak span:nth-child(3) { right: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="main" data-composition-id="main" data-start="0"
+         data-duration="29" data-width="1920" data-height="1080" data-fps="30">
+
+      <div id="slot-01-start" class="clip scene-slot"
+           data-composition-id="01-start"
+           data-composition-src="compositions/01-start.html"
+           data-start="0"
+           data-duration="10"
+           data-track-index="10"></div>
+      <div id="slot-02-middle" class="clip scene-slot"
+           data-composition-id="02-middle"
+           data-composition-src="compositions/02-middle.html"
+           data-start="10"
+           data-duration="10"
+           data-track-index="10"></div>
+      <div id="slot-03-end" class="clip scene-slot"
+           data-composition-id="03-end"
+           data-composition-src="compositions/03-end.html"
+           data-start="20"
+           data-duration="9"
+           data-track-index="10"></div>
+
+      <div id="transition-1-whip-pan" class="clip transition"
+           data-start="9.6" data-duration="0.8" data-track-index="800">
+        <div id="transition-1-whip-pan-fx" class="transition-fx transition-whip-pan">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div id="transition-2-horizontal-blinds" class="clip transition"
+           data-start="19.64" data-duration="0.72" data-track-index="800">
+        <div id="transition-2-horizontal-blinds-fx" class="transition-fx transition-horizontal-blinds">
+          <span style="top:0px"></span><span style="top:90px"></span><span style="top:180px"></span><span style="top:270px"></span><span style="top:360px"></span><span style="top:450px"></span><span style="top:540px"></span><span style="top:630px"></span><span style="top:720px"></span><span style="top:810px"></span><span style="top:900px"></span><span style="top:990px"></span>
+        </div>
+      </div>
+
+      <div id="caption-1" class="clip caption"
+           data-start="0.45" data-duration="9.2" data-track-index="900">
+        <p>子墨在博物馆触碰航海图，穿过发光墨迹来到六百年前的明代港口，并见到郑和。</p>
+      </div>
+      <div id="caption-2" class="clip caption"
+           data-start="10.45" data-duration="9.2" data-track-index="900">
+        <p>海风吹散航线标记，子墨用现代地理知识帮助船队重新确认星位、季风和航向。</p>
+      </div>
+      <div id="caption-3" class="clip caption"
+           data-start="20.45" data-duration="8.2" data-track-index="900">
+        <p>郑和把写给未来少年的信交给子墨，鼓励他永远保持探索世界的勇气。</p>
+      </div>
+
+      <audio id="narration" class="clip" src="assets/audio/narration.wav"
+             data-start="0" data-duration="29" data-track-index="950" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/audio/music.wav"
+             data-start="0" data-duration="29" data-track-index="951" data-volume="0.2"></audio>
+      <audio id="sfx-1" class="clip" src="assets/audio/sfx-impact.wav"
+             data-start="0.08" data-duration="1" data-track-index="952" data-volume="0.72"></audio>
+      <audio id="sfx-2" class="clip" src="assets/audio/sfx-whoosh.wav"
+             data-start="10.08" data-duration="1" data-track-index="953" data-volume="0.72"></audio>
+      <audio id="sfx-3" class="clip" src="assets/audio/sfx-chime.wav"
+             data-start="20.08" data-duration="1" data-track-index="954" data-volume="0.72"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#transition-1-whip-pan-fx", {opacity:0,x:-1920}, {opacity:1,x:0,duration:0.4,ease:"power4.in"}, 9.6);
+        tl.to("#transition-1-whip-pan-fx", {opacity:0,x:1920,duration:0.4,ease:"power4.out"}, 10);
+        tl.set("#transition-1-whip-pan-fx", {opacity:0}, 10.4);
+        tl.fromTo("#transition-2-horizontal-blinds-fx", {opacity:0,scale:0.96}, {opacity:0.9,scale:1.04,duration:0.36,ease:"sine.in"}, 19.64);
+        tl.to("#transition-2-horizontal-blinds-fx", {opacity:0,scale:1.08,duration:0.36,ease:"sine.out"}, 20);
+        tl.set("#transition-2-horizontal-blinds-fx", {opacity:0}, 20.36);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

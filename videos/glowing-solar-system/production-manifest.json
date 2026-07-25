@@ -1,0 +1,483 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "id": "glowing-solar-system",
+    "title": "会发光的太阳系",
+    "storyType": "科学大发现",
+    "location": "科技博物馆",
+    "author": {
+      "name": "小曦",
+      "class": "六年级一班"
+    },
+    "directorIntent": "像一场会发光的博物馆宇宙探险。",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 29.5,
+    "durationInFrames": 885
+  },
+  "style": {
+    "key": "science",
+    "visual": [
+      "卡通动画",
+      "科技未来",
+      "手工像素拼贴"
+    ],
+    "paletteWords": [
+      "星空深蓝",
+      "电光青",
+      "太阳金",
+      "明亮彩色"
+    ],
+    "musicMood": [
+      "神秘",
+      "激动",
+      "温暖"
+    ],
+    "tokens": {
+      "canvas": "#071b2e",
+      "ink": "#f5f7ff",
+      "accent": "#28d7d0",
+      "accent2": "#ffc857",
+      "shadow": "#020b16"
+    },
+    "fontDisplay": "Songti SC",
+    "fontBody": "PingFang SC"
+  },
+  "audio": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "narrationPath": "assets/audio/narration.wav",
+    "musicPath": "assets/audio/music.wav",
+    "impactPath": "assets/audio/sfx-impact.wav",
+    "whooshPath": "assets/audio/sfx-whoosh.wav",
+    "chimePath": "assets/audio/sfx-chime.wav"
+  },
+  "scenes": [
+    {
+      "id": "01-start",
+      "index": 1,
+      "beat": "start",
+      "title": "熄灭的展厅",
+      "narration": "小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。",
+      "transitionIn": "cut",
+      "motionRules": [
+        "multi-phase-camera",
+        "waterfall-entry",
+        "sine-wave-loop"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "熄灭的展厅",
+        "primary": "穿橙色连帽外套的中国女孩小曦，抬头看着熄灭的太阳系模型",
+        "secondary": "穿青色夹克的中国男孩阿朗，手持发光观察板",
+        "tertiary": "圆头白色小型AI机器人小光，胸口蓝色灯光微弱闪烁",
+        "rear": "黑暗科技博物馆与失去亮度的星空穹顶",
+        "architecture": "中央悬浮太阳系轨道装置和环形展台",
+        "foreground": "贴近镜头的暗色控制台边缘与少量熄灭指示灯",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/01-start-backdrop-v1.png",
+        "environmentSource": "assets/source/01-start-environment-v1.png",
+        "charactersSource": "assets/source/01-start-characters-v1.png",
+        "backdrop": "assets/processed/01-start/backdrop.png",
+        "rear": "assets/processed/01-start/rear.png",
+        "architecture": "assets/processed/01-start/architecture.png",
+        "foreground": "assets/processed/01-start/foreground.png",
+        "primary": "assets/processed/01-start/primary.png",
+        "secondary": "assets/processed/01-start/secondary.png",
+        "tertiary": "assets/processed/01-start/tertiary.png"
+      },
+      "startSeconds": 0.0,
+      "durationSeconds": 10.0,
+      "startFrame": 0,
+      "durationInFrames": 300,
+      "narrationPath": "assets/audio/segments/01-start.wav",
+      "captionFrom": 0.45,
+      "captionTo": 9.65,
+      "words": [
+        {
+          "text": "小曦",
+          "start": 0.552083,
+          "duration": 0.507833
+        },
+        {
+          "text": "和",
+          "start": 1.085958,
+          "duration": 0.130208
+        },
+        {
+          "text": "阿朗",
+          "start": 1.229166,
+          "duration": 0.494791
+        },
+        {
+          "text": "在",
+          "start": 1.828125,
+          "duration": 0.234375
+        },
+        {
+          "text": "科技",
+          "start": 2.075541,
+          "duration": 0.364583
+        },
+        {
+          "text": "博物馆",
+          "start": 2.453125,
+          "duration": 0.625
+        },
+        {
+          "text": "遇见",
+          "start": 3.169291,
+          "duration": 0.390625
+        },
+        {
+          "text": "机器人",
+          "start": 3.585958,
+          "duration": 0.429708
+        },
+        {
+          "text": "小光",
+          "start": 4.028666,
+          "duration": 0.507833
+        },
+        {
+          "text": "发现",
+          "start": 4.888041,
+          "duration": 0.429708
+        },
+        {
+          "text": "中央",
+          "start": 5.34375,
+          "duration": 0.325541
+        },
+        {
+          "text": "太阳系",
+          "start": 5.682291,
+          "duration": 0.520833
+        },
+        {
+          "text": "模型",
+          "start": 6.216166,
+          "duration": 0.533875
+        },
+        {
+          "text": "正在",
+          "start": 6.854166,
+          "duration": 0.364583
+        },
+        {
+          "text": "一",
+          "start": 7.244791,
+          "duration": 0.091166
+        },
+        {
+          "text": "颗",
+          "start": 7.335958,
+          "duration": 0.182291
+        },
+        {
+          "text": "颗",
+          "start": 7.51825,
+          "duration": 0.169291
+        },
+        {
+          "text": "熄灭",
+          "start": 7.700541,
+          "duration": 0.533875
+        }
+      ]
+    },
+    {
+      "id": "02-middle",
+      "index": 2,
+      "beat": "middle",
+      "title": "追逐能量",
+      "narration": "三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。",
+      "transitionIn": "chromatic-split",
+      "motionRules": [
+        "coordinate-target-zoom",
+        "motion-blur-streak",
+        "reactive-displacement"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "追逐能量",
+        "primary": "小曦向前奔跑并伸手抓住一块金色能量碎片",
+        "secondary": "阿朗半跪在控制台前重新连接发光轨道",
+        "tertiary": "机器人小光展开机械臂扫描蓝色能量碎片",
+        "rear": "深蓝星空与多层发光行星轨道",
+        "architecture": "故障中的控制环、能量核心和透明全息支架",
+        "foreground": "高速掠过的像素能量碎片与电光轨迹",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/02-middle-backdrop-v1.png",
+        "environmentSource": "assets/source/02-middle-environment-v1.png",
+        "charactersSource": "assets/source/02-middle-characters-v1.png",
+        "backdrop": "assets/processed/02-middle/backdrop.png",
+        "rear": "assets/processed/02-middle/rear.png",
+        "architecture": "assets/processed/02-middle/architecture.png",
+        "foreground": "assets/processed/02-middle/foreground.png",
+        "primary": "assets/processed/02-middle/primary.png",
+        "secondary": "assets/processed/02-middle/secondary.png",
+        "tertiary": "assets/processed/02-middle/tertiary.png"
+      },
+      "startSeconds": 10.0,
+      "durationSeconds": 9.5,
+      "startFrame": 300,
+      "durationInFrames": 285,
+      "narrationPath": "assets/audio/segments/02-middle.wav",
+      "captionFrom": 10.45,
+      "captionTo": 19.15,
+      "words": [
+        {
+          "text": "三",
+          "start": 10.552083,
+          "duration": 0.3125
+        },
+        {
+          "text": "人",
+          "start": 10.864583,
+          "duration": 0.221375
+        },
+        {
+          "text": "沿着",
+          "start": 11.112,
+          "duration": 0.286458
+        },
+        {
+          "text": "行星",
+          "start": 11.4245,
+          "duration": 0.390625
+        },
+        {
+          "text": "轨道",
+          "start": 11.828125,
+          "duration": 0.507833
+        },
+        {
+          "text": "寻找",
+          "start": 12.440125,
+          "duration": 0.429708
+        },
+        {
+          "text": "能量",
+          "start": 12.895833,
+          "duration": 0.3125
+        },
+        {
+          "text": "碎片",
+          "start": 13.221375,
+          "duration": 0.533875
+        },
+        {
+          "text": "并",
+          "start": 14.119791,
+          "duration": 0.182291
+        },
+        {
+          "text": "按",
+          "start": 14.302083,
+          "duration": 0.208333
+        },
+        {
+          "text": "正确",
+          "start": 14.536458,
+          "duration": 0.325541
+        },
+        {
+          "text": "顺序",
+          "start": 14.875,
+          "duration": 0.442708
+        },
+        {
+          "text": "修复",
+          "start": 15.34375,
+          "duration": 0.364583
+        },
+        {
+          "text": "轨道",
+          "start": 15.721375,
+          "duration": 0.481791
+        },
+        {
+          "text": "重新",
+          "start": 16.411458,
+          "duration": 0.45575
+        },
+        {
+          "text": "连接",
+          "start": 16.880208,
+          "duration": 0.338541
+        },
+        {
+          "text": "能量",
+          "start": 17.231791,
+          "duration": 0.46875
+        }
+      ]
+    },
+    {
+      "id": "03-end",
+      "index": 3,
+      "beat": "end",
+      "title": "点亮未知",
+      "narration": "太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。",
+      "transitionIn": "grid-dissolve",
+      "motionRules": [
+        "center-outward-expansion",
+        "ambient-glow-bloom",
+        "particle-burst"
+      ],
+      "direction": "left",
+      "sourceDirection": "left",
+      "shot": {
+        "title": "点亮未知",
+        "primary": "小曦站在中央高举最后一块能量碎片，脸上充满惊喜",
+        "secondary": "阿朗在一旁完成最后一次轨道连接并抬头欢呼",
+        "tertiary": "机器人小光胸口亮起温暖蓝光并举起双臂",
+        "rear": "太阳和八颗行星全部发光的巨大星空",
+        "architecture": "恢复运转的金色太阳核心和完整环形轨道",
+        "foreground": "环绕主角飞散的彩色星尘与小型光点",
+        "direction": "left"
+      },
+      "assets": {
+        "backdropSource": "assets/source/03-end-backdrop-v1.png",
+        "environmentSource": "assets/source/03-end-environment-v1.png",
+        "charactersSource": "assets/source/03-end-characters-v1.png",
+        "backdrop": "assets/processed/03-end/backdrop.png",
+        "rear": "assets/processed/03-end/rear.png",
+        "architecture": "assets/processed/03-end/architecture.png",
+        "foreground": "assets/processed/03-end/foreground.png",
+        "primary": "assets/processed/03-end/primary.png",
+        "secondary": "assets/processed/03-end/secondary.png",
+        "tertiary": "assets/processed/03-end/tertiary.png"
+      },
+      "startSeconds": 19.5,
+      "durationSeconds": 10.0,
+      "startFrame": 585,
+      "durationInFrames": 300,
+      "narrationPath": "assets/audio/segments/03-end.wav",
+      "captionFrom": 19.95,
+      "captionTo": 29.15,
+      "words": [
+        {
+          "text": "太阳",
+          "start": 20.052083,
+          "duration": 0.481791
+        },
+        {
+          "text": "和",
+          "start": 20.559916,
+          "duration": 0.15625
+        },
+        {
+          "text": "八",
+          "start": 20.729166,
+          "duration": 0.169291
+        },
+        {
+          "text": "颗",
+          "start": 20.898458,
+          "duration": 0.182291
+        },
+        {
+          "text": "行星",
+          "start": 21.09375,
+          "duration": 0.46875
+        },
+        {
+          "text": "全部",
+          "start": 21.588541,
+          "duration": 0.351583
+        },
+        {
+          "text": "点亮",
+          "start": 21.953125,
+          "duration": 0.507833
+        },
+        {
+          "text": "展厅",
+          "start": 22.773458,
+          "duration": 0.481791
+        },
+        {
+          "text": "化为",
+          "start": 23.28125,
+          "duration": 0.325541
+        },
+        {
+          "text": "星空",
+          "start": 23.619791,
+          "duration": 0.520833
+        },
+        {
+          "text": "小",
+          "start": 24.492208,
+          "duration": 0.208333
+        },
+        {
+          "text": "光",
+          "start": 24.700541,
+          "duration": 0.182291
+        },
+        {
+          "text": "告诉他们",
+          "start": 24.895833,
+          "duration": 0.742208
+        },
+        {
+          "text": "好奇心",
+          "start": 25.729166,
+          "duration": 0.729166
+        },
+        {
+          "text": "就",
+          "start": 26.484375,
+          "duration": 0.169291
+        },
+        {
+          "text": "是",
+          "start": 26.653666,
+          "duration": 0.117208
+        },
+        {
+          "text": "点亮",
+          "start": 26.783875,
+          "duration": 0.403666
+        },
+        {
+          "text": "未知",
+          "start": 27.213541,
+          "duration": 0.351583
+        },
+        {
+          "text": "的",
+          "start": 27.565125,
+          "duration": 0.117166
+        },
+        {
+          "text": "光",
+          "start": 27.682291,
+          "duration": 0.3125
+        }
+      ],
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "left"
+      }
+    }
+  ],
+  "deliverables": {
+    "preview": "renders/glowing-solar-system-preview.mp4",
+    "final": "renders/glowing-solar-system.mp4",
+    "qaReport": "qa/verification.json"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.codex/task-card-video-batch.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "batch_id", "defaults", "cards"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "batch_id": {"$ref": "#/$defs/id"},
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "fps", "audio"],
+      "properties": {
+        "width": {"type": "integer", "const": 1920},
+        "height": {"type": "integer", "const": 1080},
+        "fps": {"type": "integer", "const": 30},
+        "audio": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["provider", "voice", "rate", "pitch"],
+          "properties": {
+            "provider": {"enum": ["edge", "f5", "silent"]},
+            "voice": {"type": "string", "minLength": 1},
+            "rate": {"type": "string", "minLength": 1},
+            "pitch": {"type": "string", "minLength": 1},
+            "reference_audio": {"type": "string"},
+            "f5_command": {"type": "array", "items": {"type": "string"}, "minItems": 1}
+          }
+        }
+      }
+    },
+    "cards": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/card"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "shot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "primary", "secondary", "tertiary", "rear", "architecture", "foreground", "direction"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "primary": {"type": "string", "minLength": 1},
+        "secondary": {"type": "string", "minLength": 1},
+        "tertiary": {"type": "string", "minLength": 1},
+        "rear": {"type": "string", "minLength": 1},
+        "architecture": {"type": "string", "minLength": 1},
+        "foreground": {"type": "string", "minLength": 1},
+        "direction": {"enum": ["left", "right"]}
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "title", "author", "story_type", "protagonists", "location",
+        "beats", "visual_style", "palette", "music_mood",
+        "director_intent"
+      ],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "title": {"type": "string", "minLength": 1},
+        "author": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "class"],
+          "properties": {
+            "name": {"type": "string", "minLength": 1},
+            "class": {"type": "string", "minLength": 1}
+          }
+        },
+        "story_type": {"type": "string", "minLength": 1},
+        "protagonists": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "location": {"type": "string", "minLength": 1},
+        "beats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "middle", "end"],
+          "properties": {
+            "start": {"type": "string", "minLength": 1},
+            "middle": {"type": "string", "minLength": 1},
+            "end": {"type": "string", "minLength": 1}
+          }
+        },
+        "visual_style": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "palette": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "music_mood": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "director_intent": {"type": "string", "minLength": 1},
+        "shot_hints": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/shot"}}
+      }
+    }
+  }
+}

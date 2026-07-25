@@ -1,0 +1,27 @@
+{
+  "stage": "studio-readiness-manual-review",
+  "pass": true,
+  "reviewedAt": "2026-07-24T17:51:43Z",
+  "contactSheets": [
+    "qa/contact-sheets/layers.png",
+    "qa/scene-midpoints/contact-sheet.jpg"
+  ],
+  "checks": {
+    "primaryDominantAndVisible": true,
+    "headsHandsFeetAndPropsVisible": true,
+    "foregroundOnlyOccludesLowerEdge": true,
+    "captionSafeAreaClear": true,
+    "layerDirectionsApplied": true,
+    "noVisibleGreenFringe": true
+  },
+  "animationMap": {
+    "path": "qa/animation-map/animation-map.json",
+    "deadZones": "2 planned hold windows",
+    "offscreenTweens": "2 expected whip-pan inner-wrapper tweens",
+    "abnormalFreeze": false
+  },
+  "notes": [
+    "Scene 03 character sheet v2 separates the letter handoff across a pure-green gutter.",
+    "Scene 01 Zheng He and sailor plus scene 03 Zheng He use independent direction mirroring."
+  ]
+}

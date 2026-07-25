@@ -1,0 +1,297 @@
+{
+  "provider": "edge",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "voices": [
+    {
+      "sceneId": "01-start",
+      "text": "守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。",
+      "rawDuration": 7.872,
+      "durationSeconds": 9.5,
+      "path": "assets/audio/segments/01-start.wav",
+      "words": [
+        {
+          "text": "守林人",
+          "start": 0.552083,
+          "duration": 0.585958
+        },
+        {
+          "text": "叶芽",
+          "start": 1.164083,
+          "duration": 0.3125
+        },
+        {
+          "text": "发现",
+          "start": 1.489583,
+          "duration": 0.572916
+        },
+        {
+          "text": "夜晚",
+          "start": 2.153666,
+          "duration": 0.351583
+        },
+        {
+          "text": "森林",
+          "start": 2.51825,
+          "duration": 0.429708
+        },
+        {
+          "text": "失去",
+          "start": 2.973958,
+          "duration": 0.338541
+        },
+        {
+          "text": "星光",
+          "start": 3.325541,
+          "duration": 0.494791
+        },
+        {
+          "text": "小鹿",
+          "start": 4.197916,
+          "duration": 0.442708
+        },
+        {
+          "text": "从",
+          "start": 4.653666,
+          "duration": 0.195333
+        },
+        {
+          "text": "黑暗",
+          "start": 4.862,
+          "duration": 0.403625
+        },
+        {
+          "text": "中",
+          "start": 5.265625,
+          "duration": 0.2995
+        },
+        {
+          "text": "带来",
+          "start": 5.669291,
+          "duration": 0.286458
+        },
+        {
+          "text": "一",
+          "start": 5.96875,
+          "duration": 0.117208
+        },
+        {
+          "text": "颗",
+          "start": 6.085958,
+          "duration": 0.221375
+        },
+        {
+          "text": "微弱",
+          "start": 6.333333,
+          "duration": 0.364583
+        },
+        {
+          "text": "发亮",
+          "start": 6.710958,
+          "duration": 0.390625
+        },
+        {
+          "text": "的",
+          "start": 7.101583,
+          "duration": 0.078125
+        },
+        {
+          "text": "星种",
+          "start": 7.192708,
+          "duration": 0.507833
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "text": "叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。",
+      "rawDuration": 6.552,
+      "durationSeconds": 8.0,
+      "path": "assets/audio/segments/02-middle.wav",
+      "words": [
+        {
+          "text": "叶芽",
+          "start": 10.052083,
+          "duration": 0.377625
+        },
+        {
+          "text": "和",
+          "start": 10.45575,
+          "duration": 0.130208
+        },
+        {
+          "text": "小鹿",
+          "start": 10.598958,
+          "duration": 0.559916
+        },
+        {
+          "text": "顶",
+          "start": 11.263041,
+          "duration": 0.195291
+        },
+        {
+          "text": "着",
+          "start": 11.458333,
+          "duration": 0.117208
+        },
+        {
+          "text": "风雨",
+          "start": 11.588541,
+          "duration": 0.442708
+        },
+        {
+          "text": "穿过",
+          "start": 12.057291,
+          "duration": 0.3125
+        },
+        {
+          "text": "森林",
+          "start": 12.382833,
+          "duration": 0.546875
+        },
+        {
+          "text": "把",
+          "start": 13.203125,
+          "duration": 0.15625
+        },
+        {
+          "text": "星种",
+          "start": 13.359375,
+          "duration": 0.533875
+        },
+        {
+          "text": "护送",
+          "start": 13.919291,
+          "duration": 0.364583
+        },
+        {
+          "text": "到",
+          "start": 14.283875,
+          "duration": 0.195333
+        },
+        {
+          "text": "最高",
+          "start": 14.505208,
+          "duration": 0.416666
+        },
+        {
+          "text": "古",
+          "start": 14.934916,
+          "duration": 0.16925
+        },
+        {
+          "text": "树",
+          "start": 15.104166,
+          "duration": 0.182291
+        },
+        {
+          "text": "的",
+          "start": 15.286458,
+          "duration": 0.091166
+        },
+        {
+          "text": "树冠",
+          "start": 15.390625,
+          "duration": 0.494791
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "text": "星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。",
+      "rawDuration": 6.84,
+      "durationSeconds": 8.5,
+      "path": "assets/audio/segments/03-end.wav",
+      "words": [
+        {
+          "text": "星种",
+          "start": 18.052083,
+          "duration": 0.45575
+        },
+        {
+          "text": "开成",
+          "start": 18.520833,
+          "duration": 0.390625
+        },
+        {
+          "text": "漫天星花",
+          "start": 18.9375,
+          "duration": 0.898458
+        },
+        {
+          "text": "森林",
+          "start": 20.1745,
+          "duration": 0.416666
+        },
+        {
+          "text": "重新",
+          "start": 20.617208,
+          "duration": 0.429708
+        },
+        {
+          "text": "发亮",
+          "start": 21.059916,
+          "duration": 0.45575
+        },
+        {
+          "text": "所有",
+          "start": 21.867208,
+          "duration": 0.338541
+        },
+        {
+          "text": "小",
+          "start": 22.21875,
+          "duration": 0.208333
+        },
+        {
+          "text": "动物",
+          "start": 22.427083,
+          "duration": 0.45575
+        },
+        {
+          "text": "围",
+          "start": 22.973958,
+          "duration": 0.169291
+        },
+        {
+          "text": "着",
+          "start": 23.14325,
+          "duration": 0.130208
+        },
+        {
+          "text": "古",
+          "start": 23.286458,
+          "duration": 0.182291
+        },
+        {
+          "text": "树",
+          "start": 23.46875,
+          "duration": 0.169291
+        },
+        {
+          "text": "庆祝",
+          "start": 23.651041,
+          "duration": 0.533875
+        }
+      ]
+    }
+  ],
+  "bgm": {
+    "path": "assets/audio/music.wav",
+    "duration": 26.0
+  },
+  "sfx": [
+    {
+      "id": "impact",
+      "path": "assets/audio/sfx-impact.wav"
+    },
+    {
+      "id": "whoosh",
+      "path": "assets/audio/sfx-whoosh.wav"
+    },
+    {
+      "id": "chime",
+      "path": "assets/audio/sfx-chime.wav"
+    }
+  ],
+  "total_duration_s": 26.0
+}

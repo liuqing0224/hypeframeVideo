@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "stages": {
+    "plan": {
+      "status": "complete",
+      "evidence": [
+        "story-plan.json",
+        "BRIEF.md",
+        "SCRIPT.md",
+        "STORYBOARD.md",
+        "frame.md"
+      ]
+    },
+    "visual_generation": {
+      "status": "complete",
+      "evidence": [
+        "assets/source/01-start-backdrop-v1.png",
+        "assets/source/01-start-environment-v1.png",
+        "assets/source/01-start-characters-v1.png",
+        "assets/source/02-middle-backdrop-v1.png",
+        "assets/source/02-middle-environment-v1.png",
+        "assets/source/02-middle-characters-v1.png",
+        "assets/source/03-end-backdrop-v1.png",
+        "assets/source/03-end-environment-v1.png",
+        "assets/source/03-end-characters-v1.png"
+      ]
+    },
+    "audio": {
+      "status": "complete",
+      "evidence": [
+        "audio_meta.json",
+        "production-manifest.json",
+        "qa/audio.json",
+        "assets/audio/narration.wav",
+        "assets/audio/music.wav"
+      ]
+    },
+    "layer_processing": {
+      "status": "complete",
+      "evidence": [
+        "qa/layer-processing.json",
+        "qa/contact-sheets/layers.png"
+      ]
+    },
+    "composition": {
+      "status": "complete",
+      "evidence": [
+        "index.html",
+        "vendor/gsap.min.js",
+        "compositions/01-start.html",
+        "compositions/01-start.motion.json",
+        "compositions/02-middle.html",
+        "compositions/02-middle.motion.json",
+        "compositions/03-end.html",
+        "compositions/03-end.motion.json",
+        ".media/manifest.jsonl",
+        ".media/index.md"
+      ]
+    },
+    "check": {
+      "status": "complete",
+      "evidence": [
+        "qa/verification.json",
+        "qa/hyperframes-lint.log",
+        "qa/hyperframes-check.log",
+        "qa/hyperframes-snapshot.log",
+        "qa/animation-map.log",
+        "qa/scene-midpoints",
+        "qa/animation-map",
+        "qa/animation-map.log"
+      ]
+    },
+    "preview": {
+      "status": "complete",
+      "evidence": [
+        "approvals/ai-little-director-pixel-v1-studio-preview.json"
+      ],
+      "updatedAt": "2026-07-24T17:59:05.153617+00:00"
+    },
+    "render": {
+      "status": "complete",
+      "evidence": [
+        "renders/glowing-solar-system.mp4"
+      ],
+      "updatedAt": "2026-07-24T18:01:53.306018+00:00"
+    },
+    "qa": {
+      "status": "complete",
+      "evidence": [
+        "qa/render-verification.json",
+        "qa/render-contact-sheet.png",
+        "qa/render-transition-contact-sheet.png"
+      ]
+    }
+  }
+}

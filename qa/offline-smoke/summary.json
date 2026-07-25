@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "offline-hyperframes-smoke",
+  "pass": true,
+  "productions": [
+    {
+      "id": "guangzhou-tower-cloud-team",
+      "production": "qa/offline-smoke/guangzhou-tower-cloud-team",
+      "pass": true,
+      "verification": "qa/offline-smoke/guangzhou-tower-cloud-team/qa/verification.json",
+      "snapshots": "qa/offline-smoke/guangzhou-tower-cloud-team/qa/scene-midpoints"
+    },
+    {
+      "id": "glowing-solar-system",
+      "production": "qa/offline-smoke/glowing-solar-system",
+      "pass": true,
+      "verification": "qa/offline-smoke/glowing-solar-system/qa/verification.json",
+      "snapshots": "qa/offline-smoke/glowing-solar-system/qa/scene-midpoints"
+    }
+  ]
+}

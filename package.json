@@ -1,0 +1,19 @@
+{
+  "name": "task-card-hyperframes-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": ".venv/bin/python -m pytest -q",
+    "pipeline:validate": ".venv/bin/python skills/batch-task-card-videos/scripts/pipeline.py validate --batch batches/ai-little-director-cards.json",
+    "pipeline:prepare": ".venv/bin/python skills/batch-task-card-videos/scripts/pipeline.py prepare --batch batches/ai-little-director-cards.json --workspace .",
+    "pipeline:scan": ".venv/bin/python skills/batch-task-card-videos/scripts/pipeline.py scan --batch batches/ai-little-director-cards.json --workspace .",
+    "pipeline:summary": ".venv/bin/python skills/batch-task-card-videos/scripts/pipeline.py summary --batch batches/ai-little-director-cards.json --workspace ."
+  },
+  "dependencies": {
+    "gsap": "3.14.2"
+  },
+  "devDependencies": {
+    "hyperframes": "0.7.70"
+  }
+}

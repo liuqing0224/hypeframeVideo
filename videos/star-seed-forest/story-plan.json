@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "id": "star-seed-forest",
+    "title": "星种森林",
+    "storyType": "奇幻世界",
+    "location": "失去星光的森林",
+    "author": {
+      "name": "乐乐",
+      "class": "四年级四班"
+    },
+    "directorIntent": "像一场安静又勇敢的森林守护行动。",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "style": {
+    "key": "fantasy",
+    "visual": [
+      "梦幻童话",
+      "温馨治愈",
+      "手工像素拼贴"
+    ],
+    "paletteWords": [
+      "森林深绿",
+      "星空靛蓝",
+      "萤火金",
+      "花朵粉"
+    ],
+    "musicMood": [
+      "神秘",
+      "温暖"
+    ],
+    "tokens": {
+      "canvas": "#0c2a27",
+      "ink": "#f7f0df",
+      "accent": "#f3c969",
+      "accent2": "#ee8cb8",
+      "shadow": "#041513"
+    },
+    "fontDisplay": "Songti SC",
+    "fontBody": "PingFang SC"
+  },
+  "audio": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz"
+  },
+  "scenes": [
+    {
+      "id": "01-start",
+      "index": 1,
+      "beat": "start",
+      "title": "微弱星种",
+      "narration": "守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。",
+      "transitionIn": "cut",
+      "motionRules": [
+        "multi-phase-camera",
+        "waterfall-entry",
+        "sine-wave-loop"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "微弱星种",
+        "primary": "穿绿色斗篷、戴叶片帽的少年守林人叶芽，双手接住微弱发光的星种",
+        "secondary": "一只带白色斑点的小鹿，低头把星种送到叶芽面前",
+        "tertiary": "一只圆滚滚的小猫头鹰停在树枝上担忧地望着森林",
+        "rear": "没有星光的深夜森林与沉默山影",
+        "architecture": "森林中央枯暗的巨大古树和盘绕树根",
+        "foreground": "近处黑色叶片、蕨类与少量微弱萤火虫",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/01-start-backdrop-v1.png",
+        "environmentSource": "assets/source/01-start-environment-v1.png",
+        "charactersSource": "assets/source/01-start-characters-v1.png",
+        "backdrop": "assets/processed/01-start/backdrop.png",
+        "rear": "assets/processed/01-start/rear.png",
+        "architecture": "assets/processed/01-start/architecture.png",
+        "foreground": "assets/processed/01-start/foreground.png",
+        "primary": "assets/processed/01-start/primary.png",
+        "secondary": "assets/processed/01-start/secondary.png",
+        "tertiary": "assets/processed/01-start/tertiary.png"
+      }
+    },
+    {
+      "id": "02-middle",
+      "index": 2,
+      "beat": "middle",
+      "title": "风雨护送",
+      "narration": "叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。",
+      "transitionIn": "blur-through",
+      "motionRules": [
+        "coordinate-target-zoom",
+        "motion-blur-streak",
+        "reactive-displacement"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "风雨护送",
+        "primary": "叶芽弯腰护住怀里的星种，在强风中向前攀爬",
+        "secondary": "小鹿顶着雨水跳过倒下的树干为叶芽引路",
+        "tertiary": "猫头鹰贴近树梢飞行并回头指引方向",
+        "rear": "暴雨中的层叠森林、闪电与远处古树树冠",
+        "architecture": "通往古树顶端的藤蔓阶梯和断裂树桥",
+        "foreground": "横扫镜头的雨线、摇摆枝叶与飞溅水滴",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/02-middle-backdrop-v1.png",
+        "environmentSource": "assets/source/02-middle-environment-v1.png",
+        "charactersSource": "assets/source/02-middle-characters-v1.png",
+        "backdrop": "assets/processed/02-middle/backdrop.png",
+        "rear": "assets/processed/02-middle/rear.png",
+        "architecture": "assets/processed/02-middle/architecture.png",
+        "foreground": "assets/processed/02-middle/foreground.png",
+        "primary": "assets/processed/02-middle/primary.png",
+        "secondary": "assets/processed/02-middle/secondary.png",
+        "tertiary": "assets/processed/02-middle/tertiary.png"
+      }
+    },
+    {
+      "id": "03-end",
+      "index": 3,
+      "beat": "end",
+      "title": "星花盛开",
+      "narration": "星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。",
+      "transitionIn": "light-leak",
+      "motionRules": [
+        "center-outward-expansion",
+        "ambient-glow-bloom",
+        "particle-burst"
+      ],
+      "direction": "left",
+      "sourceDirection": "left",
+      "shot": {
+        "title": "星花盛开",
+        "primary": "叶芽在古树顶端举起绽放的星种，脸上露出安心笑容",
+        "secondary": "小鹿在树根旁抬头看向漫天星花",
+        "tertiary": "猫头鹰张开翅膀，身边围绕欢庆的小动物剪影",
+        "rear": "重新点亮的星空与发光森林山谷",
+        "architecture": "盛开星花的巨大古树和金色发光树冠",
+        "foreground": "飘落的粉色星花、萤火虫与柔和光点",
+        "direction": "left"
+      },
+      "assets": {
+        "backdropSource": "assets/source/03-end-backdrop-v1.png",
+        "environmentSource": "assets/source/03-end-environment-v1.png",
+        "charactersSource": "assets/source/03-end-characters-v1.png",
+        "backdrop": "assets/processed/03-end/backdrop.png",
+        "rear": "assets/processed/03-end/rear.png",
+        "architecture": "assets/processed/03-end/architecture.png",
+        "foreground": "assets/processed/03-end/foreground.png",
+        "primary": "assets/processed/03-end/primary.png",
+        "secondary": "assets/processed/03-end/secondary.png",
+        "tertiary": "assets/processed/03-end/tertiary.png"
+      },
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "left",
+        "tertiary": "left"
+      }
+    }
+  ]
+}

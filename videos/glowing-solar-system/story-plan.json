@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "id": "glowing-solar-system",
+    "title": "会发光的太阳系",
+    "storyType": "科学大发现",
+    "location": "科技博物馆",
+    "author": {
+      "name": "小曦",
+      "class": "六年级一班"
+    },
+    "directorIntent": "像一场会发光的博物馆宇宙探险。",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "style": {
+    "key": "science",
+    "visual": [
+      "卡通动画",
+      "科技未来",
+      "手工像素拼贴"
+    ],
+    "paletteWords": [
+      "星空深蓝",
+      "电光青",
+      "太阳金",
+      "明亮彩色"
+    ],
+    "musicMood": [
+      "神秘",
+      "激动",
+      "温暖"
+    ],
+    "tokens": {
+      "canvas": "#071b2e",
+      "ink": "#f5f7ff",
+      "accent": "#28d7d0",
+      "accent2": "#ffc857",
+      "shadow": "#020b16"
+    },
+    "fontDisplay": "Songti SC",
+    "fontBody": "PingFang SC"
+  },
+  "audio": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz"
+  },
+  "scenes": [
+    {
+      "id": "01-start",
+      "index": 1,
+      "beat": "start",
+      "title": "熄灭的展厅",
+      "narration": "小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。",
+      "transitionIn": "cut",
+      "motionRules": [
+        "multi-phase-camera",
+        "waterfall-entry",
+        "sine-wave-loop"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "熄灭的展厅",
+        "primary": "穿橙色连帽外套的中国女孩小曦，抬头看着熄灭的太阳系模型",
+        "secondary": "穿青色夹克的中国男孩阿朗，手持发光观察板",
+        "tertiary": "圆头白色小型AI机器人小光，胸口蓝色灯光微弱闪烁",
+        "rear": "黑暗科技博物馆与失去亮度的星空穹顶",
+        "architecture": "中央悬浮太阳系轨道装置和环形展台",
+        "foreground": "贴近镜头的暗色控制台边缘与少量熄灭指示灯",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/01-start-backdrop-v1.png",
+        "environmentSource": "assets/source/01-start-environment-v1.png",
+        "charactersSource": "assets/source/01-start-characters-v1.png",
+        "backdrop": "assets/processed/01-start/backdrop.png",
+        "rear": "assets/processed/01-start/rear.png",
+        "architecture": "assets/processed/01-start/architecture.png",
+        "foreground": "assets/processed/01-start/foreground.png",
+        "primary": "assets/processed/01-start/primary.png",
+        "secondary": "assets/processed/01-start/secondary.png",
+        "tertiary": "assets/processed/01-start/tertiary.png"
+      }
+    },
+    {
+      "id": "02-middle",
+      "index": 2,
+      "beat": "middle",
+      "title": "追逐能量",
+      "narration": "三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。",
+      "transitionIn": "chromatic-split",
+      "motionRules": [
+        "coordinate-target-zoom",
+        "motion-blur-streak",
+        "reactive-displacement"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "追逐能量",
+        "primary": "小曦向前奔跑并伸手抓住一块金色能量碎片",
+        "secondary": "阿朗半跪在控制台前重新连接发光轨道",
+        "tertiary": "机器人小光展开机械臂扫描蓝色能量碎片",
+        "rear": "深蓝星空与多层发光行星轨道",
+        "architecture": "故障中的控制环、能量核心和透明全息支架",
+        "foreground": "高速掠过的像素能量碎片与电光轨迹",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/02-middle-backdrop-v1.png",
+        "environmentSource": "assets/source/02-middle-environment-v1.png",
+        "charactersSource": "assets/source/02-middle-characters-v1.png",
+        "backdrop": "assets/processed/02-middle/backdrop.png",
+        "rear": "assets/processed/02-middle/rear.png",
+        "architecture": "assets/processed/02-middle/architecture.png",
+        "foreground": "assets/processed/02-middle/foreground.png",
+        "primary": "assets/processed/02-middle/primary.png",
+        "secondary": "assets/processed/02-middle/secondary.png",
+        "tertiary": "assets/processed/02-middle/tertiary.png"
+      }
+    },
+    {
+      "id": "03-end",
+      "index": 3,
+      "beat": "end",
+      "title": "点亮未知",
+      "narration": "太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。",
+      "transitionIn": "grid-dissolve",
+      "motionRules": [
+        "center-outward-expansion",
+        "ambient-glow-bloom",
+        "particle-burst"
+      ],
+      "direction": "left",
+      "sourceDirection": "left",
+      "shot": {
+        "title": "点亮未知",
+        "primary": "小曦站在中央高举最后一块能量碎片，脸上充满惊喜",
+        "secondary": "阿朗在一旁完成最后一次轨道连接并抬头欢呼",
+        "tertiary": "机器人小光胸口亮起温暖蓝光并举起双臂",
+        "rear": "太阳和八颗行星全部发光的巨大星空",
+        "architecture": "恢复运转的金色太阳核心和完整环形轨道",
+        "foreground": "环绕主角飞散的彩色星尘与小型光点",
+        "direction": "left"
+      },
+      "assets": {
+        "backdropSource": "assets/source/03-end-backdrop-v1.png",
+        "environmentSource": "assets/source/03-end-environment-v1.png",
+        "charactersSource": "assets/source/03-end-characters-v1.png",
+        "backdrop": "assets/processed/03-end/backdrop.png",
+        "rear": "assets/processed/03-end/rear.png",
+        "architecture": "assets/processed/03-end/architecture.png",
+        "foreground": "assets/processed/03-end/foreground.png",
+        "primary": "assets/processed/03-end/primary.png",
+        "secondary": "assets/processed/03-end/secondary.png",
+        "tertiary": "assets/processed/03-end/tertiary.png"
+      },
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "left"
+      }
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "provider": "edge",
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "voices": [
+    {
+      "sceneId": "01-start",
+      "text": "小曦和阿朗在科技博物馆遇见机器人小光，发现中央太阳系模型正在一颗颗熄灭。",
+      "rawDuration": 8.4,
+      "durationSeconds": 10.0,
+      "path": "assets/audio/segments/01-start.wav",
+      "words": [
+        {
+          "text": "小曦",
+          "start": 0.552083,
+          "duration": 0.507833
+        },
+        {
+          "text": "和",
+          "start": 1.085958,
+          "duration": 0.130208
+        },
+        {
+          "text": "阿朗",
+          "start": 1.229166,
+          "duration": 0.494791
+        },
+        {
+          "text": "在",
+          "start": 1.828125,
+          "duration": 0.234375
+        },
+        {
+          "text": "科技",
+          "start": 2.075541,
+          "duration": 0.364583
+        },
+        {
+          "text": "博物馆",
+          "start": 2.453125,
+          "duration": 0.625
+        },
+        {
+          "text": "遇见",
+          "start": 3.169291,
+          "duration": 0.390625
+        },
+        {
+          "text": "机器人",
+          "start": 3.585958,
+          "duration": 0.429708
+        },
+        {
+          "text": "小光",
+          "start": 4.028666,
+          "duration": 0.507833
+        },
+        {
+          "text": "发现",
+          "start": 4.888041,
+          "duration": 0.429708
+        },
+        {
+          "text": "中央",
+          "start": 5.34375,
+          "duration": 0.325541
+        },
+        {
+          "text": "太阳系",
+          "start": 5.682291,
+          "duration": 0.520833
+        },
+        {
+          "text": "模型",
+          "start": 6.216166,
+          "duration": 0.533875
+        },
+        {
+          "text": "正在",
+          "start": 6.854166,
+          "duration": 0.364583
+        },
+        {
+          "text": "一",
+          "start": 7.244791,
+          "duration": 0.091166
+        },
+        {
+          "text": "颗",
+          "start": 7.335958,
+          "duration": 0.182291
+        },
+        {
+          "text": "颗",
+          "start": 7.51825,
+          "duration": 0.169291
+        },
+        {
+          "text": "熄灭",
+          "start": 7.700541,
+          "duration": 0.533875
+        }
+      ]
+    },
+    {
+      "sceneId": "02-middle",
+      "text": "三人沿着行星轨道寻找能量碎片，并按正确顺序修复轨道、重新连接能量。",
+      "rawDuration": 7.872,
+      "durationSeconds": 9.5,
+      "path": "assets/audio/segments/02-middle.wav",
+      "words": [
+        {
+          "text": "三",
+          "start": 10.552083,
+          "duration": 0.3125
+        },
+        {
+          "text": "人",
+          "start": 10.864583,
+          "duration": 0.221375
+        },
+        {
+          "text": "沿着",
+          "start": 11.112,
+          "duration": 0.286458
+        },
+        {
+          "text": "行星",
+          "start": 11.4245,
+          "duration": 0.390625
+        },
+        {
+          "text": "轨道",
+          "start": 11.828125,
+          "duration": 0.507833
+        },
+        {
+          "text": "寻找",
+          "start": 12.440125,
+          "duration": 0.429708
+        },
+        {
+          "text": "能量",
+          "start": 12.895833,
+          "duration": 0.3125
+        },
+        {
+          "text": "碎片",
+          "start": 13.221375,
+          "duration": 0.533875
+        },
+        {
+          "text": "并",
+          "start": 14.119791,
+          "duration": 0.182291
+        },
+        {
+          "text": "按",
+          "start": 14.302083,
+          "duration": 0.208333
+        },
+        {
+          "text": "正确",
+          "start": 14.536458,
+          "duration": 0.325541
+        },
+        {
+          "text": "顺序",
+          "start": 14.875,
+          "duration": 0.442708
+        },
+        {
+          "text": "修复",
+          "start": 15.34375,
+          "duration": 0.364583
+        },
+        {
+          "text": "轨道",
+          "start": 15.721375,
+          "duration": 0.481791
+        },
+        {
+          "text": "重新",
+          "start": 16.411458,
+          "duration": 0.45575
+        },
+        {
+          "text": "连接",
+          "start": 16.880208,
+          "duration": 0.338541
+        },
+        {
+          "text": "能量",
+          "start": 17.231791,
+          "duration": 0.46875
+        }
+      ]
+    },
+    {
+      "sceneId": "03-end",
+      "text": "太阳和八颗行星全部点亮，展厅化为星空，小光告诉他们好奇心就是点亮未知的光。",
+      "rawDuration": 8.64,
+      "durationSeconds": 10.0,
+      "path": "assets/audio/segments/03-end.wav",
+      "words": [
+        {
+          "text": "太阳",
+          "start": 20.052083,
+          "duration": 0.481791
+        },
+        {
+          "text": "和",
+          "start": 20.559916,
+          "duration": 0.15625
+        },
+        {
+          "text": "八",
+          "start": 20.729166,
+          "duration": 0.169291
+        },
+        {
+          "text": "颗",
+          "start": 20.898458,
+          "duration": 0.182291
+        },
+        {
+          "text": "行星",
+          "start": 21.09375,
+          "duration": 0.46875
+        },
+        {
+          "text": "全部",
+          "start": 21.588541,
+          "duration": 0.351583
+        },
+        {
+          "text": "点亮",
+          "start": 21.953125,
+          "duration": 0.507833
+        },
+        {
+          "text": "展厅",
+          "start": 22.773458,
+          "duration": 0.481791
+        },
+        {
+          "text": "化为",
+          "start": 23.28125,
+          "duration": 0.325541
+        },
+        {
+          "text": "星空",
+          "start": 23.619791,
+          "duration": 0.520833
+        },
+        {
+          "text": "小",
+          "start": 24.492208,
+          "duration": 0.208333
+        },
+        {
+          "text": "光",
+          "start": 24.700541,
+          "duration": 0.182291
+        },
+        {
+          "text": "告诉他们",
+          "start": 24.895833,
+          "duration": 0.742208
+        },
+        {
+          "text": "好奇心",
+          "start": 25.729166,
+          "duration": 0.729166
+        },
+        {
+          "text": "就",
+          "start": 26.484375,
+          "duration": 0.169291
+        },
+        {
+          "text": "是",
+          "start": 26.653666,
+          "duration": 0.117208
+        },
+        {
+          "text": "点亮",
+          "start": 26.783875,
+          "duration": 0.403666
+        },
+        {
+          "text": "未知",
+          "start": 27.213541,
+          "duration": 0.351583
+        },
+        {
+          "text": "的",
+          "start": 27.565125,
+          "duration": 0.117166
+        },
+        {
+          "text": "光",
+          "start": 27.682291,
+          "duration": 0.3125
+        }
+      ]
+    }
+  ],
+  "bgm": {
+    "path": "assets/audio/music.wav",
+    "duration": 29.5
+  },
+  "sfx": [
+    {
+      "id": "impact",
+      "path": "assets/audio/sfx-impact.wav"
+    },
+    {
+      "id": "whoosh",
+      "path": "assets/audio/sfx-whoosh.wav"
+    },
+    {
+      "id": "chime",
+      "path": "assets/audio/sfx-chime.wav"
+    }
+  ],
+  "total_duration_s": 29.5
+}

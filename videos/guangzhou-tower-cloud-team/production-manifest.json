@@ -1,0 +1,467 @@
+{
+  "schemaVersion": 1,
+  "metadata": {
+    "id": "guangzhou-tower-cloud-team",
+    "title": "广州塔云端小队",
+    "storyType": "我的研学之旅",
+    "location": "广州塔观景台",
+    "author": {
+      "name": "小雨",
+      "class": "五年级二班"
+    },
+    "directorIntent": "像一次从云端俯瞰广州的快乐探险。",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 28.5,
+    "durationInFrames": 855
+  },
+  "style": {
+    "key": "field-trip",
+    "visual": [
+      "卡通动画",
+      "冒险电影",
+      "手工像素拼贴"
+    ],
+    "paletteWords": [
+      "明亮彩色",
+      "温暖夕阳",
+      "天空蓝",
+      "广州塔红"
+    ],
+    "musicMood": [
+      "快乐",
+      "激动"
+    ],
+    "tokens": {
+      "canvas": "#e9f5f5",
+      "ink": "#17324d",
+      "accent": "#e34a3a",
+      "accent2": "#f7b32b",
+      "shadow": "#0b2435"
+    },
+    "fontDisplay": "Songti SC",
+    "fontBody": "PingFang SC"
+  },
+  "audio": {
+    "provider": "edge",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "rate": "-4%",
+    "pitch": "+0Hz",
+    "narrationPath": "assets/audio/narration.wav",
+    "musicPath": "assets/audio/music.wav",
+    "impactPath": "assets/audio/sfx-impact.wav",
+    "whooshPath": "assets/audio/sfx-whoosh.wav",
+    "chimePath": "assets/audio/sfx-chime.wav"
+  },
+  "scenes": [
+    {
+      "id": "01-start",
+      "index": 1,
+      "beat": "start",
+      "title": "抵达云端",
+      "narration": "小雨和三位同学来到广州塔观景台，准备完成寻找城市地标的研学任务。",
+      "transitionIn": "cut",
+      "motionRules": [
+        "multi-phase-camera",
+        "waterfall-entry",
+        "sine-wave-loop"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "抵达云端",
+        "primary": "一名穿黄色研学背心、背小书包的中国女孩小雨，兴奋地举起任务卡",
+        "secondary": "两名穿蓝色研学背心的同学，手拿城市地图",
+        "tertiary": "一名戴红色棒球帽的同学，举着望远镜",
+        "rear": "远处珠江与广州城市天际线的像素剪影",
+        "architecture": "广州塔观景台弧形玻璃与红色钢结构",
+        "foreground": "贴近镜头的观景台栏杆和飘动的小队彩带",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/01-start-backdrop-v1.png",
+        "environmentSource": "assets/source/01-start-environment-v1.png",
+        "charactersSource": "assets/source/01-start-characters-v1.png",
+        "backdrop": "assets/processed/01-start/backdrop.png",
+        "rear": "assets/processed/01-start/rear.png",
+        "architecture": "assets/processed/01-start/architecture.png",
+        "foreground": "assets/processed/01-start/foreground.png",
+        "primary": "assets/processed/01-start/primary.png",
+        "secondary": "assets/processed/01-start/secondary.png",
+        "tertiary": "assets/processed/01-start/tertiary.png"
+      },
+      "startSeconds": 0.0,
+      "durationSeconds": 9.0,
+      "startFrame": 0,
+      "durationInFrames": 270,
+      "narrationPath": "assets/audio/segments/01-start.wav",
+      "captionFrom": 0.45,
+      "captionTo": 8.65,
+      "words": [
+        {
+          "text": "小雨",
+          "start": 0.552083,
+          "duration": 0.481791
+        },
+        {
+          "text": "和",
+          "start": 1.059916,
+          "duration": 0.130208
+        },
+        {
+          "text": "三",
+          "start": 1.203125,
+          "duration": 0.208333
+        },
+        {
+          "text": "位",
+          "start": 1.411458,
+          "duration": 0.14325
+        },
+        {
+          "text": "同学",
+          "start": 1.567708,
+          "duration": 0.585958
+        },
+        {
+          "text": "来到",
+          "start": 2.257833,
+          "duration": 0.338541
+        },
+        {
+          "text": "广州",
+          "start": 2.622416,
+          "duration": 0.390625
+        },
+        {
+          "text": "塔观",
+          "start": 3.026041,
+          "duration": 0.416666
+        },
+        {
+          "text": "景",
+          "start": 3.442708,
+          "duration": 0.182291
+        },
+        {
+          "text": "台",
+          "start": 3.625,
+          "duration": 0.364583
+        },
+        {
+          "text": "准备",
+          "start": 4.315125,
+          "duration": 0.3125
+        },
+        {
+          "text": "完成",
+          "start": 4.640625,
+          "duration": 0.494791
+        },
+        {
+          "text": "寻找",
+          "start": 5.161458,
+          "duration": 0.416666
+        },
+        {
+          "text": "城市",
+          "start": 5.604166,
+          "duration": 0.403666
+        },
+        {
+          "text": "地标",
+          "start": 6.020833,
+          "duration": 0.364583
+        },
+        {
+          "text": "的",
+          "start": 6.385416,
+          "duration": 0.104166
+        },
+        {
+          "text": "研学",
+          "start": 6.515625,
+          "duration": 0.403666
+        },
+        {
+          "text": "任务",
+          "start": 6.932291,
+          "duration": 0.442708
+        }
+      ]
+    },
+    {
+      "id": "02-middle",
+      "index": 2,
+      "beat": "middle",
+      "title": "云雾挑战",
+      "narration": "云雾遮住城市，大家根据地图、方向和灯光提示一起推理，寻找珠江和城市中轴线。",
+      "transitionIn": "whip-pan",
+      "motionRules": [
+        "coordinate-target-zoom",
+        "motion-blur-streak",
+        "reactive-displacement"
+      ],
+      "direction": "right",
+      "sourceDirection": "right",
+      "shot": {
+        "title": "云雾挑战",
+        "primary": "小雨蹲下指着展开的城市地图，神情专注",
+        "secondary": "两名同学并肩观察地图与远方灯光",
+        "tertiary": "戴红帽的同学用望远镜穿过云雾寻找地标",
+        "rear": "被白色云雾遮住的广州城市轮廓与若隐若现的珠江",
+        "architecture": "观景台方向指示柱与发光地标标记",
+        "foreground": "从画面两侧卷入的层叠云雾和地图纸角",
+        "direction": "right"
+      },
+      "assets": {
+        "backdropSource": "assets/source/02-middle-backdrop-v1.png",
+        "environmentSource": "assets/source/02-middle-environment-v1.png",
+        "charactersSource": "assets/source/02-middle-characters-v1.png",
+        "backdrop": "assets/processed/02-middle/backdrop.png",
+        "rear": "assets/processed/02-middle/rear.png",
+        "architecture": "assets/processed/02-middle/architecture.png",
+        "foreground": "assets/processed/02-middle/foreground.png",
+        "primary": "assets/processed/02-middle/primary.png",
+        "secondary": "assets/processed/02-middle/secondary.png",
+        "tertiary": "assets/processed/02-middle/tertiary.png"
+      },
+      "startSeconds": 9.0,
+      "durationSeconds": 10.5,
+      "startFrame": 270,
+      "durationInFrames": 315,
+      "narrationPath": "assets/audio/segments/02-middle.wav",
+      "captionFrom": 9.45,
+      "captionTo": 19.15,
+      "words": [
+        {
+          "text": "云雾",
+          "start": 9.552083,
+          "duration": 0.403666
+        },
+        {
+          "text": "遮住",
+          "start": 9.981791,
+          "duration": 0.2995
+        },
+        {
+          "text": "城市",
+          "start": 10.294291,
+          "duration": 0.572916
+        },
+        {
+          "text": "大家",
+          "start": 11.192708,
+          "duration": 0.351583
+        },
+        {
+          "text": "根据",
+          "start": 11.557291,
+          "duration": 0.351583
+        },
+        {
+          "text": "地图",
+          "start": 11.934916,
+          "duration": 0.559916
+        },
+        {
+          "text": "方向",
+          "start": 12.703125,
+          "duration": 0.46875
+        },
+        {
+          "text": "和",
+          "start": 13.197916,
+          "duration": 0.15625
+        },
+        {
+          "text": "灯光",
+          "start": 13.367208,
+          "duration": 0.377625
+        },
+        {
+          "text": "提示",
+          "start": 13.757833,
+          "duration": 0.546875
+        },
+        {
+          "text": "一起",
+          "start": 14.395833,
+          "duration": 0.364583
+        },
+        {
+          "text": "推理",
+          "start": 14.773458,
+          "duration": 0.507833
+        },
+        {
+          "text": "寻找",
+          "start": 15.59375,
+          "duration": 0.46875
+        },
+        {
+          "text": "珠",
+          "start": 16.088541,
+          "duration": 0.182291
+        },
+        {
+          "text": "江和城",
+          "start": 16.283875,
+          "duration": 0.638
+        },
+        {
+          "text": "市",
+          "start": 16.921875,
+          "duration": 0.195333
+        },
+        {
+          "text": "中轴线",
+          "start": 17.130208,
+          "duration": 0.716166
+        }
+      ]
+    },
+    {
+      "id": "03-end",
+      "index": 3,
+      "beat": "end",
+      "title": "夕阳合影",
+      "narration": "云雾散开，小队成功找出地标，并在温暖夕阳下拍下全队的云端合影。",
+      "transitionIn": "horizontal-blinds",
+      "motionRules": [
+        "center-outward-expansion",
+        "ambient-glow-bloom",
+        "particle-burst"
+      ],
+      "direction": "left",
+      "sourceDirection": "left",
+      "shot": {
+        "title": "夕阳合影",
+        "primary": "小雨站在队伍中央高举完成的任务卡，开心微笑",
+        "secondary": "两名同学在小雨两侧做胜利手势",
+        "tertiary": "戴红帽的同学举起相机准备合影",
+        "rear": "夕阳下清晰可见的珠江与广州城市中轴线",
+        "architecture": "广州塔观景台玻璃穹顶和金色反光",
+        "foreground": "被夕阳照亮的彩带与轻盈纸屑",
+        "direction": "left"
+      },
+      "assets": {
+        "backdropSource": "assets/source/03-end-backdrop-v1.png",
+        "environmentSource": "assets/source/03-end-environment-v1.png",
+        "charactersSource": "assets/source/03-end-characters-v2.png",
+        "backdrop": "assets/processed/03-end/backdrop.png",
+        "rear": "assets/processed/03-end/rear.png",
+        "architecture": "assets/processed/03-end/architecture.png",
+        "foreground": "assets/processed/03-end/foreground.png",
+        "primary": "assets/processed/03-end/primary.png",
+        "secondary": "assets/processed/03-end/secondary.png",
+        "tertiary": "assets/processed/03-end/tertiary.png"
+      },
+      "startSeconds": 19.5,
+      "durationSeconds": 9.0,
+      "startFrame": 585,
+      "durationInFrames": 270,
+      "narrationPath": "assets/audio/segments/03-end.wav",
+      "captionFrom": 19.95,
+      "captionTo": 28.15,
+      "words": [
+        {
+          "text": "云雾",
+          "start": 20.052083,
+          "duration": 0.325541
+        },
+        {
+          "text": "散开",
+          "start": 20.390625,
+          "duration": 0.585958
+        },
+        {
+          "text": "小队",
+          "start": 21.315125,
+          "duration": 0.403666
+        },
+        {
+          "text": "成功",
+          "start": 21.744791,
+          "duration": 0.377625
+        },
+        {
+          "text": "找出",
+          "start": 22.135416,
+          "duration": 0.338541
+        },
+        {
+          "text": "地标",
+          "start": 22.487,
+          "duration": 0.481791
+        },
+        {
+          "text": "并",
+          "start": 23.255208,
+          "duration": 0.169291
+        },
+        {
+          "text": "在",
+          "start": 23.4245,
+          "duration": 0.169291
+        },
+        {
+          "text": "温暖",
+          "start": 23.619791,
+          "duration": 0.364583
+        },
+        {
+          "text": "夕阳",
+          "start": 23.997416,
+          "duration": 0.403625
+        },
+        {
+          "text": "下",
+          "start": 24.401041,
+          "duration": 0.286458
+        },
+        {
+          "text": "拍",
+          "start": 24.791666,
+          "duration": 0.208333
+        },
+        {
+          "text": "下",
+          "start": 25.0,
+          "duration": 0.195333
+        },
+        {
+          "text": "全队",
+          "start": 25.208333,
+          "duration": 0.442708
+        },
+        {
+          "text": "的",
+          "start": 25.651041,
+          "duration": 0.091166
+        },
+        {
+          "text": "云端",
+          "start": 25.76825,
+          "duration": 0.351583
+        },
+        {
+          "text": "合影",
+          "start": 26.132833,
+          "duration": 0.546875
+        }
+      ],
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      }
+    }
+  ],
+  "deliverables": {
+    "preview": "renders/guangzhou-tower-cloud-team-preview.mp4",
+    "final": "renders/guangzhou-tower-cloud-team.mp4",
+    "qaReport": "qa/verification.json"
+  }
+}

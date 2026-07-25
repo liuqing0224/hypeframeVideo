@@ -1,0 +1,4 @@
+interface:
+  display_name: "Process Layered Assets"
+  short_description: "Split and validate chroma-key pixel-art layers"
+  default_prompt: "Use -layered-assets to convert generated sheets into validated transparent scene layers."
