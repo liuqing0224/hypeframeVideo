@@ -1,6 +1,8 @@
+import asyncio
 import concurrent.futures
 import copy
 import json
+import math
 from pathlib import Path
 
 import jsonschema
@@ -38,6 +40,170 @@ def test_narration_duration_quantization(scripts):
     assert quantize(2.8) == 4.0
     assert quantize(3.01) == 4.5
     assert quantize(7.31) == 9.0
+
+
+def test_multirole_audio_helpers_keep_legacy_and_build_short_cues(scripts):
+    audio = scripts["audio"]
+    legacy = audio.scene_lines({"id": "legacy", "narration": "旧旁白仍然可用。"})
+    assert legacy == [
+        {
+            "id": "legacy-line-1",
+            "speaker": "旁白",
+            "role": "narrator",
+            "kind": "narration",
+            "text": "旧旁白仍然可用。",
+        }
+    ]
+
+    config = {
+        "voice": "fallback",
+        "voiceCast": {
+            "primary": "primary-voice",
+            "secondary": {"voice": "secondary-voice", "rate": "-8%"},
+        },
+    }
+    assert audio.line_voice_config(
+        config,
+        {"role": "primary"},
+    )["voice"] == "primary-voice"
+    secondary = audio.line_voice_config(config, {"role": "secondary"})
+    assert secondary["voice"] == "secondary-voice"
+    assert secondary["rate"] == "-8%"
+    assert audio.line_voice_config(config, {"role": "tertiary"})["voice"] == "fallback"
+
+    text = "这是一句需要拆成多个短字幕并保持语义顺序的测试台词。"
+    chunks = audio.short_caption_chunks(text)
+    assert "".join(chunks) == text
+    assert all(len(chunk) <= audio.CAPTION_MAX_CHARS for chunk in chunks)
+    line = {
+        "id": "scene-line-1",
+        "speaker": "主角",
+        "role": "primary",
+        "kind": "dialogue",
+        "text": text,
+    }
+    cues = audio.caption_cues_for_line(
+        "scene",
+        line,
+        0,
+        "scene-shot-1",
+        1.0,
+        4.0,
+    )
+    assert cues[0]["startSeconds"] == 1.0
+    assert cues[-1]["endSeconds"] == 5.0
+    assert all(
+        left["endSeconds"] == right["startSeconds"]
+        for left, right in zip(cues, cues[1:])
+    )
+
+    shot_timings = audio.build_shot_timings(
+        {"id": "scene"},
+        [
+            {"localStart": 0.45, "duration": 2.8},
+            {"localStart": 3.67, "duration": 2.8},
+            {"localStart": 6.89, "duration": 2.8},
+        ],
+        10.5,
+    )
+    assert len(shot_timings) == 3
+    assert shot_timings[0]["startSeconds"] == 0
+    assert sum(shot["durationSeconds"] for shot in shot_timings) == 10.5
+    assert all(shot["durationSeconds"] >= audio.MIN_SHOT_SECONDS for shot in shot_timings)
+
+
+def test_silent_multirole_audio_generation_outputs_shots_captions_and_cues(
+    scripts,
+    tmp_path,
+):
+    production = tmp_path / "videos" / "professional-audio"
+    plan = scripts["plan"].compile_card(
+        BATCH_PATH,
+        "guangzhou-tower-cloud-team",
+        production,
+    )
+    plan["audio"]["voiceCast"].update(
+        {
+            "narrator": "voice-narrator",
+            "primary": "voice-primary",
+            "secondary": "voice-secondary",
+        }
+    )
+    for scene in plan["scenes"]:
+        scene["script"] = [
+            {
+                "speaker": "旁白",
+                "role": "narrator",
+                "kind": "narration",
+                "text": "风从远处吹来。",
+            },
+            {
+                "speaker": "小雨",
+                "role": "primary",
+                "kind": "dialogue",
+                "text": "看那边，我们找到线索了！",
+            },
+            {
+                "speaker": "同学",
+                "role": "secondary",
+                "kind": "dialogue",
+                "text": "一起出发。",
+            },
+        ]
+    (production / "story-plan.json").write_text(
+        json.dumps(plan, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    asyncio.run(scripts["audio"].generate(production, "silent"))
+
+    manifest = json.loads(
+        (production / "production-manifest.json").read_text(encoding="utf-8")
+    )
+    audio_meta = json.loads((production / "audio_meta.json").read_text(encoding="utf-8"))
+    assert manifest["captions"]
+    assert all(
+        0 < len(cue["text"]) <= scripts["audio"].CAPTION_MAX_CHARS
+        for cue in manifest["captions"]
+    )
+    assert all(
+        left["endSeconds"] <= right["startSeconds"]
+        for left, right in zip(manifest["captions"], manifest["captions"][1:])
+    )
+    for scene in manifest["scenes"]:
+        assert len(scene["shots"]) == 3
+        assert scene["shots"][0]["startSeconds"] == 0
+        assert math.isclose(
+            sum(shot["durationSeconds"] for shot in scene["shots"]),
+            scene["durationSeconds"],
+            abs_tol=1e-6,
+        )
+        assert scene["captions"]
+        assert scene["words"]
+        assert all(
+            left["start"] <= right["start"]
+            for left, right in zip(scene["words"], scene["words"][1:])
+        )
+
+    voices = {(item["role"], item["voice"]) for item in audio_meta["voices"]}
+    assert ("narrator", "voice-narrator") in voices
+    assert ("primary", "voice-primary") in voices
+    assert ("secondary", "voice-secondary") in voices
+    assert len(audio_meta["sfxEvents"]) == 9
+    assert [clip["id"] for clip in manifest["audioClips"] if clip["id"] in {"sfx-1", "sfx-2", "sfx-3"}] == [
+        "sfx-1",
+        "sfx-2",
+        "sfx-3",
+    ]
+    for key in (
+        "narrationPath",
+        "musicPath",
+        "impactPath",
+        "whooshPath",
+        "chimePath",
+        "ambiencePath",
+    ):
+        assert (production / manifest["audio"][key]).is_file()
 
 
 def test_green_sheet_minimum_cost_split(scripts, tmp_path):

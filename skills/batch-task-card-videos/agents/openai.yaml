@@ -1,4 +1,4 @@
 interface:
   display_name: "Batch Task Card Videos"
   short_description: "Orchestrate concurrent task-card video productions"
-  default_prompt: "Use -task-card-videos to turn these task cards into isolated HyperFrames productions."
+  default_prompt: "Use $batch-task-card-videos to turn these task cards into isolated HyperFrames productions."

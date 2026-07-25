@@ -11,6 +11,32 @@ BEATS = (
     ("03-end", "end", ["center-outward-expansion", "ambient-glow-bloom", "particle-burst"]),
 )
 
+SHOT_BLUEPRINTS = {
+    "start": (
+        ("establish", "wide", "ensemble", "交代空间、人物关系和故事目标"),
+        ("discovery", "medium", "primary", "让主角发现异常并推动事件发生"),
+        ("reaction", "close", "primary", "用反应特写建立情绪钩子"),
+    ),
+    "middle": (
+        ("pressure", "wide", "ensemble", "展示困难规模和空间压力"),
+        ("action", "medium", "primary", "用连续动作呈现解决过程"),
+        ("decision", "close", "primary", "锁定关键判断、道具或情绪转折"),
+    ),
+    "end": (
+        ("climax", "medium", "primary", "完成决定性动作并释放高潮"),
+        ("payoff", "close", "primary", "让观众看清结果和人物反应"),
+        ("resolution", "wide", "ensemble", "回到环境，给故事留下完整余韵"),
+    ),
+}
+
+DEFAULT_VOICE_CAST = {
+    "narrator": "zh-CN-XiaoxiaoNeural",
+    "primary": "zh-CN-XiaoyiNeural",
+    "secondary": "zh-CN-YunxiNeural",
+    "tertiary": "zh-CN-YunyangNeural",
+    "ensemble": "zh-CN-XiaoxiaoNeural",
+}
+
 PALETTES = {
     "science": {
         "canvas": "#071b2e",
@@ -101,6 +127,68 @@ def fallback_shot_hints(card: dict[str, Any]) -> list[dict[str, str]]:
     return hints
 
 
+def scene_script(card: dict[str, Any], beat_key: str) -> list[dict[str, str]]:
+    configured = (
+        card.get("manga", {})
+        .get("scene_scripts", {})
+        .get(beat_key)
+    )
+    if configured:
+        return [
+            {
+                "speaker": line["speaker"],
+                "role": line["role"],
+                "kind": line["kind"],
+                "text": line["text"],
+            }
+            for line in configured
+        ]
+    return [
+        {
+            "speaker": "旁白",
+            "role": "narrator",
+            "kind": "narration",
+            "text": card["beats"][beat_key],
+        }
+    ]
+
+
+def distribute_line_indexes(line_count: int, shot_count: int = 3) -> list[list[int]]:
+    assignments: list[list[int]] = [[] for _ in range(shot_count)]
+    if line_count == 1:
+        assignments[shot_count // 2].append(0)
+        return assignments
+    if line_count > 1:
+        for line_index in range(line_count):
+            shot_index = round(line_index * (shot_count - 1) / (line_count - 1))
+            assignments[shot_index].append(line_index)
+    return assignments
+
+
+def build_shots(
+    scene_id: str,
+    beat_key: str,
+    script: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    shots = []
+    line_assignments = distribute_line_indexes(len(script))
+    for index, (purpose, framing, focus_role, intent) in enumerate(
+        SHOT_BLUEPRINTS[beat_key]
+    ):
+        shots.append(
+            {
+                "id": f"{scene_id}-shot-{index + 1}",
+                "index": index + 1,
+                "purpose": purpose,
+                "framing": framing,
+                "focusRole": focus_role,
+                "lineIndexes": line_assignments[index],
+                "intent": intent,
+            }
+        )
+    return shots
+
+
 def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]:
     key = style_key(card)
     scene_transitions = transitions(key)
@@ -108,6 +196,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
     scenes = []
     for index, (scene_id, beat_key, rules) in enumerate(BEATS):
         hint = shot_hints[index]
+        script = scene_script(card, beat_key)
         source_root = f"assets/source/{scene_id}"
         processed_root = f"assets/processed/{scene_id}"
         scenes.append(
@@ -117,6 +206,8 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                 "beat": beat_key,
                 "title": hint["title"],
                 "narration": card["beats"][beat_key],
+                "script": script,
+                "shots": build_shots(scene_id, beat_key, script),
                 "transitionIn": scene_transitions[index],
                 "motionRules": rules,
                 "direction": hint["direction"],
@@ -141,8 +232,10 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
                 },
             }
         )
+    manga = card.get("manga", {})
+    voice_cast = {**DEFAULT_VOICE_CAST, **manga.get("voice_cast", {})}
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "metadata": {
             "id": card["id"],
             "title": card["title"],
@@ -153,6 +246,7 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
             "width": defaults["width"],
             "height": defaults["height"],
             "fps": defaults["fps"],
+            "format": "professional-manga-v1",
         },
         "style": {
             "key": key,
@@ -163,7 +257,23 @@ def build_plan(defaults: dict[str, Any], card: dict[str, Any]) -> dict[str, Any]
             "fontDisplay": "Songti SC",
             "fontBody": "PingFang SC",
         },
-        "audio": defaults["audio"],
+        "audio": {
+            **defaults["audio"],
+            "voiceCast": voice_cast,
+        },
+        "manga": {
+            "pacing": manga.get("pacing", "cinematic"),
+            "dialogueRatio": manga.get("dialogue_ratio", 0.6),
+            "audienceGrade": manga.get(
+                "audience_grade",
+                "primary-and-middle-school",
+            ),
+            "mustShow": manga.get("must_show", []),
+            "avoid": manga.get("avoid", []),
+            "factualNotes": manga.get("factual_notes", []),
+            "shotCount": 9,
+            "shotsPerScene": 3,
+        },
         "scenes": scenes,
     }
 
@@ -184,15 +294,17 @@ length: narration-driven
 
 ## Intent
 
-把任务卡《{meta['title']}》制作成三个镜头的手工像素分层动画。故事依次呈现开始、挑战和结果，
-保持儿童视角、真实因果关系和清晰的主角层级。
+把任务卡《{meta['title']}》制作成三场九镜头的专业漫剧。故事依次呈现开始、挑战和结果，
+每场包含建立、动作和反应镜头，保持儿童视角、真实因果关系和清晰的主角层级。
 
 ## Customizations
 
-- HyperFrames modular composition with three scenes.
+- HyperFrames modular composition with three scenes and nine internal shots.
 - Background, rear environment, architecture, characters, and foreground stay independent.
+- Use wide, medium, and close framings with motivated cuts and character micro-performance.
+- Keep narration concise; let short character dialogue carry key decisions and reactions.
 - Real narration duration determines the static composition duration.
-- One Chinese caption track, local music, and scene sound marks.
+- One cue-based Chinese caption track, local music, ambience, and shot sound marks.
 
 ## Assets
 
@@ -209,9 +321,15 @@ length: narration-driven
 
 
 def write_script(output: Path, plan: dict[str, Any]) -> None:
-    rows = ["# Narration", ""]
+    rows = ["# Manga Performance Script", ""]
     for scene in plan["scenes"]:
-        rows.extend([f"## {scene['id']} - {scene['title']}", "", scene["narration"], ""])
+        rows.extend([f"## {scene['id']} - {scene['title']}", ""])
+        for line in scene["script"]:
+            rows.append(
+                f"- [{line['kind']}/{line['role']}] "
+                f"{line['speaker']}：{line['text']}"
+            )
+        rows.append("")
     (output / "SCRIPT.md").write_text("\n".join(rows), encoding="utf-8")
 
 
@@ -239,14 +357,34 @@ def storyboard_text(plan: dict[str, Any], timed_scenes: list[dict[str, Any]] | N
                 f"- duration: {duration}",
                 f"- transition_in: {scene['transitionIn']}",
                 f"- scene: {scene['shot']['architecture']}；{scene['shot']['primary']}",
-                f"- voiceover: {scene['narration']}",
+                f"- performance_lines: {len(scene['script'])}",
                 f"- motion: {', '.join(scene['motionRules'])}",
                 "- sfx: scene-impact",
                 "",
-                f"{scene['title']}承担故事的 {scene['beat']} 节点。主角先出现，环境和配角随后补齐纵深。",
+                f"{scene['title']}承担故事的 {scene['beat']} 节点。",
                 "",
             ]
         )
+        for shot in scene["shots"]:
+            shot_lines = [
+                scene["script"][line_index]
+                for line_index in shot["lineIndexes"]
+            ]
+            rendered_lines = (
+                [f"{line['speaker']}：{line['text']}" for line in shot_lines]
+                or ["silent"]
+            )
+            rows.extend(
+                [
+                    f"### Shot {scene['index']}.{shot['index']} - {shot['purpose']}",
+                    "",
+                    f"- framing: {shot['framing']}",
+                    f"- focus: {shot['focusRole']}",
+                    f"- intent: {shot['intent']}",
+                    *(f"- line: {line}" for line in rendered_lines),
+                    "",
+                ]
+            )
     return "\n".join(rows)
 
 
@@ -264,11 +402,14 @@ font_body: "{style['fontBody']}"
 corner_radius: 0
 ---
 
-# Layered Pixel Collage
+# Professional Layered Pixel Manga
 
 Use crisp pixel clusters, torn-paper silhouettes, restrained halftone texture, visible foreground framing,
-and a clear primary/secondary/tertiary hierarchy. Avoid rounded interface cards, full-screen moving grain,
-photorealism, readable text inside generated images, and flat one-image camera moves.
+and a clear primary/secondary/tertiary hierarchy. Every scene must provide wide, medium, and close framings,
+one dominant focal point, motivated camera movement, anticipation, action, settle, and secondary motion.
+Keep backgrounds 15–25% quieter than the active subject. Avoid rounded interface cards, heavy explanatory
+caption boxes, full-screen moving grain, photorealism, readable text inside generated images, and flat
+one-image camera moves.
 """
     (output / "frame.md").write_text(text, encoding="utf-8")
 

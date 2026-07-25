@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "02-middle",
-  "durationSeconds": 8.0,
+  "durationSeconds": 13.0,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.44
+      2.34
     ],
     "action": [
-      1.44,
-      5.76
+      2.34,
+      9.36
     ],
     "hold": [
-      5.76,
-      7.2
+      9.36,
+      11.7
     ],
     "transition": [
-      7.2,
-      8.0
+      11.7,
+      13.0
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.2,
+      "entranceStart": 0.325,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.6,
+      "entranceStart": 0.975,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,109 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 0.96,
+      "entranceStart": 1.56,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "02-middle-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 4.566,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "02-middle-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 4.566,
+      "to": 8.562,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "02-middle-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 8.562,
+      "to": 13.0,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "02-middle-shot-1",
+      "toShot": "02-middle-shot-2",
+      "at": 4.566,
+      "anticipationAt": 4.386
+    },
+    {
+      "fromShot": "02-middle-shot-2",
+      "toShot": "02-middle-shot-3",
+      "at": 8.562,
+      "anticipationAt": 8.382
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "叶芽和小鹿顶着风雨穿过森林。",
+      "startSeconds": 12.95,
+      "endSeconds": 16.646
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "叶芽",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "风雨再大，也不能让星种熄灭。",
+      "startSeconds": 17.066,
+      "endSeconds": 20.642
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小鹿",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "跟紧我，我们越过前面的断木！",
+      "startSeconds": 21.062,
+      "endSeconds": 24.302
     }
   ],
   "motionRules": [
@@ -81,6 +177,8 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

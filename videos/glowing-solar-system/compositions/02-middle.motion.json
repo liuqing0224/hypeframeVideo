@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "02-middle",
-  "durationSeconds": 9.5,
+  "durationSeconds": 14.0,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.71
+      2.52
     ],
     "action": [
-      1.71,
-      6.84
+      2.52,
+      10.08
     ],
     "hold": [
-      6.84,
-      8.55
+      10.08,
+      12.6
     ],
     "transition": [
-      8.55,
-      9.5
+      12.6,
+      14.0
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.2375,
+      "entranceStart": 0.35,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.7125,
+      "entranceStart": 1.05,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,145 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.14,
+      "entranceStart": 1.68,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "02-middle-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 4.782,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "02-middle-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 4.782,
+      "to": 8.97,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "02-middle-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 8.97,
+      "to": 14.0,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "02-middle-shot-1",
+      "toShot": "02-middle-shot-2",
+      "at": 4.782,
+      "anticipationAt": 4.602
+    },
+    {
+      "fromShot": "02-middle-shot-2",
+      "toShot": "02-middle-shot-3",
+      "at": 8.97,
+      "anticipationAt": 8.79
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "三人沿着行星轨",
+      "startSeconds": 13.45,
+      "endSeconds": 15.2756
+    },
+    {
+      "id": "02-middle-line-1-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "道寻找能量碎片。",
+      "startSeconds": 15.2756,
+      "endSeconds": 17.362
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "先按顺序连接轨道，",
+      "startSeconds": 17.782,
+      "endSeconds": 20.0428
+    },
+    {
+      "id": "02-middle-line-2-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "别接错位置！",
+      "startSeconds": 20.0428,
+      "endSeconds": 21.55
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我去拿金色碎片，",
+      "startSeconds": 21.97,
+      "endSeconds": 24.0052
+    },
+    {
+      "id": "02-middle-line-3-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "小光负责扫描！",
+      "startSeconds": 24.0052,
+      "endSeconds": 25.786
     }
   ],
   "motionRules": [
@@ -81,6 +213,8 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "01-start",
-  "durationSeconds": 10.0,
+  "durationSeconds": 13.0,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.8
+      2.34
     ],
     "action": [
-      1.8,
-      7.2
+      2.34,
+      9.36
     ],
     "hold": [
-      7.2,
-      9.0
+      9.36,
+      11.7
     ],
     "transition": [
-      9.0,
-      10.0
+      11.7,
+      13.0
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.25,
+      "entranceStart": 0.325,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.75,
+      "entranceStart": 0.975,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,145 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.2,
+      "entranceStart": 1.56,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "01-start-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 4.566,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "01-start-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 4.566,
+      "to": 8.61,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "01-start-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 8.61,
+      "to": 13.0,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "01-start-shot-1",
+      "toShot": "01-start-shot-2",
+      "at": 4.566,
+      "anticipationAt": 4.386
+    },
+    {
+      "fromShot": "01-start-shot-2",
+      "toShot": "01-start-shot-3",
+      "at": 8.61,
+      "anticipationAt": 8.43
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "01-start-line-1-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "中央太阳系模型",
+      "startSeconds": 0.45,
+      "endSeconds": 2.1748
+    },
+    {
+      "id": "01-start-line-1-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-1",
+      "shotId": "01-start-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "正在一颗颗熄灭。",
+      "startSeconds": 2.1748,
+      "endSeconds": 4.146
+    },
+    {
+      "id": "01-start-line-2-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "阿朗，你看，",
+      "startSeconds": 4.566,
+      "endSeconds": 6.0156
+    },
+    {
+      "id": "01-start-line-2-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-2",
+      "shotId": "01-start-shot-2",
+      "speaker": "小曦",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "行星正在失去亮光！",
+      "startSeconds": 6.0156,
+      "endSeconds": 8.19
+    },
+    {
+      "id": "01-start-line-3-caption-1",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "能量连接异常，",
+      "startSeconds": 8.61,
+      "endSeconds": 10.185
+    },
+    {
+      "id": "01-start-line-3-caption-2",
+      "sceneId": "01-start",
+      "lineId": "01-start-line-3",
+      "shotId": "01-start-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "请帮助我修复轨道。",
+      "startSeconds": 10.185,
+      "endSeconds": 12.21
     }
   ],
   "motionRules": [
@@ -81,6 +213,8 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

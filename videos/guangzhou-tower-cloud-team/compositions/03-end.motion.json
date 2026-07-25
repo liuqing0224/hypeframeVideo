@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "03-end",
-  "durationSeconds": 9.0,
+  "durationSeconds": 12.5,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.62
+      2.25
     ],
     "action": [
-      1.62,
-      6.48
+      2.25,
+      9.0
     ],
     "hold": [
-      6.48,
-      8.1
+      9.0,
+      11.25
     ],
     "transition": [
-      8.1,
-      9.0
+      11.25,
+      12.5
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.225,
+      "entranceStart": 0.3125,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.675,
+      "entranceStart": 0.9375,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,109 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.08,
+      "entranceStart": 1.5,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "03-end-shot-1",
+      "index": 1,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 0.0,
+      "to": 4.494,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "03-end-shot-2",
+      "index": 2,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 4.494,
+      "to": 8.154,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "03-end-shot-3",
+      "index": 3,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 8.154,
+      "to": 12.5,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "03-end-shot-1",
+      "toShot": "03-end-shot-2",
+      "at": 4.494,
+      "anticipationAt": 4.314
+    },
+    {
+      "fromShot": "03-end-shot-2",
+      "toShot": "03-end-shot-3",
+      "at": 8.154,
+      "anticipationAt": 7.974
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "云雾散开，小队成功找出地标。",
+      "startSeconds": 26.45,
+      "endSeconds": 30.074
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "小雨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "任务完成，大家靠近一点！",
+      "startSeconds": 30.494,
+      "endSeconds": 33.734
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "红帽同学",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "看镜头，三、二、一！",
+      "startSeconds": 34.154,
+      "endSeconds": 37.37
     }
   ],
   "motionRules": [
@@ -73,14 +169,16 @@
   "direction": "left",
   "sourceDirection": "left",
   "sourceDirections": {
-    "primary": "right",
-    "secondary": "right",
-    "tertiary": "right"
+    "primary": "left",
+    "secondary": "left",
+    "tertiary": "left"
   },
   "assertions": {
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

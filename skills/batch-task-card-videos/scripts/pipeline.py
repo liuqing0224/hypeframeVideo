@@ -60,6 +60,24 @@ def write_json(path: Path, payload: dict) -> None:
     temp.replace(path)
 
 
+def production_fingerprint(production: Path) -> str:
+    digest = hashlib.sha256()
+    paths = [
+        production / "production-manifest.json",
+        production / "index.html",
+        *sorted((production / "compositions").glob("*.html")),
+        *sorted((production / "compositions").glob("*.motion.json")),
+    ]
+    for path in paths:
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        digest.update(path.relative_to(production).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
 def load_batch(path: Path, validate: bool = True) -> dict:
     payload = load_json(path)
     if validate:
@@ -334,10 +352,10 @@ def approval_path(workspace: Path, batch_id: str) -> Path:
 def build_batch_contact_sheet(batch: dict, workspace: Path) -> Path:
     rows: list[tuple[str, Image.Image]] = []
     for card in batch["cards"]:
-        source_path = (
-            production_path(workspace, card["id"])
-            / "qa/scene-midpoints/contact-sheet.jpg"
-        )
+        production = production_path(workspace, card["id"])
+        source_path = production / "qa/shot-midpoints/contact-sheet.jpg"
+        if not source_path.is_file():
+            source_path = production / "qa/scene-midpoints/contact-sheet.jpg"
         if not source_path.is_file():
             raise FileNotFoundError(source_path)
         with Image.open(source_path) as source:
@@ -380,11 +398,19 @@ def start_previews(
         if not_checked:
             raise ValueError(f"cannot approve unchecked previews: {not_checked}")
         approval = {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "batchId": batch["batch_id"],
             "approvedAt": now_iso(),
             "approvedBy": approved_by,
-            "productions": [card["id"] for card in batch["cards"]],
+            "productions": [
+                {
+                    "id": card["id"],
+                    "compositionSha256": production_fingerprint(
+                        production_path(workspace, card["id"])
+                    ),
+                }
+                for card in batch["cards"]
+            ],
         }
         write_json(approval_path(workspace, batch["batch_id"]), approval)
         for card in batch["cards"]:
@@ -454,7 +480,20 @@ def approval_valid(batch: dict, workspace: Path) -> bool:
     if not path.is_file():
         return False
     payload = load_json(path)
-    return payload.get("productions") == [card["id"] for card in batch["cards"]]
+    expected = [
+        {
+            "id": card["id"],
+            "compositionSha256": production_fingerprint(
+                production_path(workspace, card["id"])
+            ),
+        }
+        for card in batch["cards"]
+    ]
+    return (
+        payload.get("schemaVersion") == 2
+        and payload.get("batchId") == batch["batch_id"]
+        and payload.get("productions") == expected
+    )
 
 
 def render_one(

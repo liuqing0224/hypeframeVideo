@@ -4,40 +4,50 @@
     data-composition-id="01-start"
     data-width="1920"
     data-height="1080"
-    data-duration="10"
+    data-duration="13"
+    data-layout-allow-overflow
   >
+    <div class="camera-rig" data-layout-allow-overflow>
 
       <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
-        <img src="assets/processed/01-start/backdrop.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/backdrop.png" alt="" />
       </div>
       <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
-        <img src="assets/processed/01-start/rear.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/rear.png" alt="" />
       </div>
       <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
-        <img src="assets/processed/01-start/architecture.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/architecture.png" alt="" />
       </div>
       <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/tertiary.png" alt="" />
+          <div class="entrance"><div class="performance performance-tertiary">
+            <img data-layout-ignore src="assets/processed/01-start/tertiary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/secondary.png" alt="" />
+          <div class="entrance"><div class="performance performance-secondary">
+            <img data-layout-ignore src="assets/processed/01-start/secondary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/01-start/primary.png" alt="" />
+          <div class="entrance"><div class="performance performance-primary">
+            <img data-layout-ignore src="assets/processed/01-start/primary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
-        <img src="assets/processed/01-start/foreground.png" alt="" />
+        <img data-layout-ignore src="assets/processed/01-start/foreground.png" alt="" />
       </div>
 
       <div class="pixel-accent breeze b-1" style="left:280px;top:260px;width:18px;height:18px"></div>
       <div class="pixel-accent breeze b-2" style="left:1470px;top:390px;width:14px;height:14px"></div>
       <div class="pixel-accent breeze b-3" style="left:370px;top:680px;width:22px;height:22px"></div>
+    </div>
+    <div class="internal-cut"></div>
 
     <style>
       #scene-01-start {
@@ -53,6 +63,22 @@
         position: absolute;
         overflow: hidden;
         transform-origin: 50% 70%;
+      }
+      #scene-01-start .camera-rig {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+      }
+      #scene-01-start .subject {
+        overflow: visible;
+      }
+      #scene-01-start .entrance,
+      #scene-01-start .performance {
+        width: 100%;
+        height: 100%;
+        transform-origin: 50% 75%;
       }
       #scene-01-start .layer img {
         display: block;
@@ -139,6 +165,15 @@
         border: 28px solid #ffc857;
         box-shadow: 0 0 80px #ffc857;
       }
+      #scene-01-start .internal-cut {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        background: #f5f7ff;
+        mix-blend-mode: screen;
+      }
     </style>
     <script>
       (function () {
@@ -147,19 +182,31 @@
         const qAll = (selector) => root.querySelectorAll(selector);
         const tl = gsap.timeline({ paused: true });
 
-      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.035, duration: 7.2, ease: "none"}, 0);
-      tl.fromTo(q(".rear img"), {opacity: 0, x: -34}, {opacity: 0.86, x: 0, duration: 1.404, ease: "power2.out"}, 0);
-      tl.fromTo(q(".architecture img"), {opacity: 0, y: 28, scale: 0.98}, {opacity: 1, y: 0, scale: 1, duration: 1.8, ease: "power2.out"}, 0);
-      tl.fromTo(q(".primary img"), {opacity: 0, y: 72, scale: 0.86}, {opacity: 1, y: 0, scale: 1, duration: 1.55, ease: "back.out(1.45)"}, 0.25);
-      tl.fromTo(q(".secondary img"), {opacity: 0, x: -62, y: 36, scale: 0.9}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 1.05, ease: "power2.out"}, 0.75);
-      tl.fromTo(q(".tertiary img"), {opacity: 0, x: 48, y: 22, scale: 0.95}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.6, ease: "power2.out"}, 1.2);
-      tl.fromTo(q(".foreground img"), {opacity: 0, y: 22}, {opacity: 1, y: 0, duration: 1.26, ease: "power2.out"}, 0.54);
-      tl.to(q(".primary img"), {y: -8, duration: 1.35, ease: "sine.inOut"}, 1.8);
-      tl.to(q(".primary img"), {y: 0, duration: 1.35, ease: "sine.inOut"}, 3.15);
-      tl.to(q(".primary img"), {y: -6, duration: 1.35, ease: "sine.inOut"}, 4.5);
-      tl.to(q(".primary img"), {y: 0, duration: 1.35, ease: "sine.inOut"}, 5.85);
-      tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 5.4, stagger: 0.18, ease: "sine.inOut"}, 1.8);
-      tl.to(root, {opacity: 0.98, duration: 1, ease: "power1.in"}, 9);
+      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.035, duration: 9.36, ease: "none"}, 0);
+      tl.fromTo(q(".rear img"), {opacity: 0, x: -34}, {opacity: 0.86, x: 0, duration: 1.825, ease: "power2.out"}, 0);
+      tl.fromTo(q(".architecture img"), {opacity: 0, y: 28, scale: 0.98}, {opacity: 1, y: 0, scale: 1, duration: 2.34, ease: "power2.out"}, 0);
+      tl.fromTo(q(".primary img"), {opacity: 0, y: 72, scale: 0.86}, {opacity: 1, y: 0, scale: 1, duration: 2.015, ease: "back.out(1.45)"}, 0.325);
+      tl.fromTo(q(".secondary img"), {opacity: 0, x: -62, y: 36, scale: 0.9}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 1.365, ease: "power2.out"}, 0.975);
+      tl.fromTo(q(".tertiary img"), {opacity: 0, x: 48, y: 22, scale: 0.95}, {opacity: 1, x: 0, y: 0, scale: 1, duration: 0.78, ease: "power2.out"}, 1.56);
+      tl.fromTo(q(".foreground img"), {opacity: 0, y: 22}, {opacity: 1, y: 0, duration: 1.638, ease: "power2.out"}, 0.702);
+      tl.to(q(".primary img"), {y: -8, duration: 1.755, ease: "sine.inOut"}, 2.34);
+      tl.to(q(".primary img"), {y: 0, duration: 1.755, ease: "sine.inOut"}, 4.095);
+      tl.to(q(".primary img"), {y: -6, duration: 1.755, ease: "sine.inOut"}, 5.85);
+      tl.to(q(".primary img"), {y: 0, duration: 1.755, ease: "sine.inOut"}, 7.605);
+      tl.fromTo(qAll(".breeze"), {opacity: 0, y: 34}, {opacity: 0.8, y: -28, duration: 7.02, stagger: 0.18, ease: "sine.inOut"}, 2.34);
+      tl.to(root, {opacity: 0.98, duration: 1.3, ease: "power1.in"}, 11.7);
+        tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 0);
+      tl.to(q(".camera-rig"), {scale:1.018,duration:4.536,ease:"none"}, 0);
+      tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.16}, 4.566);
+      tl.to(q(".camera-rig"), {scale:1.182,duration:4.014,ease:"none"}, 4.566);
+      tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 4.786);
+      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.106);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 4.566);
+      tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.38}, 8.61);
+      tl.to(q(".camera-rig"), {scale:1.406,duration:4.36,ease:"none"}, 8.61);
+      tl.to(q(".performance-primary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 8.83);
+      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 9.15);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 8.61);
         window.__timelines = window.__timelines || {};
         window.__timelines["01-start"] = tl;
       })();

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "03-end",
-  "durationSeconds": 8.5,
+  "durationSeconds": 12.5,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.53
+      2.25
     ],
     "action": [
-      1.53,
-      6.12
+      2.25,
+      9.0
     ],
     "hold": [
-      6.12,
-      7.65
+      9.0,
+      11.25
     ],
     "transition": [
-      7.65,
-      8.5
+      11.25,
+      12.5
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.2125,
+      "entranceStart": 0.3125,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.6375,
+      "entranceStart": 0.9375,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,121 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.02,
+      "entranceStart": 1.5,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "03-end-shot-1",
+      "index": 1,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 0.0,
+      "to": 4.638,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "03-end-shot-2",
+      "index": 2,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 4.638,
+      "to": 8.61,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "03-end-shot-3",
+      "index": 3,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 8.61,
+      "to": 12.5,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "03-end-shot-1",
+      "toShot": "03-end-shot-2",
+      "at": 4.638,
+      "anticipationAt": 4.458
+    },
+    {
+      "fromShot": "03-end-shot-2",
+      "toShot": "03-end-shot-3",
+      "at": 8.61,
+      "anticipationAt": 8.43
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "星种在古树顶端开成漫天星花。",
+      "startSeconds": 25.95,
+      "endSeconds": 29.718
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "叶芽",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "我们做到了，",
+      "startSeconds": 30.138,
+      "endSeconds": 31.5588
+    },
+    {
+      "id": "03-end-line-2-caption-2",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "叶芽",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "森林重新亮起来了！",
+      "startSeconds": 31.5588,
+      "endSeconds": 33.69
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "猫头鹰",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "星花开满天空啦！",
+      "startSeconds": 34.11,
+      "endSeconds": 36.798
     }
   ],
   "motionRules": [
@@ -73,7 +181,7 @@
   "direction": "left",
   "sourceDirection": "left",
   "sourceDirections": {
-    "primary": "right",
+    "primary": "left",
     "secondary": "left",
     "tertiary": "left"
   },
@@ -81,6 +189,8 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

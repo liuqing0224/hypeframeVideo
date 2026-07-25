@@ -31,6 +31,10 @@ def number(value: float) -> str:
     return f"{value:.3f}".rstrip("0").rstrip(".")
 
 
+def clean_generated_html(value: str) -> str:
+    return "\n".join(line.rstrip() for line in value.splitlines()) + "\n"
+
+
 def asset_src(path: str) -> str:
     return path
 
@@ -45,9 +49,88 @@ def subject_markup(scene: dict, role: str, layer_index: int) -> str:
     return f"""
       <div class="layer cutout subject {role}" data-pixel-layer="{role}" data-pixel-z="{layer_index}">
         <div class="sprite-mirror" style="{image_style}">
-          <img src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
+          <div class="entrance"><div class="performance performance-{role}">
+            <img data-layout-ignore src="{html.escape(asset_src(scene['assets'][role]))}" alt="" />
+          </div></div>
         </div>
       </div>"""
+
+
+def scene_shots(scene: dict) -> list[dict]:
+    shots = scene.get("shots") or []
+    duration = float(scene["durationSeconds"])
+    if len(shots) != 3:
+        shots = [
+            {"id": f"{scene['id']}-shot-1", "framing": "wide", "focusRole": "ensemble"},
+            {"id": f"{scene['id']}-shot-2", "framing": "medium", "focusRole": "primary"},
+            {"id": f"{scene['id']}-shot-3", "framing": "close", "focusRole": "primary"},
+        ]
+    weights = [0.31, 0.37, 0.32]
+    cursor = 0.0
+    normalized = []
+    for index, shot in enumerate(shots):
+        start = float(shot.get("startSeconds", cursor))
+        if "durationSeconds" in shot:
+            shot_duration = float(shot["durationSeconds"])
+        elif index == len(shots) - 1:
+            shot_duration = duration - start
+        else:
+            shot_duration = duration * weights[index]
+        end = duration if index == len(shots) - 1 else min(duration, start + shot_duration)
+        normalized.append({**shot, "startSeconds": start, "durationSeconds": end - start})
+        cursor = end
+    return normalized
+
+
+def shot_camera(shot: dict, index: int) -> dict[str, float]:
+    framing = shot.get("framing", "medium")
+    focus = shot.get("focusRole", "primary")
+    scale = {"wide": 1.0, "medium": 1.16, "close": 1.38}.get(framing, 1.16)
+    anchors = {
+        "primary": (0, -34),
+        "secondary": (210, -12),
+        "tertiary": (-250, -8),
+        "ensemble": (0, 0),
+        "architecture": (0, 40),
+    }
+    x, y = anchors.get(focus, (0, 0))
+    return {"x": x, "y": y, "scale": scale, "push": 0.018 + index * 0.004}
+
+
+def shot_timeline(scene: dict) -> str:
+    rows = []
+    shots = scene_shots(scene)
+    for index, shot in enumerate(shots):
+        start = shot["startSeconds"]
+        duration = shot["durationSeconds"]
+        camera = shot_camera(shot, index)
+        selector = ".camera-rig"
+        rows.append(
+            f'tl.set(q("{selector}"), {{x:{number(camera["x"])},y:{number(camera["y"])},'
+            f'scale:{number(camera["scale"])}}}, {number(start)});'
+        )
+        rows.append(
+            f'tl.to(q("{selector}"), {{scale:{number(camera["scale"] + camera["push"])},'
+            f'duration:{number(max(0.1, duration - 0.03))},ease:"none"}}, {number(start)});'
+        )
+        focus = shot.get("focusRole", "primary")
+        if focus in {"primary", "secondary", "tertiary"}:
+            anticipation = start + min(0.22, duration * 0.12)
+            settle = min(0.32, duration * 0.14)
+            rows.append(
+                f'tl.to(q(".performance-{focus}"), {{y:-12,rotation:{2 if index % 2 == 0 else -2},'
+                f'scale:1.025,duration:{number(settle)},ease:"power2.out"}}, {number(anticipation)});'
+            )
+            rows.append(
+                f'tl.to(q(".performance-{focus}"), {{y:0,rotation:0,scale:1,'
+                f'duration:{number(settle)},ease:"power2.inOut"}}, {number(anticipation + settle)});'
+            )
+        if index:
+            rows.append(
+                f'tl.fromTo(q(".internal-cut"), {{opacity:0.22}}, '
+                f'{{opacity:0,duration:0.12,ease:"power2.out"}}, {number(start)});'
+            )
+    return "\n      ".join(rows)
 
 
 def common_scene_css(scene: dict, tokens: dict) -> str:
@@ -68,6 +151,22 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         position: absolute;
         overflow: hidden;
         transform-origin: 50% 70%;
+      }}
+      #{root_id} .camera-rig {{
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+      }}
+      #{root_id} .subject {{
+        overflow: visible;
+      }}
+      #{root_id} .entrance,
+      #{root_id} .performance {{
+        width: 100%;
+        height: 100%;
+        transform-origin: 50% 75%;
       }}
       #{root_id} .layer img {{
         display: block;
@@ -153,6 +252,15 @@ def common_scene_css(scene: dict, tokens: dict) -> str:
         opacity: 0;
         border: 28px solid {tokens['accent2']};
         box-shadow: 0 0 80px {tokens['accent2']};
+      }}
+      #{root_id} .internal-cut {{
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        background: {tokens['ink']};
+        mix-blend-mode: screen;
       }}
     </style>"""
 
@@ -262,24 +370,25 @@ def scene_html(scene: dict, tokens: dict) -> str:
     layers = [
         f"""
       <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
-        <img src="{html.escape(asset_src(scene['assets']['backdrop']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['backdrop']))}" alt="" />
       </div>""",
         f"""
       <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
-        <img src="{html.escape(asset_src(scene['assets']['rear']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['rear']))}" alt="" />
       </div>""",
         f"""
       <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
-        <img src="{html.escape(asset_src(scene['assets']['architecture']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['architecture']))}" alt="" />
       </div>""",
         subject_markup(scene, "tertiary", 3),
         subject_markup(scene, "secondary", 4),
         subject_markup(scene, "primary", 5),
         f"""
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
-        <img src="{html.escape(asset_src(scene['assets']['foreground']))}" alt="" />
+        <img data-layout-ignore src="{html.escape(asset_src(scene['assets']['foreground']))}" alt="" />
       </div>""",
     ]
+    editorial_timeline = shot_timeline(scene)
     return f"""<template id="{scene['id']}-template">
   <div
     id="scene-{scene['id']}"
@@ -287,9 +396,13 @@ def scene_html(scene: dict, tokens: dict) -> str:
     data-width="1920"
     data-height="1080"
     data-duration="{number(scene['durationSeconds'])}"
+    data-layout-allow-overflow
   >
-    {''.join(layers)}
-    {accents(scene)}
+    <div class="camera-rig" data-layout-allow-overflow>
+      {''.join(layers)}
+      {accents(scene)}
+    </div>
+    <div class="internal-cut"></div>
     {common_scene_css(scene, tokens)}
     <script>
       (function () {{
@@ -298,6 +411,7 @@ def scene_html(scene: dict, tokens: dict) -> str:
         const qAll = (selector) => root.querySelectorAll(selector);
         const tl = gsap.timeline({{ paused: true }});
         {timeline}
+        {editorial_timeline}
         window.__timelines = window.__timelines || {{}};
         window.__timelines["{scene['id']}"] = tl;
       }})();
@@ -329,9 +443,9 @@ def transition_markup(manifest: dict) -> tuple[str, str]:
             children = "<span></span><span></span><span></span>"
         markup.append(
             f"""
-      <div id="{transition_id}" class="clip transition"
+      <div id="{transition_id}" class="clip transition" data-layout-allow-overflow
            data-start="{number(start)}" data-duration="{number(duration)}" data-track-index="800">
-        <div id="{transition_id}-fx" class="transition-fx transition-{kind}">
+        <div id="{transition_id}-fx" class="transition-fx transition-{kind}" data-layout-allow-overflow>
           {children}
         </div>
       </div>"""
@@ -374,14 +488,28 @@ def transition_markup(manifest: dict) -> tuple[str, str]:
 
 def caption_markup(manifest: dict) -> str:
     rows = []
-    for index, scene in enumerate(manifest["scenes"]):
-        start = scene["captionFrom"]
-        duration = scene["captionTo"] - start
+    cues = manifest.get("captions")
+    if not cues:
+        cues = [
+            {
+                "startSeconds": scene["captionFrom"],
+                "endSeconds": scene["captionTo"],
+                "text": scene["narration"],
+                "speaker": "旁白",
+                "role": "narrator",
+            }
+            for scene in manifest["scenes"]
+        ]
+    for index, cue in enumerate(cues):
+        start = cue["startSeconds"]
+        duration = cue["endSeconds"] - start
+        speaker = cue.get("speaker", "旁白")
+        role = cue.get("role", "narrator")
         rows.append(
             f"""
-      <div id="caption-{index + 1}" class="clip caption"
+      <div id="caption-{index + 1}" class="clip caption caption-{html.escape(role)}"
            data-start="{number(start)}" data-duration="{number(duration)}" data-track-index="900">
-        <p>{html.escape(scene['narration'])}</p>
+        <span>{html.escape(speaker)}</span><p>{html.escape(cue['text'])}</p>
       </div>"""
         )
     return "".join(rows)
@@ -390,6 +518,14 @@ def caption_markup(manifest: dict) -> str:
 def audio_markup(manifest: dict) -> str:
     total = manifest["metadata"]["durationSeconds"]
     audio = manifest["audio"]
+    if manifest.get("audioClips"):
+        return "".join(
+            f"""
+      <audio id="{html.escape(clip['id'])}" class="clip" src="{html.escape(clip['src'])}"
+             data-start="{number(clip['startSeconds'])}" data-duration="{number(clip['durationSeconds'])}"
+             data-track-index="{clip.get('trackIndex', 950)}" data-volume="{number(clip.get('volume', 1))}"></audio>"""
+            for clip in manifest["audioClips"]
+        )
     rows = [
         f"""
       <audio id="narration" class="clip" src="{html.escape(audio['narrationPath'])}"
@@ -489,6 +625,15 @@ def index_html(manifest: dict) -> str:
         text-align: center;
         letter-spacing: 0;
       }}
+      .caption span {{
+        flex: 0 0 auto;
+        margin-right: 22px;
+        padding: 8px 14px;
+        font-size: 26px;
+        font-weight: 900;
+        color: {tokens['canvas']};
+        background: {tokens['accent']};
+      }}
       .transition {{
         position: absolute;
         inset: 0;
@@ -569,8 +714,33 @@ def motion_payload(scene: dict) -> dict:
         "secondary": {"x": 95, "y": 300, "width": 450, "height": 590},
         "tertiary": {"x": 1485, "y": 385, "width": 330, "height": 485},
     }
+    shots = scene_shots(scene)
+    shot_rows = []
+    cuts = []
+    for index, shot in enumerate(shots):
+        camera = shot_camera(shot, index)
+        shot_rows.append(
+            {
+                "id": shot["id"],
+                "index": index + 1,
+                "framing": shot.get("framing", "medium"),
+                "focusRole": shot.get("focusRole", "primary"),
+                "from": round(shot["startSeconds"], 6),
+                "to": round(shot["startSeconds"] + shot["durationSeconds"], 6),
+                "camera": camera,
+            }
+        )
+        if index:
+            cuts.append(
+                {
+                    "fromShot": shots[index - 1]["id"],
+                    "toShot": shot["id"],
+                    "at": round(shot["startSeconds"], 6),
+                    "anticipationAt": round(max(0, shot["startSeconds"] - 0.18), 6),
+                }
+            )
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "compositionId": scene["id"],
         "durationSeconds": duration,
         "layerOrder": LAYER_ORDER,
@@ -583,6 +753,12 @@ def motion_payload(scene: dict) -> dict:
         "subjects": [
             {"id": role, "role": role, "entranceStart": starts[role], "bounds": bounds[role]}
             for role in ("primary", "secondary", "tertiary")
+        ],
+        "shots": shot_rows,
+        "cuts": cuts,
+        "captionSegments": [
+            cue
+            for cue in scene.get("captions", [])
         ],
         "motionRules": scene["motionRules"],
         "transitionIn": scene["transitionIn"],
@@ -601,6 +777,8 @@ def motion_payload(scene: dict) -> dict:
             "subjectsStayInFrame": True,
             "plannedHoldWindow": True,
             "noUnboundedAnimation": True,
+            "threeEditorialShots": len(shot_rows) == 3,
+            "framingVariety": len({shot["framing"] for shot in shot_rows}) >= 3,
         },
     }
 
@@ -654,7 +832,10 @@ def compose(production: Path, adopt: bool = True) -> None:
     evidence = ["index.html", "vendor/gsap.min.js"]
     for scene in manifest["scenes"]:
         html_path = compositions / f"{scene['id']}.html"
-        html_path.write_text(scene_html(scene, manifest["style"]["tokens"]), encoding="utf-8")
+        html_path.write_text(
+            clean_generated_html(scene_html(scene, manifest["style"]["tokens"])),
+            encoding="utf-8",
+        )
         motion_path = compositions / f"{scene['id']}.motion.json"
         motion_path.write_text(
             json.dumps(motion_payload(scene), ensure_ascii=False, indent=2) + "\n",
@@ -666,7 +847,10 @@ def compose(production: Path, adopt: bool = True) -> None:
                 motion_path.relative_to(production).as_posix(),
             ]
         )
-    (production / "index.html").write_text(index_html(manifest), encoding="utf-8")
+    (production / "index.html").write_text(
+        clean_generated_html(index_html(manifest)),
+        encoding="utf-8",
+    )
     update_storyboard(production)
     if adopt:
         adopt_media(production)

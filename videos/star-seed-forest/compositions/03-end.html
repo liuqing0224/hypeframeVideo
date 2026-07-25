@@ -4,37 +4,47 @@
     data-composition-id="03-end"
     data-width="1920"
     data-height="1080"
-    data-duration="8.5"
+    data-duration="12.5"
+    data-layout-allow-overflow
   >
+    <div class="camera-rig" data-layout-allow-overflow>
 
       <div class="layer backdrop" data-pixel-layer="backdrop" data-pixel-z="0">
-        <img src="assets/processed/03-end/backdrop.png" alt="" />
+        <img data-layout-ignore src="assets/processed/03-end/backdrop.png" alt="" />
       </div>
       <div class="layer cutout rear" data-pixel-layer="rear" data-pixel-z="1">
-        <img src="assets/processed/03-end/rear.png" alt="" />
+        <img data-layout-ignore src="assets/processed/03-end/rear.png" alt="" />
       </div>
       <div class="layer cutout architecture" data-pixel-layer="architecture" data-pixel-z="2">
-        <img src="assets/processed/03-end/architecture.png" alt="" />
+        <img data-layout-ignore src="assets/processed/03-end/architecture.png" alt="" />
       </div>
       <div class="layer cutout subject tertiary" data-pixel-layer="tertiary" data-pixel-z="3">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/03-end/tertiary.png" alt="" />
+          <div class="entrance"><div class="performance performance-tertiary">
+            <img data-layout-ignore src="assets/processed/03-end/tertiary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout subject secondary" data-pixel-layer="secondary" data-pixel-z="4">
         <div class="sprite-mirror" style="">
-          <img src="assets/processed/03-end/secondary.png" alt="" />
+          <div class="entrance"><div class="performance performance-secondary">
+            <img data-layout-ignore src="assets/processed/03-end/secondary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout subject primary" data-pixel-layer="primary" data-pixel-z="5">
-        <div class="sprite-mirror" style="transform: scaleX(-1);">
-          <img src="assets/processed/03-end/primary.png" alt="" />
+        <div class="sprite-mirror" style="">
+          <div class="entrance"><div class="performance performance-primary">
+            <img data-layout-ignore src="assets/processed/03-end/primary.png" alt="" />
+          </div></div>
         </div>
       </div>
       <div class="layer cutout foreground" data-pixel-layer="foreground" data-pixel-z="6">
-        <img src="assets/processed/03-end/foreground.png" alt="" />
+        <img data-layout-ignore src="assets/processed/03-end/foreground.png" alt="" />
       </div>
-    <div class="glow"></div><div class="pixel-accent particle p-0" style="left:410px;top:240px;width:12px;height:12px"></div><div class="pixel-accent particle p-1" style="left:520px;top:170px;width:20px;height:20px"></div><div class="pixel-accent particle p-2" style="left:690px;top:270px;width:28px;height:28px"></div><div class="pixel-accent particle p-3" style="left:930px;top:130px;width:12px;height:12px"></div><div class="pixel-accent particle p-4" style="left:1110px;top:230px;width:20px;height:20px"></div><div class="pixel-accent particle p-5" style="left:1335px;top:165px;width:28px;height:28px"></div><div class="pixel-accent particle p-6" style="left:1480px;top:310px;width:12px;height:12px"></div><div class="pixel-accent particle p-7" style="left:360px;top:520px;width:20px;height:20px"></div><div class="pixel-accent particle p-8" style="left:1530px;top:570px;width:28px;height:28px"></div><div class="pixel-accent particle p-9" style="left:1280px;top:720px;width:12px;height:12px"></div><div class="pixel-accent particle p-10" style="left:620px;top:755px;width:20px;height:20px"></div><div class="pixel-accent particle p-11" style="left:1010px;top:690px;width:28px;height:28px"></div>
+      <div class="glow"></div><div class="pixel-accent particle p-0" style="left:410px;top:240px;width:12px;height:12px"></div><div class="pixel-accent particle p-1" style="left:520px;top:170px;width:20px;height:20px"></div><div class="pixel-accent particle p-2" style="left:690px;top:270px;width:28px;height:28px"></div><div class="pixel-accent particle p-3" style="left:930px;top:130px;width:12px;height:12px"></div><div class="pixel-accent particle p-4" style="left:1110px;top:230px;width:20px;height:20px"></div><div class="pixel-accent particle p-5" style="left:1335px;top:165px;width:28px;height:28px"></div><div class="pixel-accent particle p-6" style="left:1480px;top:310px;width:12px;height:12px"></div><div class="pixel-accent particle p-7" style="left:360px;top:520px;width:20px;height:20px"></div><div class="pixel-accent particle p-8" style="left:1530px;top:570px;width:28px;height:28px"></div><div class="pixel-accent particle p-9" style="left:1280px;top:720px;width:12px;height:12px"></div><div class="pixel-accent particle p-10" style="left:620px;top:755px;width:20px;height:20px"></div><div class="pixel-accent particle p-11" style="left:1010px;top:690px;width:28px;height:28px"></div>
+    </div>
+    <div class="internal-cut"></div>
 
     <style>
       #scene-03-end {
@@ -50,6 +60,22 @@
         position: absolute;
         overflow: hidden;
         transform-origin: 50% 70%;
+      }
+      #scene-03-end .camera-rig {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        transform-origin: 50% 50%;
+      }
+      #scene-03-end .subject {
+        overflow: visible;
+      }
+      #scene-03-end .entrance,
+      #scene-03-end .performance {
+        width: 100%;
+        height: 100%;
+        transform-origin: 50% 75%;
       }
       #scene-03-end .layer img {
         display: block;
@@ -136,6 +162,15 @@
         border: 28px solid #ee8cb8;
         box-shadow: 0 0 80px #ee8cb8;
       }
+      #scene-03-end .internal-cut {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0;
+        background: #f7f0df;
+        mix-blend-mode: screen;
+      }
     </style>
     <script>
       (function () {
@@ -144,17 +179,29 @@
         const qAll = (selector) => root.querySelectorAll(selector);
         const tl = gsap.timeline({ paused: true });
 
-      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.045, duration: 6.12, ease: "none"}, 0);
-      tl.fromTo(q(".architecture img"), {opacity: 0, scale: 0.9}, {opacity: 1, scale: 1, duration: 1.53, ease: "back.out(1.25)"}, 0);
-      tl.fromTo(q(".primary img"), {opacity: 0, y: 62, scale: 0.82}, {opacity: 1, y: 0, scale: 1, duration: 1.377, ease: "back.out(1.55)"}, 0.17);
-      tl.fromTo(q(".secondary img"), {opacity: 0, x: 190, scale: 0.9}, {opacity: 1, x: 0, scale: 1, duration: 1.102, ease: "power3.out"}, 0.637);
-      tl.fromTo(q(".tertiary img"), {opacity: 0, x: -160, scale: 0.92}, {opacity: 1, x: 0, scale: 1, duration: 0.887, ease: "power3.out"}, 1.02);
-      tl.fromTo(q(".foreground img"), {opacity: 0, y: 45}, {opacity: 1, y: 0, duration: 1.53, ease: "power2.out"}, 0);
-      tl.fromTo(q(".glow"), {opacity: 0, scale: 0.45}, {opacity: 0.62, scale: 1.25, duration: 2.846, ease: "sine.out"}, 0.842);
-      tl.fromTo(qAll(".particle"), {opacity: 0, x: 0, y: 30, scale: 0.4}, {opacity: 0.9, x: 0, y: -42, scale: 1.15, duration: 4.59, stagger: 0.06, ease: "power2.out"}, 1.071);
-      tl.to(q(".primary img"), {y: -8, duration: 2.295, ease: "sine.inOut"}, 1.53);
-      tl.to(q(".primary img"), {y: 0, duration: 2.295, ease: "sine.inOut"}, 3.825);
-      tl.to(root, {opacity: 0.99, duration: 0.85, ease: "power1.in"}, 7.65);
+      tl.fromTo(q(".backdrop img"), {scale: 1}, {scale: 1.045, duration: 9, ease: "none"}, 0);
+      tl.fromTo(q(".architecture img"), {opacity: 0, scale: 0.9}, {opacity: 1, scale: 1, duration: 2.25, ease: "back.out(1.25)"}, 0);
+      tl.fromTo(q(".primary img"), {opacity: 0, y: 62, scale: 0.82}, {opacity: 1, y: 0, scale: 1, duration: 2.025, ease: "back.out(1.55)"}, 0.25);
+      tl.fromTo(q(".secondary img"), {opacity: 0, x: 190, scale: 0.9}, {opacity: 1, x: 0, scale: 1, duration: 1.62, ease: "power3.out"}, 0.938);
+      tl.fromTo(q(".tertiary img"), {opacity: 0, x: -160, scale: 0.92}, {opacity: 1, x: 0, scale: 1, duration: 1.305, ease: "power3.out"}, 1.5);
+      tl.fromTo(q(".foreground img"), {opacity: 0, y: 45}, {opacity: 1, y: 0, duration: 2.25, ease: "power2.out"}, 0);
+      tl.fromTo(q(".glow"), {opacity: 0, scale: 0.45}, {opacity: 0.62, scale: 1.25, duration: 4.185, ease: "sine.out"}, 1.238);
+      tl.fromTo(qAll(".particle"), {opacity: 0, x: 0, y: 30, scale: 0.4}, {opacity: 0.9, x: 0, y: -42, scale: 1.15, duration: 6.75, stagger: 0.06, ease: "power2.out"}, 1.575);
+      tl.to(q(".primary img"), {y: -8, duration: 3.375, ease: "sine.inOut"}, 2.25);
+      tl.to(q(".primary img"), {y: 0, duration: 3.375, ease: "sine.inOut"}, 5.625);
+      tl.to(root, {opacity: 0.99, duration: 1.25, ease: "power1.in"}, 11.25);
+        tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.16}, 0);
+      tl.to(q(".camera-rig"), {scale:1.178,duration:4.608,ease:"none"}, 0);
+      tl.to(q(".performance-primary"), {y:-12,rotation:2,scale:1.025,duration:0.32,ease:"power2.out"}, 0.22);
+      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 0.54);
+      tl.set(q(".camera-rig"), {x:0,y:-34,scale:1.38}, 4.638);
+      tl.to(q(".camera-rig"), {scale:1.402,duration:3.942,ease:"none"}, 4.638);
+      tl.to(q(".performance-primary"), {y:-12,rotation:-2,scale:1.025,duration:0.32,ease:"power2.out"}, 4.858);
+      tl.to(q(".performance-primary"), {y:0,rotation:0,scale:1,duration:0.32,ease:"power2.inOut"}, 5.178);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 4.638);
+      tl.set(q(".camera-rig"), {x:0,y:0,scale:1}, 8.61);
+      tl.to(q(".camera-rig"), {scale:1.026,duration:3.86,ease:"none"}, 8.61);
+      tl.fromTo(q(".internal-cut"), {opacity:0.22}, {opacity:0,duration:0.12,ease:"power2.out"}, 8.61);
         window.__timelines = window.__timelines || {};
         window.__timelines["03-end"] = tl;
       })();

@@ -84,6 +84,48 @@ def structural_checks(production: Path) -> list[dict]:
             "detail": f"found {len(root_matches)} main roots",
         }
     )
+    captions = manifest.get("captions", [])
+    if captions:
+        caption_ordered = all(
+            cue["endSeconds"] > cue["startSeconds"]
+            and (
+                index == 0
+                or cue["startSeconds"] >= captions[index - 1]["endSeconds"] - 0.001
+            )
+            for index, cue in enumerate(captions)
+        )
+        findings.extend(
+            [
+                {
+                    "id": "caption-cues",
+                    "pass": len(captions) >= 9 and caption_ordered,
+                    "detail": f"{len(captions)} ordered cues",
+                },
+                {
+                    "id": "caption-readability",
+                    "pass": all(
+                        len(cue["text"].replace("\n", "")) <= 28
+                        and cue["endSeconds"] - cue["startSeconds"] >= 0.8
+                        for cue in captions
+                    ),
+                    "detail": [
+                        {
+                            "text": cue["text"],
+                            "duration": round(
+                                cue["endSeconds"] - cue["startSeconds"],
+                                3,
+                            ),
+                        }
+                        for cue in captions
+                    ],
+                },
+                {
+                    "id": "caption-speakers",
+                    "pass": all(cue.get("speaker") and cue.get("role") for cue in captions),
+                    "detail": sorted({cue.get("speaker") for cue in captions}),
+                },
+            ]
+        )
     static_duration = root_matches[0].get("data-duration") if root_matches else None
     findings.append(
         {
@@ -95,8 +137,15 @@ def structural_checks(production: Path) -> list[dict]:
     findings.append(
         {
             "id": "root-direct-audio",
-            "pass": len(parser.direct_audio) == 5,
-            "detail": f"found {len(parser.direct_audio)} direct audio clips",
+            "pass": (
+                len(parser.direct_audio) >= 5
+                and any(item.get("id") == "music" for item in parser.direct_audio)
+                and any(
+                    item.get("id", "").startswith(("narration", "voice", "dialogue"))
+                    for item in parser.direct_audio
+                )
+            ),
+            "detail": f"found {len(parser.direct_audio)} semantic root audio clips",
         }
     )
     findings.append(
@@ -189,6 +238,29 @@ def motion_checks(production: Path) -> list[dict]:
             and phases["hold"][1] == phases["transition"][0]
             and phases["transition"][1] == payload["durationSeconds"]
         )
+        shots = payload.get("shots", [])
+        shot_continuity = (
+            len(shots) == 3
+            and shots[0]["from"] == 0
+            and all(
+                math.isclose(
+                    shots[index]["to"],
+                    shots[index + 1]["from"],
+                    abs_tol=0.001,
+                )
+                for index in range(len(shots) - 1)
+            )
+            and math.isclose(
+                shots[-1]["to"],
+                payload["durationSeconds"],
+                abs_tol=0.001,
+            )
+        )
+        framing_variety = {shot.get("framing") for shot in shots}
+        readable_shots = all(
+            shot["to"] - shot["from"] >= 0.8
+            for shot in shots
+        )
         findings.extend(
             [
                 {
@@ -210,6 +282,29 @@ def motion_checks(production: Path) -> list[dict]:
                     "id": f"{payload['compositionId']}-finite",
                     "pass": payload["assertions"].get("noUnboundedAnimation") is True,
                     "detail": payload["assertions"],
+                },
+                {
+                    "id": f"{payload['compositionId']}-three-shots",
+                    "pass": shot_continuity,
+                    "detail": shots,
+                },
+                {
+                    "id": f"{payload['compositionId']}-framing-variety",
+                    "pass": framing_variety == {"wide", "medium", "close"},
+                    "detail": sorted(item for item in framing_variety if item),
+                },
+                {
+                    "id": f"{payload['compositionId']}-shot-readability",
+                    "pass": readable_shots,
+                    "detail": [
+                        round(item["to"] - item["from"], 3)
+                        for item in shots
+                    ],
+                },
+                {
+                    "id": f"{payload['compositionId']}-motivated-cuts",
+                    "pass": len(payload.get("cuts", [])) == 2,
+                    "detail": payload.get("cuts", []),
                 },
             ]
         )
@@ -273,10 +368,21 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
         manifest = json.loads(
             (production / "production-manifest.json").read_text(encoding="utf-8")
         )
-        midpoints = [
-            scene["startSeconds"] + scene["durationSeconds"] / 2
-            for scene in manifest["scenes"]
-        ]
+        midpoints = []
+        for scene in manifest["scenes"]:
+            shots = scene.get("shots") or [
+                {
+                    "startSeconds": scene["durationSeconds"] * index / 3,
+                    "durationSeconds": scene["durationSeconds"] / 3,
+                }
+                for index in range(3)
+            ]
+            midpoints.extend(
+                scene["startSeconds"]
+                + shot["startSeconds"]
+                + shot["durationSeconds"] / 2
+                for shot in shots
+            )
         command_reports.append(
             run_command(
                 [
@@ -288,7 +394,7 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
                     ",".join(f"{value:.3f}" for value in midpoints),
                     "--no-end",
                     "--output",
-                    "qa/scene-midpoints",
+                    "qa/shot-midpoints",
                     ".",
                 ],
                 production,
@@ -325,8 +431,8 @@ def check(production: Path, run_hyperframes: bool = True) -> dict:
     report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     evidence = [report_path.relative_to(production).as_posix()]
     evidence.extend(item["log"] for item in command_reports)
-    if (production / "qa/scene-midpoints").is_dir():
-        evidence.append("qa/scene-midpoints")
+    if (production / "qa/shot-midpoints").is_dir():
+        evidence.append("qa/shot-midpoints")
     if (production / "qa/animation-map/animation-map.json").is_file():
         evidence.extend(["qa/animation-map", "qa/animation-map.log"])
     update_stage(production, "check", passed, evidence)
@@ -378,6 +484,49 @@ def evidence_frames(production: Path, video: Path, duration: float) -> list[Path
             check=True,
         )
         frames.append(target)
+    return frames
+
+
+def shot_evidence_frames(
+    production: Path,
+    video: Path,
+    manifest: dict,
+) -> list[Path]:
+    output = production / "qa/render-shots"
+    output.mkdir(parents=True, exist_ok=True)
+    frames = []
+    for scene in manifest["scenes"]:
+        shots = scene.get("shots") or [
+            {
+                "startSeconds": scene["durationSeconds"] * index / 3,
+                "durationSeconds": scene["durationSeconds"] / 3,
+            }
+            for index in range(3)
+        ]
+        for index, shot in enumerate(shots, start=1):
+            timestamp = (
+                scene["startSeconds"]
+                + shot["startSeconds"]
+                + shot["durationSeconds"] / 2
+            )
+            target = output / f"{scene['id']}-shot-{index}.png"
+            subprocess.run(
+                [
+                    "ffmpeg",
+                    "-y",
+                    "-v",
+                    "error",
+                    "-ss",
+                    f"{timestamp:.3f}",
+                    "-i",
+                    str(video),
+                    "-frames:v",
+                    "1",
+                    str(target),
+                ],
+                check=True,
+            )
+            frames.append(target)
     return frames
 
 
@@ -456,7 +605,22 @@ def authored_audio_sync_findings(production: Path, manifest: dict) -> list[dict]
     audio_by_id = {item.get("id"): item for item in parser.direct_audio}
     findings = []
     for index, scene in enumerate(manifest["scenes"], start=1):
-        audio = audio_by_id.get(f"sfx-{index}", {})
+        first_shot_id = scene.get("shots", [{}])[0].get("id")
+        authored_clip = next(
+            (
+                clip
+                for clip in manifest.get("audioClips", [])
+                if clip.get("bus") == "sfx"
+                and clip.get("sceneId") == scene["id"]
+                and clip.get("shotId") == first_shot_id
+            ),
+            None,
+        )
+        audio = (
+            audio_by_id.get(authored_clip["id"], {})
+            if authored_clip
+            else audio_by_id.get(f"sfx-{index}", {})
+        )
         actual = float(audio.get("data-start", "nan"))
         expected = scene["startSeconds"] + 0.08
         motion = json.loads(
@@ -472,7 +636,7 @@ def authored_audio_sync_findings(production: Path, manifest: dict) -> list[dict]
         primary_start = scene["startSeconds"] + primary["entranceStart"]
         findings.append(
             {
-                "id": f"sfx-{index}-entry-sync",
+                "id": f"{scene['id']}-entry-sfx-sync",
                 "pass": math.isclose(actual, expected, abs_tol=0.001)
                 and abs(actual - primary_start) <= 0.25,
                 "detail": {
@@ -516,6 +680,9 @@ def verify_render(
     extracted = evidence_frames(production, video, declared)
     contact = production / "qa/render-contact-sheet.png"
     make_contact_sheet(extracted, contact)
+    shot_extracted = shot_evidence_frames(production, video, manifest)
+    shot_contact = production / "qa/render-shot-contact-sheet.png"
+    make_transition_contact_sheet(shot_extracted, shot_contact)
     transition_extracted = transition_evidence_frames(
         production,
         video,
@@ -529,10 +696,16 @@ def verify_render(
         "pass": encoded_passed and manual_approved,
         "encodedPass": encoded_passed,
         "manualApproved": manual_approved,
+        "videoSha256": __import__("hashlib").sha256(video.read_bytes()).hexdigest(),
         "video": video.relative_to(production).as_posix(),
         "findings": findings,
         "evidenceFrames": [path.relative_to(production).as_posix() for path in extracted],
         "contactSheet": contact.relative_to(production).as_posix(),
+        "shotEvidenceFrames": [
+            path.relative_to(production).as_posix()
+            for path in shot_extracted
+        ],
+        "shotContactSheet": shot_contact.relative_to(production).as_posix(),
         "transitionEvidenceFrames": [
             path.relative_to(production).as_posix()
             for path in transition_extracted
@@ -548,6 +721,7 @@ def verify_render(
         [
             report_path.relative_to(production).as_posix(),
             contact.relative_to(production).as_posix(),
+            shot_contact.relative_to(production).as_posix(),
             transition_contact.relative_to(production).as_posix(),
         ],
     )

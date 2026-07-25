@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "02-middle",
-  "durationSeconds": 10.0,
+  "durationSeconds": 12.5,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.8
+      2.25
     ],
     "action": [
-      1.8,
-      7.2
-    ],
-    "hold": [
-      7.2,
+      2.25,
       9.0
     ],
-    "transition": [
+    "hold": [
       9.0,
-      10.0
+      11.25
+    ],
+    "transition": [
+      11.25,
+      12.5
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.25,
+      "entranceStart": 0.3125,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.75,
+      "entranceStart": 0.9375,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,133 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.2,
+      "entranceStart": 1.5,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "02-middle-shot-1",
+      "index": 1,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 0.0,
+      "to": 4.542,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "02-middle-shot-2",
+      "index": 2,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 4.542,
+      "to": 8.802,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "02-middle-shot-3",
+      "index": 3,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 8.802,
+      "to": 12.5,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "02-middle-shot-1",
+      "toShot": "02-middle-shot-2",
+      "at": 4.542,
+      "anticipationAt": 4.362
+    },
+    {
+      "fromShot": "02-middle-shot-2",
+      "toShot": "02-middle-shot-3",
+      "at": 8.802,
+      "anticipationAt": 8.622
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "02-middle-line-1-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "海风吹散了航海",
+      "startSeconds": 11.95,
+      "endSeconds": 13.6636
+    },
+    {
+      "id": "02-middle-line-1-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-1",
+      "shotId": "02-middle-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "图上的路线标记。",
+      "startSeconds": 13.6636,
+      "endSeconds": 15.622
+    },
+    {
+      "id": "02-middle-line-2-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "可以用星位和季",
+      "startSeconds": 16.042,
+      "endSeconds": 17.834
+    },
+    {
+      "id": "02-middle-line-2-caption-2",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-2",
+      "shotId": "02-middle-shot-2",
+      "speaker": "子墨",
+      "role": "primary",
+      "kind": "dialogue",
+      "text": "风重新确认方向。",
+      "startSeconds": 17.834,
+      "endSeconds": 19.882
+    },
+    {
+      "id": "02-middle-line-3-caption-1",
+      "sceneId": "02-middle",
+      "lineId": "02-middle-line-3",
+      "shotId": "02-middle-shot-3",
+      "speaker": "郑和",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "好，我们一起把航线找回来。",
+      "startSeconds": 20.302,
+      "endSeconds": 23.11
     }
   ],
   "motionRules": [
@@ -81,6 +201,8 @@
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }

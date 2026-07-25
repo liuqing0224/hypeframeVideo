@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "metadata": {
     "id": "star-seed-forest",
     "title": "星种森林",
@@ -12,7 +12,8 @@
     "directorIntent": "像一场安静又勇敢的森林守护行动。",
     "width": 1920,
     "height": 1080,
-    "fps": 30
+    "fps": 30,
+    "format": "professional-manga-v1"
   },
   "style": {
     "key": "fantasy",
@@ -45,7 +46,34 @@
     "provider": "edge",
     "voice": "zh-CN-XiaoxiaoNeural",
     "rate": "-4%",
-    "pitch": "+0Hz"
+    "pitch": "+0Hz",
+    "voiceCast": {
+      "narrator": "zh-CN-XiaoxiaoNeural",
+      "primary": "zh-CN-XiaoyiNeural",
+      "secondary": "zh-CN-XiaoxiaoNeural",
+      "tertiary": "zh-CN-YunxiaNeural",
+      "ensemble": "zh-CN-XiaoxiaoNeural"
+    }
+  },
+  "manga": {
+    "pacing": "gentle",
+    "dialogueRatio": 0.67,
+    "audienceGrade": "primary-and-middle-school",
+    "mustShow": [
+      "微弱发亮的星种",
+      "风雨中的护送行动",
+      "古树顶端绽放的星花"
+    ],
+    "avoid": [
+      "让星种在抵达古树前盛开",
+      "把风雨表现成伤害角色的灾难",
+      "改变叶芽、小鹿和猫头鹰的外观"
+    ],
+    "factualNotes": [
+      "星种、星花和发光森林属于任务卡的童话设定"
+    ],
+    "shotCount": 9,
+    "shotsPerScene": 3
   },
   "scenes": [
     {
@@ -54,6 +82,61 @@
       "beat": "start",
       "title": "微弱星种",
       "narration": "守林人叶芽发现夜晚森林失去星光，小鹿从黑暗中带来一颗微弱发亮的星种。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "失去星光的森林里，小鹿带来一颗星种。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "别怕，我会保护这颗星种。"
+        },
+        {
+          "speaker": "小鹿",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "最高的古树还在等它。"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01-start-shot-1",
+          "index": 1,
+          "purpose": "establish",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "交代空间、人物关系和故事目标"
+        },
+        {
+          "id": "01-start-shot-2",
+          "index": 2,
+          "purpose": "discovery",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让主角发现异常并推动事件发生"
+        },
+        {
+          "id": "01-start-shot-3",
+          "index": 3,
+          "purpose": "reaction",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "用反应特写建立情绪钩子"
+        }
+      ],
       "transitionIn": "cut",
       "motionRules": [
         "multi-phase-camera",
@@ -62,6 +145,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "微弱星种",
         "primary": "穿绿色斗篷、戴叶片帽的少年守林人叶芽，双手接住微弱发光的星种",
@@ -91,6 +179,61 @@
       "beat": "middle",
       "title": "风雨护送",
       "narration": "叶芽和小鹿顶着风雨穿过森林，把星种护送到最高古树的树冠。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "叶芽和小鹿顶着风雨穿过森林。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "风雨再大，也不能让星种熄灭。"
+        },
+        {
+          "speaker": "小鹿",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "跟紧我，我们越过前面的断木！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "02-middle-shot-1",
+          "index": 1,
+          "purpose": "pressure",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "展示困难规模和空间压力"
+        },
+        {
+          "id": "02-middle-shot-2",
+          "index": 2,
+          "purpose": "action",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "用连续动作呈现解决过程"
+        },
+        {
+          "id": "02-middle-shot-3",
+          "index": 3,
+          "purpose": "decision",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "锁定关键判断、道具或情绪转折"
+        }
+      ],
       "transitionIn": "blur-through",
       "motionRules": [
         "coordinate-target-zoom",
@@ -99,6 +242,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "风雨护送",
         "primary": "叶芽弯腰护住怀里的星种，在强风中向前攀爬",
@@ -128,6 +276,61 @@
       "beat": "end",
       "title": "星花盛开",
       "narration": "星种开成漫天星花，森林重新发亮，所有小动物围着古树庆祝。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "星种在古树顶端开成漫天星花。"
+        },
+        {
+          "speaker": "叶芽",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "我们做到了，森林重新亮起来了！"
+        },
+        {
+          "speaker": "猫头鹰",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "星花开满天空啦！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "03-end-shot-1",
+          "index": 1,
+          "purpose": "climax",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "完成决定性动作并释放高潮"
+        },
+        {
+          "id": "03-end-shot-2",
+          "index": 2,
+          "purpose": "payoff",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让观众看清结果和人物反应"
+        },
+        {
+          "id": "03-end-shot-3",
+          "index": 3,
+          "purpose": "resolution",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "回到环境，给故事留下完整余韵"
+        }
+      ],
       "transitionIn": "light-leak",
       "motionRules": [
         "center-outward-expansion",
@@ -136,6 +339,11 @@
       ],
       "direction": "left",
       "sourceDirection": "left",
+      "sourceDirections": {
+        "primary": "left",
+        "secondary": "left",
+        "tertiary": "left"
+      },
       "shot": {
         "title": "星花盛开",
         "primary": "叶芽在古树顶端举起绽放的星种，脸上露出安心笑容",
@@ -157,11 +365,6 @@
         "primary": "assets/processed/03-end/primary.png",
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
-      },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "left",
-        "tertiary": "left"
       }
     }
   ]

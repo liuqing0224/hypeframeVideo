@@ -1,6 +1,6 @@
 ---
 name: compose-hyperframes-video
-description: Assemble a timed task-card production into a deterministic modular HyperFrames project with three GSAP sub-compositions, root-owned audio and captions, style-mapped transitions, motion assertions, and local frozen assets. Use after processed layers and measured audio exist or when the composition must be rebuilt.
+description: Assemble a timed task-card production into a deterministic professional manga-style HyperFrames project with three GSAP sub-compositions, nine editorial shots, camera rigs, character micro-performance, root-owned semantic audio and cue captions, motion assertions, and local frozen assets. Use after processed layers and measured audio exist or when the composition must be rebuilt.
 ---
 
 # Compose HyperFrames Video

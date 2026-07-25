@@ -1,6 +1,6 @@
 ---
 name: verify-hyperframes-video
-description: Validate modular HyperFrames task-card videos with lint, strict browser checks, transition and midpoint snapshots, animation-map review, final Studio preview approval, high-quality render, FFprobe verification, evidence frames, and promotion. Use when a composed production is ready for QA, preview, rendering, or failure diagnosis.
+description: Validate professional manga-style HyperFrames task-card videos with structural nine-shot checks, cue and speaker checks, strict browser checks, shot and transition snapshots, animation-map review, hash-bound Studio approval, high-quality render, FFprobe verification, evidence frames, and promotion. Use when a composed production is ready for QA, preview, rendering, or failure diagnosis.
 ---
 
 # Verify HyperFrames Video

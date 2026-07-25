@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "metadata": {
     "id": "guangzhou-tower-cloud-team",
     "title": "广州塔云端小队",
@@ -12,7 +12,8 @@
     "directorIntent": "像一次从云端俯瞰广州的快乐探险。",
     "width": 1920,
     "height": 1080,
-    "fps": 30
+    "fps": 30,
+    "format": "professional-manga-v1"
   },
   "style": {
     "key": "field-trip",
@@ -45,7 +46,34 @@
     "provider": "edge",
     "voice": "zh-CN-XiaoxiaoNeural",
     "rate": "-4%",
-    "pitch": "+0Hz"
+    "pitch": "+0Hz",
+    "voiceCast": {
+      "narrator": "zh-CN-XiaoxiaoNeural",
+      "primary": "zh-CN-XiaoyiNeural",
+      "secondary": "zh-CN-YunxiNeural",
+      "tertiary": "zh-CN-YunyangNeural",
+      "ensemble": "zh-CN-XiaoxiaoNeural"
+    }
+  },
+  "manga": {
+    "pacing": "cinematic",
+    "dialogueRatio": 0.67,
+    "audienceGrade": "primary-and-middle-school",
+    "mustShow": [
+      "珠江与广州城市中轴线",
+      "地图、方向与灯光共同构成推理线索",
+      "夕阳下的全队合影"
+    ],
+    "avoid": [
+      "把地标答案提前说出",
+      "让云雾遮挡整场动作",
+      "改变四名同学的服装与随身道具"
+    ],
+    "factualNotes": [
+      "广州塔观景台可俯瞰珠江与广州城市景观"
+    ],
+    "shotCount": 9,
+    "shotsPerScene": 3
   },
   "scenes": [
     {
@@ -54,6 +82,61 @@
       "beat": "start",
       "title": "抵达云端",
       "narration": "小雨和三位同学来到广州塔观景台，准备完成寻找城市地标的研学任务。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "小雨和三位同学来到广州塔观景台。"
+        },
+        {
+          "speaker": "小雨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "先找珠江，再确认城市中轴线！"
+        },
+        {
+          "speaker": "红帽同学",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "望远镜准备好了！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "01-start-shot-1",
+          "index": 1,
+          "purpose": "establish",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "交代空间、人物关系和故事目标"
+        },
+        {
+          "id": "01-start-shot-2",
+          "index": 2,
+          "purpose": "discovery",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让主角发现异常并推动事件发生"
+        },
+        {
+          "id": "01-start-shot-3",
+          "index": 3,
+          "purpose": "reaction",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "用反应特写建立情绪钩子"
+        }
+      ],
       "transitionIn": "cut",
       "motionRules": [
         "multi-phase-camera",
@@ -62,6 +145,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "抵达云端",
         "primary": "一名穿黄色研学背心、背小书包的中国女孩小雨，兴奋地举起任务卡",
@@ -91,6 +179,61 @@
       "beat": "middle",
       "title": "云雾挑战",
       "narration": "云雾遮住城市，大家根据地图、方向和灯光提示一起推理，寻找珠江和城市中轴线。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "云雾遮住城市，地图上的线索变得模糊。"
+        },
+        {
+          "speaker": "蓝背心同学",
+          "role": "secondary",
+          "kind": "dialogue",
+          "text": "珠江的走向能帮我们定位。"
+        },
+        {
+          "speaker": "小雨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "结合方向和灯光，我们一起推理！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "02-middle-shot-1",
+          "index": 1,
+          "purpose": "pressure",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "展示困难规模和空间压力"
+        },
+        {
+          "id": "02-middle-shot-2",
+          "index": 2,
+          "purpose": "action",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "用连续动作呈现解决过程"
+        },
+        {
+          "id": "02-middle-shot-3",
+          "index": 3,
+          "purpose": "decision",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "锁定关键判断、道具或情绪转折"
+        }
+      ],
       "transitionIn": "whip-pan",
       "motionRules": [
         "coordinate-target-zoom",
@@ -99,6 +242,11 @@
       ],
       "direction": "right",
       "sourceDirection": "right",
+      "sourceDirections": {
+        "primary": "right",
+        "secondary": "right",
+        "tertiary": "right"
+      },
       "shot": {
         "title": "云雾挑战",
         "primary": "小雨蹲下指着展开的城市地图，神情专注",
@@ -128,6 +276,61 @@
       "beat": "end",
       "title": "夕阳合影",
       "narration": "云雾散开，小队成功找出地标，并在温暖夕阳下拍下全队的云端合影。",
+      "script": [
+        {
+          "speaker": "旁白",
+          "role": "narrator",
+          "kind": "narration",
+          "text": "云雾散开，小队成功找出地标。"
+        },
+        {
+          "speaker": "小雨",
+          "role": "primary",
+          "kind": "dialogue",
+          "text": "任务完成，大家靠近一点！"
+        },
+        {
+          "speaker": "红帽同学",
+          "role": "tertiary",
+          "kind": "dialogue",
+          "text": "看镜头，三、二、一！"
+        }
+      ],
+      "shots": [
+        {
+          "id": "03-end-shot-1",
+          "index": 1,
+          "purpose": "climax",
+          "framing": "medium",
+          "focusRole": "primary",
+          "lineIndexes": [
+            0
+          ],
+          "intent": "完成决定性动作并释放高潮"
+        },
+        {
+          "id": "03-end-shot-2",
+          "index": 2,
+          "purpose": "payoff",
+          "framing": "close",
+          "focusRole": "primary",
+          "lineIndexes": [
+            1
+          ],
+          "intent": "让观众看清结果和人物反应"
+        },
+        {
+          "id": "03-end-shot-3",
+          "index": 3,
+          "purpose": "resolution",
+          "framing": "wide",
+          "focusRole": "ensemble",
+          "lineIndexes": [
+            2
+          ],
+          "intent": "回到环境，给故事留下完整余韵"
+        }
+      ],
       "transitionIn": "horizontal-blinds",
       "motionRules": [
         "center-outward-expansion",
@@ -136,6 +339,11 @@
       ],
       "direction": "left",
       "sourceDirection": "left",
+      "sourceDirections": {
+        "primary": "left",
+        "secondary": "left",
+        "tertiary": "left"
+      },
       "shot": {
         "title": "夕阳合影",
         "primary": "小雨站在队伍中央高举完成的任务卡，开心微笑",
@@ -149,7 +357,7 @@
       "assets": {
         "backdropSource": "assets/source/03-end-backdrop-v1.png",
         "environmentSource": "assets/source/03-end-environment-v1.png",
-        "charactersSource": "assets/source/03-end-characters-v2.png",
+        "charactersSource": "assets/source/03-end-characters-v1.png",
         "backdrop": "assets/processed/03-end/backdrop.png",
         "rear": "assets/processed/03-end/rear.png",
         "architecture": "assets/processed/03-end/architecture.png",
@@ -157,11 +365,6 @@
         "primary": "assets/processed/03-end/primary.png",
         "secondary": "assets/processed/03-end/secondary.png",
         "tertiary": "assets/processed/03-end/tertiary.png"
-      },
-      "sourceDirections": {
-        "primary": "right",
-        "secondary": "right",
-        "tertiary": "right"
       }
     }
   ]

@@ -1,4 +1,4 @@
 interface:
   display_name: "Plan Task Card Video"
   short_description: "Compile a child task card into a video production plan"
-  default_prompt: "Use -task-card-video to compile this task card into a HyperFrames brief, script, and storyboard."
+  default_prompt: "Use $plan-task-card-video to compile this task card into a HyperFrames brief, script, and storyboard."

@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "compositionId": "03-end",
-  "durationSeconds": 10.0,
+  "durationSeconds": 11.5,
   "layerOrder": [
     "backdrop",
     "rear",
@@ -14,26 +14,26 @@
   "phases": {
     "entrance": [
       0,
-      1.8
+      2.07
     ],
     "action": [
-      1.8,
-      7.2
+      2.07,
+      8.28
     ],
     "hold": [
-      7.2,
-      9.0
+      8.28,
+      10.35
     ],
     "transition": [
-      9.0,
-      10.0
+      10.35,
+      11.5
     ]
   },
   "subjects": [
     {
       "id": "primary",
       "role": "primary",
-      "entranceStart": 0.25,
+      "entranceStart": 0.2875,
       "bounds": {
         "x": 615,
         "y": 190,
@@ -44,7 +44,7 @@
     {
       "id": "secondary",
       "role": "secondary",
-      "entranceStart": 0.75,
+      "entranceStart": 0.8625,
       "bounds": {
         "x": 95,
         "y": 300,
@@ -55,13 +55,109 @@
     {
       "id": "tertiary",
       "role": "tertiary",
-      "entranceStart": 1.2,
+      "entranceStart": 1.38,
       "bounds": {
         "x": 1485,
         "y": 385,
         "width": 330,
         "height": 485
       }
+    }
+  ],
+  "shots": [
+    {
+      "id": "03-end-shot-1",
+      "index": 1,
+      "framing": "medium",
+      "focusRole": "primary",
+      "from": 0.0,
+      "to": 4.614,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.16,
+        "push": 0.018
+      }
+    },
+    {
+      "id": "03-end-shot-2",
+      "index": 2,
+      "framing": "close",
+      "focusRole": "primary",
+      "from": 4.614,
+      "to": 7.482,
+      "camera": {
+        "x": 0,
+        "y": -34,
+        "scale": 1.38,
+        "push": 0.022
+      }
+    },
+    {
+      "id": "03-end-shot-3",
+      "index": 3,
+      "framing": "wide",
+      "focusRole": "ensemble",
+      "from": 7.482,
+      "to": 11.5,
+      "camera": {
+        "x": 0,
+        "y": 0,
+        "scale": 1.0,
+        "push": 0.026
+      }
+    }
+  ],
+  "cuts": [
+    {
+      "fromShot": "03-end-shot-1",
+      "toShot": "03-end-shot-2",
+      "at": 4.614,
+      "anticipationAt": 4.434
+    },
+    {
+      "fromShot": "03-end-shot-2",
+      "toShot": "03-end-shot-3",
+      "at": 7.482,
+      "anticipationAt": 7.302
+    }
+  ],
+  "captionSegments": [
+    {
+      "id": "03-end-line-1-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-1",
+      "shotId": "03-end-shot-1",
+      "speaker": "旁白",
+      "role": "narrator",
+      "kind": "narration",
+      "text": "太阳和八颗行星全部重新发光。",
+      "startSeconds": 27.45,
+      "endSeconds": 31.194
+    },
+    {
+      "id": "03-end-line-2-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-2",
+      "shotId": "03-end-shot-2",
+      "speaker": "阿朗",
+      "role": "secondary",
+      "kind": "dialogue",
+      "text": "最后一条轨道接通了！",
+      "startSeconds": 31.614,
+      "endSeconds": 34.062
+    },
+    {
+      "id": "03-end-line-3-caption-1",
+      "sceneId": "03-end",
+      "lineId": "03-end-line-3",
+      "shotId": "03-end-shot-3",
+      "speaker": "小光",
+      "role": "tertiary",
+      "kind": "dialogue",
+      "text": "好奇心，就是点亮未知的光。",
+      "startSeconds": 34.482,
+      "endSeconds": 37.578
     }
   ],
   "motionRules": [
@@ -73,14 +169,16 @@
   "direction": "left",
   "sourceDirection": "left",
   "sourceDirections": {
-    "primary": "right",
-    "secondary": "right",
+    "primary": "left",
+    "secondary": "left",
     "tertiary": "left"
   },
   "assertions": {
     "primaryAppearsFirst": true,
     "subjectsStayInFrame": true,
     "plannedHoldWindow": true,
-    "noUnboundedAnimation": true
+    "noUnboundedAnimation": true,
+    "threeEditorialShots": true,
+    "framingVariety": true
   }
 }
