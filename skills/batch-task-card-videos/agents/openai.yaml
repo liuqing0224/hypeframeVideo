@@ -1,4 +1,4 @@
 interface:
   display_name: "Batch Task Card Videos"
-  short_description: "Orchestrate blocked nine-shot task-card videos"
-  default_prompt: "Use $batch-task-card-videos to turn these task cards into isolated, per-shot-blocked HyperFrames productions."
+  short_description: "Orchestrate distinct story-directed video batches"
+  default_prompt: "Use $batch-task-card-videos to create a batch of story-specific HyperFrames videos with distinct shot signatures and endings."

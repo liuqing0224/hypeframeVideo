@@ -1,4 +1,4 @@
 interface:
   display_name: "Compose HyperFrames Video"
-  short_description: "Compile per-shot blocking into HyperFrames videos"
-  default_prompt: "Use $compose-hyperframes-video to compile this timed production into a modular HyperFrames video with per-shot blocking."
+  short_description: "Compose story-specific manga motion and endings"
+  default_prompt: "Use $compose-hyperframes-video to compile this timed production with its director profile, signed shots, and unique ending motif."

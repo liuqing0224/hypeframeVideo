@@ -1,6 +1,6 @@
 ---
 name: batch-task-card-videos
-description: Orchestrate concurrent batches of child task-card stories into isolated professional manga-style layered-pixel HyperFrames productions, including directing, nine-shot planning, per-shot character and environment blocking, Imagegen prompt queues, transparent layer processing, performance timing, composition, checks, preview approval, retries, and final delivery. Use when Codex must generate or resume one or more videos from the project task-card JSON format.
+description: Orchestrate concurrent batches of child task-card stories into isolated, story-specific professional manga-style layered-pixel HyperFrames productions, including distinct director profiles, nine-shot signatures, authored endings, per-shot blocking, Imagegen assets, audio, composition, checks, approval, retries, and delivery. Use when Codex must generate or resume one or more videos from the project task-card JSON format without making the batch look template-driven.
 ---
 
 # Batch Task Card Videos
@@ -17,14 +17,21 @@ Keep each card in `videos/<card-id>/`. Workers may run different productions con
 ## Workflow
 
 1. Validate the task-card batch and its optional `manga` directing blocks.
-2. Direct each card as three story scenes and nine editorial shots with distinct
-   subject/environment blocking, then prepare planning documents and Imagegen queues.
+   Require distinct `director_profile.id`, `shot_signatures`, and `ending_mode`
+   values when multiple cards belong to one creative batch.
+2. Direct each card from its own story engine as three story scenes and nine
+   editorial shots. Vary camera language, panel grammar, recurring motif,
+   climax construction, ending, and subject/environment blocking.
 3. Generate each queued source with the built-in Imagegen tool. Preserve versioned raw files.
 4. Process layers and generate audio concurrently across ready productions.
 5. Compose modular HyperFrames projects and run checks.
 6. Start Studio previews and wait for final approval.
 7. Render with at most two concurrent projects, verify and promote passing
    outputs, then assemble one batch-level nine-shot render contact sheet.
+
+Compare the batch contact sheet before approval. Reject a batch when videos
+share the same nine signatures, ending composition, caption geometry, or
+camera curve even if their palettes and assets differ.
 
 ## Commands
 
